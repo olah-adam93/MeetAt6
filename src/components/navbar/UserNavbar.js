@@ -5,7 +5,7 @@ const UserNavbar = () =>{
     <div className='user-navbar'>
         <ul>
             <li><NavLink to=''>Events</NavLink></li>
-            <li><NavLink to=''>Crate New Event</NavLink></li>
+            <li><NavLink to=''>Create New Event</NavLink></li>
             <li><NavLink to=''>My Events</NavLink></li>
             <li><NavLink to=''>Search Events</NavLink></li>
             <li><NavLink to=''>Settings</NavLink></li>
