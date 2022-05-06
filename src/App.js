@@ -1,5 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+
 /* Components */
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
@@ -13,6 +14,8 @@ import AddEventView from './views/AddEventView';
 import MyEvents from './components/Profile/MyEvents';
 import HomePageView from './views/HomePageView';
 import SigninView from './views/SigninView';
+import PrivacyView from './views/PrivacyView';
+
 /* Layouts */
 import MainPageLayout from './layouts/MainPageLayout';
 import UserMainPageLayout from './layouts/UserMainPageLayout';
@@ -26,6 +29,7 @@ function App() {
           <Route path='/' element={<HomePageView />} />
           <Route path='/home' element={<HomePageView />} />
           <Route path='/about' element={<AboutView />} />
+          <Route path='/privacy' element={<PrivacyView />} />
           <Route path='/events' element={<EventsView />} />
           <Route path='/login' element={<SigninView />} />
         </Route>
