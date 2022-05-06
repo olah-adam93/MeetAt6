@@ -1,4 +1,4 @@
-import UserNavbar from "../navbar/UserNavbar"
+import UserNavbar from "../../components/navbar/UserNavbar"
 
 
 const Profile = () => {
