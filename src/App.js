@@ -1,17 +1,21 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 
 /* Components */
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
+import ChosenEvents from './components/Profile/ChosenEvents';
+import AddEvent from './components/Profile/AddEvent';
+import MyEvents from './components/Profile/MyEvents';
+import SearchEvent from './components/Profile/SearchEvent';
+import Settings from './components/Profile/Settings';
+import LogOut from './components/Profile/LogOut';
+
 /* Views */
 import AboutView from './views/AboutView';
 import EventsView from './views/EventsView';
 import ProfileView from './views/ProfileView';
-import ChosenEventsView from './views/ChosenEventsView';
-import AddEventView from './views/AddEventView';
-import MyEvents from './components/Profile/MyEvents';
 import HomePageView from './views/HomePageView';
 import SigninView from './views/SigninView';
 import PrivacyView from './views/PrivacyView';
@@ -36,9 +40,12 @@ function App() {
 
         <Route element={<UserMainPageLayout />}>
           <Route path='/profile' element={<ProfileView />} />
-          <Route path='/myevents' element={<MyEvents />} />
-          <Route path='/chosenevents' element={<ChosenEventsView />} />
-          <Route path='/addevent' element={<AddEventView />} />
+          <Route path='/profile/chosenevents' element={<ChosenEvents />} />
+          <Route path='/profile/addevent' element={<AddEvent />} />
+          <Route path='/profile/myevents' element={<MyEvents />} />
+          <Route path='/profile/searchevent' element={<SearchEvent />} />
+          <Route path='/profile/settings' element={<Settings />} />
+          <Route path='/signout' element={<LogOut />} />
         </Route>
       </Routes>
       <Footer />
