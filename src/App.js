@@ -11,6 +11,7 @@ import Events from "./components/main/Events";
 import Profile from "./views/Profile/Profile";
 import ChosenEvents from "./views/ChosenEvents/ChosenEvents";
 import AddEvent from "./views/AddEvent/AddEvent";
+import MyEvents from "./components/profile/MyEvents"
 /* Layouts */
 import MainPageLayout from "./layouts/MainPageLayout";
 import UserMainPageLayout from "./layouts/UserMainPageLayout";
@@ -34,6 +35,7 @@ function App() {
 
         <Route element={<UserMainPageLayout />}>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/myevents" element={<MyEvents />} />
           <Route path="/chosenevents" element={<ChosenEvents/>}/>
           <Route path="/addevent" element={<AddEvent/>}/>
         </Route>

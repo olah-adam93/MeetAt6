@@ -4,12 +4,13 @@ const UserNavbar = () =>{
     return(
     <div className='user-navbar'>
         <ul>
-            <li><NavLink to=''>Events</NavLink></li>
-            <li><NavLink to=''>Create New Event</NavLink></li>
-            <li><NavLink to=''>My Events</NavLink></li>
-            <li><NavLink to=''>Search Events</NavLink></li>
-            <li><NavLink to=''>Settings</NavLink></li>
-            <li><NavLink to=''>Sign out</NavLink></li>
+            <li><NavLink to='/events'>Events</NavLink></li>
+            <li><NavLink to='/addevent'>Create New Event</NavLink></li>
+            <li><NavLink to='/myevents'>My Events</NavLink></li>
+            {<li><NavLink to='/chosenevents'>Chosen Events</NavLink></li>}
+            <li><NavLink to='/searchevents'>Search Events</NavLink></li>
+            <li><NavLink to='/settings'>Settings</NavLink></li>
+            <li><NavLink to='signout'>Sign out</NavLink></li>
         </ul>
     </div>)
 }
