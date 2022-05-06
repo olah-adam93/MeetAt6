@@ -1,5 +1,5 @@
 import React from "react";
-
+import EventContainer from "../EventContainer/EventContainer";
 const Home = () => {
   return (
     <div className="home">
