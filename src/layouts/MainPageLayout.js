@@ -1,9 +1,11 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 
 const MainPageLayout = () => {
   return (
     <div>
+      {/* header */}
       <Outlet />
+      {/* footer */}
     </div>
   );
 };

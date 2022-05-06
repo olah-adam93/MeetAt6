@@ -1,8 +1,8 @@
-import React from "react";
-import EventContainer from "../EventContainer/EventContainer";
-const Home = () => {
+import React from 'react';
+import EventContainer from '../components/HomePage/EventContainer';
+export default function HomePageView() {
   return (
-    <div className="home">
+    <div>
       Home Page
       <EventContainer />
       {/*
@@ -13,5 +13,4 @@ const Home = () => {
       */}
     </div>
   );
-};
-export default Home;
+}

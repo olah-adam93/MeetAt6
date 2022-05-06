@@ -1,43 +1,40 @@
-import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
+/* Components */
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
-import Header from "./components/NavBar_Main/Header";
-import Footer from "./components/navbar/Footer";
-/*MainPage */
-import Home from "./components/main/Home";
-import About from "./components/main/About";
-import Events from "./components/main/Events";
-/*Profile*/
-import Profile from "./views/Profile/Profile";
-import ChosenEvents from "./views/ChosenEvents/ChosenEvents";
-import AddEvent from "./views/AddEvent/AddEvent";
-import MyEvents from "./components/profile/MyEvents"
+/* Views */
+import AboutView from './views/AboutView';
+import EventsView from './views/EventsView';
+import ProfileView from './views/ProfileView';
+import ChosenEventsView from './views/ChosenEventsView';
+import AddEventView from './views/AddEventView';
+import MyEvents from './components/Profile/MyEvents';
+import HomePageView from './views/HomePageView';
+import SigninView from './views/SigninView';
 /* Layouts */
-import MainPageLayout from "./layouts/MainPageLayout";
-import UserMainPageLayout from "./layouts/UserMainPageLayout";
-
-
-
-
+import MainPageLayout from './layouts/MainPageLayout';
+import UserMainPageLayout from './layouts/UserMainPageLayout';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
       <Routes>
         <Route element={<MainPageLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/login" element={<div>Login</div>} />
+          <Route path='/' element={<HomePageView />} />
+          <Route path='/home' element={<HomePageView />} />
+          <Route path='/about' element={<AboutView />} />
+          <Route path='/events' element={<EventsView />} />
+          <Route path='/login' element={<SigninView />} />
         </Route>
 
         <Route element={<UserMainPageLayout />}>
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/myevents" element={<MyEvents />} />
-          <Route path="/chosenevents" element={<ChosenEvents/>}/>
-          <Route path="/addevent" element={<AddEvent/>}/>
+          <Route path='/profile' element={<ProfileView />} />
+          <Route path='/myevents' element={<MyEvents />} />
+          <Route path='/chosenevents' element={<ChosenEventsView />} />
+          <Route path='/addevent' element={<AddEventView />} />
         </Route>
       </Routes>
       <Footer />
