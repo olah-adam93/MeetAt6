@@ -1,1 +1,0 @@
-MeetAt6 Project
