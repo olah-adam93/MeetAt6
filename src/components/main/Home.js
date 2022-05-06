@@ -1,9 +1,9 @@
 import React from "react";
-import EventContainer from "../../components/EventContainer/EventContainer";
 
-export default function Main() {
+const Home = () => {
   return (
-    <div className="main">
+    <div className="home">
+      Home Page
       <EventContainer />
       {/*
       <Navbar />
@@ -13,4 +13,5 @@ export default function Main() {
       */}
     </div>
   );
-}
+};
+export default Home;
