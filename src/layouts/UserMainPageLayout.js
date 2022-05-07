@@ -7,7 +7,6 @@ const UserMainPageLayout = () => {
   return (
     <div>
       <Header />
-      <UserNavbar />
       <Outlet />
       <Footer />
     </div>

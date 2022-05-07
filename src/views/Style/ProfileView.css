@@ -1,0 +1,25 @@
+
+.profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  
+}
+.profile .profile-head{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+}
+.profile .profile-head .avatar{
+  margin: 1rem;
+  border-radius: 50%;
+  border: 1px solid black;
+  box-shadow: .5rem .5rem 1rem rgb(74, 73, 73);
+}
+.profile .profile-head h1{
+  margin: 1rem;
+  text-align: center;
+  font-size: 2rem;
+}
