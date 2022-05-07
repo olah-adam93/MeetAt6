@@ -7,14 +7,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import './Slider.css';
+import '../HomePage/Styles/Slider.css';
 
 const Slider = () => {
   return (
     <div className='slider-container'>
       <Swiper
         slidesPerView={1}
-        spaceBetween={30}
+        spaceBetween={0}
         loop={true}
         pagination={{
           clickable: true,
