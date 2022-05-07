@@ -1,4 +1,4 @@
-const AddEvent = () => {
+const AddEventView = () => {
   return <div className='create-event'>Create new event</div>;
 };
-export default AddEvent;
+export default AddEventView;
