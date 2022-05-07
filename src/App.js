@@ -16,7 +16,7 @@ import SigninView from './views/SigninView';
 import PrivacyView from './views/PrivacyView';
 import FAQView from './views/FAQView';
 import ContactView from './views/ContactView';
-import AddEventView from './viewxs/AddEventView';
+import AddEventView from './views/AddEventView';
 import SearchEventView from './views/SearchEventView';
 
 /* Layouts */
