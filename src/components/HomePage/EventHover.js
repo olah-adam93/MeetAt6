@@ -1,4 +1,4 @@
-const EventHover = (
+const EventDetails = (
   {
     /* details */
   }
@@ -9,4 +9,4 @@ const EventHover = (
     </div>
   );
 };
-export default EventHover;
+export default EventDetails;
