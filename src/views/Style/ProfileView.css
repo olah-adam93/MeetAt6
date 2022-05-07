@@ -1,29 +1,31 @@
-
-.profile{
+.profile {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  
 }
-.profile .profile-head{
+.profile .profile-head {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: 100vw;
 }
-.profile .profile-head .avatar{
+.profile .profile-head .avatar {
   margin: 1rem;
   border-radius: 50%;
   border: 1px solid black;
-  box-shadow: .5rem .5rem 1rem rgb(74, 73, 73);
 }
-.profile .profile-head h1{
+.profile .profile-head .avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0.5rem 0.5rem 1rem rgb(74, 73, 73);
+}
+.profile .profile-head h1 {
   margin: 1rem;
   text-align: center;
   font-size: 2rem;
 }
-.profile .profile-head section p{
+
+.profile .profile-head section p {
   font-size: 1.1rem;
 }
 .profile .profile-main .user-head {
@@ -31,9 +33,15 @@
   flex-direction: column;
   gap: 1rem;
 }
-.profile h3{
+.profile h3 {
   font-size: 1.4rem;
 }
-.profile .profile-main .user-head .user-data{
-  font-size: 1.2rem;
+.profile .profile-main .user-head .user-data {
+  font-size: 1.1rem;
+  margin: 1rem 2rem 1rem 2rem;
+  text-align: justify;
+}
+
+.profile .profile-main .user-head .events .events-box {
+  margin: 1rem 0;
 }

@@ -1,0 +1,15 @@
+
+
+.galery-container{
+  margin: 1rem 3rem;
+  border: 1px solid black;
+  padding: .5rem;
+  
+}
+.galery-container .galery-container-flex{
+  margin: 1rem 3rem 0 3rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}

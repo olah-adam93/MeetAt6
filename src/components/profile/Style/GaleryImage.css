@@ -1,0 +1,12 @@
+.galery-image p {
+  font-size: 1.1rem;
+  text-align: center;
+}
+.galery-image img {
+  border-radius: 20px;
+  border: 1px solid black;
+}
+.galery-image img:hover {
+  transform: scale(1.02);
+  box-shadow: 0.4rem 0.4rem 1rem rgb(129, 127, 127);
+}

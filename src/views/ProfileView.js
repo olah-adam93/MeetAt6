@@ -1,6 +1,7 @@
 import UserNavbar from '../components/Profile/UserNavbar';
 import EventContainer from '../components/HomePage/EventContainer';
 import './Style/ProfileView.css';
+import GaleryContainer from '../components/Profile/GaleryContainer';
 const ProfileView = () => {
   return (
     <div className='profile'>
@@ -44,11 +45,15 @@ const ProfileView = () => {
             </section>
           </div>
           <div className='events'>
-            <EventContainer containerName={'Events you attend'} />
-            <EventContainer containerName={'Events you may like'} />
+            <div className='events-box'>
+              <EventContainer containerName={'Events you attend'} />
+            </div>
+            <div className='events-box'>
+              <EventContainer containerName={'Events you may like'} />
+            </div>
           </div>
           <div className='user-galery'>
-            <h3>Galery</h3>
+            <GaleryContainer />
           </div>
         </div>
       </div>
