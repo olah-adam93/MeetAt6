@@ -1,4 +1,3 @@
-
 /*színeket ide 
   meg szöveg színt választani
   gomb szín?
@@ -7,4 +6,5 @@
 .layout-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }

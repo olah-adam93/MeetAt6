@@ -9,7 +9,7 @@
   align-items: center;
 }
 .galery-image p {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   text-align: center;
 }
 .galery-image img {
@@ -20,5 +20,5 @@
 }
 .galery-image:hover {
   transform: scale(1.02);
-  box-shadow: 0.2rem 0.2rem 1rem #ccb9bc;
+  box-shadow: 0.4rem 0.4rem 2rem #ccb9bc;
 }

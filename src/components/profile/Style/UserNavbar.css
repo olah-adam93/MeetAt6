@@ -3,8 +3,8 @@
 }
 .user-navbar li {
   list-style: none;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
@@ -17,7 +17,7 @@
 }
 .user-navbar li a:hover {
   transform: translateY(-0.3rem);
-  text-shadow: 2px 2px 8px #49599b;
+  text-shadow: .2rem .2rem .8rem #49599b;
 }
 .user-navbar li a:active {
   transform: translateY(-0.1rem);

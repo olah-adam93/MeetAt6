@@ -2,13 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
+  width: 90vw;
+  
 }
 .profile .profile-head {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  width: 100vw;
+  justify-content: space-between;
+  width: 90vw;
 }
 .profile .profile-head .avatar {
   margin: 1rem;
@@ -22,11 +23,11 @@
 .profile .profile-head h1 {
   margin: 1rem;
   text-align: center;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .profile .profile-head section p {
-  font-size: 1.1rem;
+  font-size: 1.6rem;
 }
 .profile .profile-main .user-head {
   display: flex;
@@ -34,10 +35,10 @@
   gap: 1rem;
 }
 .profile h3 {
-  font-size: 1.4rem;
+  font-size: 2rem;
 }
 .profile .profile-main .user-head .user-data {
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   margin: 1rem 2rem 1rem 2rem;
   text-align: justify;
 }
