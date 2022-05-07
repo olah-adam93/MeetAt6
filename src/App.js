@@ -29,7 +29,7 @@ import UserMainPageLayout from './layouts/UserMainPageLayout';
 function App() {
   return (
     <div className='App'>
-      <Header />
+      
       <Routes>
         <Route element={<MainPageLayout />}>
           <Route path='/' element={<HomePageView />} />
@@ -52,7 +52,7 @@ function App() {
           <Route path='/signout' element={<LogOut />} />
         </Route>
       </Routes>
-      <Footer />
+      
     </div>
   );
 }
