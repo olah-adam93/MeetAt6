@@ -5,6 +5,11 @@
 */
 
 .layout-container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.layout-inner-container {
+  padding: 0 2rem;
 }

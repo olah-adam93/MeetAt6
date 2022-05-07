@@ -10,11 +10,7 @@ const ProfileView = () => {
         </div>
         <div>
           <h1>Hi name{/* your name */}!</h1>
-          <img
-            className='avatar'
-            src='http://placekitten.com/200/200'
-            alt='username'
-          />
+          <img className='avatar' src='http://placekitten.com/200/200' alt='username' />
         </div>
         <section>
           <h3>Your Informaiton:</h3>
