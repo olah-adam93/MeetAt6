@@ -1,4 +1,4 @@
-import React from "react";
+import '../HomePage/Styles/EventContainer.css';
 
 export default function EventContainer() {
   const db = [

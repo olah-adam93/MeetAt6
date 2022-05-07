@@ -1,16 +1,10 @@
+
 /*színeket ide 
   meg szöveg színt választani
   gomb szín?
 */
 
-
-
-.main_event_container {
+.layout-container {
   display: flex;
-  justify-content: space-evenly;
-}
-.main_events {
-  border: 2px solid gray;
-  box-sizing: border-box;
-  padding: 2px;
+  flex-direction: column;
 }

@@ -1,0 +1,9 @@
+.main_event_container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.main_events {
+  border: 2px solid gray;
+  box-sizing: border-box;
+  padding: 2px;
+}

@@ -2,13 +2,8 @@ import './App.css';
 import {Routes, Route} from 'react-router-dom';
 
 /* Components */
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-
 import ChosenEvents from './components/Profile/ChosenEvents';
-import AddEvent from './components/Profile/AddEvent';
 import MyEvents from './components/Profile/MyEvents';
-import SearchEvent from './components/Profile/SearchEvent';
 import Settings from './components/Profile/Settings';
 import LogOut from './components/Profile/LogOut';
 
@@ -21,6 +16,8 @@ import SigninView from './views/SigninView';
 import PrivacyView from './views/PrivacyView';
 import FAQView from './views/FAQView';
 import ContactView from './views/ContactView';
+import AddEventView from './viewxs/AddEventView';
+import SearchEventView from './views/SearchEventView';
 
 /* Layouts */
 import MainPageLayout from './layouts/MainPageLayout';
@@ -29,7 +26,6 @@ import UserMainPageLayout from './layouts/UserMainPageLayout';
 function App() {
   return (
     <div className='App'>
-      
       <Routes>
         <Route element={<MainPageLayout />}>
           <Route path='/' element={<HomePageView />} />
@@ -45,9 +41,9 @@ function App() {
         <Route element={<UserMainPageLayout />}>
           <Route path='/profile' element={<ProfileView />} />
           <Route path='/profile/chosenevents' element={<ChosenEvents />} />
-          <Route path='/profile/addevent' element={<AddEvent />} />
+          <Route path='/profile/addevent' element={<AddEventView />} />
           <Route path='/profile/myevents' element={<MyEvents />} />
-          <Route path='/profile/searchevent' element={<SearchEvent />} />
+          <Route path='/profile/searchevent' element={<SearchEventView />} />
           <Route path='/profile/settings' element={<Settings />} />
           <Route path='/signout' element={<LogOut />} />
         </Route>
