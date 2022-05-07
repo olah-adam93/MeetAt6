@@ -6,7 +6,9 @@ const UserMainPageLayout = () => {
   return (
     <div className='layout-container'>
       <Header />
-      <Outlet />
+      <div className='layout-inner-container'>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
