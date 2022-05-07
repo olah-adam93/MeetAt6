@@ -1,4 +1,4 @@
-import EventDetails from '../components/HomePage/EventHover';
+import EventDetails from '../components/HomePage/EventDetails';
 import EventImage from '../components/HomePage/EventImage';
 import EventInfo from '../components/HomePage/EventInfo'
 const EventPageView = () => {
