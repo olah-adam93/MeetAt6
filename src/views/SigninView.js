@@ -1,5 +1,12 @@
-import React from 'react';
+import SignUp from '../components/SignUp/SignUp';
 
-export default function SigninView() {
-  return <div>SigninView</div>;
+const SigninView = () => {
+  return (
+    <div className='signin-view-container'>
+      <div>Sign In Page</div>
+      <SignUp />
+    </div>
+  )
 }
+
+export default SigninView;
