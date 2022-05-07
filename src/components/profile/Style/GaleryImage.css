@@ -1,12 +1,24 @@
+
+
+.galery-image{
+  background-color: white;
+  display: flex;
+  width: 320px;
+  height: 250px;
+  justify-content: center;
+  align-items: center;
+}
 .galery-image p {
   font-size: 1.1rem;
   text-align: center;
 }
 .galery-image img {
-  border-radius: 3rem;
+  
+  max-width: 100%;
   border: 1px solid black;
+  object-fit: contain;
 }
-.galery-image img:hover {
+.galery-image:hover {
   transform: scale(1.02);
-  box-shadow: 0.4rem 0.4rem 1rem rgb(129, 127, 127);
+  box-shadow: 0.2rem 0.2rem 1rem #ccb9bc;
 }

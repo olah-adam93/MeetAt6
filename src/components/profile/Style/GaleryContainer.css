@@ -1,9 +1,10 @@
 
 
 .galery-container{
-  margin: 1rem 3rem;
+  margin: 1rem 2rem;
   border: 1px solid black;
   padding: .5rem;
+  background-color: #ffebee;
   
 }
 .galery-container .galery-container-flex{
@@ -11,5 +12,5 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1rem;
 }
