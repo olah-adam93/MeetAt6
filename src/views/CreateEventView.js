@@ -1,11 +1,14 @@
-import { useState } from 'react';
+/*React*/
+import {useState} from 'react';
 /*Components */
 import BasicInfoForm from '../components/CreateNewEvent/BasicInfoForm';
 import LocationOfEvent from '../components/CreateNewEvent/LocationOfEvent';
 import NewEventInfo from '../components/CreateNewEvent/NewEventInfo';
 import NewEventPayment from '../components/CreateNewEvent/NewEventPayment';
 import TimeOfEvent from '../components/CreateNewEvent/TimeOfEvent';
+/*Style */
 import './Style/CreateEventView.css';
+
 const CreateEventView = () => {
   //const [basicInfo, setBasicInfo] = useState([]);
   const [locationtype, setLocationType] = useState('');
@@ -15,7 +18,11 @@ const CreateEventView = () => {
     if (nextbtn < 3) {
       setNextBtn((prev) => (prev += 1));
     }
-    if (nextbtn === 2) {
+  };
+  const backFormPageHandler = (e) => {
+    e.preventDefault();
+    if (nextbtn > 0) {
+      setNextBtn((prev) => (prev -= 1));
     }
   };
   return (
@@ -32,13 +39,13 @@ const CreateEventView = () => {
             <label htmlFor="event-tags">Tags</label>
             <input type="text" id="event-tags"name="event-tags"/>*/}
               <h3>Time of the Event</h3>
-              <TimeOfEvent /> {/*kiegészíteni */}
+              <TimeOfEvent />
               <h3>Location</h3>
               <LocationOfEvent
                 locationType={locationtype}
                 setLocationType={setLocationType}
               />
-              {/*search location , click-et kijavítani, tovább gomb??? details, stb még megírni hozzá*/}
+              {/*search location , click-et kijavítani, Vissza Gomb*/}
             </div>
           )}
           {nextbtn === 1 && (
@@ -51,16 +58,24 @@ const CreateEventView = () => {
               <NewEventPayment />
             </div>
           )}
-          {nextbtn < 2 && (
-            <button type='button' onClick={nextFormPageHandler} className='next-btn'>
-              Next
-            </button>
-          )}
-          {nextbtn === 2 && (
-            <button type='button' className='save-btn'>
-              Save event
-            </button>
-          )}
+
+          <div className='btn-container'>
+            {nextbtn > 0 && (
+              <button type='button' onClick={backFormPageHandler} className='back-btn'>
+                Back
+              </button>
+            )}
+            {nextbtn < 2 && (
+              <button type='button' onClick={nextFormPageHandler} className='next-btn'>
+                Next
+              </button>
+            )}
+            {nextbtn === 2 && (
+              <button type='button' className='save-btn'>
+                Save event
+              </button>
+            )}
+          </div>
         </form>
       </div>
     </div>
