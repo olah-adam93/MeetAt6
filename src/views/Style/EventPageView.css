@@ -1,0 +1,52 @@
+.event-page {
+  display: grid;
+  grid-template-rows: 2em 20em 5em 10em 10em 10em 2em;
+  grid-template-columns: 1fr 5fr 1fr 2fr 1fr;
+  grid-template-areas:
+    '. . . . .'
+    '. image . info .'
+    '. . . info .'
+    '. details . info .'
+    '. details . . .'
+    '. details . . .'
+    '. . . . .';
+}
+
+.event-image-container {
+  grid-area: image;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-details {
+  grid-area: details;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  box-shadow: 5px 10px lightgray;
+  padding: 1em;
+  font-size: 16px;
+}
+
+.eventinfo-container {
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  box-shadow: 5px 10px lightgray;
+  padding: 1em;
+  font-size: 16px;
+}
+
+.eventinfo-details {
+  font-size: 18px;
+}
+
+.eventinfo-join-button {
+  width: 60px;
+  position: relative;
+  left: 100px;
+  top: 150px;
+}

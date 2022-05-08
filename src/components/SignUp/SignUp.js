@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 
-import React, { useEffect } from 'react'
-import { useState } from 'react'
-import Validation from './Validation'
-=======
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Validation from './Validation';
->>>>>>> 80b4af294fddf80c1f60da8fa2c9f4803110068d
+
 
 const SignUp = ({ submitForm }) => {
   const [data, setData] = useState({
@@ -96,7 +91,7 @@ const SignUp = ({ submitForm }) => {
         </div>
       </form>
     </div>
-<<<<<<< HEAD
+
   )
 }
 
@@ -104,9 +99,4 @@ export default SignUp
 
 
 
-=======
-  );
-};
 
-export default SignUp;
->>>>>>> 80b4af294fddf80c1f60da8fa2c9f4803110068d
