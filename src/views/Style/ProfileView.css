@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 2rem;
   width: 90vw;
 }
 .profile .profile-head .avatar {
@@ -44,8 +45,9 @@
 }
 .profile .profile-main .user-head .user-data {
   font-size: 1.6rem;
-  margin: 1rem 2rem 1rem 2rem;
+  margin: 1rem auto;
   text-align: justify;
+  width: 85vw;
 }
 
 .profile .profile-main .user-head .events .events-box {
