@@ -17,7 +17,7 @@ import SigninView from './views/SigninView';
 import PrivacyView from './views/PrivacyView';
 import FAQView from './views/FAQView';
 import ContactView from './views/ContactView';
-import AddEventView from './views/AddEventView';
+import CreateEventView from './views/CreateEventView';
 import SearchEventView from './views/SearchEventView';
 import EventPageView from './views/EventPageView';
 
@@ -44,7 +44,7 @@ function App() {
         <Route element={<UserMainPageLayout />}>
           <Route path='/profile' element={<ProfileView />} />
           <Route path='/profile/chosenevents' element={<ChosenEvents />} />
-          <Route path='/profile/addevent' element={<AddEventView />} />
+          <Route path='/profile/addevent' element={<CreateEventView />} />
           <Route path='/profile/myevents' element={<MyEvents />} />
           <Route path='/profile/searchevent' element={<SearchEventView />} />
           <Route path='/profile/settings' element={<Settings />} />
