@@ -1,7 +1,4 @@
 
-<<<<<<< HEAD
-
-=======
 .create-new-event-container{
   display: flex;
   flex-direction: column;
@@ -27,4 +24,3 @@
 .create-new-event-container .new-event-form .time-of-event label{
   display: inline-block;
 }
->>>>>>> 16f6a9788f9b907138657c47691af628c5ddf364
