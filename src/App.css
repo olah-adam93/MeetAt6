@@ -1,9 +1,14 @@
-.main_event_container {
+/*színeket ide 
+  meg szöveg színt választani
+  gomb szín?
+*/
+
+.layout-container {
+  min-height: 100vh;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
 }
-.main_events {
-  border: 2px solid gray;
-  box-sizing: border-box;
-  padding: 2px;
+
+.layout-inner-container {
+  padding: 0 2rem;
 }

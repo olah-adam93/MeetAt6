@@ -11,7 +11,7 @@ const EventCard = ()=>{
             setEventData() -->kiegészíteni
         }
         eventInfo()
-    }, []) --> ez lehet nem ide kell?*/
+    }, []) --> ezt a containerbe átrakni*/
     /* const clickHandler = (e)=>{
         navigateTo ---> majd az eventpagere
     }*/
@@ -33,7 +33,7 @@ const EventCard = ()=>{
             title - clickHandler
             date
             location -ha lesz geolocation akkor a térképre?
-            event organizer - clickHandler a profile-ra?
+            event organizer
             attendant 
             */}
         </div>

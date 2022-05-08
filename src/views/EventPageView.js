@@ -1,5 +1,6 @@
-import EventHover from '../components/HomePage/EventHover';
-
+import EventDetails from '../components/HomePage/EventDetails';
+import EventImage from '../components/HomePage/EventImage';
+import EventInfo from '../components/HomePage/EventInfo'
 const EventPageView = () => {
   return (
     <div className='event-page'>
@@ -7,7 +8,9 @@ const EventPageView = () => {
       {/*
             image, info, details
             */}
-      <EventHover /* details={} */ />
+      <EventImage />
+      <EventInfo />
+      <EventDetails /* details={} */ />
     </div>
   );
 };

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import Validation from './Validation'
@@ -87,3 +88,10 @@ useEffect(() => {
 }
 
 export default SignUp
+=======
+const SignUp = () => {
+  return <div>SignUp</div>;
+};
+
+export default SignUp;
+>>>>>>> f8f9b2657e086b03091558d2c47769a858618ffb

@@ -1,29 +1,27 @@
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
+import './Style/UserNavbar.css'
 
 const UserNavbar = () => {
   return (
     <div className='user-navbar'>
       <ul>
         <li>
-          <NavLink to='/events'>Events</NavLink>
+          <NavLink to='/profile/chosenevents'>Chosen Events</NavLink>
         </li>
         <li>
-          <NavLink to='/addevent'>Create New Event</NavLink>
+          <NavLink to='/profile/addevent'>Create New Event</NavLink>
         </li>
         <li>
-          <NavLink to='/myevents'>My Events</NavLink>
+          <NavLink to='/profile/myevents'>My Events</NavLink>
         </li>
         <li>
-          <NavLink to='/chosenevents'>Chosen Events</NavLink>
+          <NavLink to='/profile/searchevent'>Search Event</NavLink>
         </li>
         <li>
-          <NavLink to='/searchevents'>Search Events</NavLink>
+          <NavLink to='/profile/settings'>Settings</NavLink>
         </li>
         <li>
-          <NavLink to='/settings'>Settings</NavLink>
-        </li>
-        <li>
-          <NavLink to='signout'>Sign out</NavLink>
+          <NavLink to='/signout'>Sign out</NavLink>
         </li>
       </ul>
     </div>
