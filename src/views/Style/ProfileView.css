@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-
 }
 .profile .profile-head {
   display: flex;
@@ -31,8 +30,8 @@
   font-size: 1.6rem;
   margin: 1rem 1rem;
 }
-.profile .profile-main{
-   width: 90%; 
+.profile .profile-main {
+  width: 90%;
 }
 .profile .profile-main .user-head {
   display: flex;
