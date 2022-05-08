@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  width: 100%;
+  /* height: 100%; */
 }
 .create-new-event-container h1 {
   font-size: 3rem;
