@@ -1,4 +1,4 @@
-import {useState} from 'react';
+/* import {useState} from 'react'; */
 
 const LocationOfEvent = ({setLocationType, locationType}) => {
   const clickHandler= (e) => {
