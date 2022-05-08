@@ -5,29 +5,29 @@ import EventCard from './EventCard';
 
 /* import { Link } from 'react-router-dom'; */
 
-export default function EventContainer() {
+export default function EventContainer({ containerName }) {
   /* Fetch a firebaseről setDb() */
   const [db, setDb] = useState([
     {
-      img: 'https://placekitten.com/300/200',
+      img: 'https://placekitten.com/200/150',
       title: 'Event 1',
       date: '2022.05.23',
       organizer: 'Jómagam',
     },
     {
-      img: 'https://placekitten.com/300/200',
+      img: 'https://placekitten.com/200/150',
       title: 'Event 2',
       date: '2022.07.03',
       organizer: 'Jómagam',
     },
     {
-      img: 'https://placekitten.com/300/200',
+      img: 'https://placekitten.com/200/150',
       title: 'Event 3',
       date: '2022.05.23',
       organizer: 'Jómagam',
     },
     {
-      img: 'https://placekitten.com/300/200',
+      img: 'https://placekitten.com/200/150',
       title: 'Event 4',
       date: '2022.06.01',
       organizer: 'Jómagam',
@@ -56,11 +56,16 @@ export default function EventContainer() {
   }, [db]);
 
   return (
-    <div className='main_event_container'>
-      <EventCard eventCard={eventCard1} />
-      <EventCard eventCard={eventCard2} />
-      <EventCard eventCard={eventCard3} />
-      <EventCard eventCard={eventCard4} />
-    </div>
+    <>
+      <h2>{containerName}</h2>
+      <br />
+      <div className='main_event_container'>
+        <EventCard eventCard={eventCard1} />
+        <EventCard eventCard={eventCard2} />
+        <EventCard eventCard={eventCard3} />
+        <EventCard eventCard={eventCard4} />
+      </div>
+      <br />
+    </>
   );
 }

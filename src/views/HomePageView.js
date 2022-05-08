@@ -7,7 +7,8 @@ export default function HomePageView() {
     <div>
       Home Page
       <Slider />
-      <EventContainer />
+      <EventContainer containerName={'Legfrissebb események'} />
+      <EventContainer containerName={'Kiemelt események'} />
       {/*
       <Navbar />
       <Slider />
