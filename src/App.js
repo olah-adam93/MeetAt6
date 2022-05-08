@@ -1,16 +1,16 @@
 import './App.css';
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 /* Components */
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
-import ChosenEvents from './components/Profile/ChosenEvents';
-import AddEvent from './components/Profile/AddEvent';
-import MyEvents from './components/Profile/MyEvents';
-import SearchEvent from './components/Profile/SearchEvent';
-import Settings from './components/Profile/Settings';
-import LogOut from './components/Profile/LogOut';
+import ChosenEvents from './components/profile/ChosenEvents';
+import AddEvent from './components/profile/AddEvent';
+import MyEvents from './components/profile/MyEvents';
+import SearchEvent from './components/profile/SearchEvent';
+import Settings from './components/profile/Settings';
+import LogOut from './components/profile/LogOut';
 
 /* Views */
 import AboutView from './views/AboutView';

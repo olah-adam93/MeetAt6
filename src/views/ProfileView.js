@@ -1,4 +1,4 @@
-import UserNavbar from '../components/Profile/UserNavbar';
+import UserNavbar from '../components/profile/UserNavbar';
 
 const ProfileView = () => {
   return (
