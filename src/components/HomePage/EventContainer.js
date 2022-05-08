@@ -3,7 +3,7 @@ import '../HomePage/Styles/EventContainer.css';
 import { useEffect, useState } from 'react';
 import EventCard from './EventCard';
 
-import { Link } from 'react-router-dom';
+/* import { Link } from 'react-router-dom'; */
 
 export default function EventContainer() {
   /* Fetch a firebaseről setDb() */
@@ -52,7 +52,7 @@ export default function EventContainer() {
         setEventCard4(event);
       }
     });
-  }, []);
+  }, [db]);
 
   return (
     <div className='main_event_container'>
