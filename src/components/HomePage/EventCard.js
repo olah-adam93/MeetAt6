@@ -21,7 +21,7 @@ const EventCard = ()=>{
             <div className="event-pciture"><img src="src" alt="eventname"/></div>
             <div className="event-data">
                 <span>
-                  <strong>event.title</strong>
+                    <strong>event.title</strong>
                 </span>
                 <span>event.date</span>
                 <span>location?</span>
