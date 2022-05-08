@@ -2,6 +2,7 @@ import UserNavbar from '../components/Profile/UserNavbar';
 import EventContainer from '../components/HomePage/EventContainer';
 import './Style/ProfileView.css';
 import GaleryContainer from '../components/Profile/GaleryContainer';
+
 const ProfileView = () => {
   return (
     <div className='profile'>

@@ -1,7 +1,8 @@
 import './App.css';
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 /* Components */
+
 import ChosenEvents from './components/Profile/ChosenEvents';
 import MyEvents from './components/Profile/MyEvents';
 import Settings from './components/Profile/Settings';
@@ -50,7 +51,6 @@ function App() {
           <Route path='/signout' element={<LogOut />} />
         </Route>
       </Routes>
-      
     </div>
   );
 }
