@@ -51,6 +51,7 @@ export default function EventContainer() {
       if (index === db.length - 4) {
         setEventCard4(event);
       }
+      return null;
     });
   }, [db]);
 
