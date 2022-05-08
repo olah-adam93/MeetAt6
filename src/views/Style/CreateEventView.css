@@ -1,2 +1,26 @@
 
-
+.create-new-event-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+.create-new-event-container h1{
+  font-size: 3rem;
+}
+.create-new-event-container .new-event-form h2 {
+  font-size: 2.5rem;
+}
+.create-new-event-container .new-event-form h3 {
+  font-size: 2rem;
+}
+.create-new-event-container .new-event-form label{
+  font-size: 1.6rem;
+  display: block;
+}
+.create-new-event-container .new-event-form p{
+  font-size: 1.4rem;
+}
+.create-new-event-container .new-event-form .time-of-event label{
+  display: inline-block;
+}

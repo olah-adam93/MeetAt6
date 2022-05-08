@@ -5,7 +5,7 @@ import LocationOfEvent from '../components/CreateNewEvent/LocationOfEvent';
 import NewEventInfo from '../components/CreateNewEvent/NewEventInfo';
 import NewEventPayment from '../components/CreateNewEvent/NewEventPayment';
 import TimeOfEvent from '../components/CreateNewEvent/TimeOfEvent';
-
+import './Style/CreateEventView.css'
 const CreateEventView = () => {
   //const [basicInfo, setBasicInfo] = useState([]);
   const [locationtype, setLocationType] = useState('');
