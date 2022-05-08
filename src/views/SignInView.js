@@ -1,4 +1,4 @@
-import SignIn from '../components/SignIn/Signin';
+import SignIn from '../components/SignIn/SignIn';
 
 import './Style/SignInView.css';
 
@@ -7,7 +7,7 @@ const SigninView = () => {
     <div className='signin-view-container'>
       <SignIn />
     </div>
-  );
-};
+  )
+}
 
 export default SigninView;

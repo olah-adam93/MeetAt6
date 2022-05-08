@@ -1,11 +1,11 @@
-import {useState} from 'react';
+import { useState } from 'react';
 /*Components */
 import BasicInfoForm from '../components/CreateNewEvent/BasicInfoForm';
 import LocationOfEvent from '../components/CreateNewEvent/LocationOfEvent';
 import NewEventInfo from '../components/CreateNewEvent/NewEventInfo';
 import NewEventPayment from '../components/CreateNewEvent/NewEventPayment';
 import TimeOfEvent from '../components/CreateNewEvent/TimeOfEvent';
-
+import './Style/CreateEventView.css';
 const CreateEventView = () => {
   //const [basicInfo, setBasicInfo] = useState([]);
   const [locationtype, setLocationType] = useState('');
@@ -28,14 +28,11 @@ const CreateEventView = () => {
               <h2>Basic Information</h2>
               <p>Create a new event with these information </p>
               <BasicInfoForm />
-
               {/*Tags - search 
             <label htmlFor="event-tags">Tags</label>
             <input type="text" id="event-tags"name="event-tags"/>*/}
-
               <h3>Time of the Event</h3>
               <TimeOfEvent /> {/*kiegészíteni */}
-
               <h3>Location</h3>
               <LocationOfEvent
                 locationType={locationtype}
