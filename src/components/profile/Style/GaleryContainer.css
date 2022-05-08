@@ -1,0 +1,17 @@
+
+
+.galery-container{
+  margin: 1rem 2rem;
+  border: 1px solid black;
+  padding: 1.5rem;
+  background-color: #ffebee;
+  
+  
+}
+.galery-container .galery-container-flex{
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  
+}
