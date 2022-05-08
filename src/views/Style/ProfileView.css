@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90vw;
+  /* width: 100vw; */
+  min-height: 100vh;
+
 }
 .profile .profile-head {
   display: flex;
@@ -27,6 +29,10 @@
 
 .profile .profile-head section p {
   font-size: 1.6rem;
+  margin: 1rem 1rem;
+}
+.profile .profile-main{
+  width: 90vw;
 }
 .profile .profile-main .user-head {
   display: flex;

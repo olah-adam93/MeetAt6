@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-evenly;
 }
-.main_events {
+.event-card {
   border: 2px solid gray;
   box-sizing: border-box;
   padding: 2px;

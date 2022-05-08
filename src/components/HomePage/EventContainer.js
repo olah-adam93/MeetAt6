@@ -1,8 +1,13 @@
 import '../HomePage/Styles/EventContainer.css';
+
+import { useEffect, useState } from 'react';
+import EventCard from './EventCard';
+
 import { Link } from 'react-router-dom';
 
 export default function EventContainer() {
-  const db = [
+  /* Fetch a firebaseről setDb() */
+  const [db, setDb] = useState([
     {
       img: 'https://placekitten.com/300/200',
       title: 'Event 1',
@@ -27,28 +32,34 @@ export default function EventContainer() {
       date: '2022.06.01',
       organizer: 'Jómagam',
     },
-  ];
+  ]);
+  const [eventCard1, setEventCard1] = useState({});
+  const [eventCard2, setEventCard2] = useState({});
+  const [eventCard3, setEventCard3] = useState({});
+  const [eventCard4, setEventCard4] = useState({});
+  useEffect(() => {
+    db.map((event, index) => {
+      if (index === db.length - 1) {
+        setEventCard1(event);
+      }
+      if (index === db.length - 2) {
+        setEventCard2(event);
+      }
+      if (index === db.length - 3) {
+        setEventCard3(event);
+      }
+      if (index === db.length - 4) {
+        setEventCard4(event);
+      }
+    });
+  }, []);
 
   return (
     <div className='main_event_container'>
-      {db.map((event, index) => {
-        return (
-          <div className='main_events' key={index}>
-            <img src={event.img} alt='' />
-            <br />
-            <span>
-              <Link to={`/eventpage/${event.title}`}>
-                {' '}
-                <strong>{event.title}</strong>{' '}
-              </Link>
-            </span>
-            <br />
-            <span>Dátum: {event.date}</span>
-            <br />
-            <span>Szervező: {event.organizer}</span>
-          </div>
-        );
-      })}
+      <EventCard eventCard={eventCard1} />
+      <EventCard eventCard={eventCard2} />
+      <EventCard eventCard={eventCard3} />
+      <EventCard eventCard={eventCard4} />
     </div>
   );
 }
