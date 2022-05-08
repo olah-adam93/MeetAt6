@@ -13,7 +13,8 @@ import AboutView from './views/AboutView';
 import EventsView from './views/EventsView';
 import ProfileView from './views/ProfileView';
 import HomePageView from './views/HomePageView';
-import SigninView from './views/SigninView';
+import SignInView from './views/SignInView';
+import SignUpView from './views/SignUpView';
 import PrivacyView from './views/PrivacyView';
 import FAQView from './views/FAQView';
 import ContactView from './views/ContactView';
@@ -35,7 +36,8 @@ function App() {
           <Route path='/about' element={<AboutView />} />
           <Route path='/privacy' element={<PrivacyView />} />
           <Route path='/events' element={<EventsView />} />
-          <Route path='/login' element={<SigninView />} />
+          <Route path='/signin' element={<SignInView />} />
+          <Route path='/signup' element={<SignUpView />} />
           <Route path='/contact' element={<ContactView />} />
           <Route path='/FAQ' element={<FAQView />} />
           <Route path='/eventpage/:event_title' element={<EventPageView />} />
