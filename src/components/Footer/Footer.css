@@ -6,7 +6,7 @@
   justify-content: center;
   background-color: gainsboro;
   padding: 0 2rem;
-  /*  */
+  /* parent element is a flex container so it will stick to the bottom of the page */
   margin-top: auto;
 }
 
