@@ -15,6 +15,7 @@ const EventCard = ({ eventCard }) => {
   /* const clickHandler = (e)=>{
         navigateTo ---> majd az eventpagere
     }*/
+
   return (
     <div className='event-card'>
       Event Card
@@ -35,6 +36,21 @@ const EventCard = ({ eventCard }) => {
         <span>attendant?</span>
       </div>
       {/*
+
+    return (
+        <div className="event-card">
+            Event Card
+            <div className="event-pciture"><img src="src" alt="eventname"/></div>
+            <div className="event-data">
+                <span>
+                    <strong>event.title</strong>
+                </span>
+                <span>event.date</span>
+                <span>location?</span>
+                <span>organizer</span>
+                <span>attendant?</span>
+            </div>
+            {/*
             img
             title - clickHandler
             date

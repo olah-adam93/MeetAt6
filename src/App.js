@@ -19,6 +19,7 @@ import FAQView from './views/FAQView';
 import ContactView from './views/ContactView';
 import AddEventView from './views/AddEventView';
 import SearchEventView from './views/SearchEventView';
+import EventPageView from './views/EventPageView';
 
 /* Layouts */
 import MainPageLayout from './layouts/MainPageLayout';
@@ -37,6 +38,7 @@ function App() {
           <Route path='/login' element={<SigninView />} />
           <Route path='/contact' element={<ContactView />} />
           <Route path='/FAQ' element={<FAQView />} />
+          <Route path='/eventpage/:event_title' element={<EventPageView />} />
         </Route>
 
         <Route element={<UserMainPageLayout />}>

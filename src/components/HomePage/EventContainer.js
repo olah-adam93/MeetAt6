@@ -1,6 +1,9 @@
 import '../HomePage/Styles/EventContainer.css';
+
 import { useEffect, useState } from 'react';
 import EventCard from './EventCard';
+
+import { Link } from 'react-router-dom';
 
 export default function EventContainer() {
   /* Fetch a firebaseről setDb() */
