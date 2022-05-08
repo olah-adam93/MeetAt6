@@ -1,6 +1,8 @@
+
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import Validation from './Validation';
+
 
 const SignUp = ({ submitForm }) => {
   const [data, setData] = useState({
@@ -29,7 +31,7 @@ const SignUp = ({ submitForm }) => {
     if (Object.keys(error).length === 0 && correctData) {
       submitForm(true);
     }
-  }, [error]);
+  }, [error, correctData, submitForm]);
 
   return (
     <div className='sign-up-container'>
@@ -89,7 +91,12 @@ const SignUp = ({ submitForm }) => {
         </div>
       </form>
     </div>
-  );
-};
 
-export default SignUp;
+  )
+}
+
+export default SignUp
+
+
+
+

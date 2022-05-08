@@ -1,12 +1,13 @@
-import SignUp from '../components/SignUp/SignUp';
+import SignIn from '../components/SignIn/Signin';
+
+import './Style/SignInView.css';
 
 const SigninView = () => {
   return (
     <div className='signin-view-container'>
-      <div>Sign In Page</div>
-      <SignUp />
+      <SignIn />
     </div>
-  )
-}
+  );
+};
 
 export default SigninView;

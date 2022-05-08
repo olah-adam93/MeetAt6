@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 /*Components */
 import BasicInfoForm from '../components/CreateNewEvent/BasicInfoForm';
 import LocationOfEvent from '../components/CreateNewEvent/LocationOfEvent';
@@ -6,7 +6,7 @@ import NewEventInfo from '../components/CreateNewEvent/NewEventInfo';
 import NewEventPayment from '../components/CreateNewEvent/NewEventPayment';
 import TimeOfEvent from '../components/CreateNewEvent/TimeOfEvent';
 
-const AddEventView = () => {
+const CreateEventView = () => {
   //const [basicInfo, setBasicInfo] = useState([]);
   const [locationtype, setLocationType] = useState('');
   const [nextbtn, setNextBtn] = useState(0);
@@ -69,4 +69,4 @@ const AddEventView = () => {
     </div>
   );
 };
-export default AddEventView;
+export default CreateEventView;

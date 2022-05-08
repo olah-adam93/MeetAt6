@@ -1,34 +1,34 @@
-import {useState} from 'react';
+/* import {useState} from 'react'; */
 
 const LocationOfEvent = ({setLocationType, locationType}) => {
-  /* const clickHandler= (e) => {
+  const clickHandler= (e) => {
     e.preventDefault()
-    if(e.name === 'venue'){
+    if(e.target.name === 'venue'){
       setLocationType('venue')
     }
-    if(e.name === 'online'){
+    if(e.target.name === 'online'){
       setLocationType('online')
     }
-    else if(e.name === 'to-be-added'){
+    else if(e.target.name === 'to-be-added'){
       setLocationType('to be added')
     }
     console.log(locationType)
-  }  ---> még nem működik */
+  }  
 
   return (
     <div className='location-container'>
       <div className='location-type'>
-        <button type='button' name='venue'>
+        <button type='button' name='venue' onClick={clickHandler}>
           Venue
         </button>
-        <button type='button' name='online'>
+        <button type='button' name='online' onClick={clickHandler}>
           Online event
         </button>
-        <button type='button' name='to-be-added'>
+        <button type='button' name='to-be-added' onClick={clickHandler}>
           To be Added
         </button>
       </div>
-      {locationType && locationType === 'venue' ? <div>Map</div> : null}
+      {(locationType === 'venue') ? <div>Map</div> : null}
     </div>
   );
 };
