@@ -14,7 +14,7 @@ const NewEventPayment = () => {
   return (
     <div className='new-event-payment-container'>
       <h2>Event Pricing</h2>
-      <div>
+      <div className='payment-type-btn-box'>
         <button type='button' name='free' onClick={clickHandler}>
           Free
         </button>
