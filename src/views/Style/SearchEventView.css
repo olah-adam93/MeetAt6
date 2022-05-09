@@ -1,0 +1,11 @@
+.search-event-container {
+  width: 100%;
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 245, 229);
+  border: 1px solid black;
+}
+
+
