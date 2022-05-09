@@ -1,6 +1,10 @@
+.infoBox-icon {
+  width: 200px;
+  height: 200px;
+}
 .infoBox-container {
-  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  border: 2px solid gray;
+  justify-content: space-evenly;
+  min-height: calc(100vh - 15rem);
+  align-items: center;
 }

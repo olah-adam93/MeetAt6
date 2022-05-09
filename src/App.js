@@ -25,6 +25,7 @@ import EventPageView from './views/EventPageView';
 /* Layouts */
 import MainPageLayout from './layouts/MainPageLayout';
 import UserMainPageLayout from './layouts/UserMainPageLayout';
+import ThankYouView from './views/ThankYouView';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
           <Route path='/profile/myevents' element={<MyEvents />} />
           <Route path='/profile/searchevent' element={<SearchEventView />} />
           <Route path='/profile/settings' element={<Settings />} />
+          <Route path='/thankyou' element={<ThankYouView />} />
           <Route path='/signout' element={<LogOut />} />
         </Route>
       </Routes>
