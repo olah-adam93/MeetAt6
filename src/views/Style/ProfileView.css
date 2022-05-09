@@ -51,3 +51,7 @@
 .profile .profile-main .user-head .events .events-box {
   margin: 1rem 0;
 }
+.event-container-name {
+  margin-left: 3rem;
+  font-size: 2rem;
+}

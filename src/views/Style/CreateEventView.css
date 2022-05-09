@@ -98,7 +98,7 @@ select {
 .new-event-payment-container button:focus {
   background-color: #ffcdd2;
   transform: scale(1.1);
-}
+} /*ezt majd meg kéne nézni mert nem marad úgy ha két fajta van egy oldalon*/
 /*details*/
 .create-new-event-container
   .new-event-form
