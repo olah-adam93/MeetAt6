@@ -47,12 +47,14 @@ const ProfileView = () => {
               <EventContainer
                 containerName={'Events you attend'}
                 setParentDb={setParentDb}
+                eventCardIndex={0}
               />
             </div>
             <div className='events-box'>
               <EventContainer
                 containerName={'Events you may like'}
                 setParentDb={setParentDb}
+                eventCardIndex={0}
               />
             </div>
           </div>
