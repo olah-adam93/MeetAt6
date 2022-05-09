@@ -1,19 +1,17 @@
-
-
-.galery-image{
+.galery-image {
   background-color: white;
   display: flex;
-  width: 320px;
-  height: 250px;
+  width: 30rem;
+  height: 25rem;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1rem;
 }
 .galery-image p {
   font-size: 1.4rem;
   text-align: center;
 }
 .galery-image img {
-  
   max-width: 100%;
   border: 1px solid black;
   object-fit: contain;
