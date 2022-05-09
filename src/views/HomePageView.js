@@ -4,6 +4,7 @@ import Slider from '../components/HomePage/Slider';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+
 export default function HomePageView() {
   let [newestEventCardIndex, setNewestEventCardIndex] = useState(0);
   let [payedEventCardIndex, setPayedEventCardIndex] = useState(0);

@@ -2,8 +2,9 @@ import UserNavbar from '../components/Profile/UserNavbar';
 import EventContainer from '../components/HomePage/EventContainer';
 import './Style/ProfileView.css';
 import GaleryContainer from '../components/Profile/GaleryContainer';
-
+import { useState } from 'react';
 const ProfileView = () => {
+  const [parentDb, setParentDb] = useState([]);
   return (
     <div className='profile'>
       <div className='profile-head'>
@@ -43,10 +44,16 @@ const ProfileView = () => {
           </div>
           <div className='events'>
             <div className='events-box'>
-              <EventContainer containerName={'Events you attend'} />
+              <EventContainer
+                containerName={'Events you attend'}
+                setParentDb={setParentDb}
+              />
             </div>
             <div className='events-box'>
-              <EventContainer containerName={'Events you may like'} />
+              <EventContainer
+                containerName={'Events you may like'}
+                setParentDb={setParentDb}
+              />
             </div>
           </div>
           <div className='user-galery'>
