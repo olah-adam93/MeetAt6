@@ -116,6 +116,12 @@ select {
   min-height: 41rem;
   min-width: 38rem;
 }
+.create-new-event-container
+  .new-event-form
+  .new-event-payment-container
+  .payment-type-btn-box {
+  margin-left: 3rem;
+}
 .create-new-event-container .new-event-form .new-event-payment-container .ticket-details {
   margin: 1rem;
   min-height: 28rem;
