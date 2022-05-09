@@ -1,3 +1,4 @@
+/*containers*/
 .create-new-event-container {
   display: flex;
   flex-direction: column;
@@ -13,6 +14,16 @@
   flex-direction: column;
   align-items: center;
 }
+
+.create-new-event-container .new-event-form .basic-info-box,
+.time-of-event,
+.location-container {
+  margin-bottom: 2rem;
+}
+.create-new-event-container .new-event-form .time-of-event label {
+  display: inline-block;
+}
+/*Text*/
 .create-new-event-container h1 {
   font-size: 3rem;
 }
@@ -31,17 +42,12 @@
   margin: 1rem;
   font-size: 1.4rem;
 }
-.create-new-event-container .new-event-form .basic-info-box,
-.time-of-event,
-.location-container {
-  margin-bottom: 2rem;
-}
-.create-new-event-container .new-event-form .time-of-event label {
-  display: inline-block;
-}
+
+/*inputs, buttons, select, textarea..*/
 .create-new-event-container .new-event-form input,
 select {
   margin: 1rem 1rem 0 2rem;
+  padding: 2px;
 }
 .create-new-event-container .new-event-form .basic-event-info button {
   margin: 2rem 1rem;
@@ -71,7 +77,16 @@ select {
   background-color: #ffebee;
   transition: all 0.5s;
 }
-
+.create-new-event-container .new-event-form .new-event-payment-container button {
+  margin: 2rem 1rem;
+}
+.create-new-event-container .new-event-form .new-event-details textarea {
+  width: 50rem;
+  min-height: 10rem;
+  margin: 1rem 2rem 1rem 2rem;
+  padding: 2px;
+}
+/*hover, focus*/
 .create-new-event-container .new-event-form button:hover {
   background-color: #ccb9bc;
   transform: scale(1.2);
@@ -84,14 +99,7 @@ select {
   background-color: #ffcdd2;
   transform: scale(1.1);
 }
-.create-new-event-container .new-event-form .new-event-payment-container button {
-  margin: 2rem 1rem;
-}
-.create-new-event-container .new-event-form .new-event-details textarea {
-  width: 50rem;
-  min-height: 10rem;
-  margin: 1rem 2rem 1rem 2rem;
-}
+/*details*/
 .create-new-event-container
   .new-event-form
   .new-event-details
@@ -102,6 +110,11 @@ select {
   text-align: center;
   border: 1px solid black;
   margin: 1rem 2rem 1rem 2rem;
+}
+/*payment*/
+.create-new-event-container .new-event-form .new-event-payment-container {
+  min-height: 41rem;
+  min-width: 38rem;
 }
 .create-new-event-container .new-event-form .new-event-payment-container .ticket-details {
   margin: 1rem;
