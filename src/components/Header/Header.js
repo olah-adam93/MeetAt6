@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className='header-container'>
       <div className='header-logo'>
-        <img src={require('./logo.7.3.51.206.png')} alt='logo' />
+        <img src={require('./meetatsix200.49.feher.png')} alt='logo' />
       </div>
       <div className='header-navbar'>
         <NavBarMain />

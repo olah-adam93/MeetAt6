@@ -12,7 +12,9 @@
 }
 
 .header-container .header-logo img {
-  margin-top: 1.8rem;
+  margin-top: 2.2rem;
+  max-width: 80%;
+  height: auto;
 }
 
 .header-navbar {
