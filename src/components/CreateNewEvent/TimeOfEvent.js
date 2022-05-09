@@ -24,7 +24,6 @@ const TimeOfEvent = () => {
         <input type='time' id='end-time' name='end-time' />
       </div>
       {/*event start, end */}
-
     </div>
   );
 };

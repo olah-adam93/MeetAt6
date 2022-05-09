@@ -15,6 +15,7 @@ const BasicInfoForm = () => {
       <input type='text' id='title-of-event' name='title-of-event' />
       <label htmlFor='organizer-of-event'>Event organizer</label>
       <input type='text' id='organizer-of-event' name='organizer-of-event' />
+      <label htmlFor='event-category'>Event category</label>
       <select name='type-of-event'>
         <option value='null'>Type</option>
         <option value='trip'>Trip</option>

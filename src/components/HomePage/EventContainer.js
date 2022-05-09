@@ -57,7 +57,7 @@ export default function EventContainer({ containerName }) {
 
   return (
     <>
-      <h2>{containerName}</h2>
+      <h2 className='event-container-name'>{containerName}</h2>
       <br />
       <div className='main_event_container'>
         <EventCard eventCard={eventCard1} />

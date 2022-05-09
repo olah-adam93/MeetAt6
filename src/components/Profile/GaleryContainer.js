@@ -6,42 +6,42 @@ const GaleryContainer = () => {
     {
       id: 0,
       title: 'nev1',
-      url: 'http://placekitten.com/300/200',
+      url: 'http://placekitten.com/250/200',
     },
     {
       id: 1,
       title: 'nev2',
-      url: 'http://placekitten.com/300/200',
+      url: 'http://placekitten.com/250/200',
     },
     {
       id: 2,
       title: 'nev3',
-      url: 'http://placekitten.com/300/200',
+      url: 'http://placekitten.com/250/200',
     },
     {
       id: 3,
       title: 'nev4',
-      url: 'http://placekitten.com/300/200',
+      url: 'http://placekitten.com/250/200',
     },
     {
       id: 4,
       title: 'nev5',
-      url: 'http://placekitten.com/300/200',
+      url: 'http://placekitten.com/250/200',
     },
     /* {
       id: 2,
       title: 'nev3',
-      url: 'http://placekitten.com/300/200',
+      url: 'http://placekitten.com/250/200',
     },
     {
       id: 3,
       title: 'nev4',
-      url: 'http://placekitten.com/300/200',
+      url: 'http://placekitten.com/250/200',
     },
     {
       id: 4,
       title: 'nev5',
-      url: 'http://placekitten.com/300/200',
+      url: 'http://placekitten.com/250/200',
     }, */
   ];
 
