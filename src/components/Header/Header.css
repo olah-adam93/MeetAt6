@@ -11,6 +11,10 @@
   margin: 1rem;
 }
 
+.header-container .header-logo img {
+  margin-top: 1.8rem;
+}
+
 .header-navbar {
   display: flex;
   align-items: center;
