@@ -1,9 +1,10 @@
 import SignUp from '../components/SignUp/SignUp';
 
+import './Style/SignUpView.css';
+
 const SigninView = () => {
   return (
-    <div className='signin-view-container'>
-      <div>Sign In Page</div>
+    <div className='signup-view-container'>
       <SignUp />
     </div>
   )

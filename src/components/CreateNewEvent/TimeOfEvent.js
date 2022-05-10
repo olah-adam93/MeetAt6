@@ -1,16 +1,28 @@
 const TimeOfEvent = () => {
   return (
-    <div>
+    <div className='time-of-event'>
       {/*single event, recurring */}
-      <label htmlFor='event-starts'>Event Starts</label>
-      <input type='date' id='event-starts' name='event-starts' />
-      <label htmlFor='start-time'>Start Time</label>
-      <input type='time' id='start-time' name='start-time' />
+      <div className='event-frequency'>
+        <button type='button' name='single'>
+          Single
+        </button>
+        <button type='button' name='requiring'>
+          Requiring
+        </button>
+      </div>
+      <div>
+        <label htmlFor='event-starts'>Event Starts</label>
+        <input type='date' id='event-starts' name='event-starts' />
+        <label htmlFor='start-time'>Start Time</label>
+        <input type='time' id='start-time' name='start-time' />
+      </div>
 
-      <label htmlFor='event-ends'>Event Ends</label>
-      <input type='date' id='event-ends' name='event-ends' />
-      <label htmlFor='end-time'>End time</label>
-      <input type='time' id='end-time' name='end-time' />
+      <div>
+        <label htmlFor='event-ends'>Event Ends</label>
+        <input type='date' id='event-ends' name='event-ends' />
+        <label htmlFor='end-time'>End time</label>
+        <input type='time' id='end-time' name='end-time' />
+      </div>
       {/*event start, end */}
     </div>
   );

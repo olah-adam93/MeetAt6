@@ -1,7 +1,7 @@
 const EventDetails = (
-  {
+  
     /* details */
-  }
+  
 ) => {
   return (
     <div className='event-details'>

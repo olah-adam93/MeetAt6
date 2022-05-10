@@ -13,17 +13,19 @@ import AboutView from './views/AboutView';
 import EventsView from './views/EventsView';
 import ProfileView from './views/ProfileView';
 import HomePageView from './views/HomePageView';
-import SigninView from './views/SigninView';
+import SignInView from './views/SignInView';
+import SignUpView from './views/SignUpView';
 import PrivacyView from './views/PrivacyView';
 import FAQView from './views/FAQView';
 import ContactView from './views/ContactView';
-import AddEventView from './views/AddEventView';
+import CreateEventView from './views/CreateEventView';
 import SearchEventView from './views/SearchEventView';
 import EventPageView from './views/EventPageView';
 
 /* Layouts */
 import MainPageLayout from './layouts/MainPageLayout';
 import UserMainPageLayout from './layouts/UserMainPageLayout';
+import ThankYouView from './views/ThankYouView';
 
 function App() {
   return (
@@ -35,7 +37,8 @@ function App() {
           <Route path='/about' element={<AboutView />} />
           <Route path='/privacy' element={<PrivacyView />} />
           <Route path='/events' element={<EventsView />} />
-          <Route path='/login' element={<SigninView />} />
+          <Route path='/signin' element={<SignInView />} />
+          <Route path='/signup' element={<SignUpView />} />
           <Route path='/contact' element={<ContactView />} />
           <Route path='/FAQ' element={<FAQView />} />
           <Route path='/eventpage/:event_title' element={<EventPageView />} />
@@ -44,10 +47,11 @@ function App() {
         <Route element={<UserMainPageLayout />}>
           <Route path='/profile' element={<ProfileView />} />
           <Route path='/profile/chosenevents' element={<ChosenEvents />} />
-          <Route path='/profile/addevent' element={<AddEventView />} />
+          <Route path='/profile/addevent' element={<CreateEventView />} />
           <Route path='/profile/myevents' element={<MyEvents />} />
           <Route path='/profile/searchevent' element={<SearchEventView />} />
           <Route path='/profile/settings' element={<Settings />} />
+          <Route path='/thankyou' element={<ThankYouView />} />
           <Route path='/signout' element={<LogOut />} />
         </Route>
       </Routes>
