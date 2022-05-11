@@ -98,7 +98,7 @@ select {
 .new-event-payment-container button:focus {
   background-color: #ffcdd2;
   transform: scale(1.1);
-}
+} /*ezt majd meg kéne nézni mert nem marad úgy ha két fajta van egy oldalon*/
 /*details*/
 .create-new-event-container
   .new-event-form
@@ -115,6 +115,12 @@ select {
 .create-new-event-container .new-event-form .new-event-payment-container {
   min-height: 41rem;
   min-width: 38rem;
+}
+.create-new-event-container
+  .new-event-form
+  .new-event-payment-container
+  .payment-type-btn-box {
+  margin-left: 3rem;
 }
 .create-new-event-container .new-event-form .new-event-payment-container .ticket-details {
   margin: 1rem;
