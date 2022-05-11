@@ -53,8 +53,3 @@ export function liveChanged(endpoint, callback) {
   const refData = ref(database, endpoint);
   return onChildChanged(refData, callback);
 }
-
-export function liveRemoved(endpoint, eventHandlerCallback) {
-  const refData = ref(database, endpoint);
-  return onChildRemoved(refData, eventHandlerCallback);
-}
