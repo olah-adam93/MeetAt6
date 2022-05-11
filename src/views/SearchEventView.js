@@ -2,17 +2,18 @@ import './Style/SearchEventView.css';
 
 import SearchBar from '../components/SearchEvent/SearchBar';
 import FilterBar from '../components/SearchEvent/FilterBar';
-import InfiniteScrollComponent from '../components/SearchEvent/InfiniteScrollComponent';
-// import MapComponent from '../components/SearchEvent/MapComponent';
+import DisplayItems from '../components/SearchEvent/DisplayItems';
+
+import { db } from '../components/SearchEvent/db';
 
 const SearchEventView = () => {
-  
+
 
   return (
     <div className='search-event-container'>
       <SearchBar />
       <FilterBar />
-      <InfiniteScrollComponent />
+      <DisplayItems database={db}/>
     </div>
   );
 };

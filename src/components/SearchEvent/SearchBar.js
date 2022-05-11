@@ -1,25 +1,32 @@
 import './Style/SearchBar.css';
-import { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 
 const SearchBar = () => {
-  const [buttonStyle, setButtonStyle] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
-  const inputChangeHandler = (event) => {
-    console.log('change');
-    if(event.target.value !== '') {
-      setButtonStyle(true);
-      console.log(buttonStyle);
-    }
+  const onChangeHandler = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+
+    // setFilteredList(
+    //   lisItems.filter((item) => {
+    //     return item.title.toLowerCase().includes(searchValue.toLowerCase());
+    //   })
+    // )
+    setSearchValue('');
   }
 
   return (
     <div className='search-bar-container'>
-      <form className='search-bar-form'>
-        <input type='text' name='searchbar' placeholder='Search for keywords' onChange={ inputChangeHandler }/>
-        <button type='button'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+      <form className='search-bar-form' onSubmit={ onSubmitHandler }>
+        <input type='text' name='searchbar' placeholder='Search for keywords' onChange={ onChangeHandler } value={ searchValue }/>
+        <button type='submit'><FontAwesomeIcon icon={faMagnifyingGlass}/></button>
       </form>
     </div>
   );
