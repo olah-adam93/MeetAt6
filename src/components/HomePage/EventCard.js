@@ -1,5 +1,5 @@
-/*  import {useNavigate} from "react-router-dom" 
-    import {useEffect, useState, useCallback} from "react"*/
+import { Link, useParams } from 'react-router-dom';
+/*  import {useEffect, useState, useCallback} from "react"*/
 const EventCard = ({ eventCard }) => {
   /* const [eventData, setEventData] = useState();
     const navigateTo =useNavigate()*/
@@ -23,9 +23,11 @@ const EventCard = ({ eventCard }) => {
         <img src={eventCard.img} alt='eventname' />
       </div>
       <div className='event-data'>
-        <span>
-          <strong>{eventCard.title}</strong>
-        </span>
+        <Link to={`/eventpage/&{event.title}`}>
+          <span>
+            <strong>{eventCard.title}</strong>
+          </span>
+        </Link>
         <br />
         <span>{eventCard.date}</span>
         <br />
