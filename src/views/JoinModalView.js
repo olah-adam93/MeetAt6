@@ -10,7 +10,7 @@ const JoinModalView = () => {
             <div>Event date: </div>
             <br />
             <form>
-              <label for="email-friend">Send this event for your friend</label>
+              <label htmlFor="email-friend">Send this event for your friend</label>
               <input type="email" id="email-friend" name="email-friend"></input>
               <button type="button">Send</button>
             </form>
