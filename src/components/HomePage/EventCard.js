@@ -19,9 +19,11 @@ const EventCard = ({ eventCard }) => {
   return (
     <div className='event-card'>
       Event Card
+      <Link to={`/eventpage/&{event.title}`}>
       <div className='event-pciture'>
         <img src={eventCard.img} alt='eventname' />
       </div>
+      </Link>
       <div className='event-data'>
         <Link to={`/eventpage/&{event.title}`}>
           <span>

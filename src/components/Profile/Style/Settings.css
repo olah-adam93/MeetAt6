@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@300&family=Oxygen&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Oxygen', sans-serif;
+}
+
+.settings-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  justify-content: space-between;
+}
+
+.settings-form-container h1 {
+  border-bottom: 3px #111 solid;
+}
+
+/* Form */
+
+.settings-form-container .settings-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 2rem;
+  width: 45%;
+  margin: 1.5rem auto;
+}
+
+.settings-name,
+.settings-email,
+.settings-image,
+.settings-location,
+.settings-date,
+.settings-gender,
+.settings-classification {
+  padding: 1rem;
+}
+
+.settings-name .label-form,
+.settings-email .label-form,
+.settings-location .label-form,
+.settings-date .label-form,
+.settings-gender .label-form {
+  font-size: 1.6rem;
+  margin: 0.5rem 0.5rem 0 0.5rem;
+}
+
+.settings-name input,
+.settings-email input {
+  margin-left: 1rem;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px #111 solid;
+  padding: 1rem 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: #111;
+}
+
+.settings-name .edit-button,
+.settings-email .edit-button {
+  padding: 0.3rem 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background-color: #6c757d;
+  color: white;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.settings-email .edit-button {
+  margin-left: 0.3rem;
+}
+
+.settings-date .input-date {
+  margin-left: 2.2rem;
+}
+
+.settings-gender .select-gender {
+  margin-left: 3rem;
+}
+
+/* Profile picture */
+
+.settings-image-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-image {
+  border: 2px dashed #111;
+  height: 150px;
+  width: 150px;
+  margin: 1rem;
+  border-radius: 5px;
+  background-color: #6c757d;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.settings-image:hover {
+  border: 2px solid #fff;
+}
+
+.settings-image .settings-icon {
+  font-size: 2rem;
+  color: #fff;
+  padding-bottom: 0.5rem;
+}
+
+.settings-image h2 {
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.settings-image span {
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 500;
+  margin: 0.8rem 0 1.2rem 0;
+}
+
+.settings-image button {
+  padding: 0.8rem 1.8rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: #111;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+/* Classification radio */
+
+.settings-form .settings-classification {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  width: 18rem;
+  margin: auto;
+}
+
+.classification-personal,
+.classification-organization {
+  margin: auto;
+  color: #111;
+  padding: 0.3rem 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* Save button */
+
+.settings-form .save-button {
+  padding: 0.8rem 1.8rem;
+  margin: auto;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background-color: #6c757d;
+  color: white;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
