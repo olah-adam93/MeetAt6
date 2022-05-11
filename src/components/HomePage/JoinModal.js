@@ -1,6 +1,8 @@
 /* work in progress */
 
-const JoinModalView = () => {
+import './Styles/JoinModal.css';
+
+const JoinModal = () => {
       return (
         <div className="joinmodal-container">
           <img className="joinmodal-image" src={'https://unsplash.it/100/100'} alt='imageOfEvent' />
@@ -20,4 +22,4 @@ const JoinModalView = () => {
       )
 }
 
-export default JoinModalView
+export default JoinModal
