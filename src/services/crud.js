@@ -15,6 +15,13 @@ export function createNewData(endpoint, dataObject) {
   const newRefData = push(refData);
   return set(newRefData, dataObject);
 }
+
+export function createUserData(endpoint, dataObject) {
+  const refData = ref(database, endpoint);
+  return set(refData, dataObject);
+}
+
+
 /*Read */
 export function readData(endpoint, key) {
   if (key) {
@@ -52,9 +59,4 @@ export function liveAdded(endpoint, callback) {
 export function liveChanged(endpoint, callback) {
   const refData = ref(database, endpoint);
   return onChildChanged(refData, callback);
-}
-
-export function liveRemoved(endpoint, eventHandlerCallback) {
-  const refData = ref(database, endpoint);
-  return onChildRemoved(refData, eventHandlerCallback);
 }

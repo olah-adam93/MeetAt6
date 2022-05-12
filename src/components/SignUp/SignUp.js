@@ -1,8 +1,13 @@
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useState } from 'react';
 import Validation from './Validation';
 
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
+import { auth } from '../../config/firebase';
+import { useNavigate } from 'react-router-dom';
+
+
+import { createUserData } from '../../services/crud';
 
 const SignUp = ({ submitForm }) => {
   const [data, setData] = useState({
@@ -14,24 +19,64 @@ const SignUp = ({ submitForm }) => {
 
   const [error, setError] = useState({});
   const [correctData, setCorrectData] = useState(false);
+  const navigateTo = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
-  };
+
+    if(data?.nam && data?.e_mail && data?.passw && data?.passw.length > 5) {
+      setCorrectData(true);
+    }
+
+    console.log(data);
+  }, [data]);
+  
+  
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setError(Validation(data));
-    setCorrectData(true);
+    
+    console.log(correctData);
+    if(correctData) {
+      createUserWithEmailAndPassword(auth, data.e_mail, data.passw)
+      .then((authCredential) => {
+        // Sikeres volt a regisztracio
+        console.log('user', authCredential.user);
+        console.log('user', auth?.currentUser);
+        navigateTo('/thankyou');
+      })
+      .then(() => {
+        const auth = getAuth();
+        const user = auth.currentUser;
+        if(user.uid) {
+          updateProfile(user, {
+            displayName: data.nam
+          })
+          .then(() => {
+            console.log(user.displayName);
+          }).catch((error) => {
+            console.log(error);
+          });
+          createUserData(`userDetails/${user.uid}`, { 
+              location: data.loc,
+              organization: false
+          })
+        }
+      })
+      .catch(e => console.log(e));
+    }
   };
 
-  useEffect(() => {
-    if (Object.keys(error).length === 0 && correctData) {
-      submitForm(true);
-    }
-  }, [error, correctData, submitForm]);
+  console.log(correctData);
+
+  // useEffect(() => {
+  //   if (Object.keys(error).length === 0 && correctData) {
+  //     submitForm(true);
+  //   }
+  // }, [error, correctData, submitForm]);
 
   return (
     <div className='sign-up-container'>

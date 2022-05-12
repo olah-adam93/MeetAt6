@@ -11,7 +11,7 @@ import LogOut from './components/Profile/LogOut';
 
 /* Views */
 import AboutView from './views/AboutView';
-import EventsView from './views/EventsView';
+// import EventsView from './views/EventsView';
 import ProfileView from './views/ProfileView';
 import HomePageView from './views/HomePageView';
 import SignInView from './views/SignInView';

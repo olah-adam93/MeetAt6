@@ -1,0 +1,14 @@
+.display-container {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+}
+
+.display-items {
+  width: fit-content;
+  height: fit-content;
+  background-color: rgb(184, 184, 184);
+  border: 1px solid black;
+  margin: 1rem;
+
+}

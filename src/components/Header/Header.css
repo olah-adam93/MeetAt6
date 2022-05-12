@@ -5,16 +5,19 @@
   justify-content: space-between;
   background-color: #6c757d;
   padding: 0 2.5rem;
+  position: sticky;
+  z-index: 999;
+  top: 0;
 }
 
 .header-container .header-logo {
   margin: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .header-container .header-logo img {
-  margin-top: 2.2rem;
-  max-width: 80%;
-  height: auto;
+  width: 80%;
 }
 
 .header-navbar {
