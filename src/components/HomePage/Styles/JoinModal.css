@@ -1,3 +1,7 @@
 .joinmodal-container {
-  display: none;
+  background-color: grey;
+  width: auto;
+  height: auto;
+  position: relative;
+  right: 65rem
 }
