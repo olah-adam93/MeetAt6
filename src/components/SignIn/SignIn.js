@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Validation from './Validation'
+import { AuthContext } from './AuthContext';
 
 const SignIn = ({submitForm}) => {
+  const authContext = useContext(AuthContext);
+  
   const [data, setData] = useState({
     e_mail: '',
     passw: '',
