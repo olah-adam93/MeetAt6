@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState, useContext } from 'react'
 import Validation from './Validation'
-import { AuthContext } from './AuthContext';
+import { AuthContext } from '../Authentication/AuthContext';
 
 import { signInWithEmailAndPassword, getAuth} from 'firebase/auth';
 import { auth } from '../../config/firebase';
@@ -34,6 +34,7 @@ const handleFormSubmit = (e) => {
   .then((authCredential) => {
     // Sikeres volt a belepes a usernek
     console.log('user', authCredential.user);
+    authContext.setUser(true);
     navigateTo('/profile');
   })
   .catch(e => {

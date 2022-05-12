@@ -1,16 +1,12 @@
-import { createContext, useContext  } from 'react';
-import { AuthContext } from './AuthContext';
-import SignInView from './views/SignInView';
-import ProfileView from './views/ProfileView';
+import {createContext, useContext} from 'react';
+import {AuthContext} from './AuthContext';
+import SignInView from '../../views/SignInView';
+import UserMainPageLayout from '../../layouts/UserMainPageLayout';
 
-
-export function AuthProfileContext(props){
+export function AuthProfileContext(props) {
   const authContext = useContext(AuthContext);
 
-  if (authContext.user === null) {
-    // bekell leptetni vagz bekerni a belepest
-    return <SignInView />
-  } else {
-    return <ProfileView user={props.children}/>
+  if (authContext.user) {
+    return <UserMainPageLayout />;
   }
 }
