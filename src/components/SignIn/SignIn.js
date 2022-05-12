@@ -3,6 +3,10 @@ import { useState, useContext } from 'react'
 import Validation from './Validation'
 import { AuthContext } from './AuthContext';
 
+import { signInWithEmailAndPassword, getAuth} from 'firebase/auth';
+import { auth } from '../../config/firebase';
+import { useNavigate } from 'react-router-dom';
+
 const SignIn = ({submitForm}) => {
   const authContext = useContext(AuthContext);
   
@@ -13,6 +17,7 @@ const SignIn = ({submitForm}) => {
 
   const [error, setError] = useState ({})
   const [correctData, setCorrectData] = useState (false)
+  const navigateTo = useNavigate();
  
  const handleChange = (e) => {
  setData ({
@@ -22,16 +27,25 @@ const SignIn = ({submitForm}) => {
  }
 const handleFormSubmit = (e) => {
   e.preventDefault()
-  setError(Validation(data))
-  setCorrectData(true)
+  // setError(Validation(data))
+  // setCorrectData(true)
+
+  signInWithEmailAndPassword(auth, data.e_mail, data.passw)
+  .then((authCredential) => {
+    // Sikeres volt a belepes a usernek
+    console.log('user', authCredential.user);
+    navigateTo('/profile');
+  })
+  .catch(e => {
+    console.log(e?.message)
+  });
 }
 
-useEffect(() => {
-  if(Object.keys(error).length === 0 && correctData) {
-    submitForm(true);
-  }
-
-}, [error]);
+// useEffect(() => {
+//   if(Object.keys(error).length === 0 && correctData) {
+//     submitForm(true);
+//   }
+// }, [error]);
 
   return (
     <div className='sign-in-container'>

@@ -30,8 +30,6 @@ const SignUp = ({ submitForm }) => {
     if(data?.nam && data?.e_mail && data?.passw && data?.passw.length > 5) {
       setCorrectData(true);
     }
-
-    console.log(data);
   }, [data]);
   
   
@@ -69,8 +67,6 @@ const SignUp = ({ submitForm }) => {
       .catch(e => console.log(e));
     }
   };
-
-  console.log(correctData);
 
   // useEffect(() => {
   //   if (Object.keys(error).length === 0 && correctData) {
