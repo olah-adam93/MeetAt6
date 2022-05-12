@@ -21,19 +21,26 @@ const EventInfo = () => {
 
       {isOpen && <JoinModal
       content={<>
-        <img className="joinmodal-image" src={'https://unsplash.it/100/100'} alt='imageOfEvent' />
-          <div className="joinmodal-form">
-            <h3>Event title</h3>
-            <div>Event place: </div>
-            <div>Event date: </div>
-            <br />
-            <form>
-              <label htmlFor="joinmodal-email-friend">Send this event for your friend</label>
-              <input type="email" id="joinmodal-email-friend" name="joinmodal-email-friend"></input>
-              <button type="button" className="joinmodal-send-button">Send</button>
-            </form>
-            <button className="joinmodal-close-button" onClick={clickHandler} type="button">Close</button>
+        <div className="joinmodal-image-container">
+          <img className="joinmodal-image" src={'https://unsplash.it/100/100'} alt='imageOfEvent' />
+        </div>
+          <div className="joinmodal-others-container">
+            <div className="joinmodal-details">
+              <h3 className="joinmodal-details-title">Event title</h3>
+              <div className="joinmodal-details-place">Event place: </div>
+              <div className="joinmodal-details-date">Event date: </div>
+              <br />
+              <form className="joinmodal-form">
+                 <label className="joinmodal-form-label" htmlFor="joinmodal-email-friend">Send this event for your friend</label>
+                 <input className="joinmodal-form-input" type="email" id="joinmodal-email-friend" name="joinmodal-email-friend"></input>
+                 <button type="button" className="joinmodal-form-button">Send</button>
+               </form>
+              <div lassName="joinmodal-bottom-buttons">
+                <button className="joinmodal-close-button" onClick={clickHandler} type="button">Close</button>
+                <button className="joinmodal-join-button" type="button">Join</button>
+              </div>
           </div>
+        </div>
       </>}
       
     />}
