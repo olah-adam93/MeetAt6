@@ -15,6 +15,13 @@ export function createNewData(endpoint, dataObject) {
   const newRefData = push(refData);
   return set(newRefData, dataObject);
 }
+
+export function createUserData(endpoint, dataObject) {
+  const refData = ref(database, endpoint);
+  return set(refData, dataObject);
+}
+
+
 /*Read */
 export function readData(endpoint, key) {
   if (key) {
