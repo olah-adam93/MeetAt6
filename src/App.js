@@ -10,7 +10,7 @@ import LogOut from './components/Profile/LogOut';
 
 /* Views */
 import AboutView from './views/AboutView';
-import EventsView from './views/EventsView';
+// import EventsView from './views/EventsView';
 import ProfileView from './views/ProfileView';
 import HomePageView from './views/HomePageView';
 import SignInView from './views/SignInView';
@@ -36,7 +36,7 @@ function App() {
           <Route path='/home' element={<HomePageView />} />
           <Route path='/about' element={<AboutView />} />
           <Route path='/privacy' element={<PrivacyView />} />
-          <Route path='/events' element={<EventsView />} />
+          <Route path='/events' element={<SearchEventView />} />
           <Route path='/signin' element={<SignInView />} />
           <Route path='/signup' element={<SignUpView />} />
           <Route path='/contact' element={<ContactView />} />
