@@ -32,7 +32,7 @@ import { AuthContext } from './components/Authentication/AuthContext';
 import { AuthProfileContext } from './components/Authentication/AuthProfileContext';
 
 function App() {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(true);
   return (
     <div className='App'>
       <AuthContext.Provider value={{ user, setUser }}>

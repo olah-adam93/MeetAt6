@@ -1,18 +1,27 @@
 /*React*/
-import {useState} from 'react';
+import { useEffect, useState } from 'react';
 /*Components */
 import BasicInfoForm from '../components/CreateNewEvent/BasicInfoForm';
 import LocationOfEvent from '../components/CreateNewEvent/LocationOfEvent';
 import NewEventInfo from '../components/CreateNewEvent/NewEventInfo';
 import NewEventPayment from '../components/CreateNewEvent/NewEventPayment';
 import TimeOfEvent from '../components/CreateNewEvent/TimeOfEvent';
+import { createNewData } from '../services/crud';
+import { getAuth } from '@firebase/auth';
+import { useNavigate } from 'react-router';
 /*Style */
 import './Style/CreateEventView.css';
 
 const CreateEventView = () => {
-  //const [basicInfo, setBasicInfo] = useState([]);
+  const navigateTo = useNavigate();
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const [data, setData] = useState({ uid: user.uid });
   const [locationtype, setLocationType] = useState('');
   const [nextbtn, setNextBtn] = useState(0);
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
   const nextFormPageHandler = (e) => {
     e.preventDefault();
     if (nextbtn < 3) {
@@ -25,37 +34,43 @@ const CreateEventView = () => {
       setNextBtn((prev) => (prev -= 1));
     }
   };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    createNewData('events', data);
+    navigateTo('/profile');
+  };
   return (
     <div className='create-new-event-container'>
       <h1>Create New Event</h1>
       <div className='new-event-form'>
-        <form action=''>
+        <form action='' onSubmit={submitHandler}>
           {nextbtn === 0 && (
             <div className='basic-event-info'>
               <h2>Basic Information</h2>
               <p>Create a new event with these information </p>
-              <BasicInfoForm />
+              <BasicInfoForm setData={setData} />
               {/*Tags - search 
             <label htmlFor="event-tags">Tags</label>
             <input type="text" id="event-tags"name="event-tags"/>*/}
               <h3>Time of the Event</h3>
-              <TimeOfEvent />
+              <TimeOfEvent setData={setData} />
               <h3>Location</h3>
               <LocationOfEvent
                 locationType={locationtype}
                 setLocationType={setLocationType}
+                setData={setData}
               />
               {/*search location , click-et kijavítani, Vissza Gomb*/}
             </div>
           )}
           {nextbtn === 1 && (
             <div className='new-event-details'>
-              <NewEventInfo />
+              <NewEventInfo setData={setData} />
             </div>
           )}
           {nextbtn === 2 && (
             <div className='new-event-payment'>
-              <NewEventPayment />
+              <NewEventPayment setData={setData} />
             </div>
           )}
 
@@ -71,7 +86,7 @@ const CreateEventView = () => {
               </button>
             )}
             {nextbtn === 2 && (
-              <button type='button' className='save-btn'>
+              <button type='submit' className='save-btn'>
                 Save event
               </button>
             )}

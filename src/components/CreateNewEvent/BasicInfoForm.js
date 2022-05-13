@@ -1,6 +1,6 @@
-import {useState} from 'react';
+import { useState } from 'react';
 
-const BasicInfoForm = () => {
+const BasicInfoForm = ({ setData }) => {
   const [checked, setChecked] = useState(false);
   const changeCheckedHandler = (e) => {
     if (e.target.checked) {
@@ -9,14 +9,22 @@ const BasicInfoForm = () => {
       setChecked(false);
     }
   };
+  const changeHandler = (e) => {
+    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
   return (
     <div className='basic-info-box'>
       <label htmlFor='title-of-event'>Event title</label>
-      <input type='text' id='title-of-event' name='title-of-event' />
+      <input type='text' id='title-of-event' name='title' onChange={changeHandler} />
       <label htmlFor='organizer-of-event'>Event organizer</label>
-      <input type='text' id='organizer-of-event' name='organizer-of-event' />
+      <input
+        type='text'
+        id='organizer-of-event'
+        name='organizer'
+        onChange={changeHandler}
+      />
       <label htmlFor='event-category'>Event category</label>
-      <select name='type-of-event'>
+      <select name='type' onChange={changeHandler}>
         <option value='null'>Type</option>
         <option value='trip'>Trip</option>
         <option value='workshop'>Workshop</option>
@@ -31,7 +39,7 @@ const BasicInfoForm = () => {
         <option value='tournament'>Tournament</option>
         <option value='other'>Other</option>
       </select>
-      <select name='category-of-event'>
+      <select name='category' onChange={changeHandler}>
         <option value='null'>Category</option>
         <option value='business'>Business and Professional</option>
         <option value='charity'>Charity</option>
@@ -57,7 +65,8 @@ const BasicInfoForm = () => {
           <input
             type='number'
             id='addendant-number-limit'
-            name='addendant-number-limit'
+            name='addendant'
+            onChange={changeHandler}
           />
         </div>
       )}
