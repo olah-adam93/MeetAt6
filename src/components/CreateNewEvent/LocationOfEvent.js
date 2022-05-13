@@ -1,6 +1,6 @@
 /* import {useState} from 'react'; */
 
-const LocationOfEvent = ({setLocationType, locationType}) => {
+const LocationOfEvent = ({setLocationType, locationType, setData, data}) => {
   const clickHandler = (e) => {
     e.preventDefault();
     if (e.target.name === 'venue') {

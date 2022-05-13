@@ -1,7 +1,7 @@
 import { data } from 'dom7';
 import { useState } from 'react';
 
-const NewEventPayment = ({ setData }) => {
+const NewEventPayment = ({ setData, data }) => {
   const [pricing, setPricing] = useState();
   const changeHandler = (e) => {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -39,20 +39,23 @@ const NewEventPayment = ({ setData }) => {
             id='ticket-price'
             name='ticketPrice'
             onChange={changeHandler}
+            value={data?.ticketPrice}
           />
           <label htmlFor='valid-ticket-from'>Valid from</label>
           <input
             type='date'
             id='valid-ticket-from'
-            name='valid-ticket-from'
+            name='validTicketFrom'
             onChange={changeHandler}
+            value={data?.validTicketFrom}
           />
           <label htmlFor='valid-ticket-to'>Valid to</label>
           <input
             type='date'
             id='valid-ticket-to'
-            name='valid-ticket-to'
+            name='validTicketTo'
             onChange={changeHandler}
+            value={data?.validTicketTo}
           />
         </div>
       ) : null}

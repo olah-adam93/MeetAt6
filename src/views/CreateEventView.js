@@ -37,6 +37,7 @@ const CreateEventView = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     createNewData('events', data);
+    setData({});
     navigateTo('/profile');
   };
   return (
@@ -48,29 +49,29 @@ const CreateEventView = () => {
             <div className='basic-event-info'>
               <h2>Basic Information</h2>
               <p>Create a new event with these information </p>
-              <BasicInfoForm setData={setData} />
+              <BasicInfoForm setData={setData} data ={data}/>
               {/*Tags - search 
             <label htmlFor="event-tags">Tags</label>
             <input type="text" id="event-tags"name="event-tags"/>*/}
               <h3>Time of the Event</h3>
-              <TimeOfEvent setData={setData} />
+              <TimeOfEvent setData={setData} data ={data}/>
               <h3>Location</h3>
               <LocationOfEvent
                 locationType={locationtype}
                 setLocationType={setLocationType}
-                setData={setData}
+                setData={setData} data ={data}
               />
               {/*search location , click-et kijavítani, Vissza Gomb*/}
             </div>
           )}
           {nextbtn === 1 && (
             <div className='new-event-details'>
-              <NewEventInfo setData={setData} />
+              <NewEventInfo setData={setData} data ={data}/>
             </div>
           )}
           {nextbtn === 2 && (
             <div className='new-event-payment'>
-              <NewEventPayment setData={setData} />
+              <NewEventPayment setData={setData} data ={data}/>
             </div>
           )}
 

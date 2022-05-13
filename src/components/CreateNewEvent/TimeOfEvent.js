@@ -1,4 +1,4 @@
-const TimeOfEvent = ({ setData }) => {
+const TimeOfEvent = ({ setData, data }) => {
   const changeHandler = (e) => {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -18,18 +18,19 @@ const TimeOfEvent = ({ setData }) => {
         <input
           type='date'
           id='event-starts'
-          name='event-starts'
+          name='eventStarts'
           onChange={changeHandler}
+          value={data?.eventStarts}
         />
         <label htmlFor='start-time'>Start Time</label>
-        <input type='time' id='start-time' name='start-time' onChange={changeHandler} />
+        <input type='time' id='start-time' name='startTime' onChange={changeHandler} value={data?.startTime}/>
       </div>
 
       <div>
         <label htmlFor='event-ends'>Event Ends</label>
-        <input type='date' id='event-ends' name='event-ends' onChange={changeHandler} />
+        <input type='date' id='event-ends' name='eventEnds' onChange={changeHandler} value={data?.eventEnds}/>
         <label htmlFor='end-time'>End time</label>
-        <input type='time' id='end-time' name='end-time' onChange={changeHandler} />
+        <input type='time' id='end-time' name='endTime' onChange={changeHandler} value={data?.endTime}/>
       </div>
       {/*event start, end */}
     </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const BasicInfoForm = ({ setData }) => {
+const BasicInfoForm = ({ setData, data }) => {
   const [checked, setChecked] = useState(false);
   const changeCheckedHandler = (e) => {
     if (e.target.checked) {
@@ -15,16 +15,17 @@ const BasicInfoForm = ({ setData }) => {
   return (
     <div className='basic-info-box'>
       <label htmlFor='title-of-event'>Event title</label>
-      <input type='text' id='title-of-event' name='title' onChange={changeHandler} />
+      <input type='text' id='title-of-event' name='title' onChange={changeHandler} value={data?.title}/>
       <label htmlFor='organizer-of-event'>Event organizer</label>
       <input
         type='text'
         id='organizer-of-event'
         name='organizer'
         onChange={changeHandler}
+        value={data?.organizer}
       />
       <label htmlFor='event-category'>Event category</label>
-      <select name='type' onChange={changeHandler}>
+      <select name='type' onChange={changeHandler} value={data?.type}>
         <option value='null'>Type</option>
         <option value='trip'>Trip</option>
         <option value='workshop'>Workshop</option>
@@ -39,7 +40,7 @@ const BasicInfoForm = ({ setData }) => {
         <option value='tournament'>Tournament</option>
         <option value='other'>Other</option>
       </select>
-      <select name='category' onChange={changeHandler}>
+      <select name='category' onChange={changeHandler} value={data?.category}>
         <option value='null'>Category</option>
         <option value='business'>Business and Professional</option>
         <option value='charity'>Charity</option>
@@ -58,15 +59,16 @@ const BasicInfoForm = ({ setData }) => {
         <option value='other'>Other</option>
       </select>
       <label htmlFor='addendant-limit'>Attendant limit</label>
-      <input type='checkbox' htmlFor='addendant-limit' onChange={changeCheckedHandler} />
+      <input type='checkbox' htmlFor='addendant-limit' onChange={changeCheckedHandler} value={data?.checkbox}/>
       {checked && (
         <div>
-          <label htmlFor='addendant-number-limit'>Attendant limit number</label>
+          <label htmlFor='attendant-number-limit'>Attendant limit number</label>
           <input
             type='number'
-            id='addendant-number-limit'
-            name='addendant'
+            id='attendant-number-limit'
+            name='attendant'
             onChange={changeHandler}
+            value={data?.attendant}
           />
         </div>
       )}
