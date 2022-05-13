@@ -1,6 +1,6 @@
 import './App.css';
-import {Routes, Route} from 'react-router-dom';
-import {useState, createContext, useContext} from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { useState, createContext, useContext } from 'react';
 
 /* Components */
 
@@ -28,14 +28,14 @@ import MainPageLayout from './layouts/MainPageLayout';
 import UserMainPageLayout from './layouts/UserMainPageLayout';
 import ThankYouView from './views/ThankYouView';
 /*Authentications Context */
-import {AuthContext} from './components/Authentication/AuthContext';
-import {AuthProfileContext} from './components/Authentication/AuthProfileContext';
+import { AuthContext } from './components/Authentication/AuthContext';
+import { AuthProfileContext } from './components/Authentication/AuthProfileContext';
 
 function App() {
   const [user, setUser] = useState(false);
   return (
     <div className='App'>
-      <AuthContext.Provider value={{user, setUser}}>
+      <AuthContext.Provider value={{ user, setUser }}>
         <Routes>
           <Route element={<MainPageLayout />}>
             <Route path='/' element={<HomePageView />} />
@@ -50,13 +50,7 @@ function App() {
             <Route path='/eventpage/:event_title' element={<EventPageView />} />
           </Route>
 
-          <Route
-            element={
-              <AuthProfileContext>
-                <UserMainPageLayout />
-              </AuthProfileContext>
-            }
-          >
+          <Route element={<AuthProfileContext />}>
             <Route path='/profile' element={<ProfileView />} />
             <Route path='/profile/chosenevents' element={<ChosenEvents />} />
             <Route path='/profile/addevent' element={<CreateEventView />} />

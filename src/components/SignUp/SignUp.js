@@ -1,6 +1,6 @@
-import React, {useEffect, useCallback} from 'react';
-import {useState, useContext} from 'react';
+import React, { useEffect, useCallback, useContext, useState } from 'react';
 import Validation from './Validation';
+import { AuthContext } from '../Authentication/AuthContext';
 
 import {
   signInWithEmailAndPassword,
@@ -8,11 +8,12 @@ import {
   getAuth,
   updateProfile,
 } from 'firebase/auth';
-import {auth} from '../../config/firebase';
-import {useNavigate} from 'react-router-dom';
-import {createUserData} from '../../services/crud';
+import { auth } from '../../config/firebase';
+import { useNavigate } from 'react-router-dom';
+import { createUserData } from '../../services/crud';
 
-const SignUp = ({submitForm}) => {
+const SignUp = ({ submitForm }) => {
+  const authContext = useContext(AuthContext);
   const [data, setData] = useState({
     nam: '',
     e_mail: '',
@@ -49,7 +50,6 @@ const SignUp = ({submitForm}) => {
           // Sikeres volt a regisztracio
           console.log('user', authCredential.user);
           console.log('user', auth?.currentUser);
-          navigateTo('/thankyou');
         })
         .then(() => {
           const auth = getAuth();
@@ -69,6 +69,10 @@ const SignUp = ({submitForm}) => {
               organization: false,
             });
           }
+        })
+        .then(() => {
+          authContext.setUser(true);
+          navigateTo('/thankyou');
         })
         .catch((e) => console.log(e));
     }
