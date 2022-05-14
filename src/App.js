@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useState, createContext, useContext, useEffect } from 'react';
-import { readData } from './services/crud';
+import { liveValue, readData } from './services/crud';
 /* Components */
 
 import ChosenEvents from './components/Profile/ChosenEvents';
@@ -35,13 +35,10 @@ function App() {
   const [user, setUser] = useState(false);
   const [db, setDb] = useState([]);
   useEffect(() => {
-    readData('events')
-      .then((snapshot) => {
-        setDb(Object.entries(snapshot.val()));
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    const liveChange = liveValue('events', (snapshot) => {
+      setDb(Object.entries(snapshot.val()) || []);
+    })
+      return () => liveChange()
   }, []);
   console.log(db);
   return (

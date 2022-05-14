@@ -1,4 +1,4 @@
-import '../HomePage/Styles/EventContainer.css';
+import './Styles/EventContainer.css';
 
 import { useEffect, useState, useContext } from 'react';
 import EventCard from './EventCard';

@@ -1,6 +1,6 @@
 import {database} from '../config/firebase';
 import {ref, set, push, get, update, remove} from 'firebase/database';
-import {onChildAdded, onChildChanged, onChildRemoved} from 'firebase/database';
+import {onChildAdded, onChildChanged, onChildRemoved, onValue} from 'firebase/database';
 
 /*endpoint =>   ezt meghíváskor kell megadni
 key-t is
@@ -20,7 +20,6 @@ export function createUserData(endpoint, dataObject) {
   const refData = ref(database, endpoint);
   return set(refData, dataObject);
 }
-
 
 /*Read */
 export function readData(endpoint, key) {
@@ -59,4 +58,8 @@ export function liveAdded(endpoint, callback) {
 export function liveChanged(endpoint, callback) {
   const refData = ref(database, endpoint);
   return onChildChanged(refData, callback);
+}
+export function liveValue(endpoint, callback) {
+  const refData = ref(database, endpoint);
+  return onValue(refData, callback);
 }
