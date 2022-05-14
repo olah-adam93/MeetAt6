@@ -22,7 +22,7 @@ const Settings = ({ setData, data }) => {
 
   const auth = getAuth();
   const user = auth.currentUser;
-  console.log(user);
+  
 
   // Edit button
   /*
@@ -141,7 +141,7 @@ const Settings = ({ setData, data }) => {
         {/*Name*/}
         <div className='settings-name'>
           <label htmlFor='name' className='label-form label-name'>
-            {user.displayName}
+            User name:
           </label>
           {
             <input
@@ -149,7 +149,7 @@ const Settings = ({ setData, data }) => {
               className='input-name'
               name='name'
               id='name'
-              placeholder='Elon Musk'
+              placeholder={user.displayName}
               onChange={authChangeHandler}
             />
           }
@@ -168,7 +168,7 @@ const Settings = ({ setData, data }) => {
         {/*Email*/}
         <div className='settings-email'>
           <label htmlFor='email' className='label-form label-email'>
-            {user.email}
+            Email:
           </label>
           {
             <input
@@ -176,7 +176,7 @@ const Settings = ({ setData, data }) => {
               className='input-email'
               name='email'
               id='email'
-              placeholder='elon.musk@tesla.com'
+              placeholder={user.email}
               onChange={authChangeHandler}
             />
           }
