@@ -9,4 +9,6 @@ export function AuthProfile(props) {
   if (authContext.user) {
     return <UserMainPageLayout />;
   }
+
+  return null;
 }

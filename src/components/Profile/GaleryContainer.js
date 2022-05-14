@@ -53,12 +53,12 @@ const GaleryContainer = () => {
           images.map((pic, index) => {
             if (images.length < 8) {
               if (index < 4) {
-                return <GaleryImage pic={pic} />;
+                return <GaleryImage pic={pic} key={`galery_img_${index}`}/>;
               }
             }
             if (images.length >= 8) {
               if (index < 8) {
-                return <GaleryImage pic={pic} />;
+                return <GaleryImage pic={pic} key={`galery_img_${index}`}/>;
               }
             }
             return null;
