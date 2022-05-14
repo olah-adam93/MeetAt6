@@ -5,9 +5,13 @@
   justify-content: space-between;
   background-color: #6c757d;
   padding: 0 2.5rem;
-  position: sticky;
+  position: fixed;
   z-index: 999;
-  top: 0;
+  transition: height .3s ease-out;
+}
+
+.header-small {
+  height: 5rem;
 }
 
 .header-container .header-logo {
@@ -16,8 +20,13 @@
   align-items: center;
 }
 
-.header-container .header-logo img {
+.header-img {
   width: 80%;
+  transition: width .3s ease-out;
+}
+
+.img-small {
+  width: 60%;
 }
 
 .header-navbar {
