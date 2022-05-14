@@ -108,7 +108,10 @@
   justify-content: center;
   flex-direction: column;
 }
-
+.settings-image img{
+  width: 100%;
+  height: auto;
+}
 .settings-image:hover {
   border: 2px solid #fff;
 }
