@@ -7,9 +7,12 @@ const Header = () => {
   const [small, setSmall] = useState(false);
 
   useEffect(() => {
+    const scrollCallback = () => window.pageYOffset > 200 ? setSmall(true) : setSmall(false);
     if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', () => window.pageYOffset > 200 ? setSmall(true) : setSmall(false));
+      
+      window.addEventListener('scroll', scrollCallback);
     }
+    return () => window.removeEventListener("scroll", scrollCallback);
   }, []);
 
   return (

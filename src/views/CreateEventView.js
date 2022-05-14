@@ -12,11 +12,18 @@ import { useNavigate } from 'react-router';
 /*Style */
 import './Style/CreateEventView.css';
 
+
 const CreateEventView = () => {
+  
   const navigateTo = useNavigate();
   const auth = getAuth();
   const user = auth.currentUser;
-  const [data, setData] = useState({ uid: user.uid });
+  const [data, setData] = useState({ 
+    uid: user.uid,
+    title: '',
+    organizer: '',
+    
+  });
   const [locationtype, setLocationType] = useState('');
   const [nextbtn, setNextBtn] = useState(0);
   useEffect(() => {
@@ -66,7 +73,7 @@ const CreateEventView = () => {
           )}
           {nextbtn === 1 && (
             <div className='new-event-details'>
-              <NewEventInfo setData={setData} data ={data}/>
+              <NewEventInfo setData={setData} data ={data} />
             </div>
           )}
           {nextbtn === 2 && (
