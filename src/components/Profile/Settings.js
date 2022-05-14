@@ -141,7 +141,7 @@ const Settings = ({ setData, data }) => {
         {/*Name*/}
         <div className='settings-name'>
           <label htmlFor='name' className='label-form label-name'>
-            Name
+            {user.displayName}
           </label>
           {
             <input
@@ -150,7 +150,6 @@ const Settings = ({ setData, data }) => {
               name='name'
               id='name'
               placeholder='Elon Musk'
-              required
               onChange={authChangeHandler}
             />
           }
@@ -169,7 +168,7 @@ const Settings = ({ setData, data }) => {
         {/*Email*/}
         <div className='settings-email'>
           <label htmlFor='email' className='label-form label-email'>
-            Email
+            {user.email}
           </label>
           {
             <input
@@ -178,7 +177,6 @@ const Settings = ({ setData, data }) => {
               name='email'
               id='email'
               placeholder='elon.musk@tesla.com'
-              required
               onChange={authChangeHandler}
             />
           }
