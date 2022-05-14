@@ -34,9 +34,15 @@ export default function EventContainer({
       <br />
       <div className='main_event_container'>
         {eventsCard.map((event, index) => {
-          return (
-            <EventCard eventCard={event[1]} eventId={event[0]} key={`card_${event[0]}`} />
-          );
+          if (index < 4) {
+            return (
+              <EventCard
+                eventCard={event[1]}
+                eventId={event[0]}
+                key={`card_${event[0]}`}
+              />
+            );
+          }
         })}
       </div>
       <br />
