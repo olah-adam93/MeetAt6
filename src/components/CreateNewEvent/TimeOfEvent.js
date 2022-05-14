@@ -6,12 +6,16 @@ const TimeOfEvent = ({ setData, data }) => {
     <div className='time-of-event'>
       {/*single event, recurring */}
       <div className='event-frequency'>
-        <button type='button' name='single'>
+        <label htmlFor='single'>Single</label>
+        <input type="radio" name='eventFrequency' value='single' id="single" onClick={changeHandler}/>
+        <label htmlFor='recurring'>Recurring</label>
+        <input type="radio" name='eventFrequency' value='recurring' onClick={changeHandler} id="recurring"/>
+        {/* <button type='button' name='single'>
           Single
         </button>
         <button type='button' name='requiring'>
           Requiring
-        </button>
+        </button> */}
       </div>
       <div>
         <label htmlFor='event-starts'>Event Starts</label>

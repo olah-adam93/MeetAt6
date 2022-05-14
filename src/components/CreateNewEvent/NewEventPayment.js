@@ -1,34 +1,46 @@
-import { data } from 'dom7';
-import { useState } from 'react';
+import {data} from 'dom7';
+import {useState} from 'react';
 
-const NewEventPayment = ({ setData, data }) => {
-  const [pricing, setPricing] = useState();
+const NewEventPayment = ({setData, data}) => {
+  
   const changeHandler = (e) => {
-    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setData((prev) => ({...prev, [e.target.name]: e.target.value}));
+    
   };
-  const clickHandler = (e) => {
-    e.preventDefault();
-    if (e.target.name === 'ticket') {
-      setPricing('ticket');
-      /* setData((prev) => ({ ...prev, [e.target.name]: pricing })); */
-    }
-    if (e.target.name === 'free') {
-      setPricing('free');
-      /* setData((prev) => ({ ...prev, [e.target.name]: pricing })); */
-    }
-  };
+
   return (
     <div className='new-event-payment-container'>
       <h2>Event Pricing</h2>
       <div className='payment-type-btn-box'>
-        <button type='button' name='free' onClick={clickHandler}>
+        <h2>Currency</h2>
+
+        <label htmlFor='free'>Free</label>
+        <input
+          type='radio'
+          name='paymentType'
+          value='free'
+          id='free'
+          onChange={changeHandler}
+          
+          defaultChecked = { data?.paymentType === 'free'}
+        />
+        <label htmlFor='ticket'>Ticket</label>
+        <input
+          type='radio'
+          name='paymentType'
+          value='ticket'
+          onChange={changeHandler}
+          id='ticket'
+          defaultChecked = {data?.paymentType ==='ticket'}
+        />
+        {/* <button type='button' name='free' onClick={clickHandler}>
           Free
         </button>
         <button type='button' name='ticket' onClick={clickHandler}>
           Ticket
-        </button>
+        </button> */}
       </div>
-      {pricing === 'ticket' ? (
+      {data?.paymentType ==='ticket' ? (
         <div className='ticket-details'>
           <h3>Ticket</h3>
           <p>Please fill out the ticket information</p>
@@ -41,6 +53,17 @@ const NewEventPayment = ({ setData, data }) => {
             onChange={changeHandler}
             value={data?.ticketPrice}
           />
+          <label htmlFor='ticket-currency'>Ticket Currency</label>
+          <select
+            name='ticketCurrency'
+            id='ticket-currency'
+            onChange={changeHandler}
+            value={data?.ticketCurrency}
+          >
+            <option value='huf'>HUF</option>
+            <option value='eur'>EUR</option>
+            <option value='usd'>USD</option>
+          </select>
           <label htmlFor='valid-ticket-from'>Valid from</label>
           <input
             type='date'
