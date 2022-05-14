@@ -77,26 +77,36 @@ const Settings = ({ setData, data }) => {
       .catch((error) => {
         console.log(error);
       }); */
-
-  const updateProfileFn = useCallback(() => {
+  const updateProfileName = useCallback(() => {
     updateProfile(user, {
       displayName: authInputValue.name,
     })
-      .then((value) => {
-        console.log(value);
+      .then(() => {
+        console.log(user.displayName);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [user, authInputValue.name]);
+
+  const updateProfileEmail = useCallback(() => {
+    updateEmail(user, authInputValue.email)
+      .then(() => {
+        console.log('ügyesek vagytok!');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [user, authInputValue.email]);
 
   const authSubmitHandler = (e) => {
     e.preventDefault();
 
-    updateProfileFn();
-    if (e.target.name === 'name') {
+    updateProfileName();
+    updateProfileEmail();
+    /*  if (e.target.name === 'name') {
       // updateProfileFn();
-    }
+    } */
 
     /* if (e.target.name === 'email') {
       updateEmail(user, authInputValue.email)
