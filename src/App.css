@@ -12,4 +12,6 @@
 .layout-inner-container {
   /*min-height: calc(100vh - header height: 10rem & footer height: 5rem*/
   min-height: calc(100vh - 15rem);
+  /* fix header height */
+  margin-top: 10rem;
 }
