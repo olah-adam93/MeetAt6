@@ -1,9 +1,9 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useState, createContext, useContext, useEffect } from 'react';
-import { liveValue, readData } from './services/crud';
-/* Components */
 
+/* Components */
+import ScrollToTop from './others/ScrollToTop';
 import ChosenEvents from './components/Profile/ChosenEvents';
 import MyEvents from './components/Profile/MyEvents';
 import Settings from './components/Profile/Settings';
@@ -27,10 +27,15 @@ import EventPageView from './views/EventPageView';
 import MainPageLayout from './layouts/MainPageLayout';
 import UserMainPageLayout from './layouts/UserMainPageLayout';
 import ThankYouView from './views/ThankYouView';
-/*Authentications Context */
+
+/* Authentication Context */
 import { AuthContext } from './components/Authentication/AuthContext';
 import { AuthProfile } from './components/Authentication/AuthProfile';
 import { EventDbContext } from './components/EventDbContext/EventDbContext';
+
+/* CRUD */
+import { liveValue, readData } from './services/crud';
+
 function App() {
   const [user, setUser] = useState(false);
   const [db, setDb] = useState([]);
@@ -43,6 +48,7 @@ function App() {
   console.log(db);
   return (
     <div className='App'>
+      <ScrollToTop />
       <AuthContext.Provider value={{ user, setUser }}>
         <EventDbContext.Provider value={{ db, setDb }}>
           <Routes>
