@@ -18,26 +18,27 @@ const EventCard = ({ eventCard }) => {
 
   return (
     <div className='event-card'>
-      Event Card
       <Link to={`/eventpage/&{event.title}`}>
-      <div className='event-pciture'>
-        <img src={eventCard.img} alt='eventname' />
-      </div>
+        <div className='event-pciture'>
+          <img src={eventCard?.img} alt={'eventname'} />
+        </div>
       </Link>
       <div className='event-data'>
         <Link to={`/eventpage/&{event.title}`}>
           <span>
-            <strong>{eventCard.title}</strong>
+            <strong>{eventCard?.title}</strong>
           </span>
         </Link>
         <br />
-        <span>{eventCard.date}</span>
+        <span>{eventCard?.eventStarts + ' '}</span>
+        <span>{eventCard?.startTime}</span>-<span>{eventCard?.eventEnds + ' '}</span>
+        <span>{eventCard?.endTime}</span>
         <br />
-        <span>location?</span>
+        <span>Location: {eventCard?.location}</span>
         <br />
-        <span>{eventCard.organizer}</span>
+        <span>Organizer: {eventCard?.organizer}</span>
         <br />
-        <span>attendant?</span>
+        <span>Attendant limit: {eventCard?.attendant}</span>
       </div>
       {/*
 
