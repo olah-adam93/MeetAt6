@@ -21,7 +21,6 @@ const NewEventPayment = ({setData, data}) => {
           value='free'
           id='free'
           onChange={changeHandler}
-          
           defaultChecked = { data?.paymentType === 'free'}
         />
         <label htmlFor='ticket'>Ticket</label>
@@ -33,12 +32,7 @@ const NewEventPayment = ({setData, data}) => {
           id='ticket'
           defaultChecked = {data?.paymentType ==='ticket'}
         />
-        {/* <button type='button' name='free' onClick={clickHandler}>
-          Free
-        </button>
-        <button type='button' name='ticket' onClick={clickHandler}>
-          Ticket
-        </button> */}
+        
       </div>
       {data?.paymentType ==='ticket' ? (
         <div className='ticket-details'>

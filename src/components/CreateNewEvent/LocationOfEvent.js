@@ -1,7 +1,7 @@
 /* import {useState} from 'react'; */
 
 const LocationOfEvent = ({setLocationType, locationType, setData, data}) => {
-  const clickHandler = (e) => {
+  /* const clickHandler = (e) => {
     e.preventDefault();
     if (e.target.name === 'venue') {
       setLocationType('venue');
@@ -12,14 +12,10 @@ const LocationOfEvent = ({setLocationType, locationType, setData, data}) => {
       setLocationType('to be added');
     }
     console.log(locationType);
-  };
+  }; */
   const changeHandler = (e) => {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    if(e.target.value === "venue"){
-      setLocationType('venue');
-    }else{
-      setLocationType('');
-    }
+    
   };
   return (
     <div className='location-container'>
@@ -30,29 +26,26 @@ const LocationOfEvent = ({setLocationType, locationType, setData, data}) => {
           name='locationType'
           value='venue'
           id='venue'
-          onClick={changeHandler}
+          onChange={changeHandler}
+          defaultChecked = { data?.locationType === 'venue'}
         />
         <label htmlFor='ticket'>Online</label>
         <input
           type='radio'
           name='locationType'
           value='online'
-          onClick={changeHandler}
+          onChange={changeHandler}
           id='online'
+          defaultChecked = { data?.locationType === 'online'}
         />
-        {/* <button type='button' name='venue' onClick={clickHandler}>
-          Venue
-        </button>
-        <button type='button' name='online' onClick={clickHandler}>
-          Online event
-        </button>
-        <button type='button' name='to-be-added' onClick={clickHandler}>
-          To be Added
-        </button> */}
+        
       </div>
-      {locationType === 'venue' ? (
+      {data?.locationType === 'venue' ? (
         <div>
           <p>Map</p>
+          <label htmlFor="location">
+          <input type='text' value={/* data?.locationType === 'online' ? '' : */ data?.location} name='location' id="location" onChange={changeHandler}/>
+          </label>
         </div>
       ) : null}
     </div>

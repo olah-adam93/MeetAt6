@@ -58,8 +58,8 @@ const BasicInfoForm = ({ setData, data }) => {
         <option value='travel'>Travel</option>
         <option value='other'>Other</option>
       </select>
-      <label htmlFor='addendant-limit'>Attendant limit</label>
-      <input type='checkbox' htmlFor='addendant-limit' onChange={changeCheckedHandler} value={data?.checkbox}/>
+      <label htmlFor='addendantLimit'>Attendant limit</label>
+      <input type='checkbox' name='addendantLimit' id='addendant-limit' onChange={changeHandler} value={checked} onClick={changeCheckedHandler} defaultValue={data?.addendantLimit}/>
       {checked && (
         <div>
           <label htmlFor='attendant-number-limit'>Attendant limit number</label>
