@@ -1,32 +1,37 @@
+import {useCallback, useEffect, useState, useContext} from 'react';
+
+/* Style */
 import './Style/SearchEventView.css';
 
+/* Components */
 import SearchBar from '../components/SearchEvent/SearchBar';
 import FilterBar from '../components/SearchEvent/FilterBar';
 import DisplayItems from '../components/SearchEvent/DisplayItems';
 
-import {testDb} from '../others/testDb';
-import {useCallback, useEffect, useState} from 'react';
+/* Database Context */
+import {EventDbContext} from '../components/EventDbContext/EventDbContext';
 
 const SearchEventView = () => {
-  // fetching data from server
-  const [dbItems, setDbItems] = useState([]);
-  const [filteredDbItems, setFilteredDbItems] = useState([]);
+  const eventDb = useContext(EventDbContext);
+  const [eventsCard, setEventsCard] = useState([]);
 
-  // for search parameters
+  // Search parameters
   const [searchQuery, setSearchQuery] = useState("");
   /* const [searchParam] = useState(["capital", "name"]); */
   
-  const searchFunction = useCallback((items) => {
-    return items.filter((item) => {
-        return item.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1;
+  const searchFunction = useCallback((eventDb) => {
+    return eventDb.filter((event) => {
+        const value = event[1];
+        return value?.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1;
     });
   }, [searchQuery])
 
   useEffect(() => {
-    console.log('fetch data from server');
-    setDbItems(testDb);
-    setFilteredDbItems(searchFunction(dbItems));
-  }, [dbItems, searchFunction]);
+    console.log('eventdb: ', eventDb.db);
+
+    setEventsCard(searchFunction(eventDb.db));
+
+  }, [eventDb, searchFunction]);
 
 
   return (
@@ -35,7 +40,7 @@ const SearchEventView = () => {
 
       <FilterBar />
 
-      <DisplayItems filteredDbItems={filteredDbItems}/>
+      <DisplayItems filteredDbItems={eventsCard} perPage={3} />
     </div>
   );
 };

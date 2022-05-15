@@ -10,7 +10,6 @@ export default function HomePageView() {
   const eventDb = useContext(EventDbContext);
   return (
     <div>
-      Home Page
       <Slider />
       <EventContainer
         containerName={'Legfrissebb események'}

@@ -22,11 +22,11 @@ import CreateEventView from './views/CreateEventView';
 import MyEventsView from './views/MyEventsView';
 import SearchEventView from './views/SearchEventView';
 import EventPageView from './views/EventPageView';
+import ThankYouView from './views/ThankYouView';
 
 /* Layouts */
 import MainPageLayout from './layouts/MainPageLayout';
 import UserMainPageLayout from './layouts/UserMainPageLayout';
-import ThankYouView from './views/ThankYouView';
 
 /* Authentication Context */
 import { AuthContext } from './components/Authentication/AuthContext';
@@ -39,11 +39,13 @@ import { liveValue, readData } from './services/crud';
 function App() {
   const [userLog, setUserLog] = useState({});
   const [db, setDb] = useState([]);
+
   useEffect(() => {
     const liveChange = liveValue('events', (snapshot) => {
       setDb(Object.entries(snapshot.val()) || []);
-    });console.log(db)
-      return () => liveChange()
+    });
+    console.log(db)
+    return () => liveChange();
   }, []);
   
   return (
