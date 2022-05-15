@@ -3,8 +3,11 @@ import EventContainer from '../components/HomePage/EventContainer';
 import './Style/ProfileView.css';
 import GaleryContainer from '../components/Profile/GaleryContainer';
 import { useState } from 'react';
+import {getAuth} from '@firebase/auth';
+
 const ProfileView = () => {
-  const [parentDb, setParentDb] = useState([]);
+  
+  const auth = getAuth()
   return (
     <div className='profile'>
       <div className='profile-head'>
@@ -46,15 +49,15 @@ const ProfileView = () => {
             <div className='events-box'>
               <EventContainer
                 containerName={'Events you attend'}
-                setParentDb={setParentDb}
-                eventCardIndex={0}
+                searchKey={'paymentType'}
+                searchValue={'free'}
               />
             </div>
             <div className='events-box'>
               <EventContainer
                 containerName={'Events you may like'}
-                setParentDb={setParentDb}
-                eventCardIndex={0}
+                searchKey={`uid`}
+                searchValue={`${auth.currentUser.uid}`}
               />
             </div>
           </div>
