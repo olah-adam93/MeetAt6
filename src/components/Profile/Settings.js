@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import './Style/Settings.css';
 import { getAuth, updateProfile, updateEmail } from 'firebase/auth';
 import SettingsImage from './SettingsImage';
@@ -24,27 +24,25 @@ const Settings = ({ setData, data }) => {
   const user = auth.currentUser;
 
   // Edit button
-  /*
+
   const clickEditHandler = (e) => {
-    if (e.target.name === 'name') {
+    if (e.target.name === 'name-btn') {
       setEditName(true);
-      setEditEmail(false);
-    } else if (e.target.name === 'email') {
-      setEditName(false);
+    } else if (e.target.name === 'email-btn') {
       setEditEmail(true);
     } else {
       setEditName(false);
       setEditEmail(false);
     }
-  }; 
+  };
 
   const clickResetHandler = (e) => {
-    if (e.target.name === 'name') {
+    if (e.target.name === 'name-btn') {
       setEditName(false);
-    } else if (e.target.name === 'email') {
+    } else if (e.target.name === 'email-btn') {
       setEditEmail(false);
     }
-  }; */
+  };
 
   const authChangeHandler = (e) => {
     setAuthInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -52,50 +50,40 @@ const Settings = ({ setData, data }) => {
 
   const changeHandler = (e) => {
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    console.log(inputValue);
+    //console.log(inputValue);
   };
 
-  //Name
-  /* if (user.uid) {
-    updateProfile(user, {
-      displayName: ,
-    })
-      .then(() => {
-        console.log(user.displayName);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-  //Email
-  if (user.uid) {
-    updateEmail(user, '')
-      .then(() => {
-        console.log('');
-      })
-      .catch((error) => {
-        console.log(error);
-      }); */
   const updateProfileName = useCallback(() => {
-    updateProfile(user, {
-      displayName: authInputValue.name,
-    })
-      .then(() => {
-        console.log(user.displayName);
+    if (authInputValue.name !== '') {
+      updateProfile(user, {
+        displayName: authInputValue.name,
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then(() => {
+          alert(`User name has been successfully changed to ${authInputValue.name}!`);
+          //user.displayName
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      return null;
+    }
   }, [user, authInputValue.name]);
 
   const updateProfileEmail = useCallback(() => {
-    updateEmail(user, authInputValue.email)
-      .then(() => {
-        console.log('ügyesek vagytok!');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (authInputValue.email !== '') {
+      updateEmail(user, authInputValue.email)
+        .then(() => {
+          alert(
+            `Email address has been successfully changed to ${authInputValue.email}!`
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      return null;
+    }
   }, [user, authInputValue.email]);
 
   const authSubmitHandler = (e) => {
@@ -103,20 +91,6 @@ const Settings = ({ setData, data }) => {
 
     updateProfileName();
     updateProfileEmail();
-    /*  if (e.target.name === 'name') {
-      // updateProfileFn();
-    } */
-
-    /* if (e.target.name === 'email') {
-      updateEmail(user, authInputValue.email)
-        .then(() => {
-          console.log(authInputValue.email);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  */
   };
 
   const formSubmitHandler = (e) => {
@@ -129,20 +103,18 @@ const Settings = ({ setData, data }) => {
       profilePhoto: inputValue?.profilePhoto,
       organization: inputValue?.organization,
     });
-
-    console.log(inputValue);
   };
 
   return (
     <div className='settings-form-container'>
-      <h1>Account Information</h1>
+      <h1>Account Settings</h1>
       <form action='' className='settings-form' onSubmit={authSubmitHandler}>
         {/*Name*/}
         <div className='settings-name'>
           <label htmlFor='name' className='label-form label-name'>
             User name:
           </label>
-          {
+          {editName && (
             <input
               type='text'
               className='input-name'
@@ -151,14 +123,14 @@ const Settings = ({ setData, data }) => {
               placeholder={user.displayName}
               onChange={authChangeHandler}
             />
-          }
+          )}
           <span>
             <button
               type='button'
               name='name-btn'
               className='edit-button'
-              //onClick={clickEditHandler}
-              //onDoubleClick={clickResetHandler}
+              onClick={clickEditHandler}
+              onDoubleClick={clickResetHandler}
             >
               edit
             </button>
@@ -169,7 +141,7 @@ const Settings = ({ setData, data }) => {
           <label htmlFor='email' className='label-form label-email'>
             Email:
           </label>
-          {
+          {editEmail && (
             <input
               type='email'
               className='input-email'
@@ -178,14 +150,14 @@ const Settings = ({ setData, data }) => {
               placeholder={user.email}
               onChange={authChangeHandler}
             />
-          }
+          )}
           <span>
             <button
               type='button'
-              name='email'
+              name='email-btn'
               className='edit-button'
-              //onClick={clickEditHandler}
-              //onDoubleClick={clickResetHandler}
+              onClick={clickEditHandler}
+              onDoubleClick={clickResetHandler}
             >
               edit
             </button>
