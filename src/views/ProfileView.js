@@ -10,13 +10,15 @@ import { AuthContext } from '../components/Authentication/AuthContext';
 const ProfileView = () => {
   const userData = useContext(AuthContext)
   const [userDetails, setUserDetails] = useState({});
-  /* const auth = getAuth()
+  const auth = getAuth()
   const user = auth.currentUser
-  useEffect(()=>{
+  /* useEffect(()=>{
     readData('userDetails', user.uid)
     .then(snapshot => setUserDetails(snapshot.val()))
-  }, [user.uid])
-   */
+    console.log(userData.userLog.user.uid)
+  }, [user.uid userData.userLog.user]) */
+  
+  
   return (
     <div className='profile'>
       <div className='profile-head'>
@@ -30,7 +32,7 @@ const ProfileView = () => {
         <section>
           <h3>Your Informaiton: </h3>
           <p>Email: {userData.userLog.user.email}</p>
-          <p>Tel: {userData.userLog.userDetails?.tel}</p>
+          <p>Tel: {userData.userLog.userDetails?.telephone}</p>
           <p>Birthday: {userData.userLog.userDetails?.birthday}</p>
           <p>Interest: {userData.userLog.userDetails?.interest}</p>
           <p>Location: {userData.userLog.userDetails?.location}</p>
@@ -41,18 +43,8 @@ const ProfileView = () => {
           <div className='user-data'>
             <section>
               <p>
-                {userData.userLog.userDetails?.description}
-                About me: Hi I'm .... Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. In sollicitudin, ex nec pharetra congue, nulla sem cursus mi,
-                imperdiet tincidunt leo sapien at justo. Vestibulum dictum finibus enim,
-                in sollicitudin neque malesuada eget. Nullam cursus mi sit amet mauris
-                auctor, ornare faucibus dui vehicula. Proin blandit mauris sit amet
-                consectetur consectetur. Duis sed sodales dui, sed fermentum erat. Morbi
-                nec dui eu augue tempor vehicula. Nam interdum nibh ultricies dapibus
-                bibendum. Aliquam fringilla sollicitudin facilisis. Donec nibh justo,
-                posuere sit amet dignissim eu, feugiat non nisi. Vivamus consectetur, dui
-                a fringilla commodo, est urna feugiat nibh, ac pellentesque orci eros a
-                leo.
+                {userData.userLog.userDetails?.userIntroduction}
+                
               </p>
             </section>
           </div>
