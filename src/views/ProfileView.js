@@ -8,6 +8,7 @@ import {getAuth} from '@firebase/auth';
 const ProfileView = () => {
   
   const auth = getAuth()
+  const user = auth.currentUser
   return (
     <div className='profile'>
       <div className='profile-head'>
@@ -15,12 +16,12 @@ const ProfileView = () => {
           <UserNavbar />
         </div>
         <div>
-          <h1>Hi name{/* your name */}!</h1>
-          <img className='avatar' src='http://placekitten.com/200/200' alt='username' />
+          <h1>Hi {user.displayName}!</h1>
+          <img className='avatar' src={user.photoURL} alt={user.displayName} />
         </div>
         <section>
-          <h3>Your Informaiton:</h3>
-          <p>Email:</p>
+          <h3>Your Informaiton: {}</h3>
+          <p>Email: {user.email}</p>
           <p>Tel:</p>
           <p>Interest:</p>
           <p>Location:</p>
