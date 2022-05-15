@@ -1,0 +1,12 @@
+.my-events-container {
+  width: 100%;
+  display: flex;
+}
+
+.my-events-sidebar {
+  flex-grow: 1;
+}
+
+.my-events-content {
+  flex-grow: 2;
+}

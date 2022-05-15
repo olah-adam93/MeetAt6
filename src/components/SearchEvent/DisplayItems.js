@@ -3,11 +3,10 @@ import './Style/DisplayItems.css';
 import EventCard from '../HomePage/EventCard';
 import {useEffect, useState} from 'react';
 
-const itemsPerPage = 4;
 
-const DisplayItems = ({filteredDbItems}) => {
+const DisplayItems = ({filteredDbItems, perPage}) => {
   console.log('displayitems render');
-
+  const itemsPerPage = perPage;
   const [currentPage, setCurrentPage] = useState(1);
   const [fromIndex, setfromIndex] = useState(0);
   const [toIndex, setToIndex] = useState(itemsPerPage);
@@ -53,13 +52,17 @@ const DisplayItems = ({filteredDbItems}) => {
   }, [filteredDbItems, fromIndex, toIndex])
 
   return (
-    <>
+    <div className='display-items-container'>
       <div className='display-container'>
         {!loading ? 
-          itemsToRender.map((item, index) => {
+          itemsToRender.map((event, index) => {
             return (
               <div key={index} className='display-items'>
-                <EventCard eventCard={item} />
+                <EventCard
+                eventCard={event[1]}
+                eventId={event[0]}
+                key={`card_${event[0]}`}
+              />
               </div>
             );
           }) : <div> Loading... </div>}
@@ -70,7 +73,7 @@ const DisplayItems = ({filteredDbItems}) => {
         <span>{` Page ${currentPage} of ${pageNumber} `}</span>
         <button onClick={ nextButtonHandler } disabled={currentPage === pageNumber ? 'disabled' : ''}>Next</button>
       </div>
-    </>
+    </div>
   );
 };
 

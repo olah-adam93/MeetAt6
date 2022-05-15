@@ -5,7 +5,6 @@ import { useState, createContext, useContext, useEffect } from 'react';
 /* Components */
 import ScrollToTop from './others/ScrollToTop';
 import ChosenEvents from './components/Profile/ChosenEvents';
-import MyEvents from './components/Profile/MyEvents';
 import Settings from './components/Profile/Settings';
 import LogOut from './components/Profile/LogOut';
 
@@ -20,6 +19,7 @@ import PrivacyView from './views/PrivacyView';
 import FAQView from './views/FAQView';
 import ContactView from './views/ContactView';
 import CreateEventView from './views/CreateEventView';
+import MyEventsView from './views/MyEventsView';
 import SearchEventView from './views/SearchEventView';
 import EventPageView from './views/EventPageView';
 
@@ -37,7 +37,7 @@ import { EventDbContext } from './components/EventDbContext/EventDbContext';
 import { liveValue, readData } from './services/crud';
 
 function App() {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(true);
   const [db, setDb] = useState([]);
   useEffect(() => {
     const liveChange = liveValue('events', (snapshot) => {
@@ -69,7 +69,7 @@ function App() {
               <Route path='/profile' element={<ProfileView />} />
               <Route path='/profile/chosenevents' element={<ChosenEvents />} />
               <Route path='/profile/addevent' element={<CreateEventView />} />
-              <Route path='/profile/myevents' element={<MyEvents />} />
+              <Route path='/profile/myevents' element={<MyEventsView />} />
               <Route path='/profile/searchevent' element={<SearchEventView />} />
               <Route path='/profile/settings' element={<Settings />} />
               <Route path='/thankyou' element={<ThankYouView />} />

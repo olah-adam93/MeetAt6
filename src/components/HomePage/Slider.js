@@ -9,11 +9,13 @@ import 'swiper/css/navigation';
 
 import '../HomePage/Styles/Slider.css';
 
+import EventCard from './EventCard';
+
 const Slider = () => {
   return (
     <div className='slider-container'>
       <Swiper
-        slidesPerView={1}
+        slidesPerView={4}
         spaceBetween={0}
         loop={true}
         pagination={{

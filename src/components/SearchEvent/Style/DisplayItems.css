@@ -1,3 +1,10 @@
+.display-items-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .display-container {
   max-width: 100%;
   display: grid;
@@ -7,8 +14,24 @@
 .display-items {
   width: fit-content;
   height: fit-content;
-  background-color: rgb(184, 184, 184);
   border: 1px solid black;
   margin: 1rem;
+}
 
+.pagination-container {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+}
+
+.pagination-container span {
+  font-size: 1.6rem;
+  margin: 0 1rem;
+}
+
+.pagination-container button {
+  font-size: 1.6rem;
+  background-color: transparent;
+  cursor: pointer;
+  padding: .3rem;
 }
