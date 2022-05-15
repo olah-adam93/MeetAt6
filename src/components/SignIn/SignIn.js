@@ -34,7 +34,7 @@ const handleFormSubmit = (e) => {
   .then((authCredential) => {
     // Sikeres volt a belepes a usernek
     console.log('user', authCredential.user);
-    authContext.setUser(true);
+    authContext.setUserLog(prev=>({...prev, user:auth.currentUser}));
     navigateTo('/profile');
   })
   .catch(e => {

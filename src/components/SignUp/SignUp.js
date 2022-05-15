@@ -71,7 +71,10 @@ const SignUp = ({ submitForm }) => {
           }
         })
         .then(() => {
-          authContext.setUser(true);
+          const auth = getAuth();
+          const user = auth.currentUser;
+          authContext.setUserLog(prev => ({...prev, user: user}));
+          console.log()
           navigateTo('/thankyou');
         })
         .catch((e) => console.log(e));

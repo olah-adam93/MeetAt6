@@ -37,19 +37,19 @@ import { EventDbContext } from './components/EventDbContext/EventDbContext';
 import { liveValue, readData } from './services/crud';
 
 function App() {
-  const [user, setUser] = useState(true);
+  const [userLog, setUserLog] = useState({});
   const [db, setDb] = useState([]);
   useEffect(() => {
     const liveChange = liveValue('events', (snapshot) => {
       setDb(Object.entries(snapshot.val()) || []);
-    })
+    });console.log(db)
       return () => liveChange()
   }, []);
-  console.log(db);
+  
   return (
     <div className='App'>
       <ScrollToTop />
-      <AuthContext.Provider value={{ user, setUser }}>
+      <AuthContext.Provider value={{ userLog, setUserLog }}>
         <EventDbContext.Provider value={{ db, setDb }}>
           <Routes>
             <Route element={<MainPageLayout />}>

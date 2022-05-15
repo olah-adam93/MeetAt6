@@ -32,7 +32,7 @@ const UserNavbar = () => {
             to='/'
             onClick={() => {
               signOut(auth).then(() => {
-                authContext.setUser(false);
+                authContext.setUserLog({});
               });
             }}
           >
