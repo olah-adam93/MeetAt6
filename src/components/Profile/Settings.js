@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import './Style/Settings.css';
 import { getAuth, updateProfile, updateEmail } from 'firebase/auth';
 import SettingsImage from './SettingsImage';
-import { updateData, createUserData } from '../../services/crud';
+import { updateData } from '../../services/crud';
 import { AuthContext } from '../Authentication/AuthContext';
 
 const Settings = ({ setData, data }) => {
@@ -67,7 +67,7 @@ const Settings = ({ setData, data }) => {
           console.log(user.displayName);
         })
         .then(() => {
-          alert(`User name has been successfully changed to ${authInputValue.name}!`);
+          alert(`Username has been successfully changed to ${authInputValue.name}!`);
           //user.displayName
         })
         .catch((error) => {
@@ -76,7 +76,7 @@ const Settings = ({ setData, data }) => {
     } else {
       return null;
     }
-  }, [user, authInputValue.name]);
+  }, [user, authInputValue.name, userObj.displayName]);
 
   const updateProfileEmail = useCallback(() => {
     if (authInputValue.email !== '') {
@@ -92,7 +92,7 @@ const Settings = ({ setData, data }) => {
     } else {
       return null;
     }
-  }, [user, authInputValue.email]);
+  }, [user, authInputValue.email, userObj.email]);
 
   const authSubmitHandler = (e) => {
     e.preventDefault();
@@ -206,7 +206,7 @@ const Settings = ({ setData, data }) => {
             name='birthday'
             className='input-date'
             onChange={changeHandler}
-            placeholder={userDetailsObj?.birthday}
+            //placeholder={userDetailsObj?.birthday}
           />
         </div>
         {/*Telephone*/}
