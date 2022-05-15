@@ -11,12 +11,12 @@ const Settings = ({setData, data}) => {
   const [editName, setEditName] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
   const [inputValue, setInputValue] = useState({
-    birthday: '',
+    /* birthday: '',
     gender: '',
     location: '',
     organization: '',
     telephone: '',
-    userIntroduction: '',
+    userIntroduction: '', */
   });
   const [authInputValue, setAuthInputValue] = useState({
     name: '',
@@ -222,7 +222,7 @@ const Settings = ({setData, data}) => {
         {/*Birthday*/}
         <div className='settings-date'>
           <label htmlFor='date' className='label-form label-date'>
-            Birthday
+            Birthday: {userDetailsObj?.birthday}
           </label>
           <input
             type='date'
