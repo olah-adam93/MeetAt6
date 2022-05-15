@@ -19,8 +19,8 @@ const Settings = ({setData, data}) => {
     userIntroduction: '', */
   });
   const [authInputValue, setAuthInputValue] = useState({
-    name: '',
-    email: '',
+    /* name: '',
+    email: '', */
   });
 
   const auth = getAuth();
@@ -91,7 +91,7 @@ const Settings = ({setData, data}) => {
       .catch((error) => {
         console.log(error);
       });
-  }, [user, authInputValue.name]);
+  }, [user, authInputValue.name, userObj.displayName]);
 
   const updateProfileEmail = useCallback(() => {
     updateEmail(user, authInputValue?.email || userObj.email)
@@ -101,7 +101,7 @@ const Settings = ({setData, data}) => {
       .catch((error) => {
         console.log(error);
       });
-  }, [user, authInputValue.email]);
+  }, [user, authInputValue.email, userObj.email]);
 
   const authSubmitHandler = (e) => {
     e.preventDefault();
