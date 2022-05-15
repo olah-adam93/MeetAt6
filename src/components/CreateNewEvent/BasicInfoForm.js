@@ -1,7 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import {readData} from '../../services/crud';
 
 const BasicInfoForm = ({ setData, data }) => {
   const [checked, setChecked] = useState(false);
+  const [category, setCategory] =useState()
+  const [type, setType] =useState([])
+  useEffect(()=>{
+    readData('eventCategories')
+    .then(snapshot => setCategory(Object.entries(snapshot.val())))
+    .catch((e)=> console.log(e));
+    readData('eventTypes')
+    .then(snapshot => setType(Object.entries(snapshot.val())))
+    .catch((e)=> console.log(e));
+
+  }, [])
+  console.log(type, category)
   const changeCheckedHandler = (e) => {
     if (e.target.checked) {
       setChecked(true);
@@ -12,6 +25,7 @@ const BasicInfoForm = ({ setData, data }) => {
   const changeHandler = (e) => {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+  
   return (
     <div className='basic-info-box'>
       <label htmlFor='title-of-event'>Event title</label>
@@ -27,36 +41,19 @@ const BasicInfoForm = ({ setData, data }) => {
       <label htmlFor='event-category'>Event category</label>
       <select name='type' onChange={changeHandler} value={data?.type}>
         <option value='null'>Type</option>
-        <option value='trip'>Trip</option>
-        <option value='workshop'>Workshop</option>
-        <option value='performance'>Concer or Performance</option>
-        <option value='conference'>Conference</option>
-        <option value='dinner'>Dinner or Gala</option>
-        <option value='festival'>Festival or Fair</option>
-        <option value='game'>Game</option>
-        <option value='meeting'>Meeting</option>
-        <option value='party'>Party</option>
-        <option value='seminar'>Seminar or Talk</option>
-        <option value='tournament'>Tournament</option>
-        <option value='other'>Other</option>
+        {type?.map((eventType, index)=>{
+          const key= eventType[0];
+          const value = eventType[1];
+          return (<option value={key} key ={`eventType_${key}`}>{value}</option>)
+        })}
       </select>
       <select name='category' onChange={changeHandler} value={data?.category}>
         <option value='null'>Category</option>
-        <option value='business'>Business and Professional</option>
-        <option value='charity'>Charity</option>
-        <option value='community'>Community or Culture</option>
-        <option value='family'>Family</option>
-        <option value='education'>Education</option>
-        <option value='fashion'>Fashion or Beauty</option>
-        <option value='food-or-drink'>Food or Drink</option>
-        <option value='health'>Health</option>
-        <option value='music'>Music</option>
-        <option value='religion'>Religion</option>
-        <option value='science'>Science and Technology</option>
-        <option value='holiday'>Holiday</option>
-        <option value='sports'>Sports</option>
-        <option value='travel'>Travel</option>
-        <option value='other'>Other</option>
+        {category?.map((eventCategory, index)=>{
+          const key= eventCategory[0];
+          const value = eventCategory[1];
+          return (<option value={key} key ={`eventCategory_${key}`}>{value}</option>)
+        })}
       </select>
       <label htmlFor='addendantLimit'>Attendant limit</label>
       <input type='checkbox' name='addendantLimit' id='addendant-limit' onChange={changeHandler} value={checked} onClick={changeCheckedHandler} defaultValue={data?.addendantLimit}/>
