@@ -1,19 +1,22 @@
-import React from 'react';
-import { useState, useCallback } from 'react';
+import React, { useContext } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import './Style/Settings.css';
 import { getAuth, updateProfile, updateEmail } from 'firebase/auth';
 import SettingsImage from './SettingsImage';
-import { updateData } from '../../services/crud';
+import { updateData, createUserData } from '../../services/crud';
+import { AuthContext } from '../Authentication/AuthContext';
 
 const Settings = ({ setData, data }) => {
+  const userData = useContext(AuthContext);
   const [editName, setEditName] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
   const [inputValue, setInputValue] = useState({
     birthday: '',
     gender: '',
     location: '',
-    profilePhoto: '',
     organization: '',
+    telephone: '',
+    userIntroduction: '',
   });
   const [authInputValue, setAuthInputValue] = useState({
     name: '',
@@ -22,6 +25,8 @@ const Settings = ({ setData, data }) => {
 
   const auth = getAuth();
   const user = auth.currentUser;
+  const userObj = userData.userLog.user;
+  const userDetailsObj = userData.userLog.userDetails;
 
   // Edit button
 
@@ -56,8 +61,11 @@ const Settings = ({ setData, data }) => {
   const updateProfileName = useCallback(() => {
     if (authInputValue.name !== '') {
       updateProfile(user, {
-        displayName: authInputValue.name,
+        displayName: authInputValue?.name || userObj.displayName,
       })
+        .then(() => {
+          console.log(user.displayName);
+        })
         .then(() => {
           alert(`User name has been successfully changed to ${authInputValue.name}!`);
           //user.displayName
@@ -72,7 +80,7 @@ const Settings = ({ setData, data }) => {
 
   const updateProfileEmail = useCallback(() => {
     if (authInputValue.email !== '') {
-      updateEmail(user, authInputValue.email)
+      updateEmail(user, authInputValue?.email || userObj.email)
         .then(() => {
           alert(
             `Email address has been successfully changed to ${authInputValue.email}!`
@@ -97,11 +105,12 @@ const Settings = ({ setData, data }) => {
     e.preventDefault();
 
     updateData('userDetails', user.uid, {
-      birthday: inputValue?.birthday,
-      gender: inputValue?.gender,
-      location: inputValue?.location,
-      profilePhoto: inputValue?.profilePhoto,
-      organization: inputValue?.organization,
+      birthday: inputValue?.birthday || userDetailsObj.birthday,
+      gender: inputValue?.gender || userDetailsObj.gender,
+      location: inputValue?.location || userDetailsObj.location,
+      organization: inputValue?.organization || userDetailsObj.organization,
+      telephone: inputValue?.telephone || userDetailsObj.telephone,
+      userIntroduction: inputValue?.userIntroduction || userDetailsObj.userIntroduction,
     });
   };
 
@@ -112,7 +121,7 @@ const Settings = ({ setData, data }) => {
         {/*Name*/}
         <div className='settings-name'>
           <label htmlFor='name' className='label-form label-name'>
-            User name:
+            Username
           </label>
           {editName && (
             <input
@@ -120,7 +129,7 @@ const Settings = ({ setData, data }) => {
               className='input-name'
               name='name'
               id='name'
-              placeholder={user.displayName}
+              placeholder={userObj.displayName}
               onChange={authChangeHandler}
             />
           )}
@@ -139,7 +148,7 @@ const Settings = ({ setData, data }) => {
         {/*Email*/}
         <div className='settings-email'>
           <label htmlFor='email' className='label-form label-email'>
-            Email:
+            Email
           </label>
           {editEmail && (
             <input
@@ -147,7 +156,7 @@ const Settings = ({ setData, data }) => {
               className='input-email'
               name='email'
               id='email'
-              placeholder={user.email}
+              placeholder={userObj.email}
               onChange={authChangeHandler}
             />
           )}
@@ -174,9 +183,17 @@ const Settings = ({ setData, data }) => {
         </div>
         {/*Location*/}
         <div className='settings-location'>
-          <label htmlFor='map' className='label-form label-location'>
-            Location - Map
+          <label htmlFor='location' className='label-form label-location'>
+            Location
           </label>
+          <input
+            type='text'
+            name='location'
+            className='input-location'
+            placeholder={userDetailsObj?.location}
+            onChange={changeHandler}
+            id='location'
+          />
         </div>
         {/*Birthday*/}
         <div className='settings-date'>
@@ -189,7 +206,23 @@ const Settings = ({ setData, data }) => {
             name='birthday'
             className='input-date'
             onChange={changeHandler}
+            placeholder={userDetailsObj?.birthday}
           />
+        </div>
+        {/*Telephone*/}
+        <div className='settings-telephoneNumber'>
+          <label htmlFor='telephone' className='label-form label-telephone'>
+            Telephone number
+            <input
+              type='tel'
+              id='telephone'
+              name='telephone'
+              className='input-telephone'
+              onChange={changeHandler}
+              placeholder={'123-45-678' || userDetailsObj?.telephone}
+              pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}'
+            />
+          </label>
         </div>
         {/*Gender*/}
         <div className='settings-gender'>
@@ -201,13 +234,26 @@ const Settings = ({ setData, data }) => {
             name='gender'
             id='gender'
             onChange={changeHandler}
-            value={inputValue?.gender}
+            placeholder={userDetailsObj?.gender}
           >
             <option value='0'>Open this select menu</option>
             <option value='female'>Female</option>
             <option value='male'>Male</option>
             <option value='other'>None of these choices</option>
           </select>
+        </div>
+        {/*Introduction*/}
+        <div className='settings-introduction'>
+          <label htmlFor='userIntroduction' className='label-form label-introduction'>
+            Introduction
+          </label>
+          <textarea
+            id='userIntroduction'
+            name='userIntroduction'
+            className='textarea-introduction'
+            placeholder={userDetailsObj?.userIntroduction}
+            onChange={changeHandler}
+          ></textarea>
         </div>
         <div className='settings-classification'>
           <div className='classification-personal'>
@@ -217,6 +263,7 @@ const Settings = ({ setData, data }) => {
               id='personal'
               value={false}
               onChange={changeHandler}
+              defaultChecked={userDetailsObj.organization === 'false'}
             />
             <label className='form-radio-label' htmlFor='personal'>
               Personal
@@ -230,6 +277,7 @@ const Settings = ({ setData, data }) => {
               id='organization'
               value={true}
               onChange={changeHandler}
+              defaultChecked={userDetailsObj.organization === 'true'}
             />
             <label className='form-radio-label' htmlFor='organization'>
               Organization

@@ -26,7 +26,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding-top: 2rem;
-  width: 45%;
+  width: 50%;
   margin: 1.5rem auto;
 }
 
@@ -35,22 +35,33 @@
 .settings-image,
 .settings-location,
 .settings-date,
+.settings-telephoneNumber,
 .settings-gender,
 .settings-classification {
   padding: 1rem;
+  min-height: 6.5rem;
 }
 
 .settings-name .label-form,
 .settings-email .label-form,
 .settings-location .label-form,
 .settings-date .label-form,
-.settings-gender .label-form {
+.settings-telephoneNumber .label-form,
+.settings-gender .label-form,
+.settings-introduction .label-form {
   font-size: 1.6rem;
   margin: 0.5rem 0.5rem 0 0.5rem;
 }
 
+.settings-introduction .label-form {
+  font-size: 1.6rem;
+  margin: 0.5rem 0.5rem 2rem 1.5rem;
+}
+
 .settings-name input,
-.settings-email input {
+.settings-email input,
+.settings-location input,
+.settings-telephoneNumber input {
   margin-left: 1rem;
   background-color: transparent;
   border: 0;
@@ -74,15 +85,46 @@
 }
 
 .label-form.label-email {
-  margin-left: 4.2rem;
+  margin-left: 3.9rem;
 }
 
 .settings-date .input-date {
-  margin-left: 2.2rem;
+  margin-left: 7.6rem;
+  background-color: transparent;
+  border: 2px #111 solid;
+  border-radius: 5px;
+  padding: 0.5rem 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: #111;
+}
+
+.settings-location .input-location {
+  margin-left: 7.6rem;
 }
 
 .settings-gender .select-gender {
-  margin-left: 3rem;
+  margin-left: 8.5rem;
+  background-color: transparent;
+  border: 2px #111 solid;
+  border-radius: 5px;
+  padding: 0.5rem 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: #111;
+}
+
+.settings-introduction {
+  padding: 2rem 0 2rem 0;
+  min-height: 6.5rem;
+}
+
+.settings-introduction .textarea-introduction {
+  margin-left: 5rem;
+  background-color: transparent;
+  border: 2px #111 solid;
+  border-radius: 5px;
+  padding: 1rem 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: #111;
 }
 
 /* Profile picture */
@@ -93,6 +135,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
 }
 
 .settings-image {
@@ -108,10 +151,12 @@
   justify-content: center;
   flex-direction: column;
 }
+
 .settings-image img {
   width: 100%;
   height: auto;
 }
+
 .settings-image:hover {
   border: 2px solid #fff;
 }
@@ -120,19 +165,6 @@
   font-size: 2rem;
   color: #fff;
   padding-bottom: 0.5rem;
-}
-
-.settings-image h2 {
-  font-size: 1rem;
-  color: #fff;
-  font-weight: 500;
-}
-
-.settings-image span {
-  font-size: 1rem;
-  color: #fff;
-  font-weight: 500;
-  margin: 0.8rem 0 1.2rem 0;
 }
 
 .settings-image button {
