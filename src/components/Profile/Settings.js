@@ -22,7 +22,6 @@ const Settings = ({ setData, data }) => {
 
   const auth = getAuth();
   const user = auth.currentUser;
-  
 
   // Edit button
   /*
