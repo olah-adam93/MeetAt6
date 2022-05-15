@@ -11,6 +11,7 @@ import { getAuth } from '@firebase/auth';
 import { useNavigate } from 'react-router';
 /*Style */
 import './Style/CreateEventView.css';
+import { async } from '@firebase/util';
 
 
 const CreateEventView = () => {
@@ -45,8 +46,19 @@ const CreateEventView = () => {
       setNextBtn((prev) => (prev -= 1));
     }
   };
+  /* async function createTime (){
+    const eventCreated = new Date()
+    const currentTime = eventCreated.toLocaleDateString("en-US")
+    setData((prev)=> ({...prev, currentTime}))
+    
+  } */
+
   const submitHandler = (e) => {
     e.preventDefault();
+    /* const eventCreated = new Date()
+    const currentTime = eventCreated.toLocaleDateString("en-US")
+    setData((prev)=> ({...prev, currentTime})) */
+    /* createTime() */
     createNewData('events', data);
     setData({});
     navigateTo('/profile');

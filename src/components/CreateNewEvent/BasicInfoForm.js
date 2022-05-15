@@ -12,9 +12,8 @@ const BasicInfoForm = ({ setData, data }) => {
     readData('eventTypes')
     .then(snapshot => setType(Object.entries(snapshot.val())))
     .catch((e)=> console.log(e));
-
+     
   }, [])
-  console.log(type, category)
   const changeCheckedHandler = (e) => {
     if (e.target.checked) {
       setChecked(true);
