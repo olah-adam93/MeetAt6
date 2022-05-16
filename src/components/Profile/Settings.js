@@ -219,7 +219,7 @@ const Settings = ({ setData, data }) => {
               name='telephone'
               className='input-telephone'
               onChange={changeHandler}
-              placeholder={'123-45-678' || userDetailsObj?.telephone}
+              placeholder={ userDetailsObj?.telephone || '123-45-678'}
               pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}'
             />
           </label>
@@ -234,7 +234,7 @@ const Settings = ({ setData, data }) => {
             name='gender'
             id='gender'
             onChange={changeHandler}
-            placeholder={userDetailsObj?.gender}
+            value={userDetailsObj?.gender}
           >
             <option value='0'>Open this select menu</option>
             <option value='female'>Female</option>
