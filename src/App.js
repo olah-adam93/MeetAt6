@@ -44,9 +44,9 @@ function App() {
     const liveChange = liveValue('events', (snapshot) => {
       setDb(Object.entries(snapshot.val()) || []);
     });
-    console.log(db)
+    // console.log(db)
     return () => liveChange();
-  }, []);
+  }, [setDb]);
   
   return (
     <div className='App'>

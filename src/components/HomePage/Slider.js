@@ -18,9 +18,9 @@ const Slider = () => {
         slidesPerView={4}
         spaceBetween={0}
         loop={true}
-        pagination={{
-          clickable: true,
-        }}
+        // pagination={{
+        //   clickable: true,
+        // }}
         navigation={true}
         modules={[Pagination, Navigation]}
         className='swiper'

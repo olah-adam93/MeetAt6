@@ -18,7 +18,7 @@ const EventCard = ({eventCard}) => {
 
   return (
     <div className='event-card'>
-      <Link to={`/eventpage/&{event.title}`}>
+      <Link to={`/eventpage/${eventCard?.id}`}>
         <div className='event-picture'>
           {eventCard?.imageUrl && (
             <img src={eventCard?.imageUrl} alt={eventCard?.title} />
