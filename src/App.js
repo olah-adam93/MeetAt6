@@ -39,7 +39,7 @@ import { liveValue, readData } from './services/crud';
 function App() {
   const [userLog, setUserLog] = useState({});
   const [db, setDb] = useState([]);
-
+  
   useEffect(() => {
     const liveChange = liveValue('events', (snapshot) => {
       setDb(Object.entries(snapshot.val()) || []);
