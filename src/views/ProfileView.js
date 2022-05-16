@@ -3,22 +3,21 @@ import EventContainer from '../components/HomePage/EventContainer';
 import './Style/ProfileView.css';
 import GaleryContainer from '../components/Profile/GaleryContainer';
 import { useContext, useEffect, useState } from 'react';
-import {getAuth} from '@firebase/auth';
-import {readData} from '../services/crud'
+import { getAuth } from '@firebase/auth';
+import { readData } from '../services/crud';
 import { AuthContext } from '../components/Authentication/AuthContext';
 
 const ProfileView = () => {
-  const userData = useContext(AuthContext)
+  const userData = useContext(AuthContext);
   const [userDetails, setUserDetails] = useState({});
-  const auth = getAuth()
-  const user = auth.currentUser
+  const auth = getAuth();
+  const user = auth.currentUser;
   /* useEffect(()=>{
     readData('userDetails', user.uid)
     .then(snapshot => setUserDetails(snapshot.val()))
     console.log(userData.userLog.user.uid)
   }, [user.uid userData.userLog.user]) */
-  
-  
+
   return (
     <div className='profile'>
       <div className='profile-head'>
@@ -27,7 +26,11 @@ const ProfileView = () => {
         </div>
         <div>
           <h1>Hi {userData.userLog.user.displayName}!</h1>
-          <img className='avatar' src={userData.userLog?.user.photoURL} alt={ userData.userLog.user.displayName} />
+          <img
+            className='avatar'
+            src={userData.userLog?.user.photoURL}
+            alt={userData.userLog.user.displayName}
+          />
         </div>
         <section>
           <h3>Your Informaiton: </h3>
@@ -42,10 +45,7 @@ const ProfileView = () => {
         <div className='user-head'>
           <div className='user-data'>
             <section>
-              <p>
-                {userData.userLog.userDetails?.userIntroduction}
-                
-              </p>
+              <p>{userData.userLog.userDetails?.userIntroduction}</p>
             </section>
           </div>
           <div className='events'>

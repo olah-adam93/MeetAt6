@@ -1,13 +1,8 @@
-import React, { useEffect, useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import Validation from './Validation';
 import { AuthContext } from '../Authentication/AuthContext';
 
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  getAuth,
-  updateProfile,
-} from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
 import { auth } from '../../config/firebase';
 import { useNavigate } from 'react-router-dom';
 import { createUserData } from '../../services/crud';
@@ -73,7 +68,7 @@ const SignUp = ({ submitForm }) => {
         .then(() => {
           const auth = getAuth();
           const user = auth.currentUser;
-          authContext.setUserLog(prev => ({...prev, user: user}));
+          authContext.setUserLog((prev) => ({ ...prev, user: user }));
           navigateTo('/thankyou');
         })
         .catch((e) => console.log(e));

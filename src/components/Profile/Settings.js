@@ -1,26 +1,26 @@
-import React, {useContext} from 'react';
-import {useState, useEffect, useCallback} from 'react';
+import React, { useContext } from 'react';
+import { useState, useCallback } from 'react';
 import './Style/Settings.css';
-import {getAuth, updateProfile, updateEmail} from 'firebase/auth';
+import { getAuth, updateProfile, updateEmail } from 'firebase/auth';
 import SettingsImage from './SettingsImage';
-import {updateData, createUserData} from '../../services/crud';
-import {AuthContext} from '../Authentication/AuthContext';
+import { updateData } from '../../services/crud';
+import { AuthContext } from '../Authentication/AuthContext';
 
-const Settings = ({setData, data}) => {
+const Settings = ({ setData, data }) => {
   const userData = useContext(AuthContext);
   const [editName, setEditName] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
   const [inputValue, setInputValue] = useState({
-    /* birthday: '',
+    birthday: '',
     gender: '',
     location: '',
     organization: '',
     telephone: '',
-    userIntroduction: '', */
+    userIntroduction: '',
   });
   const [authInputValue, setAuthInputValue] = useState({
-    /* name: '',
-    email: '', */
+    name: '',
+    email: '',
   });
 
   const auth = getAuth();
@@ -29,78 +29,69 @@ const Settings = ({setData, data}) => {
   const userDetailsObj = userData.userLog.userDetails;
 
   // Edit button
-  /*
+
   const clickEditHandler = (e) => {
-    if (e.target.name === 'name') {
+    if (e.target.name === 'name-btn') {
       setEditName(true);
-      setEditEmail(false);
-    } else if (e.target.name === 'email') {
-      setEditName(false);
+    } else if (e.target.name === 'email-btn') {
       setEditEmail(true);
     } else {
       setEditName(false);
       setEditEmail(false);
     }
-  }; 
+  };
 
   const clickResetHandler = (e) => {
-    if (e.target.name === 'name') {
+    if (e.target.name === 'name-btn') {
       setEditName(false);
-    } else if (e.target.name === 'email') {
+    } else if (e.target.name === 'email-btn') {
       setEditEmail(false);
     }
-  }; */
+  };
 
   const authChangeHandler = (e) => {
-    setAuthInputValue((prev) => ({...prev, [e.target.name]: e.target.value}));
+    setAuthInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const changeHandler = (e) => {
-    setInputValue((prev) => ({...prev, [e.target.name]: e.target.value}));
-    console.log(inputValue);
+    setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    //console.log(inputValue);
   };
 
-  //Name
-  /* if (user.uid) {
-    updateProfile(user, {
-      displayName: ,
-    })
-      .then(() => {
-        console.log(user.displayName);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-  //Email
-  if (user.uid) {
-    updateEmail(user, '')
-      .then(() => {
-        console.log('');
-      })
-      .catch((error) => {
-        console.log(error);
-      }); */
   const updateProfileName = useCallback(() => {
-    updateProfile(user, {
-      displayName: authInputValue?.name || userObj.displayName,
-    })
-      .then(() => {
-        console.log(user.displayName);
+    if (authInputValue.name !== '') {
+      updateProfile(user, {
+        displayName: authInputValue?.name || userObj.displayName,
       })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then(() => {
+          console.log(user.displayName);
+        })
+        .then(() => {
+          alert(`Username has been successfully changed to ${authInputValue.name}!`);
+          //user.displayName
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      return null;
+    }
   }, [user, authInputValue.name, userObj.displayName]);
 
   const updateProfileEmail = useCallback(() => {
-    updateEmail(user, authInputValue?.email || userObj.email)
-      .then(() => {
-        console.log('ügyesek vagytok!');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (authInputValue.email !== '') {
+      updateEmail(user, authInputValue?.email || userObj.email)
+        .then(() => {
+          alert(
+            `Email address has been successfully changed to ${authInputValue.email}!`
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      return null;
+    }
   }, [user, authInputValue.email, userObj.email]);
 
   const authSubmitHandler = (e) => {
@@ -108,20 +99,6 @@ const Settings = ({setData, data}) => {
 
     updateProfileName();
     updateProfileEmail();
-    /*  if (e.target.name === 'name') {
-      // updateProfileFn();
-    } */
-
-    /* if (e.target.name === 'email') {
-      updateEmail(user, authInputValue.email)
-        .then(() => {
-          console.log(authInputValue.email);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  */
   };
 
   const formSubmitHandler = (e) => {
@@ -135,20 +112,18 @@ const Settings = ({setData, data}) => {
       telephone: inputValue?.telephone || userDetailsObj.telephone,
       userIntroduction: inputValue?.userIntroduction || userDetailsObj.userIntroduction,
     });
-
-    console.log(inputValue);
   };
 
   return (
     <div className='settings-form-container'>
-      <h1>Account Information</h1>
+      <h1>Account Settings</h1>
       <form action='' className='settings-form' onSubmit={authSubmitHandler}>
         {/*Name*/}
         <div className='settings-name'>
           <label htmlFor='name' className='label-form label-name'>
-            User name:
+            Username
           </label>
-          {
+          {editName && (
             <input
               type='text'
               className='input-name'
@@ -157,14 +132,14 @@ const Settings = ({setData, data}) => {
               placeholder={userObj.displayName}
               onChange={authChangeHandler}
             />
-          }
+          )}
           <span>
             <button
               type='button'
               name='name-btn'
               className='edit-button'
-              //onClick={clickEditHandler}
-              //onDoubleClick={clickResetHandler}
+              onClick={clickEditHandler}
+              onDoubleClick={clickResetHandler}
             >
               edit
             </button>
@@ -173,9 +148,9 @@ const Settings = ({setData, data}) => {
         {/*Email*/}
         <div className='settings-email'>
           <label htmlFor='email' className='label-form label-email'>
-            Email:
+            Email
           </label>
-          {
+          {editEmail && (
             <input
               type='email'
               className='input-email'
@@ -184,14 +159,14 @@ const Settings = ({setData, data}) => {
               placeholder={userObj.email}
               onChange={authChangeHandler}
             />
-          }
+          )}
           <span>
             <button
               type='button'
-              name='email'
+              name='email-btn'
               className='edit-button'
-              //onClick={clickEditHandler}
-              //onDoubleClick={clickResetHandler}
+              onClick={clickEditHandler}
+              onDoubleClick={clickResetHandler}
             >
               edit
             </button>
@@ -208,21 +183,22 @@ const Settings = ({setData, data}) => {
         </div>
         {/*Location*/}
         <div className='settings-location'>
-          <label htmlFor='map' className='label-form label-location'>
-            Location - Map
+          <label htmlFor='location' className='label-form label-location'>
+            Location
           </label>
-          <label htmlFor='location'>
-            <input type="text" name="location" 
-              placeholder={userDetailsObj?.location}
-              onChange={changeHandler}
-              id='location'
-            />
-          </label>
+          <input
+            type='text'
+            name='location'
+            className='input-location'
+            placeholder={userDetailsObj?.location}
+            onChange={changeHandler}
+            id='location'
+          />
         </div>
         {/*Birthday*/}
         <div className='settings-date'>
           <label htmlFor='date' className='label-form label-date'>
-            Birthday: {userDetailsObj?.birthday}
+            Birthday
           </label>
           <input
             type='date'
@@ -230,16 +206,18 @@ const Settings = ({setData, data}) => {
             name='birthday'
             className='input-date'
             onChange={changeHandler}
-            placeholder={userDetailsObj?.birthday}
+            //placeholder={userDetailsObj?.birthday}
           />
         </div>
-        <div className='user-telephoneNumber'>
-          <label htmlFor='telephone'>
-            Telephone number:
+        {/*Telephone*/}
+        <div className='settings-telephoneNumber'>
+          <label htmlFor='telephone' className='label-form label-telephone'>
+            Telephone number
             <input
               type='tel'
-              name='telephone'
               id='telephone'
+              name='telephone'
+              className='input-telephone'
               onChange={changeHandler}
               placeholder={'123-45-678' || userDetailsObj?.telephone}
               pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}'
@@ -263,6 +241,19 @@ const Settings = ({setData, data}) => {
             <option value='male'>Male</option>
             <option value='other'>None of these choices</option>
           </select>
+        </div>
+        {/*Introduction*/}
+        <div className='settings-introduction'>
+          <label htmlFor='userIntroduction' className='label-form label-introduction'>
+            Introduction
+          </label>
+          <textarea
+            id='userIntroduction'
+            name='userIntroduction'
+            className='textarea-introduction'
+            placeholder={userDetailsObj?.userIntroduction}
+            onChange={changeHandler}
+          ></textarea>
         </div>
         <div className='settings-classification'>
           <div className='classification-personal'>
@@ -290,17 +281,6 @@ const Settings = ({setData, data}) => {
             />
             <label className='form-radio-label' htmlFor='organization'>
               Organization
-            </label>
-          </div>
-          <div className='user-introduction'>
-            <label htmlFor='userIntroduction'>
-              Introduction:
-              <textarea
-                id='userIntroduction'
-                name='userIntroduction'
-                placeholder={userDetailsObj?.userIntroduction}
-                onChange={changeHandler}
-              ></textarea>
             </label>
           </div>
         </div>

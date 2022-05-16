@@ -11,8 +11,9 @@ export function AuthProfile(props) {
       authContext.setUserLog(prev=>({...prev, userDetails: snapshot.val()}))
     }))
     return () => liveUserDetails()
-  }, [authContext.userLog])
-  if (authContext.userLog.user.uid) {
+  }, [authContext.userLog.user.uid])
+  if (authContext.userLog) {
+
     return <UserMainPageLayout />;
   }
 
