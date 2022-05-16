@@ -1,10 +1,15 @@
 import React from 'react';
 
-const EventImage = () => {
+const EventImage = ({eventInfo}) => {
+  console.log(eventInfo);
   return (
-    <div className='event-image-container'>
-      <img className="event-image" src={'https://unsplash.it/100/100'} alt='imageOfEvent' />
-    </div>
+    <>
+    {eventInfo &&
+      <div className='event-image-container'>
+        <img className="event-image" src={eventInfo?.imageUrl} alt={eventInfo?.title} />
+      </div>
+    }
+    </>
   );
 };
 export default EventImage;

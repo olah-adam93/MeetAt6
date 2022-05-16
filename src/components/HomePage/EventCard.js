@@ -1,6 +1,6 @@
 import {Link, useParams} from 'react-router-dom';
 /*  import {useEffect, useState, useCallback} from "react"*/
-const EventCard = ({eventCard}) => {
+const EventCard = ({eventCard, eventId}) => {
   /* const [eventData, setEventData] = useState();
     const navigateTo =useNavigate()*/
   /*fetch from firebase? */
@@ -18,7 +18,7 @@ const EventCard = ({eventCard}) => {
 
   return (
     <div className='event-card'>
-      <Link to={`/eventpage/${eventCard?.id}`}>
+      <Link to={`/eventpage/${eventId}`}>
         <div className='event-picture'>
           {eventCard?.imageUrl && (
             <img src={eventCard?.imageUrl} alt={eventCard?.title} />
@@ -26,7 +26,7 @@ const EventCard = ({eventCard}) => {
         </div>
       </Link>
       <div className='event-data'>
-        <Link to={`/eventpage/&{event.title}`}>
+        <Link to={`/eventpage/${eventId}`}>
           <span>
             <strong>{eventCard?.title}</strong>
           </span>

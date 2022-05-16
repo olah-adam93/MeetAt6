@@ -64,7 +64,7 @@ function App() {
               <Route path='/signup' element={<SignUpView />} />
               <Route path='/contact' element={<ContactView />} />
               <Route path='/FAQ' element={<FAQView />} />
-              <Route path='/eventpage/:event_title' element={<EventPageView />} />
+              <Route path='/eventpage/:eventId' element={<EventPageView />} />
             </Route>
 
             <Route element={<AuthProfile />}>
