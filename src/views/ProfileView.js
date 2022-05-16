@@ -59,8 +59,8 @@ const ProfileView = () => {
             <div className='events-box'>
               <EventContainer
                 containerName={'Events you may like'}
-                searchKey={`uid`}
-                searchValue={`${userData.userLog.user.uid}`}
+                searchKey={`locationType`}
+                searchValue={`online`}
               />
             </div>
           </div>
