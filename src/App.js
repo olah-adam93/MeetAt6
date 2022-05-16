@@ -32,14 +32,30 @@ import UserMainPageLayout from './layouts/UserMainPageLayout';
 import { AuthContext } from './components/Authentication/AuthContext';
 import { AuthProfile } from './components/Authentication/AuthProfile';
 import { EventDbContext } from './components/EventDbContext/EventDbContext';
-
+import {auth} from './config/firebase'
+import { onAuthStateChanged } from 'firebase/auth';
 /* CRUD */
 import { liveValue, readData } from './services/crud';
 
 function App() {
   const [userLog, setUserLog] = useState({});
   const [db, setDb] = useState([]);
-  
+  const [userLogged, setUserLogged] = useState(false);
+  /* const userAuth = useContext(AuthContext) */
+  /* useEffect(() => {
+
+    onAuthStateChanged(auth, (user) => {
+        console.log('user', user)
+        if (user) {
+          // Felhasznalo bevan lepve
+          userAuth.setUserLog(true)
+        } else {
+          // nincs belepve
+          userAuth.setUserLogged(false)
+        }
+    })
+
+  }, []) */
   useEffect(() => {
     const liveChange = liveValue('events', (snapshot) => {
       setDb(Object.entries(snapshot.val()) || []);
@@ -51,8 +67,9 @@ function App() {
   return (
     <div className='App'>
       <ScrollToTop />
-      <AuthContext.Provider value={{ userLog, setUserLog }}>
+      <AuthContext.Provider value={{ userLog, setUserLog/* , userLogged, setUserLogged  */}}>
         <EventDbContext.Provider value={{ db, setDb }}>
+          
           <Routes>
             <Route element={<MainPageLayout />}>
               <Route path='/' element={<HomePageView />} />
@@ -67,7 +84,7 @@ function App() {
               <Route path='/eventpage/:eventId' element={<EventPageView />} />
             </Route>
 
-            <Route element={<AuthProfile />}>
+            <Route element={<AuthProfile/>}>
               <Route path='/profile' element={<ProfileView />} />
               <Route path='/profile/chosenevents' element={<ChosenEvents />} />
               <Route path='/profile/addevent' element={<CreateEventView />} />
@@ -78,6 +95,7 @@ function App() {
               <Route path='/signout' element={<LogOut />} />
             </Route>
           </Routes>
+          
         </EventDbContext.Provider>
       </AuthContext.Provider>
     </div>

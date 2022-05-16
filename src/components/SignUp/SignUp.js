@@ -47,7 +47,7 @@ const SignUp = ({ submitForm }) => {
           console.log('user', auth?.currentUser);
         })
         .then(() => {
-          const auth = getAuth();
+          /* const auth = getAuth(); */
           const user = auth.currentUser;
           if (user.uid) {
             updateProfile(user, {
@@ -66,7 +66,7 @@ const SignUp = ({ submitForm }) => {
           }
         })
         .then(() => {
-          const auth = getAuth();
+          /* const auth = getAuth(); */
           const user = auth.currentUser;
           authContext.setUserLog((prev) => ({ ...prev, user: user }));
           navigateTo('/thankyou');
