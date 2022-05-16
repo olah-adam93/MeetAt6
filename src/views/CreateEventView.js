@@ -23,7 +23,7 @@ const CreateEventView = () => {
     uid: user.uid,
     title: '',
     organizer: '',
-    attendant: undefined,
+    /* attendant: undefined, */
     location: '',
     
     
@@ -46,12 +46,6 @@ const CreateEventView = () => {
       setNextBtn((prev) => (prev -= 1));
     }
   };
-  /* async function createTime (){
-    const eventCreated = new Date()
-    const currentTime = eventCreated.toLocaleDateString("en-US")
-    setData((prev)=> ({...prev, currentTime}))
-    
-  } */
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -59,8 +53,13 @@ const CreateEventView = () => {
     const currentTime = eventCreated.toLocaleDateString("en-US")
     setData((prev)=> ({...prev, currentTime})) */
     /* createTime() */
-    createNewData('events', data);
+    
+    const currentDate = new Date(Date.now()).toUTCString().slice(-24, -4)
+    console.log(currentDate)
+    createNewData('events', {...data, createdDate: currentDate});
+    /* createNewData('events', data) */
     setData({});
+    console.log('done')
     navigateTo('/profile');
   };
   return (
