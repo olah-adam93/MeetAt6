@@ -1,6 +1,6 @@
-import {Link, useParams} from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 /*  import {useEffect, useState, useCallback} from "react"*/
-const EventCard = ({eventCard}) => {
+const EventCard = ({ eventCard }) => {
   /* const [eventData, setEventData] = useState();
     const navigateTo =useNavigate()*/
   /*fetch from firebase? */
