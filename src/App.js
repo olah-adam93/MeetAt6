@@ -4,11 +4,12 @@ import { useState, createContext, useContext, useEffect } from 'react';
 
 /* Components */
 import ScrollToTop from './others/ScrollToTop';
-import ChosenEvents from './components/Profile/ChosenEvents';
+
 import Settings from './components/Profile/Settings';
 import LogOut from './components/Profile/LogOut';
 
 /* Views */
+import ChosenEvents from './views/ChosenEvents';
 import AboutView from './views/AboutView';
 import EventsView from './views/EventsView';
 import ProfileView from './views/ProfileView';
@@ -39,7 +40,7 @@ import { liveValue, readData } from './services/crud';
 function App() {
   const [userLog, setUserLog] = useState({});
   const [db, setDb] = useState([]);
-  
+
   useEffect(() => {
     const liveChange = liveValue('events', (snapshot) => {
       setDb(Object.entries(snapshot.val()) || []);
@@ -47,7 +48,7 @@ function App() {
     // console.log(db)
     return () => liveChange();
   }, [setDb]);
-  
+
   return (
     <div className='App'>
       <ScrollToTop />

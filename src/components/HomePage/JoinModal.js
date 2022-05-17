@@ -2,24 +2,25 @@
 
 import './Styles/JoinModal.css';
 
-import {createUserData} from '../../services/crud';
+import { createUserData, updateData } from '../../services/crud';
 import { auth } from '../../config/firebase';
-
-const JoinModal = ({clickHandler, eventKey, eventValue}) => {
+import { readData } from '../../services/crud';
+import { useState, useEffect } from 'react';
+const JoinModal = ({ clickHandler, eventKey, eventValue }) => {
   const user = auth.currentUser;
 
-  console.log(eventKey, eventValue, user.uid);
-
+  const [attendees, setAttendees] = useState([]);
+  useEffect(() => {
+    readData('eventAttendees', eventKey).then((snapshot) => {
+      setAttendees(Object.entries(snapshot.val()));
+    });
+  }, []);
+  console.log(attendees.length, Number(eventValue?.attendant));
   const joinHandler = (event) => {
-    console.log('click');
-    createUserData(`eventAttendees/${eventKey}`, {
+    updateData('eventAttendees', eventKey, {
       [user.uid]: user.displayName,
-    })
-    .then(()=> {
-
-      console.log('success');
-    })
-  }
+    }).then(() => {});
+  };
 
   return (
     <div className='joinmodal-container'>
@@ -37,6 +38,10 @@ const JoinModal = ({clickHandler, eventKey, eventValue}) => {
             Event place: {eventValue?.location}
           </div>
           <div className='joinmodal-details-date'>Event date: </div>
+
+          <div className='joinmodal-details-date'>
+            Event attendees: {attendees.length}
+          </div>
           <br />
           <form className='joinmodal-form'>
             <label className='joinmodal-form-label' htmlFor='joinmodal-email-friend'>
@@ -60,9 +65,18 @@ const JoinModal = ({clickHandler, eventKey, eventValue}) => {
             >
               Close
             </button>
-            <button className='joinmodal-join-button' type='button' onClick={joinHandler}>
-              Join
-            </button>
+
+            {attendees.length !== Number(eventValue?.attendant) ? (
+              <button
+                className='joinmodal-join-button'
+                type='button'
+                onClick={joinHandler}
+              >
+                Join
+              </button>
+            ) : (
+              <span>This event is full!</span>
+            )}
           </div>
         </div>
       </div>
