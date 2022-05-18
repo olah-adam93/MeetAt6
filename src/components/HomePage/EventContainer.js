@@ -24,8 +24,8 @@ export default function EventContainer({
       return value?.[searchKey] === searchValue;
     });
     setEventsCard(filteredArray);
-    console.log('filtered arr: ', filteredArray);
-    console.log('eventdb: ', eventDb.db);
+    // console.log('filtered arr: ', filteredArray);
+    // console.log('eventdb: ', eventDb.db);
   }, [eventDb.db]);
 
   return (

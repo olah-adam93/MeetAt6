@@ -39,14 +39,14 @@ import { liveValue, readData } from './services/crud';
 function App() {
   const [userLog, setUserLog] = useState({});
   const [db, setDb] = useState([]);
-
+  
   useEffect(() => {
     const liveChange = liveValue('events', (snapshot) => {
       setDb(Object.entries(snapshot.val()) || []);
     });
-    console.log(db)
+    // console.log(db)
     return () => liveChange();
-  }, []);
+  }, [setDb]);
   
   return (
     <div className='App'>
@@ -64,7 +64,7 @@ function App() {
               <Route path='/signup' element={<SignUpView />} />
               <Route path='/contact' element={<ContactView />} />
               <Route path='/FAQ' element={<FAQView />} />
-              <Route path='/eventpage/:event_title' element={<EventPageView />} />
+              <Route path='/eventpage/:eventId' element={<EventPageView />} />
             </Route>
 
             <Route element={<AuthProfile />}>
