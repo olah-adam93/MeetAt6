@@ -61,7 +61,7 @@ const ChosenEvents = () => {
           {eventsCard.length === 0 ? (
             <div>No Events to display</div>
           ) : (
-            <DisplayItems filteredDbItems={eventsCard} perPage={4} />
+            <DisplayItems filteredDbItems={eventsCard} perPage={4} setToDefault={() => {}}/>
           )}
         </div>
       </div>

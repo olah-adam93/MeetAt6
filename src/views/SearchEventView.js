@@ -30,17 +30,25 @@ const SearchEventView = () => {
     return eventDb.filter((event) => {
         const value = event[1];
 
+        if(value?.category === undefined) {
+          console.log(event);
+        }
+        if(value?.type === undefined) {
+          console.log(event);
+        }
+
+        // date szűrés-t még ki kell találni!
         const filterTitleResult = value?.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1;
         const filterLocationResult = value?.locationType.toString().toLowerCase().indexOf(filterParams?.location.toLowerCase()) > -1;
         const filterPriceResult = value?.paymentType.toString().toLowerCase().indexOf(filterParams?.price.toLowerCase()) > -1;
+        const filterTypeResult = value?.type.toString().toLowerCase().indexOf(filterParams?.type.toLowerCase()) > -1;
+        const filterCategoryResult = value?.category.toString().toLowerCase().indexOf(filterParams?.category.toLowerCase()) > -1;
         
-        return filterTitleResult && filterLocationResult && filterPriceResult;   
+        return filterTitleResult && filterLocationResult && filterPriceResult && filterTypeResult && filterCategoryResult;   
     });
   }, [searchQuery, filterParams])
 
-  useEffect(() => {
-    // console.log(Object.values(filterParams).some((item) => item !== ''));
-    // console.log(Object.values(filterParams).forEach((item) => {      
+  useEffect(() => { 
       setEventsCard(searchFunction(eventDb.db));
   }, [eventDb, searchFunction]);
 

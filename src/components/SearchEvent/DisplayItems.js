@@ -96,11 +96,21 @@ const DisplayItems = ({filteredDbItems, perPage, toDefault, setToDefault}) => {
       </div>
 
       <div className='pagination-container'>
+        {filteredDbItems.length > 0 ? <>
         <button type='button' onClick={ toFirstPageHandler } disabled={currentPage > 2 ? '' : 'disabled'}><FontAwesomeIcon icon={faAnglesLeft} /></button>
         <button type='button' onClick={ previousButtonHandler } disabled={currentPage === 1 ? 'disabled' : ''}><FontAwesomeIcon icon={faAngleLeft} /></button>
         <span>{` Page ${currentPage} of ${pageNumber} `}</span>
         <button type='button' onClick={ nextButtonHandler } disabled={currentPage === pageNumber ? 'disabled' : ''}><FontAwesomeIcon icon={faAngleRight} /></button>
         <button type='button' onClick={ toLastPageHandler } disabled={currentPage < (pageNumber - 1) ? '' : 'disabled'}><FontAwesomeIcon icon={faAnglesRight} /></button>
+        </> :
+        <>
+        <button type='button' onClick={ toFirstPageHandler } disabled><FontAwesomeIcon icon={faAnglesLeft} /></button>
+        <button type='button' onClick={ previousButtonHandler } disabled><FontAwesomeIcon icon={faAngleLeft} /></button>
+        <span>{` Page ${currentPage} of ${1} `}</span>
+        <button type='button' onClick={ nextButtonHandler } disabled><FontAwesomeIcon icon={faAngleRight} /></button>
+        <button type='button' onClick={ toLastPageHandler } disabled><FontAwesomeIcon icon={faAnglesRight} /></button>
+        </>
+        }
       </div>
     </div>
   );
