@@ -42,7 +42,7 @@ const MyEventsView = () => {
           <UserNavBar />
         </div>
         <div className='my-events-content'>
-          {eventsCard.length === 0 ? <div>No Events to display</div> : <DisplayItems filteredDbItems={eventsCard} perPage={3} />}
+          {eventsCard.length === 0 ? <div>No Events to display</div> : <DisplayItems filteredDbItems={eventsCard} perPage={3} setToDefault={() => {}}/>}
         </div>
       </div>
     </>

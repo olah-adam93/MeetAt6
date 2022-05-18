@@ -4,9 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 import {useState} from 'react';
 
-const SearchBar = ({setSearchQuery}) => {
-  console.log('searchbar render');
-
+const SearchBar = ({setSearchQuery, setToDefault}) => {
   const [searchValue, setSearchValue] = useState('');
 
   const onChangeHandler = (event) => {
@@ -18,17 +16,12 @@ const SearchBar = ({setSearchQuery}) => {
     event.preventDefault();
     console.log('submitted');
 
+    if(searchValue !== '') {
+      setToDefault(true);
+    } else {
+      setToDefault(false);
+    }
     setSearchQuery(searchValue);
-
-    // if (searchValue === '') {
-    //   setDbItems(testDb);
-    // } else {
-    //   setDbItems(
-    //     dbItems.filter((item) => {
-    //       return item.title.toLowerCase().includes(searchValue.toLowerCase());
-    //     })
-    //   );
-    // }
     setSearchValue('');
   };
 

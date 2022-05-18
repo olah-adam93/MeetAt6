@@ -4,11 +4,12 @@ import { useState, createContext, useContext, useEffect } from 'react';
 
 /* Components */
 import ScrollToTop from './others/ScrollToTop';
-import ChosenEvents from './components/Profile/ChosenEvents';
+
 import Settings from './components/Profile/Settings';
 import LogOut from './components/Profile/LogOut';
 
 /* Views */
+import ChosenEvents from './views/ChosenEvents';
 import AboutView from './views/AboutView';
 import EventsView from './views/EventsView';
 import ProfileView from './views/ProfileView';
@@ -63,7 +64,7 @@ function App() {
     // console.log(db)
     return () => liveChange();
   }, [setDb]);
-  
+
   return (
     <div className='App'>
       <ScrollToTop />
@@ -76,7 +77,7 @@ function App() {
               <Route path='/home' element={<HomePageView />} />
               <Route path='/about' element={<AboutView />} />
               <Route path='/privacy' element={<PrivacyView />} />
-              <Route path='/events' element={<EventsView />} />
+              <Route path='/events' element={<SearchEventView />} />
               <Route path='/signin' element={<SignInView />} />
               <Route path='/signup' element={<SignUpView />} />
               <Route path='/contact' element={<ContactView />} />
