@@ -1,11 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import './Header.css';
-import { createContext, useContext } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../Authentication/AuthContext';
 import { auth } from '../../config/firebase';
 
 const NavBarMain = () => {
   const authContext = useContext(AuthContext);
+
   return (
     <div className='main-navbar'>
       <ul>
@@ -18,7 +19,7 @@ const NavBarMain = () => {
         <li>
           <NavLink to='/events'>Events</NavLink>
         </li>
-        {authContext.userLog?.user ? (
+        {authContext.userLogged ? (
           <>
             <li>
               <NavLink to='/profile'>Profile</NavLink>

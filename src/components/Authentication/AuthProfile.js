@@ -6,6 +6,7 @@ import {liveValue} from '../../services/crud';
 
 export function AuthProfile(props) {
   const authContext = useContext(AuthContext);
+
   useMemo(() => {
     const liveUserDetails = liveValue(
       `userDetails/${authContext.userLog.user.uid}`,
@@ -13,8 +14,11 @@ export function AuthProfile(props) {
         authContext.setUserLog((prev) => ({...prev, userDetails: snapshot.val()}));
       }
     );
+    console.log(authContext.userLog);
     return () => liveUserDetails();
   }, [authContext.userLog.user.uid]);
+
+
   if (authContext.userLog) {
     return <UserMainPageLayout />;
   }

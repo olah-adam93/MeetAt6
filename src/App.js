@@ -1,6 +1,6 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { useState, createContext, useContext, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 /* Components */
 import ScrollToTop from './others/ScrollToTop';
@@ -11,7 +11,6 @@ import LogOut from './components/Profile/LogOut';
 /* Views */
 import ChosenEvents from './views/ChosenEvents';
 import AboutView from './views/AboutView';
-import EventsView from './views/EventsView';
 import ProfileView from './views/ProfileView';
 import HomePageView from './views/HomePageView';
 import SignInView from './views/SignInView';
@@ -29,46 +28,65 @@ import ThankYouView from './views/ThankYouView';
 import MainPageLayout from './layouts/MainPageLayout';
 import UserMainPageLayout from './layouts/UserMainPageLayout';
 
+/* Database Context */
+import { EventDbContext } from './components/EventDbContext/EventDbContext';
+
 /* Authentication Context */
 import { AuthContext } from './components/Authentication/AuthContext';
-import { AuthProfile } from './components/Authentication/AuthProfile';
-import { EventDbContext } from './components/EventDbContext/EventDbContext';
 import {auth} from './config/firebase'
 import { onAuthStateChanged } from 'firebase/auth';
+
 /* CRUD */
-import { liveValue, readData } from './services/crud';
+import { liveValue } from './services/crud';
 
 function App() {
-  const [userLog, setUserLog] = useState({});
   const [db, setDb] = useState([]);
+  const [userLog, setUserLog] = useState({});
   const [userLogged, setUserLogged] = useState(false);
-  /* const userAuth = useContext(AuthContext) */
-  /* useEffect(() => {
 
+  useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-        console.log('user', user)
+        console.log('user belépve', user)
         if (user) {
-          // Felhasznalo bevan lepve
-          userAuth.setUserLog(true)
+          setUserLogged(true);
+          liveValue(
+            `userDetails/${user.uid}`,
+            (snapshot) => {
+              setUserLog((prev) => ({...prev, userDetails: snapshot.val(), user: user}));
+            }
+          );
         } else {
-          // nincs belepve
-          userAuth.setUserLogged(false)
+          setUserLogged(false);
         }
     })
+  }, [])
 
-  }, []) */
+  useEffect(() => {
+      console.log(userLog);
+  }, [userLog])
+
+  // function AuthProtected(props) {
+  //   if (userLog === {}) {
+  //     // bekell leptetni vagz bekerni a belepest
+  //     console.log('nincs bejelentkezve');
+  //     return <SignInView />
+  //   } else {
+  //     return <div>AuthProtected: { props.children }</div>
+  //     // return <UserMainPageLayout />;
+  //   }
+  // }
+
   useEffect(() => {
     const liveChange = liveValue('events', (snapshot) => {
       setDb(Object.entries(snapshot.val()) || []);
     });
-    // console.log(db)
     return () => liveChange();
   }, [setDb]);
 
   return (
     <div className='App'>
       <ScrollToTop />
-      <AuthContext.Provider value={{ userLog, setUserLog/* , userLogged, setUserLogged  */}}>
+      <AuthContext.Provider value={{ userLog, setUserLog, userLogged }}>
         <EventDbContext.Provider value={{ db, setDb }}>
           
           <Routes>
@@ -85,7 +103,7 @@ function App() {
               <Route path='/eventpage/:eventId' element={<EventPageView />} />
             </Route>
 
-            <Route element={<AuthProfile/>}>
+            <Route element={<UserMainPageLayout userLogged={userLogged}/>}>
               <Route path='/profile' element={<ProfileView />} />
               <Route path='/profile/chosenevents' element={<ChosenEvents />} />
               <Route path='/profile/addevent' element={<CreateEventView />} />

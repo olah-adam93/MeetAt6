@@ -18,6 +18,8 @@ const ProfileView = () => {
     console.log(userData.userLog.user.uid)
   }, [user.uid userData.userLog.user]) */
 
+
+
   return (
     <div className='profile'>
       <div className='profile-head'>

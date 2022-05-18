@@ -10,9 +10,9 @@ import {
 export default function ThankYouView() {
   return (
     <div className='infoBox-container'>
-      <InfoBox icon={faMagnifyingGlass} />
-      <InfoBox icon={faCirclePlus} />
-      <InfoBox icon={faAddressCard} />
+      <InfoBox icon={faMagnifyingGlass} nav={'/profile/searchevent'}/>
+      <InfoBox icon={faCirclePlus} nav={'/profile/addevent'}/>
+      <InfoBox icon={faAddressCard} nav={'/profile'}/>
     </div>
   );
 }
