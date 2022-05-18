@@ -60,7 +60,7 @@ function App() {
               <Route path='/home' element={<HomePageView />} />
               <Route path='/about' element={<AboutView />} />
               <Route path='/privacy' element={<PrivacyView />} />
-              <Route path='/events' element={<EventsView />} />
+              <Route path='/events' element={<SearchEventView />} />
               <Route path='/signin' element={<SignInView />} />
               <Route path='/signup' element={<SignUpView />} />
               <Route path='/contact' element={<ContactView />} />

@@ -14,33 +14,45 @@ import {EventDbContext} from '../components/EventDbContext/EventDbContext';
 const SearchEventView = () => {
   const eventDb = useContext(EventDbContext);
   const [eventsCard, setEventsCard] = useState([]);
+  const [toDefault, setToDefault] = useState(false);
 
   // Search parameters
-  const [searchQuery, setSearchQuery] = useState("");
-  /* const [searchParam] = useState(["capital", "name"]); */
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterParams, setFilterParams] = useState({
+    location: '', // locationType
+    price: '', // panymentType
+    date: '', // eventStarts
+    type: '', // type
+    category: '' // category
+  });
   
   const searchFunction = useCallback((eventDb) => {
     return eventDb.filter((event) => {
         const value = event[1];
-        return value?.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1;
+
+        const filterTitleResult = value?.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1;
+        const filterLocationResult = value?.locationType.toString().toLowerCase().indexOf(filterParams?.location.toLowerCase()) > -1;
+        const filterPriceResult = value?.paymentType.toString().toLowerCase().indexOf(filterParams?.price.toLowerCase()) > -1;
+        
+        return filterTitleResult && filterLocationResult && filterPriceResult;   
     });
-  }, [searchQuery])
+  }, [searchQuery, filterParams])
 
   useEffect(() => {
-    console.log('eventdb: ', eventDb.db);
-
-    setEventsCard(searchFunction(eventDb.db));
-
+    // console.log(Object.values(filterParams).some((item) => item !== ''));
+    // console.log(Object.values(filterParams).forEach((item) => {      
+      setEventsCard(searchFunction(eventDb.db));
   }, [eventDb, searchFunction]);
 
+  console.log('toDefault', toDefault);
 
   return (
     <div className='search-event-container'>
-      <SearchBar setSearchQuery={setSearchQuery}/>
+      <SearchBar setSearchQuery={setSearchQuery} setToDefault={setToDefault}/>
 
-      <FilterBar />
+      <FilterBar filterParams={filterParams} setFilterParams={setFilterParams} setToDefault={setToDefault}/>
 
-      <DisplayItems filteredDbItems={eventsCard} perPage={3} />
+      <DisplayItems filteredDbItems={eventsCard} perPage={4} toDefault={toDefault} setToDefault={setToDefault}/>
     </div>
   );
 };

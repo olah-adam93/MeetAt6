@@ -1,22 +1,32 @@
-import './Style/DisplayItems.css';
-
-import EventCard from '../HomePage/EventCard';
 import {useEffect, useState} from 'react';
 
+/* Style */
+import './Style/DisplayItems.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faAngleRight, faAngleLeft, faAnglesRight, faAnglesLeft} from '@fortawesome/free-solid-svg-icons';
 
-const DisplayItems = ({filteredDbItems, perPage}) => {
-  console.log('displayitems render');
+/* Components */
+import EventCard from '../HomePage/EventCard';
+
+const DisplayItems = ({filteredDbItems, perPage, toDefault, setToDefault}) => {
+  // console.log('DISPLAY ITEMS RENDER');
   const itemsPerPage = perPage;
   const [currentPage, setCurrentPage] = useState(1);
   const [fromIndex, setfromIndex] = useState(0);
   const [toIndex, setToIndex] = useState(itemsPerPage);
-  // const [totalItems, setTotalItems] = useState(0);
-  // const [pageNumber, setPageNumber] = useState(0);
   const totalItems = filteredDbItems.length;
   const pageNumber = Math.ceil(totalItems / itemsPerPage);
   const [itemsToRender, setItemsToRender] = useState([]);
 
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if(toDefault) {
+      setCurrentPage(1);
+      setfromIndex(0);
+      setToIndex(itemsPerPage);
+    }
+  }, [toDefault, itemsPerPage])
 
 
   const nextButtonHandler = () => {
@@ -28,7 +38,6 @@ const DisplayItems = ({filteredDbItems, perPage}) => {
     console.log("next page");
   };
 
-
   const previousButtonHandler = () => {
     setCurrentPage(currentPage - 1);
     setfromIndex(fromIndex - itemsPerPage);
@@ -38,18 +47,36 @@ const DisplayItems = ({filteredDbItems, perPage}) => {
     console.log("previous page");
   }
 
-  useEffect(() => {
-    setLoading(true);
-    
-    setTimeout(() => {
-      setItemsToRender(filteredDbItems.slice(fromIndex, toIndex));
-      setLoading(false);
-    }, 500);
-    
+  const toFirstPageHandler = () => {
+    setCurrentPage(1);
+    setfromIndex(0);
+    setToIndex(itemsPerPage);
 
-    // console.log('fromIndex', fromIndex, 'toIndex', toIndex);
-    // console.log('currentPage', currentPage);
-  }, [filteredDbItems, fromIndex, toIndex])
+    setItemsToRender(filteredDbItems.slice(fromIndex, toIndex));
+    console.log("to first page");
+  }
+
+  const toLastPageHandler = () => {
+    setCurrentPage(pageNumber);
+    setfromIndex(totalItems - itemsPerPage);
+    setToIndex(totalItems);
+
+    setItemsToRender(filteredDbItems.slice(fromIndex, toIndex));
+    console.log("to last page");
+  }
+
+  useEffect(() => {
+    // setLoading(true);
+    setItemsToRender(filteredDbItems.slice(fromIndex, toIndex));
+    
+    // setTimeout(() => {
+    //   setItemsToRender(filteredDbItems.slice(fromIndex, toIndex));
+    //   setLoading(false);
+    // }, 500);
+    
+    setToDefault(false);
+
+  }, [filteredDbItems, fromIndex, toIndex, setToDefault])
 
   return (
     <div className='display-items-container'>
@@ -69,9 +96,11 @@ const DisplayItems = ({filteredDbItems, perPage}) => {
       </div>
 
       <div className='pagination-container'>
-        <button onClick={ previousButtonHandler } disabled={currentPage === 1 ? 'disabled' : ''}>Previons</button>
+        <button type='button' onClick={ toFirstPageHandler } disabled={currentPage > 2 ? '' : 'disabled'}><FontAwesomeIcon icon={faAnglesLeft} /></button>
+        <button type='button' onClick={ previousButtonHandler } disabled={currentPage === 1 ? 'disabled' : ''}><FontAwesomeIcon icon={faAngleLeft} /></button>
         <span>{` Page ${currentPage} of ${pageNumber} `}</span>
-        <button onClick={ nextButtonHandler } disabled={currentPage === pageNumber ? 'disabled' : ''}>Next</button>
+        <button type='button' onClick={ nextButtonHandler } disabled={currentPage === pageNumber ? 'disabled' : ''}><FontAwesomeIcon icon={faAngleRight} /></button>
+        <button type='button' onClick={ toLastPageHandler } disabled={currentPage < (pageNumber - 1) ? '' : 'disabled'}><FontAwesomeIcon icon={faAnglesRight} /></button>
       </div>
     </div>
   );
