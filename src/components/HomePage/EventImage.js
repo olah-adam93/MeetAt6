@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Styles/EventImage.css'
+
 const EventImage = ({eventInfo}) => {
   console.log(eventInfo);
   return (
