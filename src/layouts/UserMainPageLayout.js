@@ -2,10 +2,10 @@ import {Outlet} from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 
-const UserMainPageLayout = ({userLogged}) => {
+const UserMainPageLayout = ({userLog}) => {
   return (
     <>
-      {userLogged && (
+      {Object.values(userLog)?.length && (
         <div className='layout-container'>
           <Header />
           <div className='layout-inner-container'>

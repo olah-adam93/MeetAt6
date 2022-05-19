@@ -19,7 +19,7 @@ const NavBarMain = () => {
         <li>
           <NavLink to='/events'>Events</NavLink>
         </li>
-        {authContext.userLogged ? (
+        {authContext.userLog ? (
           <>
             <li>
               <NavLink to='/profile'>Profile</NavLink>
