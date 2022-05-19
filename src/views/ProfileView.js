@@ -1,11 +1,21 @@
+/* Style */
+import './Style/ProfileView.css';
+
+/* Components */
+import {useContext, useEffect, useState} from 'react';
 import UserNavbar from '../components/Profile/UserNavbar';
 import EventContainer from '../components/HomePage/EventContainer';
-import './Style/ProfileView.css';
 import GaleryContainer from '../components/Profile/GaleryContainer';
-import { useContext, useEffect, useState } from 'react';
-import { getAuth } from '@firebase/auth';
-import { readData } from '../services/crud';
-import { AuthContext } from '../components/Authentication/AuthContext';
+import EventSlider from '../components/HomePage/EventSlider';
+
+/* Firebase */
+import {getAuth} from '@firebase/auth';
+
+/* CRUD */
+import {readData} from '../services/crud';
+
+/* Auth Context */
+import {AuthContext} from '../components/Authentication/AuthContext';
 
 const ProfileView = () => {
   const userData = useContext(AuthContext);
@@ -50,14 +60,14 @@ const ProfileView = () => {
           </div>
           <div className='events'>
             <div className='events-box'>
-              <EventContainer
+              <EventSlider
                 containerName={'Events you attend'}
                 searchKey={'paymentType'}
                 searchValue={'free'}
               />
             </div>
             <div className='events-box'>
-              <EventContainer
+              <EventSlider
                 containerName={'Events you may like'}
                 searchKey={`locationType`}
                 searchValue={`online`}

@@ -1,10 +1,13 @@
+/* Style */
 import './Styles/EventContainer.css';
 
 import { useEffect, useState, useContext } from 'react';
-import EventCard from './EventCard';
+
+/* Database Context */
 import { EventDbContext } from '../EventDbContext/EventDbContext';
 
-/* import { Link } from 'react-router-dom'; */
+/* Components */
+import EventCard from './EventCard';
 
 export default function EventContainer({
   containerName,
@@ -26,7 +29,7 @@ export default function EventContainer({
     setEventsCard(filteredArray);
     // console.log('filtered arr: ', filteredArray);
     // console.log('eventdb: ', eventDb.db);
-  }, [eventDb.db]);
+  }, [eventDb.db, searchKey, searchValue]);
 
   return (
     <>
