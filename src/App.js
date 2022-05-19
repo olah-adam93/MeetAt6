@@ -64,14 +64,14 @@ function App() {
       console.log(userLog);
   }, [userLog])
 
-  // function AuthProtected(props) {
-  //   if (userLog === {}) {
+  // function AuthProtected() {
+  //   if (Object.values(userLog)?.length !== 0) {
   //     // bekell leptetni vagz bekerni a belepest
   //     console.log('nincs bejelentkezve');
   //     return <SignInView />
   //   } else {
-  //     return <div>AuthProtected: { props.children }</div>
-  //     // return <UserMainPageLayout />;
+  //     // return <div>AuthProtected: { props.children }</div>
+  //     return <UserMainPageLayout userLog={userLog}/>;
   //   }
   // }
 
