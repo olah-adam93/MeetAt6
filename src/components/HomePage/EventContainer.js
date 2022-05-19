@@ -23,7 +23,19 @@ export default function EventContainer({
 
       return value?.[searchKey] === searchValue;
     });
-    setEventsCard(filteredArray);
+    const dateArray = filteredArray.map((eventObj) => {
+      if (eventObj[1].createdDate) {
+        console.log(eventObj[1]?.createdDate);
+        return eventObj[1]?.createdDate;
+      }
+    });
+    console.log(dateArray);
+    const sortedByDateArr = filteredArray.filter((event) => {
+      return dateArray.includes(event[1]?.createdDate);
+    });
+    console.log(sortedByDateArr);
+    setEventsCard(sortedByDateArr);
+
     // console.log('filtered arr: ', filteredArray);
     // console.log('eventdb: ', eventDb.db);
   }, [eventDb.db]);
