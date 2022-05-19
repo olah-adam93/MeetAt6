@@ -1,29 +1,48 @@
+// import { useEffect, useState } from 'react';
+
 import './Style/FilterBar.css';
 
-const FilterBar = () => {
+const FilterBar = ({filterParams, setFilterParams, setToDefault}) => {
+  
+  const resetHandler = () => {
+    setToDefault(true);
+    setFilterParams({
+      location: '',
+      price: '',
+      date: '',
+      type: '',
+      category: ''
+    })
+  }
+
+  const selectHandler = (event) => {
+    setToDefault(true);
+    setFilterParams((prev) => ({...prev, [event.target.name]: event.target.value}));
+  }
+
   return (
     <div className='fiter-bar-container'>
       <form className='filter-bar-form'>
-        <input type='text' name='location' placeholder='Enter location' />
-        <select name='location'>
-          <option value='null'>Any Location</option>
-          <option value='today'>Online</option>
-          <option value='tomorrow'>In person</option>
+        {/* <input type='text' name='location' placeholder='Enter location' /> */}
+        <select name='location' onChange={selectHandler} value={filterParams?.location}>
+          <option value=''>Any Location</option>
+          <option value='online'>Online</option>
+          <option value='venue'>In person</option>
         </select>
-        <select name='price'>
-          <option value='null'>Price</option>
+        <select name='price' onChange={selectHandler} value={filterParams?.price}>
+          <option value=''>Price</option>
           <option value='free'>Free</option>
-          <option value='paid'>Paid</option>
+          <option value='ticket'>Paid</option>
         </select>
-        <select name='date'>
-          <option value='null'>Any Date</option>
+        <select name='date' onChange={selectHandler} value={filterParams?.date}>
+          <option value=''>Any Date</option>
           <option value='today'>Today</option>
           <option value='tomorrow'>Tomorrow</option>
-          <option value='tomorrow'>This week</option>
-          <option value='tomorrow'>Custom</option>
+          <option value='thisweek'>This week</option>
+          <option value='custom'>Custom</option>
         </select>
-        <select name='type'>
-        <option value='null'>Any Type</option>
+        <select name='type' onChange={selectHandler} value={filterParams?.type}>
+        <option value=''>Any Type</option>
         <option value='trip'>Trip</option>
         <option value='workshop'>Workshop</option>
         <option value='performance'>Concer or Performance</option>
@@ -37,8 +56,8 @@ const FilterBar = () => {
         <option value='tournament'>Tournament</option>
         <option value='other'>Other</option>
       </select>
-      <select name='category'>
-        <option value='null'>Any Category</option>
+      <select name='category' onChange={selectHandler} value={filterParams?.category}>
+        <option value=''>Any Category</option>
         <option value='business'>Business and Professional</option>
         <option value='charity'>Charity</option>
         <option value='community'>Community or Culture</option>
@@ -55,7 +74,7 @@ const FilterBar = () => {
         <option value='travel'>Travel</option>
         <option value='other'>Other</option>
       </select>
-      <button type='button'>Reset Filter</button>
+      <button type='button' onClick={resetHandler}>Reset Filter</button>
       </form>
     </div>
   );
