@@ -1,4 +1,4 @@
-import {Link, useParams} from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 /*  import {useEffect, useState, useCallback} from "react"*/
 const EventCard = ({eventCard, eventId}) => {
   /* const [eventData, setEventData] = useState();
