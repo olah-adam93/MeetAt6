@@ -61,6 +61,7 @@ const handleFormSubmit = (e) => {
          className='input' 
          type='email' 
          name='e_mail' 
+         autoComplete='username'
          value={data.e_mail}
          onChange={handleChange}/>
          {error.e_mail && <p className='errors'>{error.e_mail}</p>}
@@ -70,6 +71,7 @@ const handleFormSubmit = (e) => {
         <input className='input'
          type='password' 
          name='passw' 
+         autoComplete="current-password"
          value={data.passw} 
          onChange={handleChange}/>
         {error.passw && <p className='errors'>{error.passw}</p>}

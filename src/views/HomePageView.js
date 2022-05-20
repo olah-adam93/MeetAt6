@@ -1,30 +1,29 @@
-import React from 'react';
-import EventContainer from '../components/HomePage/EventContainer';
-import Slider from '../components/HomePage/Slider';
-import { useContext } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { EventDbContext } from '../components/EventDbContext/EventDbContext';
+/* Components */
+import PictureSlider from '../components/HomePage/PictureSlider';
+import EventSlider from '../components/HomePage/EventSlider';
 
-export default function HomePageView() {
-  const eventDb = useContext(EventDbContext);
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+// import EventContainer from '../components/HomePage/EventContainer';
+
+const HomePageView = () => {
   return (
     <div>
-      <Slider />
-      <EventContainer
+      <PictureSlider />
+
+      <EventSlider 
         containerName={'Legfrissebb események'}
         searchKey={'paymentType'}
         searchValue={'free'}
       />
-      <FontAwesomeIcon icon={faAngleLeft} />
-      <FontAwesomeIcon icon={faAngleRight} />
-      <EventContainer
+
+      <EventSlider 
         containerName={'Kiemelt események'}
         searchKey={'paymentType'}
         searchValue={'ticket'}
       />
-      <FontAwesomeIcon icon={faAngleLeft} />
-      <FontAwesomeIcon icon={faAngleRight} />
     </div>
   );
 }
+
+export default HomePageView;

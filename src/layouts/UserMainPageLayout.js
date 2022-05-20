@@ -1,19 +1,20 @@
 import {Outlet} from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import SigninView from '../views/SignInView';
 
-const UserMainPageLayout = ({userLogged}) => {
+const UserMainPageLayout = ({userLog}) => {
   return (
     <>
-      {userLogged && (
+      
         <div className='layout-container'>
           <Header />
           <div className='layout-inner-container'>
-            <Outlet />
+            {Object.values(userLog)?.length ? <Outlet /> : <SigninView />}
           </div>
           <Footer />
         </div>
-      )}
+      
     </>
   );
 };

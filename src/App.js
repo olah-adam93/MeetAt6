@@ -48,15 +48,14 @@ function App() {
     onAuthStateChanged(auth, (user) => {
         console.log('user belépve', user)
         if (user) {
-          setUserLogged(true);
           liveValue(
             `userDetails/${user.uid}`,
             (snapshot) => {
               setUserLog((prev) => ({...prev, userDetails: snapshot.val(), user: user}));
             }
-          );
+            );
         } else {
-          setUserLogged(false);
+          setUserLog({});
         }
     })
   }, [])
@@ -65,14 +64,14 @@ function App() {
       console.log(userLog);
   }, [userLog])
 
-  // function AuthProtected(props) {
-  //   if (userLog === {}) {
+  // function AuthProtected() {
+  //   if (Object.values(userLog)?.length !== 0) {
   //     // bekell leptetni vagz bekerni a belepest
   //     console.log('nincs bejelentkezve');
   //     return <SignInView />
   //   } else {
-  //     return <div>AuthProtected: { props.children }</div>
-  //     // return <UserMainPageLayout />;
+  //     // return <div>AuthProtected: { props.children }</div>
+  //     return <UserMainPageLayout userLog={userLog}/>;
   //   }
   // }
 
@@ -86,7 +85,7 @@ function App() {
   return (
     <div className='App'>
       <ScrollToTop />
-      <AuthContext.Provider value={{ userLog, setUserLog, userLogged }}>
+      <AuthContext.Provider value={{ userLog, setUserLog}}>
         <EventDbContext.Provider value={{ db, setDb }}>
           
           <Routes>
@@ -103,7 +102,7 @@ function App() {
               <Route path='/eventpage/:eventId' element={<EventPageView />} />
             </Route>
 
-            <Route element={<UserMainPageLayout userLogged={userLogged}/>}>
+            <Route element={<UserMainPageLayout userLog={userLog}/>}>
               <Route path='/profile' element={<ProfileView />} />
               <Route path='/profile/chosenevents' element={<ChosenEvents />} />
               <Route path='/profile/addevent' element={<CreateEventView />} />

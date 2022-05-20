@@ -37,9 +37,9 @@ const JoinModal = ({ clickHandler, eventKey, eventValue }) => {
           <div className='joinmodal-details-place'>
             Event place: {eventValue?.location}
           </div>
-          <div className='joinmodal-details-date'>Event date: </div>
+          <div className='joinmodal-details-date'>Event date: {eventValue?.eventStarts}</div>
 
-          <div className='joinmodal-details-date'>
+          <div className='joinmodal-details-attendees'>
             Event attendees: {attendees.length}
           </div>
           <br />

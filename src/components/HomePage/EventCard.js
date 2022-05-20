@@ -1,5 +1,7 @@
-import {Link, useParams} from 'react-router-dom';
-/*  import {useEffect, useState, useCallback} from "react"*/
+import {Link} from 'react-router-dom';
+
+import './Styles/EventCard.css';
+
 const EventCard = ({eventCard, eventId}) => {
   /* const [eventData, setEventData] = useState();
     const navigateTo =useNavigate()*/
