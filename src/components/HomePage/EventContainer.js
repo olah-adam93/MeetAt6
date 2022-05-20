@@ -27,11 +27,17 @@ export default function EventContainer({
     });
     const dateArray = filteredArray.filter((eventObj) => {
       if (eventObj[1].createdDate) {
-        return eventObj;
+        return eventObj[1]?.createdDate;
+      } else {
+        return null;
       }
     });
-    setEventsCard(dateArray);
-  }, [eventDb.db]);
+    const sortedByDateArr = filteredArray.filter((eventObj) => {
+      return dateArray.includes(eventObj[1]?.createdDate);
+    });
+    console.log('sortedByDateArr');
+    setEventsCard(sortedByDateArr);
+  }, [eventDb.db, searchKey, searchValue]);
 
   return (
     <>
@@ -47,6 +53,8 @@ export default function EventContainer({
                 key={`card_${event[0]}`}
               />
             );
+          } else {
+            return null;
           }
         })}
       </div>
