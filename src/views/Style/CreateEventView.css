@@ -77,7 +77,12 @@ select {
   background-color: #ffebee;
   transition: all 0.5s;
 }
-.create-new-event-container .new-event-form .new-event-payment-container button {
+.create-new-event-container
+  .new-event-form
+  .new-event-payment-container
+  .payment-type-btn-box
+  label {
+  display: inline;
   margin: 2rem 1rem;
 }
 .create-new-event-container .new-event-form .new-event-details textarea {
@@ -86,6 +91,15 @@ select {
   margin: 1rem 2rem 1rem 2rem;
   padding: 2px;
 }
+.create-new-event-container
+  .new-event-form
+  .basic-event-info
+  .location-container
+  .location-type
+  label {
+  display: inline;
+}
+
 /*hover, focus*/
 .create-new-event-container .new-event-form button:hover {
   background-color: #ccb9bc;
@@ -111,7 +125,7 @@ select {
   border: 1px solid black;
   margin: 1rem 2rem 1rem 2rem;
 }
-.add-image-event-container img{
+.add-image-event-container img {
   width: 30rem;
   height: auto;
 }
