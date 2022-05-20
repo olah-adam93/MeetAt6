@@ -25,7 +25,7 @@ const GoogleMapLoader = ({data, setData, map, setMap}) => {
   }, [map, center]);
   return (
     <>
-      {/* <SearchMap setCenter={setCenter} data={data} setData={setData}/> */}
+      {/*még kérdéses, hogy fizetős-e <SearchMap setCenter={setCenter} data={data} setData={setData}/>  még kérdéses, hogy fizetős-e*/}
       <div ref={ref} style={{height: '50vh', width: '50vw', margin: 'auto'}}></div>
     </>
   );
