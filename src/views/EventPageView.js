@@ -1,6 +1,8 @@
+import { Wrapper } from '@googlemaps/react-wrapper';
 import EventDetails from '../components/HomePage/EventDetails';
 import EventImage from '../components/HomePage/EventImage';
 import EventInfo from '../components/HomePage/EventInfo';
+import Map from '../others/GoogleMaps/components/Map';
 import './Style/EventPageView.css';
 
 import { useParams } from 'react-router-dom';
@@ -32,6 +34,9 @@ const EventPageView = () => {
           <EventImage eventInfo={eventInfo[1]} />
           <EventInfo eventInfo={eventInfo} />
           <EventDetails eventInfo={eventInfo[1]} />
+          <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
+            <Map eventInfo={eventInfo[1]} />
+          </Wrapper>
         </>
       )}
     </div>

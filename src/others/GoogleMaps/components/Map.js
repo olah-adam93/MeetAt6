@@ -1,19 +1,63 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-const Map = ({ map, setMap }) => {
+const Map = ({ eventInfo }) => {
+  const [map, setMap] = useState();
+  const [marker, setMarker] = useState();
+  //const [infoWindow, setInfoWindow] = useState();
   const ref = useRef(null);
-  //const [map, setMap] = useState();
 
   useEffect(() => {
     if (ref.current && !map) {
       setMap(new window.google.maps.Map(ref.current, {}));
     }
+
     if (map) {
-      map.setOptions({ zoom: 6, center: { lat: 46.25, lng: 20.1667 } });
+      map.setOptions({
+        zoom: 12,
+        center: { lat: eventInfo?.geoLat, lng: eventInfo?.geoLng },
+      });
     }
   }, [ref, map]);
 
-  return <div ref={ref} style={{ height: '80vh', width: '50vw', margin: 'auto' }} />;
+  useEffect(() => {
+    if (!marker && map) {
+      setMarker(
+        new window.google.maps.Marker({
+          position: { lat: eventInfo?.geoLat, lng: eventInfo?.geoLng },
+          map,
+          //onclick: clickHandler,
+        })
+      );
+    }
+    return () => {
+      if (marker) {
+        marker.setMap(null);
+      }
+    };
+  }, [marker, map]);
+
+  /*
+  useEffect(() => {
+    if (!infoWindow && map) {
+      setInfoWindow(
+        new window.google.maps.InfoWindow({
+          content: 'Content of the popup window...',
+        })
+      );
+    }
+  }, [infoWindow, map]);
+
+  const clickHandler = () => {
+    setInfoWindow((e) => {
+      e.target.open({
+        anchor: marker,
+        map,
+        shouldFocus: false,
+      });
+    });
+  }; */
+
+  return <div className='event-map-container' ref={ref}></div>;
 };
 
 export default Map;

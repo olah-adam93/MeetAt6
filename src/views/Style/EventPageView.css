@@ -6,11 +6,10 @@
     '. . . . .'
     '. image . info .'
     '. . . . .'
-    '. details . . .'
-    '. details . . .'
-    '. details . . .'
+    '. details . map .'
+    '. details . map .'
+    '. details . map .'
     '. . . . .';
-    
 }
 
 .event-image-container {
@@ -20,7 +19,6 @@
   align-items: center;
   justify-content: center;
   background-color: grey;
-  
 }
 
 .event-details {
@@ -44,10 +42,22 @@
   width: 38rem;
 }
 
+.event-map-container {
+  grid-area: map;
+  border: 0.1rem solid lightgrey;
+  border-radius: 0.5rem;
+  box-shadow: 0.5rem 1rem lightgray;
+  padding: 1rem;
+  margin: auto;
+  font-size: 16px;
+  height: 25rem;
+  width: 30rem;
+}
+
 .eventinfo-details {
   font-size: 18px;
   padding-bottom: 2rem;
-  padding-top: 0.5rem
+  padding-top: 0.5rem;
 }
 
 .eventinfo-join-button {
@@ -56,5 +66,3 @@
   left: 15rem;
   top: 15rem;
 }
-
-
