@@ -2,10 +2,8 @@ import {data} from 'dom7';
 import {useState} from 'react';
 
 const NewEventPayment = ({setData, data}) => {
-  
   const changeHandler = (e) => {
     setData((prev) => ({...prev, [e.target.name]: e.target.value}));
-    
   };
 
   return (
@@ -21,7 +19,7 @@ const NewEventPayment = ({setData, data}) => {
           value='free'
           id='free'
           onChange={changeHandler}
-          defaultChecked = { data?.paymentType === 'free'}
+          defaultChecked={data?.paymentType === 'free'}
         />
         <label htmlFor='ticket'>Ticket</label>
         <input
@@ -30,11 +28,10 @@ const NewEventPayment = ({setData, data}) => {
           value='ticket'
           onChange={changeHandler}
           id='ticket'
-          defaultChecked = {data?.paymentType ==='ticket'}
+          defaultChecked={data?.paymentType === 'ticket'}
         />
-        
       </div>
-      {data?.paymentType ==='ticket' ? (
+      {data?.paymentType === 'ticket' ? (
         <div className='ticket-details'>
           <h3>Ticket</h3>
           <p>Please fill out the ticket information</p>
@@ -54,6 +51,7 @@ const NewEventPayment = ({setData, data}) => {
             onChange={changeHandler}
             value={data?.ticketCurrency}
           >
+            <option value=''>Currency</option>
             <option value='huf'>HUF</option>
             <option value='eur'>EUR</option>
             <option value='usd'>USD</option>
