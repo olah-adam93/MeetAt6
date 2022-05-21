@@ -53,7 +53,7 @@ const LocationOfEvent = ({setLocationType, locationType, setData, data}) => {
             <label htmlFor='location'>
               {/* <input type='text' value={ data?.location} name='location' id="location" onChange={changeHandler}/> */}
               <br />
-              <MapWrapped data={data} setData={setData} map={map} setMap={setMap} />
+              {/* <MapWrapped data={data} setData={setData} map={map} setMap={setMap} /> */}
             </label>
           </div>
         </div>
