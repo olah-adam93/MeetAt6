@@ -23,6 +23,7 @@ import MyEventsView from './views/MyEventsView';
 import SearchEventView from './views/SearchEventView';
 import EventPageView from './views/EventPageView';
 import ThankYouView from './views/ThankYouView';
+import JoinSuccess from './components/HomePage/JoinSuccess'
 
 /* Layouts */
 import MainPageLayout from './layouts/MainPageLayout';
@@ -111,6 +112,7 @@ function App() {
               <Route path='/profile/settings' element={<Settings />} />
               <Route path='/thankyou' element={<ThankYouView />} />
               <Route path='/signout' element={<LogOut />} />
+              <Route path='/join-success' element={<JoinSuccess />} />
             </Route>
           </Routes>
           
