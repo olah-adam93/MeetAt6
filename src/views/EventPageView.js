@@ -34,9 +34,9 @@ const EventPageView = () => {
           <EventImage eventInfo={eventInfo[1]} />
           <EventInfo eventInfo={eventInfo} />
           <EventDetails eventInfo={eventInfo[1]} />
-          <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
+          {/*<Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
             <Map eventInfo={eventInfo[1]} />
-          </Wrapper>
+      </Wrapper>*/}
         </>
       )}
     </div>
