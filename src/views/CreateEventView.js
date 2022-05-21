@@ -25,7 +25,7 @@ const CreateEventView = () => {
     organizer: '',
     /* attendant: undefined, */
     location: '',
-    
+    organizer: user.displayName,
     
 
   });
