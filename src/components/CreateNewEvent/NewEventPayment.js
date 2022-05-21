@@ -44,16 +44,18 @@ const NewEventPayment = ({setData, data}) => {
             onChange={changeHandler}
             value={data?.ticketPrice}
           /> */}
-          <select id='ticket-price'
+          <select
+            id='ticket-price'
             name='ticketPrice'
             onChange={changeHandler}
             value={data?.ticketPrice}
           >
-              <option value ='1000'>1000 Ft</option>
-              <option value ='2000'>2000 Ft</option>
-              <option value ='5000'>5000 Ft</option>
-              <option value ='10000'>10000 Ft</option>
-              <option value ='20000'>20000 Ft</option>
+            <option value=''>Price</option>
+            <option value='1000'>1000 Ft</option>
+            <option value='2000'>2000 Ft</option>
+            <option value='5000'>5000 Ft</option>
+            <option value='10000'>10000 Ft</option>
+            <option value='20000'>20000 Ft</option>
           </select>
           <label htmlFor='ticket-currency'>Ticket Currency</label>
           <select
