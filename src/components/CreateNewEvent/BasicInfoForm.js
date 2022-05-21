@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {readData} from '../../services/crud';
+import { AuthContext } from '../Authentication/AuthContext';
 
 const BasicInfoForm = ({ setData, data }) => {
+  const userData = useContext(AuthContext)
   const [checked, setChecked] = useState(false);
   const [category, setCategory] =useState()
   const [type, setType] =useState([])
@@ -35,7 +37,8 @@ const BasicInfoForm = ({ setData, data }) => {
         id='organizer-of-event'
         name='organizer'
         onChange={changeHandler}
-        value={data?.organizer}
+        value={userData.userLog.user.displayName}
+        
       />
       <label htmlFor='event-category'>Event category</label>
       <select name='type' onChange={changeHandler} value={data?.type}>
