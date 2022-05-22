@@ -36,7 +36,7 @@ const EventPageView = () => {
           <EventDetails eventInfo={eventInfo[1]} />
           {/*<Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
             <Map eventInfo={eventInfo[1]} />
-      </Wrapper>*/}
+          </Wrapper>*/}
         </>
       )}
     </div>

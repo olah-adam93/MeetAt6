@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 const Map = ({ eventInfo }) => {
   const [map, setMap] = useState();
   const [marker, setMarker] = useState();
-  //const [infoWindow, setInfoWindow] = useState();
+  const [infoWindow, setInfoWindow] = useState();
   const ref = useRef(null);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const Map = ({ eventInfo }) => {
 
     if (map) {
       map.setOptions({
-        zoom: 12,
+        zoom: 10,
         center: { lat: eventInfo?.geoLat, lng: eventInfo?.geoLng },
       });
     }
@@ -25,7 +25,12 @@ const Map = ({ eventInfo }) => {
         new window.google.maps.Marker({
           position: { lat: eventInfo?.geoLat, lng: eventInfo?.geoLng },
           map,
-          //onclick: clickHandler,
+          icon: {
+            url: 'https://img.icons8.com/doodle/48/000000/google-maps-new.png',
+            size: new window.google.maps.Size(32, 32),
+            scaledSize: new window.google.maps.Size(32, 32),
+            anchor: new window.google.maps.Point(0, 32),
+          },
         })
       );
     }
@@ -36,28 +41,28 @@ const Map = ({ eventInfo }) => {
     };
   }, [marker, map]);
 
-  /*
   useEffect(() => {
     if (!infoWindow && map) {
       setInfoWindow(
         new window.google.maps.InfoWindow({
-          content: 'Content of the popup window...',
+          content: `<div className='event-map-popup-content'>
+          ${eventInfo?.title}</br>
+          ${eventInfo?.eventStarts}: ${eventInfo?.startTime} - ${eventInfo?.eventEnds}: ${eventInfo?.endTime}
+          </div>`,
         })
       );
     }
   }, [infoWindow, map]);
 
   const clickHandler = () => {
-    setInfoWindow((e) => {
-      e.target.open({
-        anchor: marker,
-        map,
-        shouldFocus: false,
-      });
+    infoWindow.open({
+      anchor: marker,
+      map,
+      shouldFocus: false,
     });
-  }; */
+  };
 
-  return <div className='event-map-container' ref={ref}></div>;
+  return <div className='event-map-container' ref={ref} onClick={clickHandler}></div>;
 };
 
 export default Map;
