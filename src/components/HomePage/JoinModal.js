@@ -2,25 +2,37 @@
 
 import './Styles/JoinModal.css';
 
-import { createUserData, updateData } from '../../services/crud';
-import { auth } from '../../config/firebase';
-import { readData } from '../../services/crud';
-import { useState, useEffect } from 'react';
-const JoinModal = ({ clickHandler, eventKey, eventValue }) => {
-  const user = auth.currentUser;
+import {createUserData, updateData} from '../../services/crud';
+import {auth} from '../../config/firebase';
+import {readData} from '../../services/crud';
+import {useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 
+import StripePayment from './StripePayment';
+
+const JoinModal = ({clickHandler, setIsOpen, eventKey, eventValue}) => {
+  const user = auth.currentUser;
+  const navigateTo = useNavigate();
   const [attendees, setAttendees] = useState([]);
+
   useEffect(() => {
     readData('eventAttendees', eventKey).then((snapshot) => {
-      setAttendees(Object.entries(snapshot.val()));
+      setAttendees(Object.keys(snapshot.val()));
     });
-  }, []);
-  console.log(attendees.length, Number(eventValue?.attendant));
+  }, [eventKey]);
+
+  console.log(attendees, Number(eventValue?.attendant));
+
   const joinHandler = (event) => {
     updateData('eventAttendees', eventKey, {
       [user.uid]: user.displayName,
-    }).then(() => {});
+    }).then(() => { setIsOpen(false) });
   };
+
+  
+  // }).then(() => {
+  //   navigate("../join-success", { replace: true });
+  // });
 
   return (
     <div className='joinmodal-container'>
@@ -37,7 +49,9 @@ const JoinModal = ({ clickHandler, eventKey, eventValue }) => {
           <div className='joinmodal-details-place'>
             Event place: {eventValue?.location}
           </div>
-          <div className='joinmodal-details-date'>Event date: {eventValue?.eventStarts}</div>
+          <div className='joinmodal-details-date'>
+            Event date: {eventValue?.eventStarts}
+          </div>
 
           <div className='joinmodal-details-attendees'>
             Event attendees: {attendees.length}
@@ -65,17 +79,26 @@ const JoinModal = ({ clickHandler, eventKey, eventValue }) => {
             >
               Close
             </button>
-
-            {attendees.length !== Number(eventValue?.attendant) ? (
-              <button
-                className='joinmodal-join-button'
-                type='button'
-                onClick={joinHandler}
-              >
-                Join
-              </button>
+            {user ? (
+              attendees.includes(user.uid) ? (
+                <span>Already joined!</span>
+              ) : attendees.length !== Number(eventValue?.attendant) ? (
+                eventValue?.paymentType === 'ticket' ? (
+                  <StripePayment eventValue={eventValue} />
+                ) : (
+                  <button
+                    className='joinmodal-join-button'
+                    type='button'
+                    onClick={joinHandler}
+                  >
+                    Join
+                  </button>
+                )
+              ) : (
+                <span>This event is full!</span>
+              )
             ) : (
-              <span>This event is full!</span>
+              <button onClick={() => navigateTo('/signin')}>Sign in to subscribe</button>
             )}
           </div>
         </div>

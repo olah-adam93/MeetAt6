@@ -21,7 +21,7 @@ const EventInfo = ({eventInfo}) => {
 
       <button onClick={clickHandler} className='eventinfo-join-button'>Join</button>
 
-      {isOpen && <JoinModal clickHandler={clickHandler} eventKey={eventKey} eventValue={eventValue}/>}
+      {isOpen && <JoinModal clickHandler={clickHandler} setIsOpen={setIsOpen} eventKey={eventKey} eventValue={eventValue}/>}
     </div>
         );
 };
