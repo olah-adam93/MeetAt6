@@ -219,8 +219,8 @@ const Settings = ({ setData, data }) => {
               name='telephone'
               className='input-telephone'
               onChange={changeHandler}
-              placeholder={ userDetailsObj?.telephone || '123-45-678'}
-              pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}'
+              placeholder={ userDetailsObj?.telephone || '+00-00-000-0000'}
+              pattern='[0-9]{2}-[0-9]{2}-[0-9]{3}-[0-9]{4}'
             />
           </label>
         </div>

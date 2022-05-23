@@ -3,8 +3,9 @@ import './Style/AboutView.css';
 
 const AboutView = () => {
   return <div className='about-container'>
-    <div className="about-image-left">
-       <img className="image-left" src="https://i1.wp.com/www.burning-glass.com/wp-content/uploads/coding_400x267-1.jpg?fit=400%2C267&ssl=1"></img>
+    <div className="about-image-left-container">
+       <img className="about-image-left-one" src="https://i1.wp.com/www.burning-glass.com/wp-content/uploads/coding_400x267-1.jpg?fit=400%2C267&ssl=1"></img>
+       <img className="about-image-left-two" src="https://www.openaccessgovernment.org/wp-content/uploads/2021/09/dreamstime_xl_132748845-scaled.jpg"></img>
     </div>
       
     
@@ -17,8 +18,9 @@ const AboutView = () => {
     But be positive, we will prevail. </div>
     </div>;
 
-    <div className="about-image-right">
-        <img className="image-right" src="https://cdn.mos.cms.futurecdn.net/sdSHp2akMYc4EoZAoRE77k-1200-80.jpg"></img>
+    <div className="about-image-right-container">
+        <img className="about-image-right-one" src="https://cdn.mos.cms.futurecdn.net/sdSHp2akMYc4EoZAoRE77k-1200-80.jpg"></img>
+        <img className="about-image-right-two" src="https://www.bloemfonteincourant.co.za/wp-content/uploads/2018/07/digital-coding-785.jpg"></img>
     </div>
     </div>
 
