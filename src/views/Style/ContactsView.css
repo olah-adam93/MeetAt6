@@ -1,0 +1,26 @@
+.contact-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.contact-details {
+    flex-direction: column
+}
+
+.contact-title {
+    text-align: center;
+    font-size: 4rem;
+    padding-bottom: 3rem
+}
+
+.contact-admin-paragraph {
+    text-align: center;
+    font-size: 1.5rem;
+    background-color: grey;
+    border-radius: 0.5rem;
+    padding-top: 1rem;
+    margin: 4rem;
+    width: 20rem;
+    height: 7rem;
+}
