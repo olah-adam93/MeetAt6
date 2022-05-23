@@ -2,15 +2,15 @@
 
 import './Styles/JoinModal.css';
 
-import {createUserData, updateData} from '../../services/crud';
-import {auth} from '../../config/firebase';
-import {readData} from '../../services/crud';
-import {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
+import { createUserData, updateData } from '../../services/crud';
+import { auth } from '../../config/firebase';
+import { readData } from '../../services/crud';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import StripePayment from './StripePayment';
 
-const JoinModal = ({clickHandler, setIsOpen, eventKey, eventValue}) => {
+const JoinModal = ({ clickHandler, setIsOpen, eventKey, eventValue }) => {
   const user = auth.currentUser;
   const navigateTo = useNavigate();
   const [attendees, setAttendees] = useState([]);
@@ -26,10 +26,11 @@ const JoinModal = ({clickHandler, setIsOpen, eventKey, eventValue}) => {
   const joinHandler = (event) => {
     updateData('eventAttendees', eventKey, {
       [user.uid]: user.displayName,
-    }).then(() => { setIsOpen(false) });
+    }).then(() => {
+      setIsOpen(false);
+    });
   };
 
-  
   // }).then(() => {
   //   navigate("../join-success", { replace: true });
   // });
@@ -84,7 +85,7 @@ const JoinModal = ({clickHandler, setIsOpen, eventKey, eventValue}) => {
                 <span>Already joined!</span>
               ) : attendees.length !== Number(eventValue?.attendant) ? (
                 eventValue?.paymentType === 'ticket' ? (
-                  <StripePayment eventValue={eventValue} />
+                  <StripePayment eventKey={eventKey} eventValue={eventValue} />
                 ) : (
                   <button
                     className='joinmodal-join-button'

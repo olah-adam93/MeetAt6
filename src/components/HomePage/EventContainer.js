@@ -32,11 +32,13 @@ export default function EventContainer({
         return null;
       }
     });
+    console.log(dateArray);
     const sortedByDateArr = filteredArray.filter((eventObj) => {
       return dateArray.includes(eventObj[1]?.createdDate);
     });
-    console.log('sortedByDateArr');
+
     setEventsCard(sortedByDateArr);
+    console.log('valami');
   }, [eventDb.db, searchKey, searchValue]);
 
   return (
