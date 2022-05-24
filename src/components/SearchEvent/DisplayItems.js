@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 /* Style */
 import './Style/DisplayItems.css';
@@ -12,8 +12,10 @@ import {
 
 /* Components */
 import EventCard from '../HomePage/EventCard';
-
+import { deleteData } from '../../services/crud';
+import { AuthContext } from '../Authentication/AuthContext';
 const DisplayItems = ({
+  isUnsubscribeButton,
   isDeleteButton,
   filteredDbItems,
   perPage,
@@ -28,9 +30,12 @@ const DisplayItems = ({
   const totalItems = filteredDbItems.length;
   const pageNumber = Math.ceil(totalItems / itemsPerPage);
   const [itemsToRender, setItemsToRender] = useState([]);
+  const [unsubscribeModalOpen, setUnsubscribedModalOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const [deletedEvent, setDeletedEvent] = useState({});
+  const [unsubscribedEvent, setUnsubscribedEvent] = useState({});
+  const authCont = useContext(AuthContext);
   useEffect(() => {
     if (toDefault) {
       setCurrentPage(1);
@@ -38,14 +43,31 @@ const DisplayItems = ({
       setToIndex(itemsPerPage);
     }
   }, [toDefault, itemsPerPage]);
-  const deleteModalHandler = (e) => {
-    setModalOpen(!modalOpen);
+  const deleteModalHandler = (eventObj) => {
+    return (e) => {
+      setModalOpen(!modalOpen);
+      setDeletedEvent(eventObj[0]);
+    };
+  };
+  const unsubscribeModalHandler = (eventObj) => {
+    return (e) => {
+      setUnsubscribedModalOpen(!modalOpen);
+      setUnsubscribedEvent(eventObj[0]);
+    };
   };
   const cancelHandler = () => {
     setModalOpen(false);
+    setUnsubscribedModalOpen(false);
+  };
+  const unsubscribeHandler = (event) => {
+    deleteData(`eventAttendees/${unsubscribedEvent}`, authCont.userLog.user.uid);
+    setUnsubscribedModalOpen(false);
   };
   const deleteHandler = (event) => {
-    console.log(event.target.parentElement);
+    deleteData('events', deletedEvent).then(() => {
+      setModalOpen(false);
+      deleteData('eventAttendees', deletedEvent);
+    });
   };
 
   const nextButtonHandler = () => {
@@ -112,6 +134,19 @@ const DisplayItems = ({
             </button>
           </div>
         )}
+        {unsubscribeModalOpen && (
+          <div>
+            <h2>Are you sure?</h2>
+            <button onClick={cancelHandler}>Cancel</button>
+            <button
+              onClick={(eventObj) => {
+                unsubscribeHandler(eventObj);
+              }}
+            >
+              Unsubscribe
+            </button>
+          </div>
+        )}
         {!loading ? (
           itemsToRender.map((eventObj, index) => {
             return (
@@ -121,9 +156,16 @@ const DisplayItems = ({
                   eventId={eventObj[0]}
                   key={`card_${eventObj[0]}`}
                 />
+                {isUnsubscribeButton && (
+                  <>
+                    <button type='button' onClick={unsubscribeModalHandler(eventObj)}>
+                      Unsubscribe
+                    </button>
+                  </>
+                )}
                 {isDeleteButton && (
                   <>
-                    <button type='button' onClick={deleteModalHandler}>
+                    <button type='button' onClick={deleteModalHandler(eventObj)}>
                       Delete
                     </button>
                   </>

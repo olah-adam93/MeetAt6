@@ -3,30 +3,64 @@ import {Wrapper, Status} from '@googlemaps/react-wrapper';
 import SearchMap from './SearchMap';
 
 const GoogleMapLoader = ({data, setData, map, setMap}) => {
-  const ref = useRef(null);
+  const [marker, setMarker] = useState();
+  const ref = useRef(null)
   /*useRef is needed to maintain a mutable object
    * that will persist for the lifetime of the component.*/
   const [center, setCenter] = useState({lat: 47.4979, lng: 19.0402});
-
+  const [lat, setLat] = useState();
+  const [lng, setLng] = useState();
   useEffect(() => {
     if (ref.current && !map) {
       setMap(new window.google.maps.Map(ref.current, {}));
+      
     }
-  }, [ref, map]);
-  useEffect(() => {
     if (map) {
       map.setOptions({zoom: 6, center: center});
 
-      new window.google.maps.Marker({
-        position: center,
-        map,
-      });
     }
-  }, [map, center]);
+  }, [ref, map]);
+
+
+  useEffect(() => {
+    /* if (!marker && map) { */
+      setMarker(
+        new window.google.maps.Marker({
+          position:  {lat: Number(center.lat) || 47.4979, lng: Number(center.lng) || 19.0402},
+          map,
+          icon: {
+            url: 'https://img.icons8.com/doodle/48/000000/google-maps-new.png',
+            size: new window.google.maps.Size(32, 32),
+            scaledSize: new window.google.maps.Size(32, 32),
+            anchor: new window.google.maps.Point(0, 32),
+          },
+        })
+      );
+    
+    return () => {
+      if (marker) {
+        marker.setMap(null);
+      }
+    };
+  }, [center, map]);
+
+  const clickHandler = (e) => {
+    
+    marker.setMap(null)
+    setCenter({lat: Number(data?.latitude), lng: Number(data?.longitude)})
+  }
+  console.log(center)
+  const changeHandler = (e) => {
+    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };  
   return (
     <>
-      {/*még kérdéses, hogy fizetős-e <SearchMap setCenter={setCenter} data={data} setData={setData}/>  még kérdéses, hogy fizetős-e*/}
-      <div ref={ref} style={{height: '50vh', width: '50vw', margin: 'auto'}}></div>
+      <label htmlFor='latitude'>Latitude</label>
+      <input type="number"  name="latitude" id="latitude" onChange={changeHandler}/>
+      <label htmlFor='longitude'>Longitude</label>
+      <input type="number"  name="longitude" id="longitude" onChange={changeHandler}/>
+      <button type="button" onClick={clickHandler}>Set Marker</button>
+      <div ref={ref} style={{height: '50vh', width: '100%', margin: 'auto'}}></div>
     </>
   );
 };
