@@ -50,11 +50,11 @@ const LocationOfEvent = ({setLocationType, locationType, setData, data}) => {
         <div>
           <div>
             <p>Google Map</p>
-            <label htmlFor='location'>
+            <label htmlFor='location'> Address</label>
               <input type='text' value={ data?.location} name='location' id="location" onChange={changeHandler}/>
               <br />
               <MapWrapped data={data} setData={setData} map={map} setMap={setMap} />
-            </label>
+            
           </div>
         </div>
       ) : null}
