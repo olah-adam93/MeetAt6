@@ -26,11 +26,11 @@ const GoogleMapLoader = ({data, setData, map, setMap}) => {
     }
   }, [map, center]);
 
-  /* useEffect(() => {
+  useEffect(() => {
     if (!marker && map) {
       setMarker(
         new window.google.maps.Marker({
-          position: { lat: center?.geoLat, lng: center?.geoLng},
+          position:  [...clicks],
           map,
           icon: {
             url: 'https://img.icons8.com/doodle/48/000000/google-maps-new.png',
@@ -48,17 +48,13 @@ const GoogleMapLoader = ({data, setData, map, setMap}) => {
     };
   }, [marker, map]);
   const clickHandler = (e) => {
-    setCenter( [...center, e.latLng] 
-    (prev )=> ({
-      lat: e.geoLat,
-      lng: e.geoLng
-    })
-    )
-  } */
+    setClicks(e.latLng)
+  }
+  console.log(clicks)
   return (
     <>
       
-      <div ref={ref} style={{height: '50vh', width: '50vw', margin: 'auto'}} /* onClick={clickHandler} */></div>
+      <div ref={ref} style={{height: '50vh', width: '100%', margin: 'auto'}} onClick={clickHandler}></div>
     </>
   );
 };

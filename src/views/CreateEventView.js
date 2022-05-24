@@ -13,21 +13,17 @@ import { useNavigate } from 'react-router';
 import './Style/CreateEventView.css';
 import { async } from '@firebase/util';
 
-
 const CreateEventView = () => {
-  
   const navigateTo = useNavigate();
   const auth = getAuth();
   const user = auth.currentUser;
-  const [data, setData] = useState({ 
+  const [data, setData] = useState({
     uid: user.uid,
     title: '',
     organizer: '',
     /* attendant: undefined, */
     location: '',
     organizer: user.displayName,
-    
-
   });
   const [locationtype, setLocationType] = useState('');
   const [nextbtn, setNextBtn] = useState(0);
@@ -61,8 +57,8 @@ const CreateEventView = () => {
     createNewData('events', {...data, createdDate: currentDate});
     /* createNewData('events', data) */
     setData({});
-    console.log('done')
-    navigateTo('/profile');
+    console.log('done');
+    navigateTo('/join-success');
   };
   return (
     <div className='create-new-event-container'>
@@ -73,29 +69,30 @@ const CreateEventView = () => {
             <div className='basic-event-info'>
               <h2>Basic Information</h2>
               <p>Create a new event with these information </p>
-              <BasicInfoForm setData={setData} data ={data}/>
+              <BasicInfoForm setData={setData} data={data} />
               {/*Tags - search 
             <label htmlFor="event-tags">Tags</label>
             <input type="text" id="event-tags"name="event-tags"/>*/}
               <h3>Time of the Event</h3>
-              <TimeOfEvent setData={setData} data ={data}/>
+              <TimeOfEvent setData={setData} data={data} />
               <h3>Location</h3>
               <LocationOfEvent
                 locationType={locationtype}
                 setLocationType={setLocationType}
-                setData={setData} data ={data}
+                setData={setData}
+                data={data}
               />
               {/*search location , click-et kijavítani, Vissza Gomb*/}
             </div>
           )}
           {nextbtn === 1 && (
             <div className='new-event-details'>
-              <NewEventInfo setData={setData} data ={data} />
+              <NewEventInfo setData={setData} data={data} />
             </div>
           )}
           {nextbtn === 2 && (
             <div className='new-event-payment'>
-              <NewEventPayment setData={setData} data ={data}/>
+              <NewEventPayment setData={setData} data={data} />
             </div>
           )}
 

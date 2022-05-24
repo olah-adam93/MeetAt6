@@ -9,9 +9,9 @@ import { EventDbContext } from '../components/EventDbContext/EventDbContext';
 
 /* AuthContext */
 import { auth } from '../config/firebase';
-import { readData } from '../services/crud';
-// import { AuthContext } from '../components/Authentication/AuthContext';
-
+/* CRUD */
+import { readData, liveValue } from '../services/crud';
+// import { AuthContext } from '../components/Authentication/AuthContext'; */
 const ChosenEvents = () => {
   const eventDb = useContext(EventDbContext);
   const [eventJoined, setEventJoined] = useState([]);
@@ -23,7 +23,7 @@ const ChosenEvents = () => {
 
   const [eventsCard, setEventsCard] = useState([]);
   useEffect(() => {
-    readData('eventAttendees').then((snapshot) => {
+    const liveChange = liveValue('eventAttendees', (snapshot) => {
       setEventJoined(
         Object.entries(snapshot.val())
           .filter((eventArray, index) => {
@@ -34,7 +34,8 @@ const ChosenEvents = () => {
           })
       );
     });
-  }, []);
+    return () => liveChange();
+  }, [user]);
   console.log(eventJoined);
 
   useEffect(() => {
@@ -61,7 +62,12 @@ const ChosenEvents = () => {
           {eventsCard.length === 0 ? (
             <div>No Events to display</div>
           ) : (
-            <DisplayItems filteredDbItems={eventsCard} perPage={4} setToDefault={() => {}}/>
+            <DisplayItems
+              isUnsubscribeButton={true}
+              filteredDbItems={eventsCard}
+              perPage={4}
+              setToDefault={() => {}}
+            />
           )}
         </div>
       </div>
