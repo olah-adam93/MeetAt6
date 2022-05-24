@@ -13,7 +13,7 @@ const UserNavbar = () => {
     <div className='user-navbar'>
       <ul>
         <li>
-          <NavLink to='/profile/chosenevents'>Chosen Events</NavLink>
+          <NavLink to='/profile/chosenevents'>Events joined by Me</NavLink>
         </li>
         <li>
           <NavLink to='/profile/addevent'>Create New Event</NavLink>

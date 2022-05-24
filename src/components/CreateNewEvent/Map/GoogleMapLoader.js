@@ -3,11 +3,13 @@ import {Wrapper, Status} from '@googlemaps/react-wrapper';
 import SearchMap from './SearchMap';
 
 const GoogleMapLoader = ({data, setData, map, setMap}) => {
-  const ref = useRef(null);
+  const [marker, setMarker] = useState();
+  const [infoWindow, setInfoWindow] = useState();
+  const ref = useRef(null)
   /*useRef is needed to maintain a mutable object
    * that will persist for the lifetime of the component.*/
   const [center, setCenter] = useState({lat: 47.4979, lng: 19.0402});
-
+  const [clicks, setClicks] = useState([]);
   useEffect(() => {
     if (ref.current && !map) {
       setMap(new window.google.maps.Map(ref.current, {}));
@@ -23,10 +25,40 @@ const GoogleMapLoader = ({data, setData, map, setMap}) => {
       });
     }
   }, [map, center]);
+
+  /* useEffect(() => {
+    if (!marker && map) {
+      setMarker(
+        new window.google.maps.Marker({
+          position: { lat: center?.geoLat, lng: center?.geoLng},
+          map,
+          icon: {
+            url: 'https://img.icons8.com/doodle/48/000000/google-maps-new.png',
+            size: new window.google.maps.Size(32, 32),
+            scaledSize: new window.google.maps.Size(32, 32),
+            anchor: new window.google.maps.Point(0, 32),
+          },
+        })
+      );
+    }
+    return () => {
+      if (marker) {
+        marker.setMap(null);
+      }
+    };
+  }, [marker, map]);
+  const clickHandler = (e) => {
+    setCenter( [...center, e.latLng] 
+    (prev )=> ({
+      lat: e.geoLat,
+      lng: e.geoLng
+    })
+    )
+  } */
   return (
     <>
-      {/*még kérdéses, hogy fizetős-e <SearchMap setCenter={setCenter} data={data} setData={setData}/>  még kérdéses, hogy fizetős-e*/}
-      <div ref={ref} style={{height: '50vh', width: '50vw', margin: 'auto'}}></div>
+      
+      <div ref={ref} style={{height: '50vh', width: '50vw', margin: 'auto'}} /* onClick={clickHandler} */></div>
     </>
   );
 };

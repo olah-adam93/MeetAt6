@@ -3,7 +3,7 @@
   height: 10rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   background-color: #6c757d;
   padding: 0 2.5rem;
   list-style: none;
@@ -11,7 +11,9 @@
   /* parent element is a flex container so it will stick to the bottom of the page */
   margin-top: auto;
 }
-
+.footer-links {
+  width: 45%;
+}
 .footer-nav li {
   display: inline-block;
   list-style: none;
@@ -30,4 +32,12 @@
 
 .footer-nav li a:hover {
   color: rgb(22, 14, 14);
+}
+.footer-logo {
+  margin: 1rem;
+}
+
+.footer-img {
+  width: 80%;
+  transition: width 0.3s ease-out;
 }
