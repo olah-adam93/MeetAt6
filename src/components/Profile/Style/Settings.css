@@ -140,8 +140,8 @@
 
 .settings-image {
   border: 2px dashed #111;
-  height: 150px;
-  width: 150px;
+  height: 100%;
+  width: 100%;
   margin: 1rem;
   border-radius: 5px;
   background-color: #6c757d;
@@ -152,8 +152,12 @@
   flex-direction: column;
 }
 
+.avatar-img {
+  width: 20rem;
+  height: 20rem;
+}
 .settings-image img {
-  width: 100%;
+  width: 80%;
   height: auto;
 }
 
@@ -177,6 +181,7 @@
   color: #111;
   border-radius: 0.3rem;
   cursor: pointer;
+  margin: 1rem;
 }
 
 /* Classification radio */
