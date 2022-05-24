@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState, useCallback } from 'react';
 import './Style/Settings.css';
 import { getAuth, updateProfile, updateEmail } from 'firebase/auth';
 import SettingsImage from './SettingsImage';
-import { updateData } from '../../services/crud';
+import { createUserData, updateData } from '../../services/crud';
 import { AuthContext } from '../Authentication/AuthContext';
 
 const Settings = ({ setData, data }) => {
@@ -55,7 +55,7 @@ const Settings = ({ setData, data }) => {
 
   const changeHandler = (e) => {
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    //console.log(inputValue);
+    console.log(inputValue);
   };
 
   const updateProfileName = useCallback(() => {
@@ -104,13 +104,16 @@ const Settings = ({ setData, data }) => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-    updateData('userDetails', user.uid, {
+    createUserData(`userDetails/${user.uid}`, {
       birthday: inputValue?.birthday || userDetailsObj.birthday,
       gender: inputValue?.gender || userDetailsObj.gender,
-      location: inputValue?.location || userDetailsObj.location,
-      organization: inputValue?.organization || userDetailsObj.organization,
       telephone: inputValue?.telephone || userDetailsObj.telephone,
       userIntroduction: inputValue?.userIntroduction || userDetailsObj.userIntroduction,
+    });
+
+    updateData('userDetails', user.uid, {
+      location: inputValue?.location || userDetailsObj.location,
+      organization: inputValue?.organization || userDetailsObj.organization,
     });
   };
 
@@ -219,8 +222,8 @@ const Settings = ({ setData, data }) => {
               name='telephone'
               className='input-telephone'
               onChange={changeHandler}
-              placeholder={ userDetailsObj?.telephone || '+00-00-000-0000'}
-              pattern='[0-9]{2}-[0-9]{2}-[0-9]{3}-[0-9]{4}'
+              placeholder={userDetailsObj?.telephone || '+00-00-000-0000'}
+              pattern='[0-9]{2}[0-9]{2}[0-9]{3}[0-9]{4}'
             />
           </label>
         </div>
