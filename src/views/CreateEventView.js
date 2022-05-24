@@ -53,6 +53,8 @@ const CreateEventView = () => {
     const currentTime = eventCreated.toLocaleDateString("en-US")
     setData((prev)=> ({...prev, currentTime})) */
     /* createTime() */
+
+    /* if(!data.title || !data.locationType || !data.paymentType || !data.eventStarts || !data.eventEnds || !data.startTime || !data.endTime) */
     
     const currentDate = new Date(Date.now()).toUTCString().slice(-24, -4)
     console.log(currentDate)
