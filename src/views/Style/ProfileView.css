@@ -15,6 +15,7 @@
   margin: 1rem;
   border-radius: 50%;
   border: 1px solid black;
+  max-width: 20rem;
 }
 .profile .profile-head .avatar:hover {
   transform: scale(1.05);
@@ -51,4 +52,3 @@
 .profile .profile-main .user-head .events .events-box {
   margin: 1rem 0;
 }
-

@@ -38,7 +38,7 @@ const ProfileView = () => {
           <h1>Hi {userData.userLog.user.displayName}!</h1>
           <img
             className='avatar'
-            src={userData.userLog?.user.photoURL || 'https://robohash.org/HBY.png?set=set4'}
+            src={userData.userLog?.user.photoURL || 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'}
             alt={userData.userLog.user.displayName}
           />
         </div>
