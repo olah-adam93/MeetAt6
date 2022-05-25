@@ -121,6 +121,7 @@ const Settings = ({ setData, data }) => {
     <div className='settings-form-container'>
       <h1>Account Settings</h1>
       <form action='' className='settings-form' onSubmit={authSubmitHandler}>
+        <h2 className='section-header user-information'>User Information</h2>
         {/*Name*/}
         <div className='settings-name'>
           <label htmlFor='name' className='label-form label-name'>
@@ -181,10 +182,12 @@ const Settings = ({ setData, data }) => {
       </form>
       <form action='' className='settings-form' onSubmit={formSubmitHandler}>
         {/*Image*/}
+        <h2 className='section-header profile-picture'>Profile Picture</h2>
         <div className='settings-image-container'>
           <SettingsImage />
         </div>
         {/*Location*/}
+        <h2 className='section-header personal-information'>Personal Information</h2>
         <div className='settings-location'>
           <label htmlFor='location' className='label-form label-location'>
             Location

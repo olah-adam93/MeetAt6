@@ -17,6 +17,13 @@
 
 .settings-form-container h1 {
   border-bottom: 3px #111 solid;
+  letter-spacing: 0.3rem;
+}
+
+.section-header {
+  margin: 5rem auto 3rem auto;
+  border-bottom: 1.5px #111 solid;
+  letter-spacing: 0.3rem;
 }
 
 /* Form */
@@ -26,7 +33,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding-top: 2rem;
-  width: 50%;
+  width: 60%;
   margin: 1.5rem auto;
 }
 
@@ -39,7 +46,7 @@
 .settings-gender,
 .settings-classification {
   padding: 1rem;
-  min-height: 6.5rem;
+  min-height: 8rem;
 }
 
 .settings-name .label-form,
