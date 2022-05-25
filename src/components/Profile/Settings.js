@@ -10,6 +10,8 @@ const Settings = ({ setData, data }) => {
   const userData = useContext(AuthContext);
   const [editName, setEditName] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
+  const [emailChanged, setEmailChanged] = useState(false);
+  const [changeMessage, setChangeMessage] = useState(null);
   const [inputValue, setInputValue] = useState({
     birthday: '',
     gender: '',
@@ -82,9 +84,13 @@ const Settings = ({ setData, data }) => {
     if (authInputValue.email !== '') {
       updateEmail(user, authInputValue?.email || userObj.email)
         .then(() => {
-          alert(
+          setEmailChanged(true);
+          setChangeMessage(
             `Email address has been successfully changed to ${authInputValue.email}!`
           );
+          setTimeout(() => {
+            setEmailChanged(false);
+          }, 10000);
         })
         .catch((error) => {
           console.log(error);
@@ -116,6 +122,7 @@ const Settings = ({ setData, data }) => {
 
   return (
     <div className='settings-form-container'>
+      {emailChanged && changeMessage}
       <h1>Account Settings</h1>
       <form action='' className='settings-form' onSubmit={authSubmitHandler}>
         {/*Name*/}
@@ -219,7 +226,7 @@ const Settings = ({ setData, data }) => {
               name='telephone'
               className='input-telephone'
               onChange={changeHandler}
-              placeholder={ userDetailsObj?.telephone || '+00-00-000-0000'}
+              placeholder={userDetailsObj?.telephone || '+00-00-000-0000'}
               pattern='[0-9]{2}-[0-9]{2}-[0-9]{3}-[0-9]{4}'
             />
           </label>
