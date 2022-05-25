@@ -50,9 +50,11 @@ const CreateEventView = () => {
     setData((prev)=> ({...prev, currentTime})) */
     /* createTime() */
 
-    const currentDate = new Date(Date.now()).toUTCString().slice(-24, -4);
-    console.log(currentDate);
-    createNewData('events', { ...data, createdDate: currentDate });
+    /* if(!data.title || !data.locationType || !data.paymentType || !data.eventStarts || !data.eventEnds || !data.startTime || !data.endTime) */
+    
+    const currentDate = new Date(Date.now()).toUTCString().slice(-24, -4)
+    console.log(currentDate)
+    createNewData('events', {...data, createdDate: currentDate});
     /* createNewData('events', data) */
     setData({});
     console.log('done');

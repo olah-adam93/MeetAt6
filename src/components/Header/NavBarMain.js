@@ -22,7 +22,7 @@ const NavBarMain = () => {
         {Object.values(authContext.userLog)?.length ? (
           <>
             <li>
-              <NavLink to='/profile'>Profile</NavLink>
+              <NavLink to='/profile'>Signed In: {auth.currentUser.displayName}</NavLink>
             </li>
           </>
         ) : (

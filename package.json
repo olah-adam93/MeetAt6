@@ -9,7 +9,7 @@
     "@googlemaps/react-wrapper": "^1.1.34",
     "@stripe/react-stripe-js": "^1.8.0",
     "@stripe/stripe-js": "^1.29.0",
-    "firebase": "^9.7.0",
+    "firebase": "^9.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.3.0",

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState, useCallback } from 'react';
 import './Style/Settings.css';
 import { getAuth, updateProfile, updateEmail } from 'firebase/auth';
 import SettingsImage from './SettingsImage';
-import { updateData } from '../../services/crud';
+import { createUserData, updateData } from '../../services/crud';
 import { AuthContext } from '../Authentication/AuthContext';
 
 const Settings = ({ setData, data }) => {
@@ -57,7 +57,7 @@ const Settings = ({ setData, data }) => {
 
   const changeHandler = (e) => {
     setInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    //console.log(inputValue);
+    console.log(inputValue);
   };
 
   const updateProfileName = useCallback(() => {
@@ -110,13 +110,16 @@ const Settings = ({ setData, data }) => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-    updateData('userDetails', user.uid, {
+    createUserData(`userDetails/${user.uid}`, {
       birthday: inputValue?.birthday || userDetailsObj.birthday,
       gender: inputValue?.gender || userDetailsObj.gender,
-      location: inputValue?.location || userDetailsObj.location,
-      organization: inputValue?.organization || userDetailsObj.organization,
       telephone: inputValue?.telephone || userDetailsObj.telephone,
       userIntroduction: inputValue?.userIntroduction || userDetailsObj.userIntroduction,
+    });
+
+    updateData('userDetails', user.uid, {
+      location: inputValue?.location || userDetailsObj.location,
+      organization: inputValue?.organization || userDetailsObj.organization,
     });
   };
 
@@ -125,6 +128,7 @@ const Settings = ({ setData, data }) => {
       {emailChanged && changeMessage}
       <h1>Account Settings</h1>
       <form action='' className='settings-form' onSubmit={authSubmitHandler}>
+        <h2 className='section-header user-information'>User Information</h2>
         {/*Name*/}
         <div className='settings-name'>
           <label htmlFor='name' className='label-form label-name'>
@@ -185,10 +189,12 @@ const Settings = ({ setData, data }) => {
       </form>
       <form action='' className='settings-form' onSubmit={formSubmitHandler}>
         {/*Image*/}
+        <h2 className='section-header profile-picture'>Profile Picture</h2>
         <div className='settings-image-container'>
           <SettingsImage />
         </div>
         {/*Location*/}
+        <h2 className='section-header personal-information'>Personal Information</h2>
         <div className='settings-location'>
           <label htmlFor='location' className='label-form label-location'>
             Location
@@ -227,7 +233,7 @@ const Settings = ({ setData, data }) => {
               className='input-telephone'
               onChange={changeHandler}
               placeholder={userDetailsObj?.telephone || '+00-00-000-0000'}
-              pattern='[0-9]{2}-[0-9]{2}-[0-9]{3}-[0-9]{4}'
+              pattern='[0-9]{2}[0-9]{2}[0-9]{3}[0-9]{4}'
             />
           </label>
         </div>
