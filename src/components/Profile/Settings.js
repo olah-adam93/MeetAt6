@@ -11,7 +11,9 @@ const Settings = ({ setData, data }) => {
   const [editName, setEditName] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
   const [emailChanged, setEmailChanged] = useState(false);
-  const [changeMessage, setChangeMessage] = useState(null);
+  const [nameChanged, setNameChanged] = useState(false);
+  const [nameChangeMessage, setNameChangeMessage] = useState(null);
+  const [emailChangeMessage, setEmailChangeMessage] = useState(null);
   const [inputValue, setInputValue] = useState({
     birthday: '',
     gender: '',
@@ -62,41 +64,61 @@ const Settings = ({ setData, data }) => {
 
   const updateProfileName = useCallback(() => {
     if (authInputValue.name !== '') {
-      updateProfile(user, {
-        displayName: authInputValue?.name || userObj.displayName,
-      })
-        .then(() => {
-          console.log(user.displayName);
+      if (authInputValue.name !== userObj.displayName) {
+        updateProfile(user, {
+          displayName: authInputValue?.name || userObj.displayName,
         })
-        .then(() => {
-          alert(`Username has been successfully changed to ${authInputValue.name}!`);
-          //user.displayName
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      return null;
+          .then(() => {
+            setNameChanged(true);
+            /* setChangeMessage('Nothing changed! Please enter a valid e-mail!'); */
+            setNameChangeMessage(
+              `Username has been successfully changed to ${authInputValue.name}!`
+            );
+            setTimeout(() => {
+              setNameChanged(false);
+            }, 10000);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        setNameChanged(true);
+        setNameChangeMessage('Nothing changed! Please enter a valid username!');
+        setTimeout(() => {
+          setNameChanged(false);
+        }, 10000);
+        return null;
+      }
     }
   }, [user, authInputValue.name, userObj.displayName]);
 
   const updateProfileEmail = useCallback(() => {
+    console.log(authInputValue.email);
+    console.log(userObj.email);
     if (authInputValue.email !== '') {
-      updateEmail(user, authInputValue?.email || userObj.email)
-        .then(() => {
-          setEmailChanged(true);
-          setChangeMessage(
-            `Email address has been successfully changed to ${authInputValue.email}!`
-          );
-          setTimeout(() => {
-            setEmailChanged(false);
-          }, 10000);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      return null;
+      if (authInputValue.email !== userObj.email) {
+        updateEmail(user, authInputValue?.email || userObj.email)
+          .then(() => {
+            setEmailChanged(true);
+            /* setChangeMessage('Nothing changed! Please enter a valid e-mail!'); */
+            setEmailChangeMessage(
+              `Email address has been successfully changed to ${authInputValue.email}!`
+            );
+            setTimeout(() => {
+              setEmailChanged(false);
+            }, 10000);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        setEmailChanged(true);
+        setEmailChangeMessage('Nothing changed! Please enter a valid e-mail!');
+        setTimeout(() => {
+          setEmailChanged(false);
+        }, 10000);
+        return null;
+      }
     }
   }, [user, authInputValue.email, userObj.email]);
 
@@ -125,7 +147,8 @@ const Settings = ({ setData, data }) => {
 
   return (
     <div className='settings-form-container'>
-      {emailChanged && changeMessage}
+      {emailChanged && <h2>{emailChangeMessage}</h2>}
+      {nameChanged && <h2>{nameChangeMessage}</h2>}
       <h1>Account Settings</h1>
       <form action='' className='settings-form' onSubmit={authSubmitHandler}>
         <h2 className='section-header user-information'>User Information</h2>
