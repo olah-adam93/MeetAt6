@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom';
 
 import './Styles/EventCard.css';
+import eventImagePlaceholder from '../../others/logo/logo7.3.png';
 
 const EventCard = ({eventCard, eventId}) => {
   /* const [eventData, setEventData] = useState();
@@ -22,9 +23,9 @@ const EventCard = ({eventCard, eventId}) => {
     <div className='event-card'>
       <Link to={`/eventpage/${eventId}`}>
         <div className='event-picture'>
-          {eventCard?.imageUrl && (
+          {eventCard?.imageUrl ? (
             <img src={eventCard?.imageUrl} alt={eventCard?.title} />
-          )}
+          ) : <img src={eventImagePlaceholder} alt='default event'/>}
         </div>
       </Link>
       <div className='event-data'>

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import NavBarMain from './NavBarMain';
+import {NavLink} from 'react-router-dom';
 
 import './Header.css';
 
@@ -18,11 +19,13 @@ const Header = () => {
   return (
     <div className={`header-container ${small ? 'header-small' : ''}`}>
       <div className='header-logo'>
-        <img
-          className={`header-img ${small ? 'img-small' : ''}`}
-          src={require('./meetatsix200.49.feher.png')}
-          alt='logo'
-        />
+        <NavLink to='/'>
+          <img
+            className={`header-img ${small ? 'img-small' : ''}`}
+            src={require('./meetatsix200.49.feher.png')}
+            alt='logo'
+          />
+        </NavLink>
       </div>
       <div className='header-navbar'>
         <NavBarMain />
