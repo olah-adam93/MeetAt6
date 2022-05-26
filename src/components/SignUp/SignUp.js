@@ -7,6 +7,8 @@ import { auth } from '../../config/firebase';
 import { useNavigate } from 'react-router-dom';
 import { createUserData } from '../../services/crud';
 
+import './SignUp.css';
+
 const SignUp = ({ submitForm }) => {
   const authContext = useContext(AuthContext);
   const [data, setData] = useState({

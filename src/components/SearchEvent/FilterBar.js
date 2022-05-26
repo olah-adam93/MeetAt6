@@ -81,7 +81,6 @@ const FilterBar = ({setSearchQuery, filterParams, setFilterParams, setToDefault}
             <option value='today'>Today</option>
             <option value='tomorrow'>Tomorrow</option>
             <option value='thisweek'>This week</option>
-            <option value='custom'>Custom</option>
           </select>
           <select name='type' onChange={selectHandler} value={filterParams?.type}>
             <option value=''>Any Type</option>

@@ -7,6 +7,8 @@ import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 import { auth } from '../../config/firebase';
 import { useNavigate } from 'react-router-dom';
 
+import './SignIn.css';
+
 const SignIn = ({ submitForm }) => {
   const authContext = useContext(AuthContext);
 
