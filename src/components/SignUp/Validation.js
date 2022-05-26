@@ -10,12 +10,15 @@ const Validation = (data) => {
     error.e_mail = 'Nem megfelelő e-mail cím';
   }
   if (!data.passw) {
-    error.passw = 'Adjon meg a jelszavát';
+    error.passw = 'Adja meg a jelszavát';
   } else if (data.passw.length < 5) {
     error.passw = 'A jelszónak több mint 5 karakterből kell állnia';
   }
   if (!data.loc) {
     error.loc = 'Adja meg az országát';
+  }
+  if (!data.organization) {
+    error.organization = 'Adja meg a szervezetét';
   }
 
   return error;

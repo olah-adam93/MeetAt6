@@ -14,6 +14,7 @@ const SignUp = ({ submitForm }) => {
     e_mail: '',
     passw: '',
     loc: '',
+    organization: '',
   });
 
   const [error, setError] = useState({});
@@ -131,6 +132,17 @@ const SignUp = ({ submitForm }) => {
             onChange={handleChange}
           />
           {error.loc && <p className='errors'>{error.loc}</p>}
+        </div>
+        <div className='organization'>
+          <label className='label'>Organization</label>
+          <input
+            className='input'
+            type='text'
+            name='organization'
+            value={data.organization}
+            onChange={handleChange}
+          />
+          {error.organization && <p className='errors'>{error.organization}</p>}
         </div>
         <div>
           <button className='submit' onClick={handleFormSubmit}>
