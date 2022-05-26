@@ -1,5 +1,9 @@
 .header-container {
-  width: 100%;
+  /* because it is fixed it needs separate setup for width */
+  min-width: 1080px;
+  width: 90%;
+  max-width: 1400px;
+
   height: 10rem;
   display: flex;
   justify-content: space-between;

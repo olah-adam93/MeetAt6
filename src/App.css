@@ -4,6 +4,10 @@
 */
 
 .layout-container {
+  margin: 0 auto;
+  min-width: 1080px;
+  width: 90%;
+  max-width: 1400px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
