@@ -1,6 +1,6 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import {Routes, Route} from 'react-router-dom';
+import {useState, useEffect} from 'react';
 
 /* Components */
 import ScrollToTop from './others/ScrollToTop';
@@ -23,22 +23,23 @@ import MyEventsView from './views/MyEventsView';
 import SearchEventView from './views/SearchEventView';
 import EventPageView from './views/EventPageView';
 import ThankYouView from './views/ThankYouView';
-import JoinSuccess from './components/HomePage/JoinSuccess'
+import JoinSuccess from './components/HomePage/JoinSuccess';
+import CreateSuccess from './components/CreateNewEvent/CreateSuccess';
 
 /* Layouts */
 import MainPageLayout from './layouts/MainPageLayout';
 import UserMainPageLayout from './layouts/UserMainPageLayout';
 
 /* Database Context */
-import { EventDbContext } from './components/EventDbContext/EventDbContext';
+import {EventDbContext} from './components/EventDbContext/EventDbContext';
 
 /* Authentication Context */
-import { AuthContext } from './components/Authentication/AuthContext';
-import {auth} from './config/firebase'
-import { onAuthStateChanged } from 'firebase/auth';
+import {AuthContext} from './components/Authentication/AuthContext';
+import {auth} from './config/firebase';
+import {onAuthStateChanged} from 'firebase/auth';
 
 /* CRUD */
-import { liveValue } from './services/crud';
+import {liveValue} from './services/crud';
 
 function App() {
   const [db, setDb] = useState([]);
@@ -47,23 +48,20 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-        console.log('user belépve', user)
-        if (user) {
-          liveValue(
-            `userDetails/${user.uid}`,
-            (snapshot) => {
-              setUserLog((prev) => ({...prev, userDetails: snapshot.val(), user: user}));
-            }
-            );
-        } else {
-          setUserLog({});
-        }
-    })
-  }, [])
+      console.log('user belépve', user);
+      if (user) {
+        liveValue(`userDetails/${user.uid}`, (snapshot) => {
+          setUserLog((prev) => ({...prev, userDetails: snapshot.val(), user: user}));
+        });
+      } else {
+        setUserLog({});
+      }
+    });
+  }, []);
 
   useEffect(() => {
-      console.log(userLog);
-  }, [userLog])
+    console.log(userLog);
+  }, [userLog]);
 
   // function AuthProtected() {
   //   if (Object.values(userLog)?.length !== 0) {
@@ -86,9 +84,8 @@ function App() {
   return (
     <div className='App'>
       <ScrollToTop />
-      <AuthContext.Provider value={{ userLog, setUserLog}}>
-        <EventDbContext.Provider value={{ db, setDb }}>
-          
+      <AuthContext.Provider value={{userLog, setUserLog}}>
+        <EventDbContext.Provider value={{db, setDb}}>
           <Routes>
             <Route element={<MainPageLayout />}>
               <Route path='/' element={<HomePageView />} />
@@ -103,7 +100,7 @@ function App() {
               <Route path='/eventpage/:eventId' element={<EventPageView />} />
             </Route>
 
-            <Route element={<UserMainPageLayout userLog={userLog}/>}>
+            <Route element={<UserMainPageLayout userLog={userLog} />}>
               <Route path='/profile' element={<ProfileView />} />
               <Route path='/profile/chosenevents' element={<ChosenEvents />} />
               <Route path='/profile/addevent' element={<CreateEventView />} />
@@ -113,9 +110,9 @@ function App() {
               <Route path='/thankyou' element={<ThankYouView />} />
               <Route path='/signout' element={<LogOut />} />
               <Route path='/join-success' element={<JoinSuccess />} />
+              <Route path='/create-success' element={<CreateSuccess />} />
             </Route>
           </Routes>
-          
         </EventDbContext.Provider>
       </AuthContext.Provider>
     </div>

@@ -3,6 +3,7 @@ import EventDetails from '../components/HomePage/EventDetails';
 import EventImage from '../components/HomePage/EventImage';
 import EventInfo from '../components/HomePage/EventInfo';
 import Map from '../others/GoogleMaps/components/Map';
+import JoinModal from '../components/HomePage/JoinModal';
 import './Style/EventPageView.css';
 
 import { useParams, useSearchParams } from 'react-router-dom';
@@ -41,6 +42,10 @@ const EventPageView = () => {
       );
     }
   }, [searchParams, eventInfo, user]);
+  const clickHandler = () => {
+    setIsOpen(!isOpen);
+    console.log(isOpen);
+  };
   return (
     <div className='event-page'>
       {eventInfo && (
@@ -55,7 +60,15 @@ const EventPageView = () => {
           <EventDetails eventInfo={eventInfo[1]} />
           {/* <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
             <Map eventInfo={eventInfo[1]} />
-          </Wrapper> */}
+          </Wrapper>*/}
+      {isOpen && (
+        <JoinModal
+          clickHandler={clickHandler}
+          setIsOpen={setIsOpen}
+          eventKey={eventInfo[0]}
+          eventValue={eventInfo[1]}
+        />
+      )}
         </>
       )}
     </div>

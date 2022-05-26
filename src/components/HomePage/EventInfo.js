@@ -22,14 +22,14 @@ const EventInfo = ({ eventInfo, isOpen, setIsOpen, paymentSucces }) => {
         Join
       </button>
 
-      {isOpen && (
+      {/* {isOpen && (
         <JoinModal
           clickHandler={clickHandler}
           setIsOpen={setIsOpen}
           eventKey={eventKey}
           eventValue={eventValue}
         />
-      )}
+      )} */}
     </div>
   );
 };

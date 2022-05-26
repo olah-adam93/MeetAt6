@@ -1,5 +1,7 @@
 /*React*/
 import { useEffect, useState } from 'react';
+import {storage} from '../config/firebase';
+import {getStorage, ref, uploadBytes, getDownloadURL, } from 'firebase/storage';
 /*Components */
 import BasicInfoForm from '../components/CreateNewEvent/BasicInfoForm';
 import LocationOfEvent from '../components/CreateNewEvent/LocationOfEvent';
@@ -42,7 +44,18 @@ const CreateEventView = () => {
       setNextBtn((prev) => (prev -= 1));
     }
   };
-
+ /*  const onUploadImage = (e) => {
+    const fileRef = ref(storage, `eventImages/${data?.image.name}`)
+    uploadBytes(fileRef, data?.image)
+    .then((uploadResult) =>{console.log("first");
+      getDownloadURL(uploadResult?.ref)
+      .then((value) => {setData((prev) => ({ ...prev, imageUrl: value }));
+      console.log("second")
+    })
+      .catch((e) => console.log(e));
+    })
+    .catch((e) => console.log(e));
+  } */
   const submitHandler = (e) => {
     e.preventDefault();
     /* const eventCreated = new Date()
@@ -58,7 +71,7 @@ const CreateEventView = () => {
     /* createNewData('events', data) */
     setData({});
     console.log('done');
-    navigateTo('/join-success');
+    navigateTo('/create-success');
   };
   return (
     <div className='create-new-event-container'>

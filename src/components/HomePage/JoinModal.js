@@ -29,6 +29,7 @@ const JoinModal = ({ clickHandler, setIsOpen, eventKey, eventValue }) => {
     }).then(() => {
       setIsOpen(false);
     });
+    navigateTo("/join-success")
   };
 
   // }).then(() => {
@@ -37,70 +38,73 @@ const JoinModal = ({ clickHandler, setIsOpen, eventKey, eventValue }) => {
 
   return (
     <div className='joinmodal-container'>
-      <div className='joinmodal-image-container'>
-        <img
-          className='joinmodal-image'
-          src={eventValue?.imageUrl}
-          alt={eventValue?.title}
-        />
-      </div>
-      <div className='joinmodal-others-container'>
-        <div className='joinmodal-details'>
-          <h3 className='joinmodal-details-title'>Event title: {eventValue?.title}</h3>
-          <div className='joinmodal-details-place'>
-            Event place: {eventValue?.location}
-          </div>
-          <div className='joinmodal-details-date'>
-            Event date: {eventValue?.eventStarts}
-          </div>
-
-          <div className='joinmodal-details-attendees'>
-            Event attendees: {attendees.length}
-          </div>
-          <br />
-          <form className='joinmodal-form'>
-            <label className='joinmodal-form-label' htmlFor='joinmodal-email-friend'>
-              Send this event for your friend
-            </label>
-            <input
-              className='joinmodal-form-input'
-              type='email'
-              id='joinmodal-email-friend'
-              name='joinmodal-email-friend'
-            ></input>
-            <button type='button' className='joinmodal-form-button'>
-              Send
-            </button>
-          </form>
-          <div className='joinmodal-bottom-buttons'>
-            <button
-              className='joinmodal-close-button'
-              onClick={clickHandler}
-              type='button'
-            >
-              Close
-            </button>
-            {user ? (
-              attendees.includes(user.uid) ? (
-                <span>Already joined!</span>
-              ) : attendees.length !== Number(eventValue?.attendant) ? (
-                eventValue?.paymentType === 'ticket' ? (
-                  <StripePayment eventKey={eventKey} eventValue={eventValue} />
+      <div className="join-modal-box">
+        <div className='joinmodal-image-container'>
+          <img
+            className='joinmodal-image'
+            src={eventValue?.imageUrl}
+            alt={eventValue?.title}
+          />
+        </div>
+        <div className='joinmodal-others-container'>
+          <div className='joinmodal-details'>
+            <h3 className='joinmodal-details-title'>Event title: {eventValue?.title}</h3>
+            <div className='joinmodal-details-place'>
+              Event place: {eventValue?.location}
+            </div>
+            <div className='joinmodal-details-date'>
+              Event date: {eventValue?.eventStarts}
+            </div>
+            <div className='joinmodal-details-attendees'>
+              Event attendees: {attendees.length}
+            </div>
+            <br />
+            <form className='joinmodal-form'>
+              <label className='joinmodal-form-label' htmlFor='joinmodal-email-friend'>
+                Send this event for your friend
+              </label>
+              <input
+                className='joinmodal-form-input'
+                type='email'
+                id='joinmodal-email-friend'
+                name='joinmodal-email-friend'
+              ></input>
+              <button type='button' className='joinmodal-form-button'>
+                Send
+              </button>
+            </form>
+            <div className='joinmodal-bottom-buttons'>
+              <button
+                className='joinmodal-close-button'
+                onClick={clickHandler}
+                type='button'
+              >
+                Close
+              </button>
+              {eventValue?.uid === user.uid ? (<span>You are the organizer of this event!</span>
+              ) : (
+              user ? (
+                attendees.includes(user.uid) ? (
+                  <span>Already joined!</span>
+                ) : attendees.length !== Number(eventValue?.attendant) ? (
+                  eventValue?.paymentType === 'ticket' ? (
+                    <StripePayment eventKey={eventKey} eventValue={eventValue} />
+                  ) : (
+                    <button
+                      className='joinmodal-join-button'
+                      type='button'
+                      onClick={joinHandler}
+                    >
+                      Join
+                    </button>
+                  )
                 ) : (
-                  <button
-                    className='joinmodal-join-button'
-                    type='button'
-                    onClick={joinHandler}
-                  >
-                    Join
-                  </button>
+                  <span>This event is full!</span>
                 )
               ) : (
-                <span>This event is full!</span>
-              )
-            ) : (
-              <button onClick={() => navigateTo('/signin')}>Sign in to subscribe</button>
-            )}
+                <button onClick={() => navigateTo('/signin')}>Sign in to subscribe</button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
