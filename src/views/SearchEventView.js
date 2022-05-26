@@ -51,13 +51,18 @@ const SearchEventView = () => {
       setEventsCard(searchFunction(eventDb.db));
   }, [eventDb, searchFunction]);
 
-  console.log('toDefault', toDefault);
+  // console.log('toDefault', toDefault);
 
   return (
     <div className='search-event-container'>
       <FilterBar setSearchQuery={setSearchQuery} filterParams={filterParams} setFilterParams={setFilterParams} setToDefault={setToDefault}/>
 
-      <DisplayItems filteredDbItems={eventsCard} perPage={6} toDefault={toDefault} setToDefault={setToDefault}/>
+      <div className='search-event-inner-container'>
+        <DisplayItems filteredDbItems={eventsCard} perPage={6} toDefault={toDefault} setToDefault={setToDefault}/>
+        <div className='display-maps-container'>
+          <div className='display-maps'>Google Maps Placeholder</div>
+        </div>
+      </div>
     </div>
   );
 };

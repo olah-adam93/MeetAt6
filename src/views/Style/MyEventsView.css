@@ -1,8 +1,6 @@
 .my-events-container {
   width: 100%;
   display: flex;
-  /* to display cancel and unsubscribe modal vertically and horizontally middle */
-  /* display: relative; */
 }
 
 .my-events-sidebar {

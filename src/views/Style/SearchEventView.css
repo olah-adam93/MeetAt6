@@ -6,4 +6,19 @@
   align-items: center;
 }
 
+.search-event-inner-container {
+  width: 100%;
+  display: flex;
+}
+
+.display-maps-container {
+  width: 40%;
+}
+
+.display-maps {
+  width: 100%;
+  height: 500px;
+  background-color: blanchedalmond;
+}
+
 

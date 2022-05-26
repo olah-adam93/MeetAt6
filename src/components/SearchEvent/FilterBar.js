@@ -58,6 +58,9 @@ const FilterBar = ({setSearchQuery, filterParams, setFilterParams, setToDefault}
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </form>
+        <button className='search-bar-reset-button'type='button' onClick={resetHandler}>
+            Reset Filter 
+        </button>
       </div>
 
       <div className='fiter-bar-container'>
@@ -113,9 +116,6 @@ const FilterBar = ({setSearchQuery, filterParams, setFilterParams, setToDefault}
             <option value='travel'>Travel</option>
             <option value='other'>Other</option>
           </select>
-          <button type='button' onClick={resetHandler}>
-            Reset Filter
-          </button>
         </form>
       </div>
     </div>
