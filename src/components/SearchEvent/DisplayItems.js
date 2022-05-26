@@ -23,7 +23,6 @@ const DisplayItems = ({
   toDefault,
   setToDefault,
 }) => {
-  // console.log('DISPLAY ITEMS RENDER');
   const itemsPerPage = perPage;
   const [currentPage, setCurrentPage] = useState(1);
   const [fromIndex, setfromIndex] = useState(0);
@@ -31,12 +30,44 @@ const DisplayItems = ({
   const totalItems = filteredDbItems.length;
   const pageNumber = Math.ceil(totalItems / itemsPerPage);
   const [itemsToRender, setItemsToRender] = useState([]);
+
   const [unsubscribeModalOpen, setUnsubscribedModalOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [deletedEvent, setDeletedEvent] = useState({});
   const [unsubscribedEvent, setUnsubscribedEvent] = useState({});
   const authCont = useContext(AuthContext);
+
+  const deleteModalHandler = (eventObj) => {
+    return (e) => {
+      setModalOpen(!modalOpen);
+      setDeletedEvent(eventObj[0]);
+    };
+  };
+
+  const unsubscribeModalHandler = (eventObj) => {
+    return (e) => {
+      setUnsubscribedModalOpen(!modalOpen);
+      setUnsubscribedEvent(eventObj[0]);
+    };
+  };
+
+  const cancelHandler = () => {
+    setModalOpen(false);
+    setUnsubscribedModalOpen(false);
+  };
+
+  const unsubscribeHandler = (event) => {
+    deleteData(`eventAttendees/${unsubscribedEvent}`, authCont.userLog.user.uid);
+    setUnsubscribedModalOpen(false);
+  };
+
+  const deleteHandler = (event) => {
+    deleteData('events', deletedEvent).then(() => {
+      setModalOpen(false);
+      deleteData('eventAttendees', deletedEvent);
+    });
+  };
+
   useEffect(() => {
     if (toDefault) {
       setCurrentPage(1);
@@ -44,32 +75,6 @@ const DisplayItems = ({
       setToIndex(itemsPerPage);
     }
   }, [toDefault, itemsPerPage]);
-  const deleteModalHandler = (eventObj) => {
-    return (e) => {
-      setModalOpen(!modalOpen);
-      setDeletedEvent(eventObj[0]);
-    };
-  };
-  const unsubscribeModalHandler = (eventObj) => {
-    return (e) => {
-      setUnsubscribedModalOpen(!modalOpen);
-      setUnsubscribedEvent(eventObj[0]);
-    };
-  };
-  const cancelHandler = () => {
-    setModalOpen(false);
-    setUnsubscribedModalOpen(false);
-  };
-  const unsubscribeHandler = (event) => {
-    deleteData(`eventAttendees/${unsubscribedEvent}`, authCont.userLog.user.uid);
-    setUnsubscribedModalOpen(false);
-  };
-  const deleteHandler = (event) => {
-    deleteData('events', deletedEvent).then(() => {
-      setModalOpen(false);
-      deleteData('eventAttendees', deletedEvent);
-    });
-  };
 
   const nextButtonHandler = () => {
     setCurrentPage(currentPage + 1);
@@ -108,17 +113,11 @@ const DisplayItems = ({
   };
 
   useEffect(() => {
-    // setLoading(true);
     setItemsToRender(filteredDbItems.slice(fromIndex, toIndex));
-
-    // setTimeout(() => {
-    //   setItemsToRender(filteredDbItems.slice(fromIndex, toIndex));
-    //   setLoading(false);
-    // }, 500);
-
     setToDefault(false);
   }, [filteredDbItems, fromIndex, toIndex, setToDefault]);
 
+  /* Scroll to top */
   useLayoutEffect(() => {
     window.scrollTo({
       top: 0,
@@ -129,6 +128,41 @@ const DisplayItems = ({
 
   return (
     <div className='display-items-container'>
+      {modalOpen && (
+        <div className='display-modal-container'>
+          <div className='display-modal-content'>
+            <h2>Are you sure?</h2>
+            <div>
+              <button onClick={cancelHandler}>Cancel</button>
+              <button
+                onClick={(eventObj) => {
+                  deleteHandler(eventObj);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {unsubscribeModalOpen && (
+        <div className='display-modal-container'>
+          <div className='display-modal-content'>
+            <h2>Are you sure?</h2>
+            <div>
+              <button onClick={cancelHandler}>Cancel</button>
+              <button
+                onClick={(eventObj) => {
+                  unsubscribeHandler(eventObj);
+                }}
+              >
+                Unsubscribe
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className='pagination-container'>
         {filteredDbItems.length > 0 ? (
           <>
@@ -183,32 +217,6 @@ const DisplayItems = ({
 
       {itemsToRender.length !== 0 ? (
         <div className='display-container'>
-          {modalOpen && (
-            <div>
-              <h2>Are you sure?</h2>
-              <button onClick={cancelHandler}>Cancel</button>
-              <button
-                onClick={(eventObj) => {
-                  deleteHandler(eventObj);
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          )}
-          {unsubscribeModalOpen && (
-            <div>
-              <h2>Are you sure?</h2>
-              <button onClick={cancelHandler}>Cancel</button>
-              <button
-                onClick={(eventObj) => {
-                  unsubscribeHandler(eventObj);
-                }}
-              >
-                Unsubscribe
-              </button>
-            </div>
-          )}
           {itemsToRender.map((eventObj, index) => {
             return (
               <div key={index} className='display-items'>
@@ -221,6 +229,13 @@ const DisplayItems = ({
                   isDeleteButton={isDeleteButton}
                   unsubscribeModalHandler={unsubscribeModalHandler}
                   deleteModalHandler={deleteModalHandler}
+                  modalOpen={modalOpen}
+                  unsubscribeModalOpen={unsubscribeModalOpen}
+                  cancelHandler={cancelHandler}
+                  deleteHandler={deleteHandler}
+                  unsubscribeHandler={unsubscribeHandler}
+                  deletedEvent={deletedEvent}
+                  unsubscribedEvent={unsubscribedEvent}
                 />
                 {/* {isUnsubscribeButton && (
                   <>

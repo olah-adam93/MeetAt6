@@ -1,3 +1,48 @@
+.search-bar-container {
+  width: 90%;
+  height: 10rem;
+  display: flex;
+  align-content: center;
+}
+
+.search-bar-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar-form input {
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 3px solid grey;
+  width: 30rem;
+  font-size: 2rem;
+  line-height: 2;
+  transition: border-bottom .2s ease-in;
+  
+}
+
+.search-bar-form input:focus {
+  outline: none;
+  border-bottom: 3px solid black;
+}
+
+.search-bar-form button {
+  margin-left: 1rem;
+  font-size: 3rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: grey;
+  transition: all .1s ease-in;
+}
+
+.search-bar-form button:hover {
+  transform: scale(1.2);
+  color: black;
+}
+
+
 .fiter-bar-container {
   width: 90%;
   height: 5rem;

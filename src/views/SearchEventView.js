@@ -4,7 +4,6 @@ import {useCallback, useEffect, useState, useContext} from 'react';
 import './Style/SearchEventView.css';
 
 /* Components */
-import SearchBar from '../components/SearchEvent/SearchBar';
 import FilterBar from '../components/SearchEvent/FilterBar';
 import DisplayItems from '../components/SearchEvent/DisplayItems';
 
@@ -56,11 +55,9 @@ const SearchEventView = () => {
 
   return (
     <div className='search-event-container'>
-      <SearchBar setSearchQuery={setSearchQuery} setToDefault={setToDefault}/>
+      <FilterBar setSearchQuery={setSearchQuery} filterParams={filterParams} setFilterParams={setFilterParams} setToDefault={setToDefault}/>
 
-      <FilterBar filterParams={filterParams} setFilterParams={setFilterParams} setToDefault={setToDefault}/>
-
-      <DisplayItems filteredDbItems={eventsCard} perPage={4} toDefault={toDefault} setToDefault={setToDefault}/>
+      <DisplayItems filteredDbItems={eventsCard} perPage={6} toDefault={toDefault} setToDefault={setToDefault}/>
     </div>
   );
 };

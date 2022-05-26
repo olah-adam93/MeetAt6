@@ -1,4 +1,4 @@
-import './Style/MyEventsView.css';
+import './Style/ChosenEventView.css';
 
 import { useState, useContext, useEffect } from 'react';
 import UserNavBar from '../components/Profile/UserNavbar';

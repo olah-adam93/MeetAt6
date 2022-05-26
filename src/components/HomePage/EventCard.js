@@ -11,6 +11,13 @@ const EventCard = ({
   isDeleteButton,
   unsubscribeModalHandler,
   deleteModalHandler,
+  modalOpen,
+  unsubscribeModalOpen,
+  cancelHandler,
+  deleteHandler,
+  unsubscribeHandler,
+  deletedEvent,
+  unsubscribedEvent
 }) => {
   /* const [eventData, setEventData] = useState();
     const navigateTo =useNavigate()*/
