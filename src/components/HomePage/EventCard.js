@@ -3,7 +3,15 @@ import {Link} from 'react-router-dom';
 import './Styles/EventCard.css';
 import eventImagePlaceholder from '../../others/logo/logo7.3.png';
 
-const EventCard = ({eventCard, eventId}) => {
+const EventCard = ({
+  eventObj,
+  eventCard,
+  eventId,
+  isUnsubscribeButton,
+  isDeleteButton,
+  unsubscribeModalHandler,
+  deleteModalHandler,
+}) => {
   /* const [eventData, setEventData] = useState();
     const navigateTo =useNavigate()*/
   /*fetch from firebase? */
@@ -22,17 +30,26 @@ const EventCard = ({eventCard, eventId}) => {
   return (
     <div className='event-card'>
       <Link to={`/eventpage/${eventId}`}>
-        <div className='event-picture'>
+        <div className='event-picture-container'>
           {eventCard?.imageUrl ? (
-            <img src={eventCard?.imageUrl} alt={eventCard?.title} />
-          ) : <img src={eventImagePlaceholder} alt='default event'/>}
+            <img
+              className='event-picture-img'
+              src={eventCard?.imageUrl}
+              alt={eventCard?.title}
+            />
+          ) : (
+            <img
+              className='event-picture-default-img'
+              src={eventImagePlaceholder}
+              alt='default event'
+            />
+          )}
         </div>
       </Link>
+
       <div className='event-data'>
-        <Link to={`/eventpage/${eventId}`}>
-          <span>
-            <strong>{eventCard?.title}</strong>
-          </span>
+        <Link className='event-data-title' to={`/eventpage/${eventId}`}>
+          <h3>{eventCard?.title}</h3>
         </Link>
         <br />
         <span>{eventCard?.eventStarts + ' '}</span>
@@ -44,6 +61,23 @@ const EventCard = ({eventCard, eventId}) => {
         <span>Organizer: {eventCard?.organizer}</span>
         <br />
         <span>Attendant limit: {eventCard?.attendant}</span>
+      </div>
+
+      <div className='event-button'>
+        {isUnsubscribeButton && (
+          <>
+            <button type='button' onClick={unsubscribeModalHandler(eventObj)}>
+              Unsubscribe
+            </button>
+          </>
+        )}
+        {isDeleteButton && (
+          <>
+            <button type='button' onClick={deleteModalHandler(eventObj)}>
+              Delete
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

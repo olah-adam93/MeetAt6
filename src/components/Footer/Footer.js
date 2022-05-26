@@ -5,13 +5,6 @@ import './Footer.css';
 const Footer = () => {
   return (
     <div className='footer-nav'>
-      <div className='footer-logo'>
-        <img
-          className={`footer-img`}
-          src={require('./meetatsix200.49.feher.png')}
-          alt='logo'
-        />
-      </div>
       <div className='footer-links'>
         <ul>
           <li>
@@ -24,6 +17,14 @@ const Footer = () => {
             <NavLink to='/privacy'>Privacy</NavLink>
           </li>
         </ul>
+      </div>
+      <div className='footer-logo'>
+        <p>© 2022 &nbsp;</p>
+        <img
+          className={`footer-img`}
+          src={require('./meetatsix200.49.feher.png')}
+          alt='logo'
+        />
       </div>
     </div>
   );

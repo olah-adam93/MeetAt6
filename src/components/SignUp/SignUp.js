@@ -85,7 +85,7 @@ const SignUp = ({ submitForm }) => {
     <div className='sign-up-container'>
       <div className='mainapp'></div>
       <div>
-        <h2 className='title'> Sign In </h2>
+        <h2 className='title'> Sign Up </h2>
       </div>
       <form className='form-wrapper'>
         <div className='name'>

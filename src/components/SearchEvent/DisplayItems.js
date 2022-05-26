@@ -1,8 +1,8 @@
-import { useEffect, useState, useContext } from 'react';
+import {useEffect, useState, useContext, useLayoutEffect} from 'react';
 
 /* Style */
 import './Style/DisplayItems.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
   faAngleRight,
   faAngleLeft,
@@ -12,8 +12,9 @@ import {
 
 /* Components */
 import EventCard from '../HomePage/EventCard';
-import { deleteData } from '../../services/crud';
-import { AuthContext } from '../Authentication/AuthContext';
+import {deleteData} from '../../services/crud';
+import {AuthContext} from '../Authentication/AuthContext';
+
 const DisplayItems = ({
   isUnsubscribeButton,
   isDeleteButton,
@@ -118,45 +119,110 @@ const DisplayItems = ({
     setToDefault(false);
   }, [filteredDbItems, fromIndex, toIndex, setToDefault]);
 
+  useLayoutEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }, [currentPage]);
+
   return (
     <div className='display-items-container'>
-      <div className='display-container'>
-        {modalOpen && (
-          <div>
-            <h2>Are you sure?</h2>
-            <button onClick={cancelHandler}>Cancel</button>
+      <div className='pagination-container'>
+        {filteredDbItems.length > 0 ? (
+          <>
             <button
-              onClick={(eventObj) => {
-                deleteHandler(eventObj);
-              }}
+              type='button'
+              onClick={toFirstPageHandler}
+              disabled={currentPage > 2 ? '' : 'disabled'}
             >
-              Delete
+              <FontAwesomeIcon icon={faAnglesLeft} />
             </button>
-          </div>
-        )}
-        {unsubscribeModalOpen && (
-          <div>
-            <h2>Are you sure?</h2>
-            <button onClick={cancelHandler}>Cancel</button>
             <button
-              onClick={(eventObj) => {
-                unsubscribeHandler(eventObj);
-              }}
+              type='button'
+              onClick={previousButtonHandler}
+              disabled={currentPage === 1 ? 'disabled' : ''}
             >
-              Unsubscribe
+              <FontAwesomeIcon icon={faAngleLeft} />
             </button>
-          </div>
+            <span>{` Page ${currentPage} of ${pageNumber} `}</span>
+            <button
+              type='button'
+              onClick={nextButtonHandler}
+              disabled={currentPage === pageNumber ? 'disabled' : ''}
+            >
+              <FontAwesomeIcon icon={faAngleRight} />
+            </button>
+            <button
+              type='button'
+              onClick={toLastPageHandler}
+              disabled={currentPage < pageNumber - 1 ? '' : 'disabled'}
+            >
+              <FontAwesomeIcon icon={faAnglesRight} />
+            </button>
+          </>
+        ) : (
+          <>
+            <button type='button' onClick={toFirstPageHandler} disabled>
+              <FontAwesomeIcon icon={faAnglesLeft} />
+            </button>
+            <button type='button' onClick={previousButtonHandler} disabled>
+              <FontAwesomeIcon icon={faAngleLeft} />
+            </button>
+            <span>{` Page ${currentPage} of ${1} `}</span>
+            <button type='button' onClick={nextButtonHandler} disabled>
+              <FontAwesomeIcon icon={faAngleRight} />
+            </button>
+            <button type='button' onClick={toLastPageHandler} disabled>
+              <FontAwesomeIcon icon={faAnglesRight} />
+            </button>
+          </>
         )}
-        {!loading ? (
-          itemsToRender.map((eventObj, index) => {
+      </div>
+
+      {itemsToRender.length !== 0 ? (
+        <div className='display-container'>
+          {modalOpen && (
+            <div>
+              <h2>Are you sure?</h2>
+              <button onClick={cancelHandler}>Cancel</button>
+              <button
+                onClick={(eventObj) => {
+                  deleteHandler(eventObj);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          )}
+          {unsubscribeModalOpen && (
+            <div>
+              <h2>Are you sure?</h2>
+              <button onClick={cancelHandler}>Cancel</button>
+              <button
+                onClick={(eventObj) => {
+                  unsubscribeHandler(eventObj);
+                }}
+              >
+                Unsubscribe
+              </button>
+            </div>
+          )}
+          {itemsToRender.map((eventObj, index) => {
             return (
               <div key={index} className='display-items'>
                 <EventCard
+                  eventObj={eventObj}
                   eventCard={eventObj[1]}
                   eventId={eventObj[0]}
                   key={`card_${eventObj[0]}`}
+                  isUnsubscribeButton={isUnsubscribeButton}
+                  isDeleteButton={isDeleteButton}
+                  unsubscribeModalHandler={unsubscribeModalHandler}
+                  deleteModalHandler={deleteModalHandler}
                 />
-                {isUnsubscribeButton && (
+                {/* {isUnsubscribeButton && (
                   <>
                     <button type='button' onClick={unsubscribeModalHandler(eventObj)}>
                       Unsubscribe
@@ -169,14 +235,14 @@ const DisplayItems = ({
                       Delete
                     </button>
                   </>
-                )}
+                )} */}
               </div>
             );
-          })
-        ) : (
-          <div> Loading... </div>
-        )}
-      </div>
+          })}
+        </div>
+      ) : (
+        <div className='display-container-message'>No exact matches found.</div>
+      )}
 
       <div className='pagination-container'>
         {filteredDbItems.length > 0 ? (

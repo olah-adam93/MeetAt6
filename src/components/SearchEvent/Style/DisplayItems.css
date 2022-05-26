@@ -7,14 +7,20 @@
 
 .display-container {
   max-width: 100%;
+  min-height: 800px;
   display: grid;
   grid-template-columns: repeat(2, 50%);
+}
+
+.display-container-message {
+  max-width: 100%;
+  min-height: 800px;
+  margin-top: 2rem;
 }
 
 .display-items {
   width: fit-content;
   height: 400px;
-  border: 1px solid black;
   margin: 1rem;
 }
 
