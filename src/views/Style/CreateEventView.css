@@ -104,15 +104,16 @@ select {
 .create-new-event-container .new-event-form button:hover {
   background-color: #ccb9bc;
   transform: scale(1.2);
-  box-shadow: 0.5rem 0.5rem 1rem #7986cb;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-.create-new-event-container .new-event-form .location-container button:focus,
+/* .create-new-event-container .new-event-form .location-container button:focus,
 .event-frequency button:focus,
 .new-event-payment-container button:focus {
   background-color: #ffcdd2;
   transform: scale(1.1);
-} /*ezt majd meg kéne nézni mert nem marad úgy ha két fajta van egy oldalon*/
+}  */ /*ezt majd meg kéne nézni mert nem marad úgy ha két fajta van egy oldalon*/
 /*details*/
 .create-new-event-container
   .new-event-form

@@ -29,6 +29,7 @@ const JoinModal = ({ clickHandler, setIsOpen, eventKey, eventValue }) => {
     }).then(() => {
       setIsOpen(false);
     });
+    navigateTo("/join-success")
   };
 
   // }).then(() => {
