@@ -1,6 +1,8 @@
 /* Style */
 import './Style/ProfileView.css';
-
+/* import {
+  
+} from '@fortawesome/free-solid-svg-icons'; */
 /* Components */
 import {useContext, useEffect, useState} from 'react';
 import UserNavbar from '../components/Profile/UserNavbar';
@@ -31,11 +33,11 @@ const ProfileView = () => {
   return (
     <div className='profile'>
       <div className='profile-head'>
-        <div>
+        {/* <div>
           <UserNavbar />
-        </div>
+        </div> */}
         <div>
-          <h1>Hi {userData.userLog.user.displayName}!</h1>
+          {/* <h1>Hi {userData.userLog.user.displayName}!</h1> */}
           <img
             className='avatar'
             src={
@@ -45,22 +47,22 @@ const ProfileView = () => {
             alt={userData.userLog.user.displayName}
           />
         </div>
-        <section>
-          <h3>Your Informaiton: </h3>
-          <p>Email: {userData.userLog.user.email}</p>
-          <p>Tel: {userData.userLog.userDetails?.telephone}</p>
-          <p>Birthday: {userData.userLog.userDetails?.birthday}</p>
-          <p>Interest: {userData.userLog.userDetails?.interest}</p>
-          <p>Location: {userData.userLog.userDetails?.location}</p>
-        </section>
-      </div>
-      <div className='profile-main'>
-        <div className='user-head'>
-          <div className='user-data'>
+        <div className='profile-head-information'>
+          <div class='user-head-data'>
+            <section>
+              <p>Write to me: {userData.userLog.user.email}</p>
+              {/* <p icon={faFacebook} /> */}
+              {/* <p>{userData.userLog.userDetails?.birthday}</p> */}
+              <p>{userData.userLog.userDetails?.location}</p>
+            </section>
             <section>
               <p>{userData.userLog.userDetails?.userIntroduction}</p>
             </section>
           </div>
+        </div>
+      </div>
+      <div className='profile-main'>
+        <div className='user-head'>
           <div className='events'>
             <div className='events-box'>
               <EventSlider
