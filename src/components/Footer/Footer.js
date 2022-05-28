@@ -1,10 +1,12 @@
 import {NavLink} from 'react-router-dom';
 
+/* Style */
 import './Footer.css';
 
 const Footer = () => {
   return (
     <div className='footer-nav'>
+      
       <div className='footer-links'>
         <ul>
           <li>
@@ -18,6 +20,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
+
       <div className='footer-logo'>
         <p>© 2022 &nbsp;</p>
         <img
@@ -26,6 +29,7 @@ const Footer = () => {
           alt='logo'
         />
       </div>
+
     </div>
   );
 };

@@ -3,12 +3,15 @@
   --secondary-background-color: #ffffff;
   --tertiary-background-color: #af4448;
   --fourthly-background-color: #fbf7ed;
-  
-  --main-navbar-text-color: #870000;
+
+  --primary-navbar-text-color: #870000;
   --secondary-navbar-text-color: #ffffff;
   --navbar-hover-color: #af4448;
 
-  /* --primary-box-shadow: 0px 0px 23px -20px rgba(0, 0, 0, 1); */
+  --primary-footer-text-color: #dfe0e0;
+  --secondary-footer-text-color: #000000;
+  --footer-hover-color: #FFFFFF;
+
   --primary-box-shadow: 0 3px 10px 0 rgb(0 0 0 / 15%);
   --hover-box-shadow: 0 4px 10px 4px rgb(0 0 0 / 15%);
 

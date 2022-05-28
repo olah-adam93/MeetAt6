@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import NavBarMain from './NavBarMain';
 import {NavLink} from 'react-router-dom';
 
+/* Components */
+import NavBarMain from './NavBarMain';
+
+/* Style */
 import './Header.css';
 
 const Header = () => {
   const [small, setSmall] = useState(false);
+  
 
   useEffect(() => {
     const scrollCallback = () =>
@@ -18,17 +22,20 @@ const Header = () => {
 
   return (
     <div className={`header-container ${small ? 'header-small' : ''}`}>
-      <div className='header-logo'>
-        <NavLink to='/'>
-          <img
-            className={`header-img ${small ? 'img-small' : ''}`}
-            src={require('./meetatsix100.406.szines2.png')}
-            alt='logo'
-          />
-        </NavLink>
-      </div>
-      <div className='header-navbar'>
-        <NavBarMain />
+      <div className='header-inner-container'>
+        <div className='header-logo'>
+          <NavLink to='/'>
+            <img
+              className={`header-logo-img ${small ? 'img-small' : ''}`}
+              src={require('../../others/logo/meetatsix100.406.szines2.png')}
+              alt='logo'
+            />
+          </NavLink>
+        </div>
+
+        <div className='header-navbar'>
+          <NavBarMain />
+        </div>
       </div>
     </div>
   );

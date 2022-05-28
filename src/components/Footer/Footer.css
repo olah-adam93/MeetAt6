@@ -5,20 +5,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #6c757d;
-  padding: 0 2.5rem;
   list-style: none;
-  /* parent element is a flex container so it will stick to the bottom of the page */
+  /* parent element is a flex container so it will stick to the bottom of the page with margin-top: auto!*/
   margin-top: auto;
   background-color: var(--tertiary-background-color);
   box-shadow: var(--primary-box-shadow);
 }
+
 .footer-links {
   width: 45%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 .footer-nav li {
@@ -31,14 +30,15 @@
 }
 
 .footer-nav li a {
-  color: #fff;
+  text-decoration: none;
+  color: var(--primary-footer-text-color);
   font-size: 1.4rem;
   font-weight: 500;
   transition: color 0.35s ease;
 }
 
 .footer-nav li a:hover {
-  color: rgb(22, 14, 14);
+  color: var(--footer-hover-color);
 }
 
 .footer-logo {
@@ -46,10 +46,9 @@
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .footer-img {
   width: 35%;
-  transition: width 0.3s ease-out;
 }
