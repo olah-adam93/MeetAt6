@@ -10,9 +10,6 @@
 }
 
 .image-slider-container .swiper-slide {
-  text-align: center;
-  font-size: 40px;
-
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
