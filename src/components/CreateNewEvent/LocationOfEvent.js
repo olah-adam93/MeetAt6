@@ -1,9 +1,9 @@
-import {useState, useEffect, useRef} from 'react';
-import {Wrapper, Status} from '@googlemaps/react-wrapper';
+import { useState, useEffect, useRef } from 'react';
+import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import GoogleMapLoader from './Map/GoogleMapLoader';
 import MapWrapped from './Map/MapWrapped';
 
-const LocationOfEvent = ({setLocationType, locationType, setData, data}) => {
+const LocationOfEvent = ({ setLocationType, locationType, setData, data }) => {
   const [map, setMap] = useState();
   /* const clickHandler = (e) => {
     e.preventDefault();
@@ -18,13 +18,13 @@ const LocationOfEvent = ({setLocationType, locationType, setData, data}) => {
     console.log(locationType);
   }; */
   const changeHandler = (e) => {
-    setData((prev) => ({...prev, [e.target.name]: e.target.value}));
+    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   return (
     <div className='location-container'>
       <div className='location-type'>
         <label htmlFor='venue'>
-          Venue
+          Venue*
           <input
             type='radio'
             name='locationType'
@@ -35,7 +35,7 @@ const LocationOfEvent = ({setLocationType, locationType, setData, data}) => {
           />
         </label>
         <label htmlFor='ticket'>
-          Online
+          Online*
           <input
             type='radio'
             name='locationType'
@@ -51,10 +51,15 @@ const LocationOfEvent = ({setLocationType, locationType, setData, data}) => {
           <div>
             <p>Google Map</p>
             <label htmlFor='location'> Address</label>
-              <input type='text' value={ data?.location} name='location' id="location" onChange={changeHandler}/>
-              <br />
-              <MapWrapped data={data} setData={setData} map={map} setMap={setMap} />
-            
+            <input
+              type='text'
+              value={data?.location}
+              name='location'
+              id='location'
+              onChange={changeHandler}
+            />
+            <br />
+            <MapWrapped data={data} setData={setData} map={map} setMap={setMap} />
           </div>
         </div>
       ) : null}

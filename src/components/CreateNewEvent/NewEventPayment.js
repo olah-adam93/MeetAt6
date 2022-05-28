@@ -1,9 +1,9 @@
-import {data} from 'dom7';
-import {useState} from 'react';
+import { data } from 'dom7';
+import { useState } from 'react';
 
-const NewEventPayment = ({setData, data}) => {
+const NewEventPayment = ({ setData, data }) => {
   const changeHandler = (e) => {
-    setData((prev) => ({...prev, [e.target.name]: e.target.value}));
+    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -12,7 +12,7 @@ const NewEventPayment = ({setData, data}) => {
       <div className='payment-type-btn-box'>
         <h2>Currency</h2>
 
-        <label htmlFor='free'>Free</label>
+        <label htmlFor='free'>Free*</label>
         <input
           type='radio'
           name='paymentType'
@@ -21,7 +21,7 @@ const NewEventPayment = ({setData, data}) => {
           onChange={changeHandler}
           defaultChecked={data?.paymentType === 'free'}
         />
-        <label htmlFor='ticket'>Ticket</label>
+        <label htmlFor='ticket'>Ticket*</label>
         <input
           type='radio'
           name='paymentType'
