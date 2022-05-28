@@ -1,6 +1,6 @@
-const TimeOfEvent = ({setData, data}) => {
+const TimeOfEvent = ({ setData, data }) => {
   const changeHandler = (e) => {
-    setData((prev) => ({...prev, [e.target.name]: e.target.value}));
+    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   return (
     <div className='time-of-event'>
@@ -15,7 +15,7 @@ const TimeOfEvent = ({setData, data}) => {
           onChange={changeHandler}
           defaultChecked={data?.eventFrequency === 'single'}
         />
-        <label htmlFor='recurring'>Recurring</label>
+        {/* <label htmlFor='recurring'>Recurring</label>
         <input
           type='radio'
           name='eventFrequency'
@@ -23,10 +23,10 @@ const TimeOfEvent = ({setData, data}) => {
           onChange={changeHandler}
           id='recurring'
           defaultChecked={data?.eventFrequency === 'recurring'}
-        />
+        /> */}
       </div>
       <div>
-        <label htmlFor='event-starts'>Event Starts</label>
+        <label htmlFor='event-starts'>Event Starts*</label>
         <input
           type='date'
           id='event-starts'
@@ -34,7 +34,7 @@ const TimeOfEvent = ({setData, data}) => {
           onChange={changeHandler}
           value={data?.eventStarts}
         />
-        <label htmlFor='start-time'>Start Time</label>
+        <label htmlFor='start-time'>Start Time*</label>
         <input
           type='time'
           id='start-time'
@@ -45,7 +45,7 @@ const TimeOfEvent = ({setData, data}) => {
       </div>
 
       <div>
-        <label htmlFor='event-ends'>Event Ends</label>
+        <label htmlFor='event-ends'>Event Ends*</label>
         <input
           type='date'
           id='event-ends'
@@ -53,7 +53,7 @@ const TimeOfEvent = ({setData, data}) => {
           onChange={changeHandler}
           value={data?.eventEnds}
         />
-        <label htmlFor='end-time'>End time</label>
+        <label htmlFor='end-time'>End time*</label>
         <input
           type='time'
           id='end-time'

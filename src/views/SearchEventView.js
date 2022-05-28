@@ -6,9 +6,13 @@ import './Style/SearchEventView.css';
 /* Components */
 import FilterBar from '../components/SearchEvent/FilterBar';
 import DisplayItems from '../components/SearchEvent/DisplayItems';
+import MapComponent from '../components/SearchEvent/MapComponent';
 
 /* Database Context */
 import {EventDbContext} from '../components/EventDbContext/EventDbContext';
+
+/* Google Maps */
+import { Wrapper } from '@googlemaps/react-wrapper';
 
 const SearchEventView = () => {
   const eventDb = useContext(EventDbContext);
@@ -36,10 +40,24 @@ const SearchEventView = () => {
           console.log(event);
         }
 
-        // date szűrés-t még ki kell találni!
+        // function getDate(filterParamDate, eventStartDate) {
+        //   console.log(filterParamDate);
+
+           
+        //   const eventDate = value?.eventStarts;
+        //   console.log(eventDate);
+        //   // const todayDate = new Date().toISOString().slice(0, 10);
+        //   const todayDate = new Date().getTime( );
+        //   console.log('today: ', todayDate);
+        //   // const todayDate = new Date(value?.eventStarts).getTime();
+        //   console.log('event date: ', eventDate);
+        // }
+        // getDate(filterParams?.date, value?.eventStarts);
+
         const filterTitleResult = value?.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1;
         const filterLocationResult = value?.locationType.toString().toLowerCase().indexOf(filterParams?.location.toLowerCase()) > -1;
         const filterPriceResult = value?.paymentType.toString().toLowerCase().indexOf(filterParams?.price.toLowerCase()) > -1;
+        // const filterDateResult = value?.eventStarts;
         const filterTypeResult = value?.type.toString().toLowerCase().indexOf(filterParams?.type.toLowerCase()) > -1;
         const filterCategoryResult = value?.category.toString().toLowerCase().indexOf(filterParams?.category.toLowerCase()) > -1;
         
@@ -60,7 +78,11 @@ const SearchEventView = () => {
       <div className='search-event-inner-container'>
         <DisplayItems filteredDbItems={eventsCard} perPage={6} toDefault={toDefault} setToDefault={setToDefault}/>
         <div className='display-maps-container'>
-          <div className='display-maps'>Google Maps Placeholder</div>
+          <div className='display-maps'>
+          <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
+            <MapComponent eventInfo={eventsCard} />
+          </Wrapper>
+          </div>
         </div>
       </div>
     </div>

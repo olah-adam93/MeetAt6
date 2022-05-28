@@ -8,8 +8,6 @@ import { AuthContext } from '../Authentication/AuthContext';
 
 const Settings = ({ setData, data }) => {
   const userData = useContext(AuthContext);
-  const [editName, setEditName] = useState(false);
-  const [editEmail, setEditEmail] = useState(false);
   const [emailChanged, setEmailChanged] = useState(false);
   const [nameChanged, setNameChanged] = useState(false);
   const [nameChangeMessage, setNameChangeMessage] = useState(null);
@@ -31,27 +29,6 @@ const Settings = ({ setData, data }) => {
   const user = auth.currentUser;
   const userObj = userData.userLog.user;
   const userDetailsObj = userData.userLog.userDetails;
-
-  // Edit button
-
-  const clickEditHandler = (e) => {
-    if (e.target.name === 'name-btn') {
-      setEditName(true);
-    } else if (e.target.name === 'email-btn') {
-      setEditEmail(true);
-    } else {
-      setEditName(false);
-      setEditEmail(false);
-    }
-  };
-
-  const clickResetHandler = (e) => {
-    if (e.target.name === 'name-btn') {
-      setEditName(false);
-    } else if (e.target.name === 'email-btn') {
-      setEditEmail(false);
-    }
-  };
 
   const authChangeHandler = (e) => {
     setAuthInputValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -132,7 +109,7 @@ const Settings = ({ setData, data }) => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-   /*  createUserData(`userDetails/${user.uid}`, {
+    /*  createUserData(`userDetails/${user.uid}`, {
       birthday: inputValue?.birthday || userDetailsObj.birthday,
       gender: inputValue?.gender || userDetailsObj.gender,
       telephone: inputValue?.telephone || userDetailsObj.telephone,
@@ -161,54 +138,28 @@ const Settings = ({ setData, data }) => {
           <label htmlFor='name' className='label-form label-name'>
             Username
           </label>
-          {editName && (
-            <input
-              type='text'
-              className='input-name'
-              name='name'
-              id='name'
-              placeholder={userObj.displayName}
-              onChange={authChangeHandler}
-            />
-          )}
-          <span>
-            <button
-              type='button'
-              name='name-btn'
-              className='edit-button'
-              onClick={clickEditHandler}
-              onDoubleClick={clickResetHandler}
-            >
-              edit
-            </button>
-          </span>
+          <input
+            type='text'
+            className='input-name'
+            name='name'
+            id='name'
+            placeholder={userObj.displayName}
+            onChange={authChangeHandler}
+          />
         </div>
         {/*Email*/}
         <div className='settings-email'>
           <label htmlFor='email' className='label-form label-email'>
             Email
           </label>
-          {editEmail && (
-            <input
-              type='email'
-              className='input-email'
-              name='email'
-              id='email'
-              placeholder={userObj.email}
-              onChange={authChangeHandler}
-            />
-          )}
-          <span>
-            <button
-              type='button'
-              name='email-btn'
-              className='edit-button'
-              onClick={clickEditHandler}
-              onDoubleClick={clickResetHandler}
-            >
-              edit
-            </button>
-          </span>
+          <input
+            type='email'
+            className='input-email'
+            name='email'
+            id='email'
+            placeholder={userObj.email}
+            onChange={authChangeHandler}
+          />
         </div>
         <button type='submit' className='save-button'>
           Save

@@ -17,16 +17,22 @@ const GoogleMapLoader = ({data, setData, map, setMap}) => {
     }
     if (map) {
       map.setOptions({zoom: 6, center: center});
+      // map.addListener('click', (param) => { console.log('lat:', param.latLng.lat(), 'long:', param.latLng.lng())});
+      map.addListener('click', (param) => {
+        marker.setMap(null);
+        setData((prev) => ({ ...prev, geoLng: param.latLng.lng(), geoLat: param.latLng.lat() }));
+        setCenter({lat: param.latLng.lat(), lng: param.latLng.lng()})
+      });
 
     }
   }, [ref, map]);
-
+  
 
   useEffect(() => {
-    /* if (!marker && map) { */
+    // if (!marker && map) { 
       setMarker(
         new window.google.maps.Marker({
-          position:  {lat: Number(center.lat) || 47.4979, lng: Number(center.lng) || 19.0402},
+          position:  {lat: Number(data?.geoLat) || 47.4979, lng: Number(data?.geoLng) || 19.0402},
           map,
           icon: {
             url: 'https://img.icons8.com/doodle/48/000000/google-maps-new.png',
@@ -36,30 +42,33 @@ const GoogleMapLoader = ({data, setData, map, setMap}) => {
           },
         })
       );
-    
+    // }
+
     return () => {
       if (marker) {
         marker.setMap(null);
       }
-    };
+    }
   }, [center, map]);
 
-  const clickHandler = (e) => {
+  // const clickHandler = (e) => {
     
-    marker.setMap(null)
-    setCenter({lat: Number(data?.latitude), lng: Number(data?.longitude)})
-  }
+  //   marker.setMap(null)
+  //   setCenter({lat: Number(data?.latitude), lng: Number(data?.longitude)})
+  // }
   console.log(center)
-  const changeHandler = (e) => {
-    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };  
+  
+  // const changeHandler = (e) => {
+  //   setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  // };
+
   return (
     <>
-      <label htmlFor='latitude'>Latitude</label>
+      {/* <label htmlFor='latitude'>Latitude</label>
       <input type="number"  name="latitude" id="latitude" onChange={changeHandler}/>
       <label htmlFor='longitude'>Longitude</label>
       <input type="number"  name="longitude" id="longitude" onChange={changeHandler}/>
-      <button type="button" onClick={clickHandler}>Set Marker</button>
+      <button type="button" onClick={clickHandler}>Set Marker</button> */}
       <div ref={ref} style={{height: '50vh', width: '100%', margin: 'auto'}}></div>
     </>
   );

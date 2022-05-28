@@ -10,6 +10,7 @@
   list-style: none;
   /* parent element is a flex container so it will stick to the bottom of the page */
   margin-top: auto;
+  background-color: var(--tertiary-background-color);
 }
 .footer-links {
   width: 45%;
