@@ -45,7 +45,7 @@ export default function EventSlider({ containerName, searchKey, searchValue }) {
     <>
       <h2 className='slider-container-name'>{containerName}</h2>
       <br />
-      <div className='slider-container'>
+      <div className='event-slider-container'>
         <Swiper
           slidesPerView={4}
           spaceBetween={0}
