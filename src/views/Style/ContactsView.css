@@ -34,7 +34,7 @@
 .requiredInformation {
   border: 1px solid var(--main-navbar-text-color);
 }
-.contact-us-form {
+.contact-container .contact-details .contact-us-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,9 +44,8 @@
   border-radius: var(--card-border-radius);
   box-shadow: var(--primary-box-shadow);
 }
-.contact-us-form input,
-textarea,
-select {
+.contact-container .contact-details .contact-us-form input,
+textarea {
   font-size: var(--form-label-font-size);
   padding: var(--form-input-padding);
   border-radius: var(--form-input-border-radius);
@@ -54,17 +53,19 @@ select {
   margin-bottom: 2rem;
   width: 100%;
 }
-.contact-us-form select {
+.contact-container .contact-details .contact-us-form > select {
   margin-bottom: 1rem;
+  width: 100%;
 }
-.contact-us-form textarea {
+.contact-container .contact-us-form textarea {
   height: 20rem;
 }
-.contact-us-form input:hover,
+.contact-container .contact-details .contact-us-form input:hover,
+select:hover,
 textarea:hover {
   border: 1px solid var(--form-hover-input-border-color);
 }
-.contact-us-form button {
+.contact-container .contact-details .contact-us-form button {
   color: var(--button-text-color);
   background-color: var(--button-background-color);
   border-radius: var(--button-border-radius);
@@ -72,6 +73,6 @@ textarea:hover {
   border: none;
   margin: 3rem;
 }
-.contact-us-form button:hover {
+.contact-container .contact-details .contact-us-form button:hover {
   background-color: var(--button-hover-background-color);
 }
