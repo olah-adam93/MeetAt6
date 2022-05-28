@@ -11,19 +11,19 @@ const HomePageView = () => {
     <div>
       <PictureSlider />
 
-      <EventSlider 
-        containerName={'Legfrissebb események'}
+      <EventSlider
+        containerName={'Newest events'}
         searchKey={'paymentType'}
         searchValue={'free'}
       />
 
-      <EventSlider 
-        containerName={'Kiemelt események'}
+      <EventSlider
+        containerName={'Premium events'}
         searchKey={'paymentType'}
         searchValue={'ticket'}
       />
     </div>
   );
-}
+};
 
 export default HomePageView;

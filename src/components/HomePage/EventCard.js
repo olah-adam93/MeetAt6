@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './Styles/EventCard.css';
 import eventImagePlaceholder from '../../others/logo/logo7.3.png';
@@ -17,7 +17,7 @@ const EventCard = ({
   deleteHandler,
   unsubscribeHandler,
   deletedEvent,
-  unsubscribedEvent
+  unsubscribedEvent,
 }) => {
   /* const [eventData, setEventData] = useState();
     const navigateTo =useNavigate()*/
