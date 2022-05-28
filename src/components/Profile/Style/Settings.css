@@ -33,7 +33,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding-top: 2rem;
-  width: 60%;
+  width: 85%;
   margin: 1.5rem auto;
 }
 
@@ -146,12 +146,12 @@
 }
 
 .settings-image {
-  border: 2px dashed #111;
   height: 100%;
   width: 100%;
   margin: 1rem;
-  border-radius: 5px;
-  background-color: #6c757d;
+  border-radius: var(--card-border-radius);
+  background-color: var(--secondary-navbar-text-color);
+  box-shadow: var(--primary-box-shadow);
   display: flex;
   text-align: center;
   align-items: center;
@@ -163,13 +163,10 @@
   width: 20rem;
   height: 20rem;
 }
+
 .settings-image img {
   width: 80%;
   height: auto;
-}
-
-.settings-image:hover {
-  border: 2px solid #fff;
 }
 
 .settings-image .settings-icon {
@@ -179,16 +176,21 @@
 }
 
 .settings-image button {
-  padding: 0.8rem 1.8rem;
+  padding: var(--button-padding);
   font-size: 1.5rem;
   font-weight: 500;
   border: none;
   outline: none;
-  background-color: #fff;
-  color: #111;
-  border-radius: 0.3rem;
+  background-color: var(--tertiary-background-color);
+  color: var(--secondary-navbar-text-color);
+  border-radius: var(--button-border-radius);
   cursor: pointer;
   margin: 1rem;
+}
+
+.settings-image button:hover,
+.settings-form .save-button:hover {
+  background-color: var(--button-hover-background-color);
 }
 
 /* Classification radio */
@@ -215,14 +217,14 @@
 /* Save button */
 
 .settings-form .save-button {
-  padding: 0.8rem 1.8rem;
-  margin: auto;
+  padding: var(--button-padding);
   font-size: 1.5rem;
   font-weight: 500;
   border: none;
   outline: none;
-  background-color: #6c757d;
-  color: white;
-  border-radius: 0.3rem;
+  background-color: var(--tertiary-background-color);
+  color: var(--secondary-navbar-text-color);
+  border-radius: var(--button-border-radius);
   cursor: pointer;
+  margin: auto;
 }

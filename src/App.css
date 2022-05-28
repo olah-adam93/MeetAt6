@@ -1,17 +1,38 @@
 :root {
-  --primary-background-color: #FBF7ED;
-  --secondary-background-color: #FFFFFF;
+  --primary-background-color: #fbf7ed;
+  --secondary-background-color: #ffffff;
   --tertiary-background-color: #af4448;
-  --fourthly-background-color: #F3F4F5;
+  --fourthly-background-color: #f3f4f5;
   --main-navbar-text-color: #870000;
-  --secondary-navbar-text-color: #FFFFFF;
+  --secondary-navbar-text-color: #ffffff;
   --navbar-hover-color: #af4448;
-
 
   --primary-box-shadow: 0px 0px 23px -20px rgba(0, 0, 0, 1);
   --hover-box-shadow: 0px 0px 23px -14px rgba(0, 0, 0, 1);
-}
 
+  --button-text-color: #ffffff;
+  --button-background-color: #af4448;
+  --button-hover-background-color: #870000;
+  --button-border-radius: 0.5rem;
+  --button-padding: 0.8rem 1.8rem;
+
+  --card-border-radius: 1rem;
+
+  --h1-font-size: 3rem;
+  --h2-font-size: 2.5rem;
+  --h3-font-size: 2rem;
+
+  --p-font-size-small: 1rem;
+  --p-font-size: 1.6rem;
+
+  --form-label-font-size: 1.6rem;
+  --form-input-padding: 0.5rem;
+  --form-input-border-radius: 0.5rem;
+  --form-input-border-color: #000;
+  --form-hover-input-border-color: #af4448;
+
+  --link-basic-style: none;
+}
 
 .layout-container {
   margin: 0 auto;
