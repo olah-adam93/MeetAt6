@@ -39,7 +39,7 @@ const NavBarMain = () => {
             <li>
               <NavLink id='main-navbar-dropdown-link' to='/profile'>
                 <FontAwesomeIcon icon={faUser} />
-                &nbsp;&nbsp;{authContext.userLog.user.displayName}
+                &nbsp;&nbsp;{authContext.userLog.user.email}
               </NavLink>
             </li>
             {closeDrop && <div className='main-navbar-dropdown-content'>

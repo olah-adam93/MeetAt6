@@ -54,22 +54,20 @@ const SearchEventView = () => {
         // }
         // getDate(filterParams?.date, value?.eventStarts);
 
-        const filterTitleResult = value?.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1;
+        const filterTitleResult = value?.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 || value?.location.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) > -1;
         const filterLocationResult = value?.locationType.toString().toLowerCase().indexOf(filterParams?.location.toLowerCase()) > -1;
         const filterPriceResult = value?.paymentType.toString().toLowerCase().indexOf(filterParams?.price.toLowerCase()) > -1;
-        // const filterDateResult = value?.eventStarts;
+        const filterDateResult = value?.eventStarts.toString().toLowerCase().indexOf(filterParams?.date.toLowerCase()) > -1;
         const filterTypeResult = value?.type.toString().toLowerCase().indexOf(filterParams?.type.toLowerCase()) > -1;
         const filterCategoryResult = value?.category.toString().toLowerCase().indexOf(filterParams?.category.toLowerCase()) > -1;
         
-        return filterTitleResult && filterLocationResult && filterPriceResult && filterTypeResult && filterCategoryResult;   
+        return filterTitleResult && filterLocationResult && filterPriceResult && filterDateResult&& filterTypeResult && filterCategoryResult;   
     });
   }, [searchQuery, filterParams])
 
   useEffect(() => { 
       setEventsCard(searchFunction(eventDb.db));
   }, [eventDb, searchFunction]);
-
-  // console.log('toDefault', toDefault);
 
   return (
     <div className='search-event-container'>

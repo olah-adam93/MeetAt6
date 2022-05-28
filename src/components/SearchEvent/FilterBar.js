@@ -43,6 +43,8 @@ const FilterBar = ({setSearchQuery, filterParams, setFilterParams, setToDefault}
     setSearchValue('');
   };
 
+  console.log(filterParams);
+
   return (
     <div>
       <div className='search-bar-container'>
@@ -58,14 +60,13 @@ const FilterBar = ({setSearchQuery, filterParams, setFilterParams, setToDefault}
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </form>
-        <button className='search-bar-reset-button'type='button' onClick={resetHandler}>
-            Reset Filter 
+        <button className='search-bar-reset-button' type='button' onClick={resetHandler}>
+          Reset Filter
         </button>
       </div>
 
       <div className='fiter-bar-container'>
         <form className='filter-bar-form'>
-          {/* <input type='text' name='location' placeholder='Enter location' /> */}
           <select name='location' onChange={selectHandler} value={filterParams?.location}>
             <option value=''>Any Location</option>
             <option value='online'>Online</option>
@@ -76,12 +77,12 @@ const FilterBar = ({setSearchQuery, filterParams, setFilterParams, setToDefault}
             <option value='free'>Free</option>
             <option value='ticket'>Paid</option>
           </select>
-          <select name='date' onChange={selectHandler} value={filterParams?.date}>
-            <option value=''>Any Date</option>
-            <option value='today'>Today</option>
-            <option value='tomorrow'>Tomorrow</option>
-            <option value='thisweek'>This week</option>
-          </select>
+          <input
+            type='date'
+            name='date'
+            onChange={selectHandler}
+            value={filterParams?.date}
+          />
           <select name='type' onChange={selectHandler} value={filterParams?.type}>
             <option value=''>Any Type</option>
             <option value='trip'>Trip</option>
