@@ -144,7 +144,7 @@ const CreateEventView = () => {
                 Save event
               </button>
             )}
-            <h3>*: required</h3>
+            <h3 className="required">*: required</h3>
           </div>
         </form>
       </div>

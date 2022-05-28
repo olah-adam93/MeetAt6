@@ -3,13 +3,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
   margin-top: 2rem;
   /* height: 100%; */
 }
 .create-new-event-container .new-event-form {
   margin-top: 2rem;
-  width: 90%;
+  width: 95%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,39 +17,58 @@
 .create-new-event-container .new-event-form .basic-info-box,
 .time-of-event,
 .location-container {
-  margin-bottom: 2rem;
+  margin-bottom: 6rem;
+}
+.location-container .location-type{
+  margin-bottom: 3rem;
 }
 .create-new-event-container .new-event-form .time-of-event label {
   display: inline-block;
 }
 /*Text*/
 .create-new-event-container h1 {
-  font-size: 3rem;
+  font-size: var(--h1-font-size);
+  margin-bottom: 1rem;
 }
 .create-new-event-container .new-event-form h2 {
-  font-size: 2.5rem;
+  font-size: var(--h2-font-size);
+  margin-bottom: 1rem;
+
 }
-.create-new-event-container .new-event-form h3 {
-  font-size: 2rem;
+.create-new-event-container .new-event-form h3{
+  font-size: var(--h3-font-size);
+  margin-bottom: 1rem;
+
 }
 .create-new-event-container .new-event-form label {
-  font-size: 1.6rem;
+  font-size: var(--form-label-font-size);
   display: block;
   margin: 1rem 1rem 0 2rem;
 }
 .create-new-event-container .new-event-form p {
   margin: 1rem;
-  font-size: 1.4rem;
+  font-size: var(--p-font-size);
 }
-
+.required{
+  color: var(--button-hover-background-color)
+}
 /*inputs, buttons, select, textarea..*/
 .create-new-event-container .new-event-form input,
-select {
+select, textarea {
   margin: 1rem 1rem 0 2rem;
-  padding: 2px;
+  font-size: var(--form-label-font-size);
+  padding: var(--form-input-padding);
+  border-radius: var(--form-input-border-radius);
+  border: 1px solid var(--form-input-border-color);
+
 }
-.create-new-event-container .new-event-form .basic-event-info button {
+.create-new-event-container .new-event-form input:hover,
+select:hover, textarea:hover{
+  border:1px solid var(--form-hover-input-border-color)
+}
+.create-new-event-container .new-event-form button {
   margin: 2rem 1rem;
+  
 }
 .create-new-event-container .new-event-form .btn-container {
   height: 5rem;
@@ -71,10 +89,12 @@ select {
   display: table;
 }
 .create-new-event-container .new-event-form button {
-  padding: 0.5rem;
-  border-radius: 1rem;
-  border: 1px solid black;
-  background-color: #ffebee;
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
+  color: var(--button-text-color);
+  background-color: var(--button-background-color);
+  border: none;
+  font-weight: 500;
   transition: all 0.5s;
 }
 .create-new-event-container
@@ -90,6 +110,7 @@ select {
   min-height: 10rem;
   margin: 1rem 2rem 1rem 2rem;
   padding: 2px;
+  box-shadow: var(--primary-box-shadow);
 }
 .create-new-event-container
   .new-event-form
@@ -102,18 +123,12 @@ select {
 
 /*hover, focus*/
 .create-new-event-container .new-event-form button:hover {
-  background-color: #ccb9bc;
+  background-color: var(--button-hover-background-color);
   transform: scale(1.2);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  box-shadow: var(--hover-box-shadow)
 }
 
-/* .create-new-event-container .new-event-form .location-container button:focus,
-.event-frequency button:focus,
-.new-event-payment-container button:focus {
-  background-color: #ffcdd2;
-  transform: scale(1.1);
-}  */ /*ezt majd meg kéne nézni mert nem marad úgy ha két fajta van egy oldalon*/
+
 /*details*/
 .create-new-event-container
   .new-event-form
@@ -123,8 +138,10 @@ select {
   width: 50rem;
   min-height: 20rem;
   text-align: center;
-  border: 1px solid black;
-  margin: 1rem 2rem 1rem 2rem;
+  box-shadow: var( --primary-box-shadow);
+  border-radius: var(--card-border-radius);
+  margin: 1rem 2rem 4rem 2rem;
+  background-color: var(--secondary-background-color);
 }
 .add-image-event-container img {
   width: 30rem;
@@ -140,6 +157,11 @@ select {
   .new-event-payment-container
   .payment-type-btn-box {
   margin-left: 3rem;
+  margin-bottom: 4rem;
+}
+
+.ticket-pricing-information, .ticket-validation{
+  margin-bottom: 4rem;
 }
 .create-new-event-container .new-event-form .new-event-payment-container .ticket-details {
   margin: 1rem;

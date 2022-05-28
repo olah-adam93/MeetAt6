@@ -18,6 +18,10 @@ const LocationOfEvent = ({ setLocationType, locationType, setData, data }) => {
     console.log(locationType);
   }; */
   const changeHandler = (e) => {
+    if(e.target.value === "online"){
+      setData((prev) => ({ ...prev, location: '', geoLat: '', geoLng: '', [e.target.name]: e.target.value }));
+
+    }
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   return (
@@ -45,24 +49,28 @@ const LocationOfEvent = ({ setLocationType, locationType, setData, data }) => {
             defaultChecked={data?.locationType === 'online'}
           />
         </label>
+        
       </div>
-      {data?.locationType === 'venue' ? (
+      
+      <div>
         <div>
-          <div>
-            <p>Google Map</p>
-            <label htmlFor='location'> Address</label>
-            <input
-              type='text'
-              value={data?.location}
-              name='location'
-              id='location'
-              onChange={changeHandler}
-            />
-            <br />
-            <MapWrapped data={data} setData={setData} map={map} setMap={setMap} />
-          </div>
+          <p>Please write the address here</p>
+          <label htmlFor='location'> Address</label>
+          <input
+            type='text'
+            value={data?.location}
+            name='location'
+            id='location'
+            onChange={changeHandler}
+          />
+
+          <p>Point on the Map</p>
+          
+          <br />
+          <MapWrapped data={data} setData={setData} map={map} setMap={setMap} />
         </div>
-      ) : null}
+      </div>
+      
     </div>
   );
 };
