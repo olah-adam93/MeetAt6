@@ -22,7 +22,7 @@ const Header = () => {
         <NavLink to='/'>
           <img
             className={`header-img ${small ? 'img-small' : ''}`}
-            src={require('./meetatsix200.49.feher.png')}
+            src={require('./meetatsix100.406.szines2.png')}
             alt='logo'
           />
         </NavLink>
