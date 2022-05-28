@@ -1,7 +1,7 @@
 /*React*/
 import { useEffect, useState } from 'react';
-import {storage} from '../config/firebase';
-import {getStorage, ref, uploadBytes, getDownloadURL, } from 'firebase/storage';
+import { storage } from '../config/firebase';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 /*Components */
 import BasicInfoForm from '../components/CreateNewEvent/BasicInfoForm';
 import LocationOfEvent from '../components/CreateNewEvent/LocationOfEvent';
@@ -19,6 +19,7 @@ const CreateEventView = () => {
   const navigateTo = useNavigate();
   const auth = getAuth();
   const user = auth.currentUser;
+  const [missingData, setMissingData] = useState(false);
   const [data, setData] = useState({
     uid: user.uid,
     title: '',
@@ -44,7 +45,7 @@ const CreateEventView = () => {
       setNextBtn((prev) => (prev -= 1));
     }
   };
- /*  const onUploadImage = (e) => {
+  /*  const onUploadImage = (e) => {
     const fileRef = ref(storage, `eventImages/${data?.image.name}`)
     uploadBytes(fileRef, data?.image)
     .then((uploadResult) =>{console.log("first");
@@ -63,18 +64,34 @@ const CreateEventView = () => {
     setData((prev)=> ({...prev, currentTime})) */
     /* createTime() */
 
-    /* if(!data.title || !data.locationType || !data.paymentType || !data.eventStarts || !data.eventEnds || !data.startTime || !data.endTime) */
-    
-    const currentDate = new Date(Date.now()).toUTCString().slice(-24, -4)
-    console.log(currentDate)
-    createNewData('events', {...data, createdDate: currentDate});
-    /* createNewData('events', data) */
-    setData({});
-    console.log('done');
-    navigateTo('/create-success');
+    if (
+      !data.title ||
+      !data.locationType ||
+      !data.paymentType ||
+      !data.eventStarts ||
+      !data.eventEnds ||
+      !data.startTime ||
+      !data.endTime
+    ) {
+      setMissingData(true);
+      setTimeout(() => {
+        setMissingData(false);
+      }, 8000);
+    } else {
+      const currentDate = new Date(Date.now()).toUTCString().slice(-24, -4);
+      console.log(currentDate);
+      createNewData('events', { ...data, createdDate: currentDate });
+      /* createNewData('events', data) */
+      setData({});
+      console.log('done');
+      navigateTo('/create-success');
+    }
   };
   return (
     <div className='create-new-event-container'>
+      {missingData && (
+        <h1 className='missing-data'>Missing data! Please fill every required field!</h1>
+      )}
       <h1>Create New Event</h1>
       <div className='new-event-form'>
         <form action='' onSubmit={submitHandler}>
@@ -125,6 +142,7 @@ const CreateEventView = () => {
                 Save event
               </button>
             )}
+            <h3>*: required</h3>
           </div>
         </form>
       </div>
