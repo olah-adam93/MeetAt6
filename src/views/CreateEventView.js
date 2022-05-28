@@ -69,10 +69,11 @@ const CreateEventView = () => {
       !data.title ||
       !data.locationType ||
       !data.paymentType ||
-      !data.eventStarts ||
+      !data.eventStarts || //itt vizsgálja hogy a múltban jönne létre?
       !data.eventEnds ||
       !data.startTime ||
       !data.endTime
+      //attendant ne lehessen - eredmény
     ) {
       setMissingData(true);
       setTimeout(() => {
