@@ -22,14 +22,15 @@ const PictureSlider = () => {
     <div className='image-slider-container'>
       <Swiper
         modules={[Pagination, Navigation, Autoplay]}
+        speed={2000}
         slidesPerView={1}
         spaceBetween={0}
         loop={true}
-        autoplay={{ delay: 5000 }}
+        autoplay={{ delay: 10000, pauseOnMouseEnter: true }}
         // pagination={{
         //   clickable: true,
         // }}
-        navigation={true}
+        navigation={false}
         className='swiper'
       >
         <SwiperSlide><img src={hiking} alt="Logo" /></SwiperSlide>
