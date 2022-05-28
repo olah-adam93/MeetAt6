@@ -15,12 +15,12 @@ const Settings = ({ setData, data }) => {
   const [nameChangeMessage, setNameChangeMessage] = useState(null);
   const [emailChangeMessage, setEmailChangeMessage] = useState(null);
   const [inputValue, setInputValue] = useState({
-    birthday: '',
+    /* birthday: '',
     gender: '',
     location: '',
     organization: '',
     telephone: '',
-    userIntroduction: '',
+    userIntroduction: '', */
   });
   const [authInputValue, setAuthInputValue] = useState({
     name: '',
@@ -132,14 +132,18 @@ const Settings = ({ setData, data }) => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-    createUserData(`userDetails/${user.uid}`, {
+   /*  createUserData(`userDetails/${user.uid}`, {
       birthday: inputValue?.birthday || userDetailsObj.birthday,
       gender: inputValue?.gender || userDetailsObj.gender,
       telephone: inputValue?.telephone || userDetailsObj.telephone,
       userIntroduction: inputValue?.userIntroduction || userDetailsObj.userIntroduction,
-    });
+    }); */
 
     updateData('userDetails', user.uid, {
+      birthday: inputValue?.birthday || userDetailsObj.birthday,
+      gender: inputValue?.gender || userDetailsObj.gender,
+      telephone: inputValue?.telephone || userDetailsObj.telephone,
+      userIntroduction: inputValue?.userIntroduction || userDetailsObj.userIntroduction,
       location: inputValue?.location || userDetailsObj.location,
       organization: inputValue?.organization || userDetailsObj.organization,
     });
