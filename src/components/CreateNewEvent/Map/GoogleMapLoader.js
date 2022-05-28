@@ -69,7 +69,7 @@ const GoogleMapLoader = ({data, setData, map, setMap}) => {
       <label htmlFor='longitude'>Longitude</label>
       <input type="number"  name="longitude" id="longitude" onChange={changeHandler}/>
       <button type="button" onClick={clickHandler}>Set Marker</button> */}
-      <div ref={ref} style={{height: '50vh', width: '100%', margin: 'auto'}}></div>
+      <div ref={ref} style={{height: '50vh', width: '95%', margin: 'auto'}}></div>
     </>
   );
 };

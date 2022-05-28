@@ -4,9 +4,10 @@ const TimeOfEvent = ({ setData, data }) => {
   };
   return (
     <div className='time-of-event'>
+      <h2>Time of the Event</h2>
       {/*single event, recurring */}
       <div className='event-frequency'>
-        <label htmlFor='single'>Single</label>
+        {/* <label htmlFor='single'>Single</label>
         <input
           type='radio'
           name='eventFrequency'
@@ -14,7 +15,7 @@ const TimeOfEvent = ({ setData, data }) => {
           id='single'
           onChange={changeHandler}
           defaultChecked={data?.eventFrequency === 'single'}
-        />
+        /> */}
         {/* <label htmlFor='recurring'>Recurring</label>
         <input
           type='radio'

@@ -1,19 +1,19 @@
 /*React*/
-import { useEffect, useState } from 'react';
-import { storage } from '../config/firebase';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import {useEffect, useState} from 'react';
+import {storage} from '../config/firebase';
+import {getStorage, ref, uploadBytes, getDownloadURL} from 'firebase/storage';
 /*Components */
 import BasicInfoForm from '../components/CreateNewEvent/BasicInfoForm';
 import LocationOfEvent from '../components/CreateNewEvent/LocationOfEvent';
 import NewEventInfo from '../components/CreateNewEvent/NewEventInfo';
 import NewEventPayment from '../components/CreateNewEvent/NewEventPayment';
 import TimeOfEvent from '../components/CreateNewEvent/TimeOfEvent';
-import { createNewData } from '../services/crud';
-import { getAuth } from '@firebase/auth';
-import { useNavigate } from 'react-router';
+import {createNewData} from '../services/crud';
+import {getAuth} from '@firebase/auth';
+import {useNavigate} from 'react-router';
 /*Style */
 import './Style/CreateEventView.css';
-import { async } from '@firebase/util';
+import {async} from '@firebase/util';
 
 const CreateEventView = () => {
   const navigateTo = useNavigate();
@@ -82,7 +82,7 @@ const CreateEventView = () => {
     } else {
       const currentDate = new Date(Date.now()).toUTCString().slice(-24, -4);
       console.log(currentDate);
-      createNewData('events', { ...data, createdDate: currentDate });
+      createNewData('events', {...data, createdDate: currentDate});
       /* createNewData('events', data) */
       setData({});
       console.log('done');
@@ -99,15 +99,10 @@ const CreateEventView = () => {
         <form action='' onSubmit={submitHandler}>
           {nextbtn === 0 && (
             <div className='basic-event-info'>
-              <h2>Basic Information</h2>
-              <p>Create a new event with these information </p>
               <BasicInfoForm setData={setData} data={data} />
-              {/*Tags - search 
-            <label htmlFor="event-tags">Tags</label>
-            <input type="text" id="event-tags"name="event-tags"/>*/}
-              <h3>Time of the Event</h3>
+
               <TimeOfEvent setData={setData} data={data} />
-              <h3>Location</h3>
+
               <LocationOfEvent
                 locationType={locationtype}
                 setLocationType={setLocationType}
@@ -144,7 +139,7 @@ const CreateEventView = () => {
                 Save event
               </button>
             )}
-            <h3>*: required</h3>
+            <h3 className='required'>*: required</h3>
           </div>
         </form>
       </div>
