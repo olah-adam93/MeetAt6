@@ -4,6 +4,7 @@ const TimeOfEvent = ({ setData, data }) => {
   };
   return (
     <div className='time-of-event'>
+      <h2>Time of the Event</h2>
       {/*single event, recurring */}
       <div className='event-frequency'>
         {/* <label htmlFor='single'>Single</label>

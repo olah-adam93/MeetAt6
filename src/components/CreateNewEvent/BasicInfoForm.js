@@ -28,6 +28,8 @@ const BasicInfoForm = ({ setData, data }) => {
 
   return (
     <div className='basic-info-box'>
+      <h2>Basic Information</h2>
+              <p>Create a new event with these information </p>
       <label htmlFor='title-of-event'>Event title*</label>
       <input
         type='text'

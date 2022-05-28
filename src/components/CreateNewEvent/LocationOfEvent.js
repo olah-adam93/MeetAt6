@@ -26,6 +26,7 @@ const LocationOfEvent = ({ setLocationType, locationType, setData, data }) => {
   };
   return (
     <div className='location-container'>
+      <h2>Location</h2>
       <div className='location-type'>
         <label htmlFor='venue'>
           Venue*
@@ -67,7 +68,9 @@ const LocationOfEvent = ({ setLocationType, locationType, setData, data }) => {
           <p>Point on the Map</p>
           
           <br />
-          <MapWrapped data={data} setData={setData} map={map} setMap={setMap} />
+          <div className='map-box'>
+            <MapWrapped data={data} setData={setData} map={map} setMap={setMap} />
+          </div>
         </div>
       </div>
       

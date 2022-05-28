@@ -10,7 +10,6 @@ const NewEventPayment = ({ setData, data }) => {
     <div className='new-event-payment-container'>
       <h2>Event Pricing</h2>
       <div className='payment-type-btn-box'>
-        <h2>Currency</h2>
 
         <label htmlFor='free'>Free*</label>
         <input
