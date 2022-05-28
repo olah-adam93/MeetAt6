@@ -81,8 +81,8 @@ const JoinModal = ({ clickHandler, setIsOpen, eventKey, eventValue }) => {
               >
                 Close
               </button>
-              {eventValue?.uid === user.uid ? (<span>You are the organizer of this event!</span>
-              ) : (
+              
+              {
               user ? (
                 attendees.includes(user.uid) ? (
                   <span>Already joined!</span>
@@ -103,7 +103,7 @@ const JoinModal = ({ clickHandler, setIsOpen, eventKey, eventValue }) => {
                 )
               ) : (
                 <button onClick={() => navigateTo('/signin')}>Sign in to subscribe</button>
-              ))}
+              )}
             </div>
           </div>
         </div>

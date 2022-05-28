@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import JoinModal from './JoinModal';
 import { getAuth, getUser } from 'firebase/auth';
+import { auth } from '../../config/firebase';
 
 const EventInfo = ({ eventInfo, isOpen, setIsOpen, paymentSucces }) => {
   const clickHandler = () => {
@@ -17,6 +18,7 @@ const EventInfo = ({ eventInfo, isOpen, setIsOpen, paymentSucces }) => {
     }
     
   }
+  const user = auth.currentUser;
   return (
     <div className='eventinfo-container'>
       {paymentSucces && <h2>Successfull payment!</h2>}
@@ -32,9 +34,13 @@ const EventInfo = ({ eventInfo, isOpen, setIsOpen, paymentSucces }) => {
         <p>Event organizer contact: {eventValue?.organizerEmail}</p>
         <button onClick={clickOrganizer}>X</button>
       </div>}
+      {user ? (<p>You are the organizer of this event!</p>
+      ) : (
       <button onClick={clickHandler} className='eventinfo-join-button'>
         Join
-      </button>
+      </button>)
+      }
+      
 
       {/* {isOpen && (
         <JoinModal
