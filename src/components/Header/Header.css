@@ -10,7 +10,7 @@
 }
 
 .header-small {
-  background-color: rgba(243, 244, 245, .9);
+  background-color: rgba(243, 244, 245, .8);
   backdrop-filter: blur(10px);
   height: 5rem;
   box-shadow: var(--primary-box-shadow);

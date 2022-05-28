@@ -13,7 +13,7 @@ const Header = () => {
 
   useEffect(() => {
     const scrollCallback = () =>
-      window.pageYOffset > 100 ? setSmall(true) : setSmall(false);
+      window.pageYOffset > 80 ? setSmall(true) : setSmall(false);
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', scrollCallback);
     }

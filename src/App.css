@@ -55,8 +55,8 @@
   min-width: 1080px;
   width: 80%;
   max-width: 1400px;
-  /*min-height: calc(100vh - header height: 10rem & footer height: 5rem*/
+  /*Description: min-height: calc(100vh - header height: 10rem & footer height: 5rem*/
   min-height: calc(100vh - 15rem);
   /* fix header height */
-  margin-top: 8rem;
+  margin-top: 12rem;
 }

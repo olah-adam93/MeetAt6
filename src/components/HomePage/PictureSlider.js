@@ -20,7 +20,7 @@ const PictureSlider = () => {
         slidesPerView={1}
         spaceBetween={0}
         loop={true}
-        autoplay={{ delay: 8000, pauseOnMouseEnter: true }}
+        autoplay={{ delay: 6000, /* pauseOnMouseEnter: true */ }}
         // pagination={{
         //   clickable: true,
         // }}
