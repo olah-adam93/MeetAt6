@@ -28,6 +28,10 @@
   transition: width 0.3s ease-out;
   background-color: var(--ternary-background-color);
 }
+.header-logo img{
+  max-width: 20.3rem;
+  height: auto;
+}
 
 .img-small {
   width: 60%;
