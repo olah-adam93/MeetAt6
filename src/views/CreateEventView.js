@@ -26,6 +26,7 @@ const CreateEventView = () => {
     /* attendant: undefined, */
     location: '',
     organizer: user.displayName,
+    organizerEmail: user.email,
   });
   const [locationtype, setLocationType] = useState('');
   const [nextbtn, setNextBtn] = useState(0);
