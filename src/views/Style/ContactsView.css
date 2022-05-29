@@ -45,7 +45,7 @@
   box-shadow: var(--primary-box-shadow);
 }
 .contact-container .contact-details .contact-us-form input,
-textarea {
+.contact-us-form textarea {
   font-size: var(--form-label-font-size);
   padding: var(--form-input-padding);
   border-radius: var(--form-input-border-radius);
@@ -61,8 +61,8 @@ textarea {
   height: 20rem;
 }
 .contact-container .contact-details .contact-us-form input:hover,
-select:hover,
-textarea:hover {
+.contact-us-form select:hover,
+.contact-us-form textarea:hover {
   border: 1px solid var(--form-hover-input-border-color);
 }
 .contact-container .contact-details .contact-us-form button {

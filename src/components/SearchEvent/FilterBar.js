@@ -1,7 +1,9 @@
 import {useState} from 'react';
 
+/* Style */
 import './Style/FilterBar.css';
 
+/* Fontawesome */
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 
@@ -43,16 +45,14 @@ const FilterBar = ({setSearchQuery, filterParams, setFilterParams, setToDefault}
     setSearchValue('');
   };
 
-  console.log(filterParams);
-
   return (
-    <div>
+    <div className='filter-container'>
       <div className='search-bar-container'>
         <form className='search-bar-form' onSubmit={onSubmitHandler}>
           <input
             type='text'
             name='searchbar'
-            placeholder='Search for keywords'
+            placeholder='Search events'
             onChange={onChangeHandler}
             value={searchValue}
           />
@@ -60,8 +60,9 @@ const FilterBar = ({setSearchQuery, filterParams, setFilterParams, setToDefault}
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </form>
+
         <button className='search-bar-reset-button' type='button' onClick={resetHandler}>
-          Reset Filter
+          Reset
         </button>
       </div>
 

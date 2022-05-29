@@ -89,7 +89,7 @@
   justify-content: center;
   visibility: hidden;
   opacity: 0;
-  transition: visibility .15s, opacity 0.15s ease-in-out;
+  transition: visibility .2s, opacity 0.2s ease-in-out;
   position: absolute;
   transform: translateY(1rem);
   background-color: none;

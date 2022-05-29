@@ -62,8 +62,8 @@
 }
 /*inputs, buttons, select, textarea..*/
 .create-new-event-container .new-event-form input,
-select,
-textarea {
+.new-event-form select,
+.new-event-form textarea {
   margin: 1rem 1rem 0 2rem;
   font-size: var(--form-label-font-size);
   padding: var(--form-input-padding);
@@ -71,8 +71,8 @@ textarea {
   border: 1px solid var(--form-input-border-color);
 }
 .create-new-event-container .new-event-form input:hover,
-select:hover,
-textarea:hover {
+.new-event-form select:hover,
+.new-event-form textarea:hover {
   border: 1px solid var(--form-hover-input-border-color);
 }
 .create-new-event-container .new-event-form button {

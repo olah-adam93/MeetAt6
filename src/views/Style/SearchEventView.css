@@ -4,6 +4,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+.search-event-background {
+  transform: scaleX(-1);
+  width: 25rem;
+  position: absolute;
+  top: -4rem;
+  right: 0;
 }
 
 .search-event-inner-container {
