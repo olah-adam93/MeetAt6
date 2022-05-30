@@ -73,41 +73,45 @@ const ContactView = () => {
             <img src ={admin} alt="admins-img" className='admin-icon'/>
           </div>
           <div className='contact-admin-paragraph'>
-            <div>
-              <img src={maleAvatar} className="avatar-icon"/>
-              <p>
-                Derzsi Szabolcs <br /> Email: admin3@admin.hu
-              </p>
+            <div className='contact-div-box'>
+              <div>
+                <img src={maleAvatar} className="avatar-icon"/>
+                <p>
+                  Derzsi Szabolcs <br /> Email: admin3@admin.hu
+                </p>
+              </div>
+              <div>
+                <img src={maleAvatar} className="avatar-icon"/>
+                <p >
+                  Iglódi Gergő <br /> Email: admin2@admin.hu
+                </p>
+              </div>
+              <div>
+                <img src={maleAvatar} className="avatar-icon"/>
+                <p>
+                  Oláh Ádám <br /> Email: admin4@admin.hu
+                </p>
+              </div>
             </div>
             <div>
-              <img src={maleAvatar} className="avatar-icon"/>
-              <p >
-                Iglódi Gergő <br /> Email: admin2@admin.hu
-              </p>
-            </div>
-            <div>
-              <img src={femaleAvatar} className="avatar-icon"/>
-              <p>
-                Urbán Eszter <br /> Email: admin@admin.hu
-              </p>
-            </div>
-            <div>
-              <img src={maleAvatar} className="avatar-icon"/>
-              <p>
-                Oláh Ádám <br /> Email: admin4@admin.hu
-              </p>
-            </div>
-            <div>
-              <img src={maleAvatar} className="avatar-icon"/>
-              <p>
-                Szőke Ákos <br /> Email: admin5@admin.hu
-              </p>
-            </div>
-            <div>
-              <img src={maleAvatar} className="avatar-icon"/>
-              <p>
-                Szőnyi Ádám <br /> Email: admin6@admin.hu
-              </p>
+              <div>
+                <img src={femaleAvatar} className="avatar-icon"/>
+                <p>
+                  Urbán Eszter <br /> Email: admin@admin.hu
+                </p>
+              </div>
+              <div>
+                <img src={maleAvatar} className="avatar-icon"/>
+                <p>
+                  Szőke Ákos <br /> Email: admin5@admin.hu
+                </p>
+              </div>
+              <div>
+                <img src={maleAvatar} className="avatar-icon"/>
+                <p>
+                  Szőnyi Ádám <br /> Email: admin6@admin.hu
+                </p>
+              </div>
             </div>
           </div>
         </div>
