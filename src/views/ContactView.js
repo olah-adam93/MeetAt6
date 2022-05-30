@@ -4,6 +4,8 @@ import React from 'react';
 import {createNewData} from '../services/crud';
 import new_mail from '../others/decoration/new_mail.svg'
 import admin from '../others/decoration/admin.svg'
+import femaleAvatar from '../others/decoration/female_avatar.svg'
+import maleAvatar from '../others/decoration/male_avatar.svg'
 const ContactView = () => {
   const [contactInfo, setContactInfo] = useState({
     contactName: '',
@@ -71,24 +73,42 @@ const ContactView = () => {
             <img src ={admin} alt="admins-img" className='admin-icon'/>
           </div>
           <div className='contact-admin-paragraph'>
-            <p>
-              Urbán Eszter <br /> Email: admin@admin.hu
-            </p>
-            <p >
-              Iglódi Gergő <br /> Email: admin2@admin.hu
-            </p>
-            <p>
-              Derzsi Szabolcs <br /> Email: admin3@admin.hu
-            </p>
-            <p>
-              Oláh Ádám <br /> Email: admin4@admin.hu
-            </p>
-            <p>
-              Szőke Ákos <br /> Email: admin5@admin.hu
-            </p>
-            <p>
-              Szőnyi Ádám <br /> Email: admin6@admin.hu
-            </p>
+            <div>
+              <img src={maleAvatar} className="avatar-icon"/>
+              <p>
+                Derzsi Szabolcs <br /> Email: admin3@admin.hu
+              </p>
+            </div>
+            <div>
+              <img src={maleAvatar} className="avatar-icon"/>
+              <p >
+                Iglódi Gergő <br /> Email: admin2@admin.hu
+              </p>
+            </div>
+            <div>
+              <img src={femaleAvatar} className="avatar-icon"/>
+              <p>
+                Urbán Eszter <br /> Email: admin@admin.hu
+              </p>
+            </div>
+            <div>
+              <img src={maleAvatar} className="avatar-icon"/>
+              <p>
+                Oláh Ádám <br /> Email: admin4@admin.hu
+              </p>
+            </div>
+            <div>
+              <img src={maleAvatar} className="avatar-icon"/>
+              <p>
+                Szőke Ákos <br /> Email: admin5@admin.hu
+              </p>
+            </div>
+            <div>
+              <img src={maleAvatar} className="avatar-icon"/>
+              <p>
+                Szőnyi Ádám <br /> Email: admin6@admin.hu
+              </p>
+            </div>
           </div>
         </div>
         <div className='contact-us'>
@@ -103,7 +123,7 @@ const ContactView = () => {
               placeholder='Please give us a contact name'
               onChange={changeContactHandler}
               className={contactInfo.contactName ? null : required}
-              defaultValue={contactInfo.contactName}
+              value={contactInfo?.contactName}
             />
             <input
               type='email'
@@ -111,7 +131,7 @@ const ContactView = () => {
               placeholder='Your email'
               onChange={changeContactHandler}
               className={contactInfo.email ? null : required}
-              defaultValue={contactInfo.email}
+              value={contactInfo?.email}
             />
             <input
               type='text'
@@ -120,13 +140,13 @@ const ContactView = () => {
               placeholder='Title'
               onChange={changeContactHandler}
               className={contactInfo.title ? null : required}
-              defaultValue={contactInfo.title}
+              value={contactInfo?.title}
             />
             <select
               onChange={changeContactHandler}
               name='theme'
               className={contactInfo.theme ? null : required}
-              defaultValue={contactInfo.theme}
+              value={contactInfo?.theme}
             >
               <option value=''>Please choose a theme</option>
               <option value='problem'>Problem with the webpage</option>
@@ -137,7 +157,7 @@ const ContactView = () => {
               name='contactMessage'
               onChange={changeContactHandler}
               className={contactInfo.contactMessage ? null : required}
-              defaultValue={contactInfo.contactMessage}
+              value={contactInfo?.contactMessage}
             />
             <button>Send</button>
           </form>
