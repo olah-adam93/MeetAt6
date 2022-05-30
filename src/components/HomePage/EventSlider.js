@@ -50,14 +50,19 @@ export default function EventSlider({ containerName, searchKey, searchValue }) {
           slidesPerView={4}
           spaceBetween={0}
           loop={false}
-          navigation={true}
+          navigation={false}
+          pagination={{
+            clickable: true,
+            dynamicBullets: true,
+            dynamicMainBullets: 6
+          }}
           modules={[Pagination, Navigation]}
           className='swiper'
         >
           {eventsCard.map((event) => {
             return (
               <SwiperSlide key={`card_${event[0]}`}>
-                <EventCard eventCard={event[1]} eventId={event[0]} />
+                <EventCard eventCard={event[1]} eventId={event[0]} eventSearchStyle={false}/>
               </SwiperSlide>
             );
           })}

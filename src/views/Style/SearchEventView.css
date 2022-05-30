@@ -13,6 +13,9 @@
   position: absolute;
   top: -1rem;
   right: 0;
+  opacity: .2;
+  fill: black;
+  /* fill-opacity: 0.3; */
 }
 
 .search-event-inner-container {
