@@ -47,7 +47,7 @@ const ProfileView = () => {
           />
         </div>
         <div className='profile-head-information'>
-          <div class='user-head-data'>
+          <div className='user-head-data'>
             <section>
               <p><FontAwesomeIcon icon={faPaperPlane} className="plane-icon"/>{userData.userLog.user.email}</p>
               {/* <p>{userData.userLog.userDetails?.birthday}</p> */}

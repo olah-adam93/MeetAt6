@@ -67,6 +67,7 @@
 }
 .contact-container .contact-us-form textarea {
   height: 20rem;
+  
 }
 .contact-container .contact-details .contact-us-form input:hover,
 .contact-us-form select:hover,
@@ -95,7 +96,7 @@
 .contact-us-header .contact-title{
   z-index: 10;
   margin: 0 2rem;
-  padding: 0 4rem 0 0;
+  padding: 0 5rem 0 0;
   
 }
 .new-mail-img{

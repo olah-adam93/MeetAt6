@@ -12,6 +12,7 @@
   width: 100%;
   display: flex;
   align-content: center;
+  margin-top: 3rem;
 }
 
 .search-bar-form {
@@ -90,8 +91,9 @@
   border: 1px solid transparent;
   color: var(--primary-text-color);
   border-radius: var(--form-input-border-radius);
-  background-color: var(--primary-background-color);
-  box-shadow: var(--primary-box-shadow);
+  background-color: var(--secondary-background-color);
+  border: 1px solid var(--form-input-border-color);
+  /* box-shadow: var(--primary-box-shadow); */
   font-size: 1.6rem;
   width: 18rem;
   text-align: left;
@@ -119,7 +121,8 @@
   cursor: pointer;
   border: 1px solid transparent;
   border-radius: var(--form-input-border-radius);
-  background-color: var(--primary-background-color);
+  background-color: var(--secondary-background-color);
+  border: 1px solid var(--form-input-border-color);
   outline: none;
   font-size: 1.6rem;
   width: 18rem;
