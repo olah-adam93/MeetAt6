@@ -3,8 +3,16 @@ import {useState} from 'react';
 import React from 'react';
 import {createNewData} from '../services/crud';
 import new_mail from '../others/decoration/new_mail.svg'
+import admin from '../others/decoration/admin.svg'
 const ContactView = () => {
-  const [contactInfo, setContactInfo] = useState({});
+  const [contactInfo, setContactInfo] = useState({
+    contactName: '',
+    title: '',
+    theme: '',
+    email: '',
+    contactMessage: '',
+
+  });
   const [required, setRequired] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -30,8 +38,14 @@ const ContactView = () => {
         ...contactInfo,
         createdDate: currentDate,
       });
+      setContactInfo({
+        contactName: '',
+        title: '',
+        theme: '',
+        email: '',
+        contactMessage: '',
+      });
     }
-    setContactInfo({});
     setModalOpen(true)
   };
   const closeModal =(e) =>{
@@ -52,24 +66,27 @@ const ContactView = () => {
       <h2>Contact Information</h2>
       <div className='contact-details'>
         <div className='contact-body-container'>
-          <h3 className='contact-title'>Contacts</h3>
-          <div>
-            <p className='contact-admin-paragraph'>
+          <div className="admin-header">
+            <h3 className='contact-title'>Admins</h3>
+            <img src ={admin} alt="admins-img" className='admin-icon'/>
+          </div>
+          <div className='contact-admin-paragraph'>
+            <p>
               Urbán Eszter <br /> Email: admin@admin.hu
             </p>
-            <p className='contact-admin-paragraph'>
+            <p >
               Iglódi Gergő <br /> Email: admin2@admin.hu
             </p>
-            <p className='contact-admin-paragraph'>
+            <p>
               Derzsi Szabolcs <br /> Email: admin3@admin.hu
             </p>
-            <p className='contact-admin-paragraph'>
+            <p>
               Oláh Ádám <br /> Email: admin4@admin.hu
             </p>
-            <p className='contact-admin-paragraph'>
+            <p>
               Szőke Ákos <br /> Email: admin5@admin.hu
             </p>
-            <p className='contact-admin-paragraph'>
+            <p>
               Szőnyi Ádám <br /> Email: admin6@admin.hu
             </p>
           </div>
@@ -86,7 +103,7 @@ const ContactView = () => {
               placeholder='Please give us a contact name'
               onChange={changeContactHandler}
               className={contactInfo.contactName ? null : required}
-              defaultValue={contactInfo?.contactName}
+              defaultValue={contactInfo.contactName}
             />
             <input
               type='email'
@@ -94,7 +111,7 @@ const ContactView = () => {
               placeholder='Your email'
               onChange={changeContactHandler}
               className={contactInfo.email ? null : required}
-              defaultValue={contactInfo?.email}
+              defaultValue={contactInfo.email}
             />
             <input
               type='text'
@@ -103,13 +120,13 @@ const ContactView = () => {
               placeholder='Title'
               onChange={changeContactHandler}
               className={contactInfo.title ? null : required}
-              defaultValue={contactInfo?.title}
+              defaultValue={contactInfo.title}
             />
             <select
               onChange={changeContactHandler}
               name='theme'
               className={contactInfo.theme ? null : required}
-              defaultValue={contactInfo?.theme}
+              defaultValue={contactInfo.theme}
             >
               <option value=''>Please choose a theme</option>
               <option value='problem'>Problem with the webpage</option>
@@ -120,7 +137,7 @@ const ContactView = () => {
               name='contactMessage'
               onChange={changeContactHandler}
               className={contactInfo.contactMessage ? null : required}
-              defaultValue={contactInfo?.contactMessage}
+              defaultValue={contactInfo.contactMessage}
             />
             <button>Send</button>
           </form>
