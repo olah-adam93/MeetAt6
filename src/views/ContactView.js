@@ -2,9 +2,12 @@ import './Style/ContactsView.css';
 import {useState} from 'react';
 import React from 'react';
 import {createNewData} from '../services/crud';
+import new_mail from '../others/decoration/new_mail.svg'
 const ContactView = () => {
   const [contactInfo, setContactInfo] = useState({});
   const [required, setRequired] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
+
   const changeContactHandler = (e) => {
     setContactInfo((prev) => ({...prev, [e.target.name]: e.target.value}));
   };
@@ -29,9 +32,23 @@ const ContactView = () => {
       });
     }
     setContactInfo({});
+    setModalOpen(true)
   };
+  const closeModal =(e) =>{
+    setModalOpen(false)
+  }
   return (
     <div className='contact-container'>
+      {modalOpen && (
+        <div className='display-modal-container'>
+          <div className='display-modal-content'>
+            <h3>You have successfully sent the message!</h3>
+            <div>
+              <button onClick={closeModal} className="close-btn">X</button>
+            </div>
+          </div>
+        </div>
+      )}
       <h2>Contact Information</h2>
       <div className='contact-details'>
         <div className='contact-body-container'>
@@ -58,7 +75,10 @@ const ContactView = () => {
           </div>
         </div>
         <div className='contact-us'>
-          <h3 className='contact-title'>Contact us!</h3>
+          <div className='contact-us-header'>
+            <h3 className='contact-title'>Contact us!</h3>
+            <img src={new_mail} alt="contact us" className='new-mail-img'/>
+          </div>
           <form onSubmit={submitContactHandler} className='contact-us-form'>
             <input
               type='text'
@@ -105,6 +125,7 @@ const ContactView = () => {
             <button>Send</button>
           </form>
         </div>
+        
       </div>
     </div>
   );

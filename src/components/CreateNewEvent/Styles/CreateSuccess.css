@@ -1,3 +1,12 @@
-.join-success-container {
+.create-success-container {
   text-align: center;
+}
+.create-success-container h2{
+  font-size: var(--h2-font-size);
+}
+.create-success-container p{
+  font-size: var(--p-font-size);
+}
+.create-success-container img{
+  width: 50%;
 }

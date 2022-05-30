@@ -19,20 +19,6 @@ const EventCard = ({
   deletedEvent,
   unsubscribedEvent,
 }) => {
-  /* const [eventData, setEventData] = useState();
-    const navigateTo =useNavigate()*/
-  /*fetch from firebase? */
-  /*useEffect(()=> {
-        async function eventInfo(){
-            const event = await fetch('') -->kiegészíteni
-            const responseEvent = await event.json()
-            setEventData() -->kiegészíteni
-        }
-        eventInfo()
-    }, []) --> ezt a containerbe átrakni*/
-  /* const clickHandler = (e)=>{
-        navigateTo ---> majd az eventpagere
-    }*/
 
   return (
     <div className='event-card'>

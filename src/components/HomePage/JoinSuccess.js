@@ -1,10 +1,17 @@
 import React from 'react'
 import './Styles/JoinSuccess.css'
-
+import success from '../../others/decoration/done4.svg'
+import {useNavigate} from 'react-router-dom'
 function JoinSuccess() {
+  const navigateTo = useNavigate()
   return (
     <div className='join-success-container'>  
-      <h2>You have successfully applied for the event! </h2>
+      <div>
+        <h2>You have successfully applied for the event! </h2>
+        <p onClick={()=> navigateTo('/profile/searchevent')}>Back to Searching Events!</p>
+      </div>
+      <img src={success} alt="join success" />
+      
     </div>
   )
 }

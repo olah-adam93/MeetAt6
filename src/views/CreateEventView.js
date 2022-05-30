@@ -135,10 +135,14 @@ const CreateEventView = () => {
               </button>
             )}
             {nextbtn === 2 && (
-              <button type='submit' className='save-btn'>
-                Save event
-              </button>
+              
+                <button type='submit' className='save-btn'>
+                  Save event
+                </button>
+                
+              
             )}
+            
             <h3 className='required'>*: required</h3>
           </div>
         </form>
