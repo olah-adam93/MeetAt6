@@ -108,6 +108,7 @@
 .contact-container .contact-us-form textarea {
   height: 20rem;
   
+  resize: none;
 }
 .contact-container .contact-details .contact-us-form input:hover,
 .contact-us-form select:hover,
