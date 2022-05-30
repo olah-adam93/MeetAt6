@@ -149,9 +149,9 @@
 .display-modal-content button:nth-child(1) {
   margin-right: 2rem;
 }
-.close-btn{
+/* .close-btn{
   
-}
+} */
 .display-modal-content h3{
   font-size: var(--h3-font-size);
 }
