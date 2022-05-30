@@ -7,7 +7,7 @@
 }
 .contact-container h2 {
   font-size: var(--h2-font-size);
-  margin-bottom: 10rem;
+  margin-bottom: 8rem;
 }
 .contact-details {
   display: flex;
@@ -25,12 +25,38 @@
 .contact-admin-paragraph {
   text-align: center;
   font-size: var(--p-font-size);
-  background-color: grey;
-  border-radius: 0.5rem;
-  padding-top: 1rem;
+  background-color: var(--secondary-background-color);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--primary-box-shadow);
   margin: 2rem 4rem;
-  width: 20rem;
-  height: 7rem;
+  width: 30rem;
+  
+}
+.avatar-icon{
+  width: 6rem;
+  padding-top:2rem;
+}
+.contact-admin-paragraph p{
+  padding: 0 2rem 2rem 2rem;
+}
+.admin-header{
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  margin: 9.5rem;
+}
+.admin-header .contact-title{
+  z-index: 10;
+  margin: -0.5rem 2rem;
+  
+}
+.admin-icon{
+  position: absolute;
+  top: -5rem;
+  z-index: 0;
+  width: 35rem;
+  margin: 2rem;
 }
 .requiredInformation {
   border: 1px solid var(--main-navbar-text-color);
@@ -50,7 +76,7 @@
   border-radius: var(--card-border-radius);
   box-shadow: var(--primary-box-shadow);
   z-index: 10;
-  
+  width: 100%;
 }
 .contact-container .contact-details .contact-us-form input,
 .contact-us-form textarea, .contact-container .contact-details .contact-us-form select {

@@ -90,6 +90,7 @@ const BasicInfoForm = ({ setData, data }) => {
             name='attendant'
             onChange={changeHandler}
             value={data?.attendant}
+            min= "0"
           />
         </div>
       )}
