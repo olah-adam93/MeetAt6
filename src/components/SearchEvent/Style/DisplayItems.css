@@ -1,5 +1,5 @@
 .display-items-container {
-  margin: 4rem 0;
+  margin-bottom: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +27,7 @@
 
 /* EventCard Container! */
 .display-items {
-  height: 19rem;
+  height: 15rem;
 }
 
 .display-items:last-child {

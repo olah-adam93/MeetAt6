@@ -12,7 +12,7 @@
   width: 100%;
   display: flex;
   align-content: center;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 .search-bar-form {
@@ -71,7 +71,7 @@
   height: 10rem;
   display: flex;
   align-content: center;
-  margin: 3rem 0;
+  margin: 1rem 0;
 }
 
 .filter-bar-form {
