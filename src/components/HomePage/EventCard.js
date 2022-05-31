@@ -26,13 +26,12 @@ const EventCard = ({
               : 'event-picture-container'
           }
         >
-          <Link
+          <div
             className={
               eventSearchStyle
                 ? 'event-picture-img-link-search'
                 : 'event-picture-img-link'
             }
-            to={`/eventpage/${eventId}`}
           >
             {eventCard?.imageUrl ? (
               <img
@@ -53,29 +52,31 @@ const EventCard = ({
                 alt='default event'
               />
             )}
-          </Link>
+          </div>
         </div>
 
         <div className={eventSearchStyle ? 'event-data-search' : 'event-data'}>
+
           <p className={eventSearchStyle ? 'event-data-date-search' : 'event-data-date'}>
-            {eventCard?.eventStarts + ' - ' + eventCard?.startTime}
+            {new Date(eventCard?.eventStarts).toDateString() + ' - ' + eventCard?.startTime}
           </p>
 
-          <Link
+          <div
             className={eventSearchStyle ? 'event-data-title-search' : 'event-data-title'}
-            to={`/eventpage/${eventId}`}
           >
             <p>{eventCard?.title}</p>
-          </Link>
+          </div>
 
-          <p>Location: {eventCard?.location || eventCard?.locationType}</p>
+          <p className={eventSearchStyle ? 'event-data-location-search' : 'event-data-location'}>
+            {eventCard?.location || eventCard?.locationType}
+          </p>
 
           <p>Organizer: {eventCard?.organizer}</p>
 
-          <p>Attendant limit: {eventCard?.attendant}</p>
+          <p className={eventSearchStyle ? 'event-data-attendees-search' : 'event-data-attendees'}>{!eventCard?.attendant ? 0 : eventCard?.attendant} attendees</p>
         </div>
 
-        <div className={eventSearchStyle ? 'event-button-search' : 'event-button'}>
+        <div className='event-button'>
           {isUnsubscribeButton && (
             <>
               <button type='button' onClick={unsubscribeModalHandler(eventObj)}>

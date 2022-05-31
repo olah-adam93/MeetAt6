@@ -28,6 +28,7 @@
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+  width: 100%;
 }
 
 /* .slider-container .swiper-slide img {

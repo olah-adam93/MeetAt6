@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 80%;
+  max-width: 1000px;
 }
 
 .display-container {
@@ -24,9 +25,9 @@
   margin-top: 2rem;
 }
 
+/* EventCard Container! */
 .display-items {
-  width: 80%;
-  height: 18rem;
+  height: 19rem;
 }
 
 .display-items:last-child {
