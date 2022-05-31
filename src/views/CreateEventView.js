@@ -1,19 +1,19 @@
 /*React*/
-import {useEffect, useState} from 'react';
-import {storage} from '../config/firebase';
-import {getStorage, ref, uploadBytes, getDownloadURL} from 'firebase/storage';
+import { useEffect, useState } from 'react';
+import { storage } from '../config/firebase';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 /*Components */
 import BasicInfoForm from '../components/CreateNewEvent/BasicInfoForm';
 import LocationOfEvent from '../components/CreateNewEvent/LocationOfEvent';
 import NewEventInfo from '../components/CreateNewEvent/NewEventInfo';
 import NewEventPayment from '../components/CreateNewEvent/NewEventPayment';
 import TimeOfEvent from '../components/CreateNewEvent/TimeOfEvent';
-import {createNewData} from '../services/crud';
-import {getAuth} from '@firebase/auth';
-import {useNavigate} from 'react-router';
+import { createNewData } from '../services/crud';
+import { getAuth } from '@firebase/auth';
+import { useNavigate } from 'react-router';
 /*Style */
 import './Style/CreateEventView.css';
-import {async} from '@firebase/util';
+import { async } from '@firebase/util';
 
 const CreateEventView = () => {
   const navigateTo = useNavigate();
@@ -36,9 +36,43 @@ const CreateEventView = () => {
   }, [data]);
   const nextFormPageHandler = (e) => {
     e.preventDefault();
-    if (nextbtn < 3) {
+    if (nextbtn === 0) {
+      if (
+        !data.title ||
+        !data.locationType ||
+        !data.eventStarts || //itt vizsgálja hogy a múltban jönne létre?
+        !data.eventEnds ||
+        !data.startTime ||
+        !data.endTime ||
+        !data.type ||
+        !data.category
+        //attendant ne lehessen - eredmény
+      ) {
+        setMissingData(true);
+        setTimeout(() => {
+          setMissingData(false);
+        }, 8000);
+      } else if (nextbtn < 3) {
+        setNextBtn((prev) => (prev += 1));
+      }
+    } else if (nextbtn === 1) {
       setNextBtn((prev) => (prev += 1));
+    } else if (nextbtn === 2) {
+      if (!data.paymentType) {
+        setMissingData(true);
+        setTimeout(() => {
+          setMissingData(false);
+        }, 8000);
+      } else if (nextbtn < 3) {
+        setNextBtn((prev) => (prev += 1));
+      }
     }
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   };
   const backFormPageHandler = (e) => {
     e.preventDefault();
@@ -64,14 +98,13 @@ const CreateEventView = () => {
     const currentTime = eventCreated.toLocaleDateString("en-US")
     setData((prev)=> ({...prev, currentTime})) */
     /* createTime() */
-
     if (
       !data.title ||
       !data.locationType ||
-      !data.paymentType ||
       !data.eventStarts || //itt vizsgálja hogy a múltban jönne létre?
       !data.eventEnds ||
       !data.startTime ||
+      !data.paymentType ||
       !data.endTime
       //attendant ne lehessen - eredmény
     ) {
@@ -82,7 +115,7 @@ const CreateEventView = () => {
     } else {
       const currentDate = new Date(Date.now()).toUTCString().slice(-24, -4);
       console.log(currentDate);
-      createNewData('events', {...data, createdDate: currentDate});
+      createNewData('events', { ...data, createdDate: currentDate });
       /* createNewData('events', data) */
       setData({});
       console.log('done');
@@ -135,14 +168,11 @@ const CreateEventView = () => {
               </button>
             )}
             {nextbtn === 2 && (
-              
-                <button type='submit' className='save-btn'>
-                  Save event
-                </button>
-                
-              
+              <button type='submit' className='save-btn'>
+                Save event
+              </button>
             )}
-            
+
             <h3 className='required'>*: required</h3>
           </div>
         </form>

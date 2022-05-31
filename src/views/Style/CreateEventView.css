@@ -19,13 +19,28 @@
 .location-container {
   margin-bottom: 6rem;
   padding: 0 1rem;
+  width: 50vw;
 }
+.event-time-box{
+  display: flex;
+  flex-direction: row;
+  margin: 0 2rem 0 3rem;
+  justify-content: center;
+  
+}
+/* .event-time-box >div{
+  text-align: center;
+} */
 .location-container .location-type {
   margin-bottom: 3rem;
 }
 .create-new-event-container .new-event-form .time-of-event label {
   display: inline-block;
+  
 }
+/* .create-new-event-container .new-event-form .time-of-event input{
+  
+} */
 .create-new-event-container .new-event-form .time-of-event {
   background-color: var(--secondary-background-color);
   padding: 3rem 1rem;
@@ -119,6 +134,7 @@
   margin: 1rem 2rem 1rem 2rem;
   padding: 2px;
   box-shadow: var(--primary-box-shadow);
+  resize: none;
 }
 .create-new-event-container
   .new-event-form

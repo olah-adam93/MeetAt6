@@ -29,7 +29,7 @@ const BasicInfoForm = ({ setData, data }) => {
   return (
     <div className='basic-info-box'>
       <h2>Basic Information</h2>
-              <p>Create a new event with these information </p>
+      <p>Create a new event with these information </p>
       <label htmlFor='title-of-event'>Event title*</label>
       <input
         type='text'
@@ -46,7 +46,7 @@ const BasicInfoForm = ({ setData, data }) => {
         onChange={changeHandler}
         value={userData.userLog.user.displayName}
       />
-      <label htmlFor='event-category'>Event category</label>
+      <label htmlFor='event-category'>Event category*</label>
       <select name='type' onChange={changeHandler} value={data?.type}>
         <option value='null'>Type</option>
         {type?.map((eventType, index) => {
@@ -90,6 +90,7 @@ const BasicInfoForm = ({ setData, data }) => {
             name='attendant'
             onChange={changeHandler}
             value={data?.attendant}
+            min= "0"
           />
         </div>
       )}
