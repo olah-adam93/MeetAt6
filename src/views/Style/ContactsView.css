@@ -1,3 +1,4 @@
+
 .contact-container {
   display: flex;
   flex-direction: column;
@@ -6,13 +7,13 @@
 }
 .contact-container h2 {
   font-size: var(--h2-font-size);
-  margin-bottom: 5rem;
+  margin-bottom: 8rem;
 }
 .contact-details {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 95%;
+  width: 100%;
 }
 
 .contact-title {
@@ -22,18 +23,59 @@
 }
 
 .contact-admin-paragraph {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
   text-align: center;
   font-size: var(--p-font-size);
-  background-color: grey;
-  border-radius: 0.5rem;
-  padding-top: 1rem;
+  background-color: var(--secondary-background-color);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--primary-box-shadow);
   margin: 2rem 4rem;
-  width: 20rem;
-  height: 7rem;
+  max-width: 85%;
+  height: 60rem;
+}
+.contact-admin-paragraph .contact-div-box{
+  border-right: 1px solid #af4448;
+}
+.contact-admin-paragraph div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.avatar-icon{
+  width: 6rem;
+  padding-top:2rem;
+}
+.contact-admin-paragraph p{
+  padding: 0 2rem 2rem 2rem;
+}
+.admin-header{
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  margin: 9.5rem;
+}
+.admin-header .contact-title{
+  z-index: 10;
+  margin: -0.5rem 2rem;
+  
+}
+.admin-icon{
+  position: absolute;
+  top: -5rem;
+  z-index: 0;
+  width: 35rem;
+  margin: 2rem;
 }
 .requiredInformation {
   border: 1px solid var(--main-navbar-text-color);
 }
+/* .contact-us{
+
+} */
 .contact-container .contact-details .contact-us-form {
   display: flex;
   flex-direction: column;
@@ -41,11 +83,17 @@
   justify-content: center;
   background-color: var(--secondary-background-color);
   padding: 3rem;
+  margin-bottom: 6rem;
+  margin-top: 2rem;
   border-radius: var(--card-border-radius);
   box-shadow: var(--primary-box-shadow);
+  z-index: 10;
+  max-width: 100%;
+  height: 60rem;
+
 }
 .contact-container .contact-details .contact-us-form input,
-textarea {
+.contact-us-form textarea, .contact-container .contact-details .contact-us-form select {
   font-size: var(--form-label-font-size);
   padding: var(--form-input-padding);
   border-radius: var(--form-input-border-radius);
@@ -59,10 +107,12 @@ textarea {
 }
 .contact-container .contact-us-form textarea {
   height: 20rem;
+  
+  resize: none;
 }
 .contact-container .contact-details .contact-us-form input:hover,
-select:hover,
-textarea:hover {
+.contact-us-form select:hover,
+.contact-us-form textarea:hover {
   border: 1px solid var(--form-hover-input-border-color);
 }
 .contact-container .contact-details .contact-us-form button {
@@ -71,8 +121,79 @@ textarea:hover {
   border-radius: var(--button-border-radius);
   padding: var(--button-padding);
   border: none;
-  margin: 3rem;
+  margin: 2rem 3rem 0 3rem;
 }
 .contact-container .contact-details .contact-us-form button:hover {
   background-color: var(--button-hover-background-color);
+}
+.contact-us-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  margin: 9.5rem;
+  
+}
+.contact-us-header .contact-title{
+  z-index: 10;
+  margin: 0 2rem;
+  padding: 0 5rem 0 0;
+  
+}
+.new-mail-img{
+  position: absolute;
+  top: -20rem;
+  z-index: 0;
+  width: 35rem;
+  margin: 2rem;
+  
+}
+/*Modal*/
+.display-modal-container {
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.display-modal-content {
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  z-index: 1000;
+  border: 1px solid black;
+  border-radius: 1rem;
+  background-color: white;
+  width: 400px;
+  height: 200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.6rem;
+}
+
+.display-modal-content button {
+  font-size: 1.6rem;
+  padding: .5rem;
+}
+
+.display-modal-content button:nth-child(1) {
+  margin-right: 2rem;
+}
+/* .close-btn{
+  
+} */
+.display-modal-content h3{
+  font-size: var(--h3-font-size);
 }

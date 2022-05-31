@@ -1,8 +1,7 @@
 /* Style */
 import './Style/ProfileView.css';
-/* import {
-  
-} from '@fortawesome/free-solid-svg-icons'; */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 /* Components */
 import {useContext, useEffect, useState} from 'react';
 import UserNavbar from '../components/Profile/UserNavbar';
@@ -48,12 +47,11 @@ const ProfileView = () => {
           />
         </div>
         <div className='profile-head-information'>
-          <div class='user-head-data'>
+          <div className='user-head-data'>
             <section>
-              <p>Write to me: {userData.userLog.user.email}</p>
-              {/* <p icon={faFacebook} /> */}
+              <p><FontAwesomeIcon icon={faPaperPlane} className="plane-icon"/>{userData.userLog.user.email}</p>
               {/* <p>{userData.userLog.userDetails?.birthday}</p> */}
-              <p>{userData.userLog.userDetails?.location}</p>
+              <p><FontAwesomeIcon icon={faLocationDot} className="plane-icon"/>{userData.userLog.userDetails?.location}</p>
             </section>
             <section>
               <p>{userData.userLog.userDetails?.userIntroduction}</p>
@@ -66,14 +64,14 @@ const ProfileView = () => {
           <div className='events'>
             <div className='events-box'>
               <EventSlider
-                containerName={'Events you attend'}
+                containerName={'Free Events'}
                 searchKey={'paymentType'}
                 searchValue={'free'}
               />
             </div>
             <div className='events-box'>
               <EventSlider
-                containerName={'Events you may like'}
+                containerName={'Online Events'}
                 searchKey={`locationType`}
                 searchValue={`online`}
               />

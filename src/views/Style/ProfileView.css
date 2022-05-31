@@ -73,3 +73,7 @@
 .profile .profile-main .user-head .events .events-box {
   margin: 10rem 0;
 }
+.plane-icon{
+  margin-right: 1rem;
+  color: var(--tertiary-background-color)
+}

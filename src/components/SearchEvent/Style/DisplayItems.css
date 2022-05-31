@@ -1,4 +1,5 @@
 .display-items-container {
+  margin-top: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,7 +73,7 @@
 .pagination-container {
   display: flex;
   align-items: center;
-  height: 3rem;
+  height: 5rem;
 }
 
 .pagination-container span {
@@ -81,8 +82,24 @@
 }
 
 .pagination-container button {
-  font-size: 1.6rem;
-  background-color: transparent;
+  font-size: 1.8rem;
   cursor: pointer;
-  padding: .3rem;
+  /* width: 4rem; */
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
+  background-color: var(--secondary-background-color);
+  border: none;
+  color: var(--primary-text-color);
+  transition: all .2s ease-out;
+  margin: 0 .5rem;
+}
+
+
+.pagination-container button:disabled {
+  color: var(--tertiary-text-color);
+}
+
+.pagination-container button:hover:enabled {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
 }

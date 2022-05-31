@@ -19,13 +19,28 @@
 .location-container {
   margin-bottom: 6rem;
   padding: 0 1rem;
+  width: 50vw;
 }
+.event-time-box{
+  display: flex;
+  flex-direction: row;
+  margin: 0 2rem 0 3rem;
+  justify-content: center;
+  
+}
+/* .event-time-box >div{
+  text-align: center;
+} */
 .location-container .location-type {
   margin-bottom: 3rem;
 }
 .create-new-event-container .new-event-form .time-of-event label {
   display: inline-block;
+  
 }
+/* .create-new-event-container .new-event-form .time-of-event input{
+  
+} */
 .create-new-event-container .new-event-form .time-of-event {
   background-color: var(--secondary-background-color);
   padding: 3rem 1rem;
@@ -62,8 +77,8 @@
 }
 /*inputs, buttons, select, textarea..*/
 .create-new-event-container .new-event-form input,
-select,
-textarea {
+.new-event-form select,
+.new-event-form textarea {
   margin: 1rem 1rem 0 2rem;
   font-size: var(--form-label-font-size);
   padding: var(--form-input-padding);
@@ -71,8 +86,8 @@ textarea {
   border: 1px solid var(--form-input-border-color);
 }
 .create-new-event-container .new-event-form input:hover,
-select:hover,
-textarea:hover {
+.new-event-form select:hover,
+.new-event-form textarea:hover {
   border: 1px solid var(--form-hover-input-border-color);
 }
 .create-new-event-container .new-event-form button {
@@ -119,6 +134,7 @@ textarea:hover {
   margin: 1rem 2rem 1rem 2rem;
   padding: 2px;
   box-shadow: var(--primary-box-shadow);
+  resize: none;
 }
 .create-new-event-container
   .new-event-form

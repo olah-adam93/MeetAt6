@@ -1,3 +1,18 @@
 .join-success-container {
     text-align: center;
+    
+}
+.join-success-container h2{
+    font-size: var(--h2-font-size);
+    margin: 0 2rem 1rem 2rem;
+}
+.join-success-container p{
+    font-size: var(--p-font-size);
+    margin: 2rem;
+
+
+}
+.join-success-container img{
+    width: 50%;
+    
 }

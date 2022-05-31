@@ -6,8 +6,8 @@ const TimeOfEvent = ({ setData, data }) => {
     <div className='time-of-event'>
       <h2>Time of the Event</h2>
       {/*single event, recurring */}
-      <div className='event-frequency'>
-        {/* <label htmlFor='single'>Single</label>
+      {/* <div className='event-frequency'>
+        <label htmlFor='single'>Single</label>
         <input
           type='radio'
           name='eventFrequency'
@@ -15,8 +15,8 @@ const TimeOfEvent = ({ setData, data }) => {
           id='single'
           onChange={changeHandler}
           defaultChecked={data?.eventFrequency === 'single'}
-        /> */}
-        {/* <label htmlFor='recurring'>Recurring</label>
+        />
+        <label htmlFor='recurring'>Recurring</label>
         <input
           type='radio'
           name='eventFrequency'
@@ -24,44 +24,45 @@ const TimeOfEvent = ({ setData, data }) => {
           onChange={changeHandler}
           id='recurring'
           defaultChecked={data?.eventFrequency === 'recurring'}
-        /> */}
-      </div>
-      <div>
-        <label htmlFor='event-starts'>Event Starts*</label>
-        <input
-          type='date'
-          id='event-starts'
-          name='eventStarts'
-          onChange={changeHandler}
-          value={data?.eventStarts}
         />
-        <label htmlFor='start-time'>Start Time*</label>
-        <input
-          type='time'
-          id='start-time'
-          name='startTime'
-          onChange={changeHandler}
-          value={data?.startTime}
-        />
-      </div>
-
-      <div>
-        <label htmlFor='event-ends'>Event Ends*</label>
-        <input
-          type='date'
-          id='event-ends'
-          name='eventEnds'
-          onChange={changeHandler}
-          value={data?.eventEnds}
-        />
-        <label htmlFor='end-time'>End time*</label>
-        <input
-          type='time'
-          id='end-time'
-          name='endTime'
-          onChange={changeHandler}
-          value={data?.endTime}
-        />
+      </div> */}
+      <div class="event-time-box">
+        <div>
+          <label htmlFor='event-starts'>Event Starts*</label>
+          <input
+            type='date'
+            id='event-starts'
+            name='eventStarts'
+            onChange={changeHandler}
+            value={data?.eventStarts}
+          />
+          <label htmlFor='event-ends'>Event Ends*</label>
+          <input
+            type='date'
+            id='event-ends'
+            name='eventEnds'
+            onChange={changeHandler}
+            value={data?.eventEnds}
+          />
+        </div>
+        <div>
+          <label htmlFor='start-time'>Start Time*</label>
+          <input
+            type='time'
+            id='start-time'
+            name='startTime'
+            onChange={changeHandler}
+            value={data?.startTime}
+          />
+          <label htmlFor='end-time'>End time*</label>
+          <input
+            type='time'
+            id='end-time'
+            name='endTime'
+            onChange={changeHandler}
+            value={data?.endTime}
+          />
+        </div>
       </div>
       {/*event start, end */}
     </div>

@@ -2,9 +2,22 @@ import './Style/ContactsView.css';
 import {useState} from 'react';
 import React from 'react';
 import {createNewData} from '../services/crud';
+import new_mail from '../others/decoration/new_mail.svg'
+import admin from '../others/decoration/admin.svg'
+import femaleAvatar from '../others/decoration/female_avatar.svg'
+import maleAvatar from '../others/decoration/male_avatar.svg'
 const ContactView = () => {
-  const [contactInfo, setContactInfo] = useState({});
+  const [contactInfo, setContactInfo] = useState({
+    contactName: '',
+    title: '',
+    theme: '',
+    email: '',
+    contactMessage: '',
+
+  });
   const [required, setRequired] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
+
   const changeContactHandler = (e) => {
     setContactInfo((prev) => ({...prev, [e.target.name]: e.target.value}));
   };
@@ -27,38 +40,86 @@ const ContactView = () => {
         ...contactInfo,
         createdDate: currentDate,
       });
+      setContactInfo({
+        contactName: '',
+        title: '',
+        theme: '',
+        email: '',
+        contactMessage: '',
+      });
     }
-    setContactInfo({});
+    setModalOpen(true)
   };
+  const closeModal =(e) =>{
+    setModalOpen(false)
+  }
   return (
     <div className='contact-container'>
+      {modalOpen && (
+        <div className='display-modal-container'>
+          <div className='display-modal-content'>
+            <h3>You have successfully sent the message!</h3>
+            <div>
+              <button onClick={closeModal} className="close-btn">X</button>
+            </div>
+          </div>
+        </div>
+      )}
       <h2>Contact Information</h2>
       <div className='contact-details'>
         <div className='contact-body-container'>
-          <h3 className='contact-title'>Contacts</h3>
-          <div>
-            <p className='contact-admin-paragraph'>
-              Urbán Eszter <br /> Email: admin@admin.hu
-            </p>
-            <p className='contact-admin-paragraph'>
-              Iglódi Gergő <br /> Email: admin2@admin.hu
-            </p>
-            <p className='contact-admin-paragraph'>
-              Derzsi Szabolcs <br /> Email: admin3@admin.hu
-            </p>
-            <p className='contact-admin-paragraph'>
-              Oláh Ádám <br /> Email: admin4@admin.hu
-            </p>
-            <p className='contact-admin-paragraph'>
-              Szőke Ákos <br /> Email: admin5@admin.hu
-            </p>
-            <p className='contact-admin-paragraph'>
-              Szőnyi Ádám <br /> Email: admin6@admin.hu
-            </p>
+          <div className="admin-header">
+            <h3 className='contact-title'>Admins</h3>
+            <img src ={admin} alt="admins-img" className='admin-icon'/>
+          </div>
+          <div className='contact-admin-paragraph'>
+            <div className='contact-div-box'>
+              <div>
+                <img src={maleAvatar} className="avatar-icon"/>
+                <p>
+                  Derzsi Szabolcs <br /> Email: admin3@admin.hu
+                </p>
+              </div>
+              <div>
+                <img src={maleAvatar} className="avatar-icon"/>
+                <p >
+                  Iglódi Gergő <br /> Email: admin2@admin.hu
+                </p>
+              </div>
+              <div>
+                <img src={maleAvatar} className="avatar-icon"/>
+                <p>
+                  Oláh Ádám <br /> Email: admin4@admin.hu
+                </p>
+              </div>
+            </div>
+            <div>
+              <div>
+                <img src={femaleAvatar} className="avatar-icon"/>
+                <p>
+                  Urbán Eszter <br /> Email: admin@admin.hu
+                </p>
+              </div>
+              <div>
+                <img src={maleAvatar} className="avatar-icon"/>
+                <p>
+                  Szőke Ákos <br /> Email: admin5@admin.hu
+                </p>
+              </div>
+              <div>
+                <img src={maleAvatar} className="avatar-icon"/>
+                <p>
+                  Szőnyi Ádám <br /> Email: admin6@admin.hu
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         <div className='contact-us'>
-          <h3 className='contact-title'>Contact us!</h3>
+          <div className='contact-us-header'>
+            <h3 className='contact-title'>Contact us!</h3>
+            <img src={new_mail} alt="contact us" className='new-mail-img'/>
+          </div>
           <form onSubmit={submitContactHandler} className='contact-us-form'>
             <input
               type='text'
@@ -66,7 +127,7 @@ const ContactView = () => {
               placeholder='Please give us a contact name'
               onChange={changeContactHandler}
               className={contactInfo.contactName ? null : required}
-              defaultValue={contactInfo?.contactName}
+              value={contactInfo?.contactName}
             />
             <input
               type='email'
@@ -74,7 +135,7 @@ const ContactView = () => {
               placeholder='Your email'
               onChange={changeContactHandler}
               className={contactInfo.email ? null : required}
-              defaultValue={contactInfo?.email}
+              value={contactInfo?.email}
             />
             <input
               type='text'
@@ -83,13 +144,13 @@ const ContactView = () => {
               placeholder='Title'
               onChange={changeContactHandler}
               className={contactInfo.title ? null : required}
-              defaultValue={contactInfo?.title}
+              value={contactInfo?.title}
             />
             <select
               onChange={changeContactHandler}
               name='theme'
               className={contactInfo.theme ? null : required}
-              defaultValue={contactInfo?.theme}
+              value={contactInfo?.theme}
             >
               <option value=''>Please choose a theme</option>
               <option value='problem'>Problem with the webpage</option>
@@ -100,11 +161,12 @@ const ContactView = () => {
               name='contactMessage'
               onChange={changeContactHandler}
               className={contactInfo.contactMessage ? null : required}
-              defaultValue={contactInfo?.contactMessage}
+              value={contactInfo?.contactMessage}
             />
             <button>Send</button>
           </form>
         </div>
+        
       </div>
     </div>
   );
