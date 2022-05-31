@@ -53,7 +53,7 @@
 .settings-introduction .label-form {
   font-size: var(--form-label-font-size);
   margin-left: 0;
-  max-width: 14rem;
+  max-width: 12rem;
   margin-top: 2rem;
 }
 
@@ -63,7 +63,7 @@
 
 .settings-location input,
 .settings-telephoneNumber input {
-  margin: 1rem 0 0 -1rem;
+  margin: 1rem 0 0 1rem;
   width: 24.5rem;
   border-radius: var(--form-input-border-radius);
   border-color: var(--form-input-border-color);
