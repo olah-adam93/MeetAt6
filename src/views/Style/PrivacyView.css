@@ -1,19 +1,19 @@
-h1 {
+.privacy-main-container h1 {
     font-size: var(--h1-font-size);
     padding-bottom: 2rem
 }
 
-h2 {
+.privacy-main-container h2 {
     font-size: var(--h2-font-size);
     padding-bottom: 2rem
 }
 
-p,ul {
+.privacy-main-container p, .privacy-main-container ul {
     font-size: var(--p-font-size);
     padding-bottom: 2rem
 }
 
-ul {
+.privacy-main-container ul {
     position: relative;
     left: 3rem 
 }
