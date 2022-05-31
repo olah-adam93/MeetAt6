@@ -58,17 +58,17 @@ const EventPageView = () => {
             paymentSucces={paymentSucces}
           />
           <EventDetails eventInfo={eventInfo[1]} />
-          {/* <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
+          <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
             <Map eventInfo={eventInfo[1]} />
-          </Wrapper>*/}
-      {isOpen && (
-        <JoinModal
-          clickHandler={clickHandler}
-          setIsOpen={setIsOpen}
-          eventKey={eventInfo[0]}
-          eventValue={eventInfo[1]}
-        />
-      )}
+          </Wrapper>
+          {isOpen && (
+            <JoinModal
+              clickHandler={clickHandler}
+              setIsOpen={setIsOpen}
+              eventKey={eventInfo[0]}
+              eventValue={eventInfo[1]}
+            />
+          )}
         </>
       )}
     </div>
