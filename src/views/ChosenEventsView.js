@@ -9,19 +9,21 @@ import { EventDbContext } from '../components/EventDbContext/EventDbContext';
 
 /* AuthContext */
 import { auth } from '../config/firebase';
+
 /* CRUD */
-import { readData, liveValue } from '../services/crud';
-// import { AuthContext } from '../components/Authentication/AuthContext'; */
-const ChosenEvents = () => {
+import { liveValue } from '../services/crud';
+
+
+
+const ChosenEventsView = () => {
   const eventDb = useContext(EventDbContext);
   const [eventJoined, setEventJoined] = useState([]);
+  const [eventsCard, setEventsCard] = useState([]);
 
   // const userData = useContext(AuthContext);
   // vagy
-
   const user = auth.currentUser;
 
-  const [eventsCard, setEventsCard] = useState([]);
   useEffect(() => {
     const liveChange = liveValue('eventAttendees', (snapshot) => {
       setEventJoined(
@@ -36,11 +38,9 @@ const ChosenEvents = () => {
     });
     return () => liveChange();
   }, [user]);
-  console.log(eventJoined);
 
   useEffect(() => {
     const filteredArray = eventDb.db.filter((event) => {
-      const value = event[1];
       const key = event[0];
       const filteredEventJoined = eventJoined.filter((eventKey) => {
         return key === eventKey;
@@ -56,7 +56,7 @@ const ChosenEvents = () => {
       <h1>Events joined by Me</h1>
       <div className='my-events-container'>
         <div className='my-events-sidebar'>
-          <UserNavBar />
+          <div>decoration placeholder</div>
         </div>
         <div className='my-events-content'>
           {eventsCard.length === 0 ? (
@@ -75,4 +75,4 @@ const ChosenEvents = () => {
   );
 };
 
-export default ChosenEvents;
+export default ChosenEventsView;

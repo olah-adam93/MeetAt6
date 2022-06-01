@@ -10,7 +10,7 @@ import LogOut from './components/Profile/LogOut';
 import NotFound from './others/NotFound';
 
 /* Views */
-import ChosenEvents from './views/ChosenEvents';
+import ChosenEventsView from './views/ChosenEventsView';
 import AboutView from './views/AboutView';
 import ProfileView from './views/ProfileView';
 import HomePageView from './views/HomePageView';
@@ -92,7 +92,7 @@ function App() {
 
             <Route element={<UserMainPageLayout userLog={userLog} />}>
               <Route path='/profile' element={<ProfileView />} />
-              <Route path='/profile/chosenevents' element={<ChosenEvents />} />
+              <Route path='/profile/chosenevents' element={<ChosenEventsView />} />
               <Route path='/profile/addevent' element={<CreateEventView />} />
               <Route path='/profile/myevents' element={<MyEventsView />} />
               <Route path='/profile/searchevent' element={<SearchEventView />} />

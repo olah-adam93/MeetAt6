@@ -1,7 +1,6 @@
 import './Style/MyEventsView.css';
 
 import { useState, useContext, useEffect } from 'react';
-import UserNavBar from '../components/Profile/UserNavbar';
 import DisplayItems from '../components/SearchEvent/DisplayItems';
 
 /* Database Context */
@@ -38,7 +37,7 @@ const MyEventsView = () => {
       <h1>Events Created by Me</h1>
       <div className='my-events-container'>
         <div className='my-events-sidebar'>
-          <UserNavBar />
+          <div>decoration placeholder</div>
         </div>
         <div className='my-events-content'>
           {eventsCard.length === 0 ? (
