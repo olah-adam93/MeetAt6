@@ -221,6 +221,7 @@ const DisplayItems = ({
             return (
               <div key={index} className='display-items'>
                 <EventCard
+                  eventSearchStyle={true}
                   eventObj={eventObj}
                   eventCard={eventObj[1]}
                   eventId={eventObj[0]}
@@ -229,28 +230,7 @@ const DisplayItems = ({
                   isDeleteButton={isDeleteButton}
                   unsubscribeModalHandler={unsubscribeModalHandler}
                   deleteModalHandler={deleteModalHandler}
-                  modalOpen={modalOpen}
-                  unsubscribeModalOpen={unsubscribeModalOpen}
-                  cancelHandler={cancelHandler}
-                  deleteHandler={deleteHandler}
-                  unsubscribeHandler={unsubscribeHandler}
-                  deletedEvent={deletedEvent}
-                  unsubscribedEvent={unsubscribedEvent}
                 />
-                {/* {isUnsubscribeButton && (
-                  <>
-                    <button type='button' onClick={unsubscribeModalHandler(eventObj)}>
-                      Unsubscribe
-                    </button>
-                  </>
-                )}
-                {isDeleteButton && (
-                  <>
-                    <button type='button' onClick={deleteModalHandler(eventObj)}>
-                      Delete
-                    </button>
-                  </>
-                )} */}
               </div>
             );
           })}

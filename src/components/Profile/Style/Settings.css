@@ -1,12 +1,3 @@
-/* @import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@300&family=Oxygen&display=swap'); */
-
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Oxygen', sans-serif;
-} */
-
 .settings-form-container {
   display: flex;
   flex-direction: column;
@@ -16,14 +7,15 @@
 }
 
 .settings-form-container h1 {
-  border-bottom: 3px #111 solid;
+  font-size: var(--h1-font-size);
   letter-spacing: 0.3rem;
 }
 
 .section-header {
-  margin: 5rem auto 3rem auto;
-  border-bottom: 1.5px #111 solid;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
+  font-size: var(--h2-font-size);
+  margin: 8rem auto 4rem auto;
+  text-decoration: underline var(--tertiary-background-color) 2px;
 }
 
 /* Form */
@@ -47,6 +39,9 @@
 .settings-classification {
   padding: 1rem;
   min-height: 8rem;
+  width: 400px;
+  margin: auto;
+  display: flex;
 }
 
 .settings-name .label-form,
@@ -56,82 +51,109 @@
 .settings-telephoneNumber .label-form,
 .settings-gender .label-form,
 .settings-introduction .label-form {
-  font-size: 1.6rem;
-  margin: 0.5rem 0.5rem 0 0.5rem;
+  font-size: var(--form-label-font-size);
+  margin-left: 0;
+  max-width: 12rem;
+  margin-top: 2rem;
 }
 
 .settings-introduction .label-form {
-  font-size: 1.6rem;
-  margin: 0.5rem 0.5rem 2rem 1.5rem;
+  font-size: var(--form-label-font-size);
 }
 
-.settings-name input,
-.settings-email input,
 .settings-location input,
 .settings-telephoneNumber input {
-  margin-left: 1rem;
-  background-color: transparent;
-  border: 0;
-  border-bottom: 2px #111 solid;
-  padding: 1rem 0 0.5rem 0;
-  font-size: 1.5rem;
-  color: #111;
+  margin: 1rem 0 0 1rem;
+  width: 24.5rem;
+  border-radius: var(--form-input-border-radius);
+  border-color: var(--form-input-border-color);
+  border: 1px solid;
+  padding: var(--form-input-padding);
+  font-size: var(--form-label-font-size);
+  color: var(--primary-text-color);
 }
 
-.settings-name .edit-button,
-.settings-email .edit-button {
-  padding: 0.3rem 0.8rem;
-  font-size: 1.5rem;
-  font-weight: 500;
-  border: none;
-  outline: none;
-  background-color: #6c757d;
-  color: white;
-  border-radius: 0.3rem;
-  cursor: pointer;
+.settings-name .input-name {
+  margin-left: 5.9rem;
+  width: 24.5rem;
+  border-radius: var(--form-input-border-radius);
+  border-color: var(--form-input-border-color);
+  border: 1px solid;
+  padding: var(--form-input-padding);
+  font-size: var(--form-label-font-size);
+  color: var(--primary-text-color);
 }
 
-.label-form.label-email {
-  margin-left: 3.9rem;
+.settings-email .input-email {
+  margin-left: 9.4rem;
+  width: 24.5rem;
+  border-radius: var(--form-input-border-radius);
+  border-color: var(--form-input-border-color);
+  border: 1px solid;
+  padding: var(--form-input-padding);
+  font-size: var(--form-label-font-size);
+  color: var(--primary-text-color);
 }
 
 .settings-date .input-date {
-  margin-left: 7.6rem;
-  background-color: transparent;
-  border: 2px #111 solid;
-  border-radius: 5px;
-  padding: 0.5rem 0 0.5rem 0;
-  font-size: 1.5rem;
-  color: #111;
+  margin-left: 6.8rem;
+  width: 24.5rem;
+  border-radius: var(--form-input-border-radius);
+  border-color: var(--form-input-border-color);
+  border: 1px solid;
+  padding: var(--form-input-padding);
+  font-size: var(--form-label-font-size);
+  color: var(--primary-text-color);
 }
 
 .settings-location .input-location {
-  margin-left: 7.6rem;
+  margin-left: 6.8rem;
+  width: 24.5rem;
+  border-radius: var(--form-input-border-radius);
+  border-color: var(--form-input-border-color);
+  border: 1px solid;
+  padding: var(--form-input-padding);
+  font-size: var(--form-label-font-size);
+  color: var(--primary-text-color);
 }
 
 .settings-gender .select-gender {
-  margin-left: 8.5rem;
-  background-color: transparent;
-  border: 2px #111 solid;
-  border-radius: 5px;
-  padding: 0.5rem 0 0.5rem 0;
-  font-size: 1.5rem;
-  color: #111;
+  margin: 1rem 0 0 7.3rem;
+  width: 24.5rem;
+  border-radius: var(--form-input-border-radius);
+  border-color: var(--form-input-border-color);
+  border: 1px solid;
+  padding: var(--form-input-padding);
+  font-size: var(--form-label-font-size);
+  color: var(--primary-text-color);
 }
 
 .settings-introduction {
-  padding: 2rem 0 2rem 0;
+  padding: 1rem 0 2rem 0;
   min-height: 6.5rem;
+  margin: auto;
+  width: 400px;
+  display: flex;
 }
 
 .settings-introduction .textarea-introduction {
-  margin-left: 5rem;
-  background-color: transparent;
-  border: 2px #111 solid;
-  border-radius: 5px;
-  padding: 1rem 0 0.5rem 0;
-  font-size: 1.5rem;
-  color: #111;
+  margin-left: 4.6rem;
+  width: 24.5rem;
+  border-radius: var(--form-input-border-radius);
+  border-color: var(--form-input-border-color);
+  border: 1px solid;
+  padding: var(--form-input-padding);
+  font-size: var(--form-label-font-size);
+  color: var(--primary-text-color);
+}
+
+.settings-name input::placeholder,
+.settings-email input::placeholder,
+.settings-location .input-location::placeholder,
+.settings-introduction .textarea-introduction::placeholder,
+.settings-telephoneNumber input::placeholder {
+  font-size: var(--form-label-font-size);
+  color: var(--primary-text-color);
 }
 
 /* Profile picture */
@@ -170,14 +192,14 @@
 }
 
 .settings-image .settings-icon {
-  font-size: 2rem;
-  color: #fff;
+  font-size: var(--p-font-size);
+  color: var(--tertiary-background-color);
   padding-bottom: 0.5rem;
 }
 
 .settings-image button {
   padding: var(--button-padding);
-  font-size: 1.5rem;
+  font-size: var(--p-font-size);
   font-weight: 500;
   border: none;
   outline: none;
@@ -185,12 +207,22 @@
   color: var(--secondary-navbar-text-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
-  margin: 1rem;
+  margin: 3rem auto 1rem auto;
 }
 
 .settings-image button:hover,
 .settings-form .save-button:hover {
   background-color: var(--button-hover-background-color);
+}
+
+.settings-location .input-location:hover,
+.settings-date .input-date:hover,
+.settings-telephoneNumber input:hover,
+.settings-name .input-name:hover,
+.settings-email .input-email:hover,
+.settings-gender .select-gender:hover,
+.settings-introduction .textarea-introduction:hover {
+  border: 1px solid var(--form-hover-input-border-color);
 }
 
 /* Classification radio */
@@ -208,9 +240,9 @@
 .classification-personal,
 .classification-organization {
   margin: auto;
-  color: #111;
+  color: var(--primary-text-color);
   padding: 0.3rem 0.8rem;
-  font-size: 1.5rem;
+  font-size: var(--p-font-size);
   font-weight: 500;
 }
 
@@ -218,7 +250,7 @@
 
 .settings-form .save-button {
   padding: var(--button-padding);
-  font-size: 1.5rem;
+  font-size: var(--p-font-size);
   font-weight: 500;
   border: none;
   outline: none;
@@ -226,5 +258,5 @@
   color: var(--secondary-navbar-text-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
-  margin: auto;
+  margin: 3rem auto 1rem auto;
 }

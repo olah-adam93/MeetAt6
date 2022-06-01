@@ -16,4 +16,3 @@ const Validation = (data) => {
 };
 
 export default Validation;
-

@@ -13,11 +13,13 @@
   position: absolute;
   top: -1rem;
   right: 0;
+  /* opacity: .2; */
 }
 
 .search-event-inner-container {
   width: 100%;
   display: flex;
+  justify-content: flex-start;
 }
 
 .display-maps-container {

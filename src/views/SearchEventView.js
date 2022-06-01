@@ -58,7 +58,7 @@ const SearchEventView = () => {
       <FilterBar setSearchQuery={setSearchQuery} filterParams={filterParams} setFilterParams={setFilterParams} setToDefault={setToDefault}/>
 
       <div className='search-event-inner-container'>
-        <DisplayItems filteredDbItems={eventsCard} perPage={6} toDefault={toDefault} setToDefault={setToDefault}/>
+        <DisplayItems filteredDbItems={eventsCard} perPage={8} toDefault={toDefault} setToDefault={setToDefault}/>
         {/* <div className='display-maps-container'>
           <div className='display-maps'>
           <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>

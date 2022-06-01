@@ -15,8 +15,9 @@
   --primary-text-color: #000000;
   --secondary-text-color: #FFFFFF;
   --tertiary-text-color: #75807E;
+  --fourthly-text-color: #af4448;
 
-  --primary-box-shadow: 0 3px 10px 0 rgb(0 0 0 / 15%);
+  --primary-box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%);
   --hover-box-shadow: 0 4px 10px 4px rgb(0 0 0 / 15%);
 
   --button-text-color: #ffffff;
@@ -30,14 +31,16 @@
   --h1-font-size: 3rem;
   --h2-font-size: 2.5rem;
   --h3-font-size: 2rem;
+  --h4-font-size: 1.8rem;
 
-  --p-font-size-small: 1rem;
+  --p-font-size-small: 1.4rem;
   --p-font-size: 1.6rem;
 
   --form-label-font-size: 1.6rem;
   --form-input-padding: 1.2rem;
   --form-input-border-radius: 0.5rem;
   --form-input-border-color: #000;
+  --form-input-border-secondary-color: #75807E;
   --form-hover-input-border-color: #af4448;
 
   --link-basic-style: none;
