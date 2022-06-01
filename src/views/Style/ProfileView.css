@@ -12,7 +12,8 @@
   width: 100%;
   padding: 2rem;
   background-color: var(--secondary-background-color);
-  border-radius: var(--card-border-radius);
+  border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+  box-shadow: /* #870000a5 0px 5px, */ #af4448bd 0px 5px, #bc4b4ebd 0px 10px;
 }
 .profile .profile-head div {
   margin: 1rem;
