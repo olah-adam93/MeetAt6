@@ -51,6 +51,16 @@ const SignIn = ({ submitForm }) => {
         navigateTo('/profile');
       })
       .catch((e) => {
+        switch (e.message) {
+          case 'Firebase: Error (auth/user-not-found).':
+            setError({
+              authError: 'Hibas valami'
+            })
+            break;
+
+          default:
+            break;
+        }
         console.log(e.message);
       });
 
@@ -89,9 +99,10 @@ const SignIn = ({ submitForm }) => {
         <div className='sign-in-header'>
           <h3> Sign In </h3>
         </div>
-        {Object.keys(error).length === 0 && correctData ? (
+  {/*       {Object.keys(error).length === 0 && correctData ? (
           <h4 className='log-success-msg'>Signed in successfully!</h4>
-        ) : null}
+        ) : null} */}
+        {error?.authError}
         <div className={`mail-container${error.e_mail ? ' shake' : ''}`}>
           <label className='mail-label'>Email</label>
           <div className='mail-field'>

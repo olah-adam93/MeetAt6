@@ -36,16 +36,6 @@ const TimeOfEvent = ({ setData, data }) => {
             onChange={changeHandler}
             value={data?.eventStarts}
           />
-          <label htmlFor='event-ends'>Event Ends*</label>
-          <input
-            type='date'
-            id='event-ends'
-            name='eventEnds'
-            onChange={changeHandler}
-            value={data?.eventEnds}
-          />
-        </div>
-        <div>
           <label htmlFor='start-time'>Start Time*</label>
           <input
             type='time'
@@ -53,6 +43,16 @@ const TimeOfEvent = ({ setData, data }) => {
             name='startTime'
             onChange={changeHandler}
             value={data?.startTime}
+          />
+        </div>
+        <div>
+          <label htmlFor='event-ends'>Event Ends*</label>
+          <input
+            type='date'
+            id='event-ends'
+            name='eventEnds'
+            onChange={changeHandler}
+            value={data?.eventEnds}
           />
           <label htmlFor='end-time'>End time*</label>
           <input
