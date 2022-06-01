@@ -5,9 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 const MapComponent = ({eventInfo}) => {
   const [map, setMap] = useState();
   const [marker, setMarker] = useState();
-  const [infoWindow, setInfoWindow] = useState();
   const ref = useRef(null);
-
 
   useEffect(() => {
     if (ref.current && !map) {
@@ -24,23 +22,35 @@ const MapComponent = ({eventInfo}) => {
   }, [ref, map]);
 
   useEffect(() => {
-    if (!marker && map) {
+    if (!marker && map && eventInfo?.length > 0) {
       const eventArr = eventInfo;
 
       eventArr.map((event) => {
         const [key, value] = event;
-        return setMarker(
-          new window.google.maps.Marker({
-            position: { lat: Number(value?.geoLat), lng: Number(value?.geoLng) },
+        const newMarker = new window.google.maps.Marker({
+          position: { lat: Number(value?.geoLat), lng: Number(value?.geoLng) },
+          map,
+          icon: {
+            url: 'https://img.icons8.com/doodle/48/000000/google-maps-new.png',
+            size: new window.google.maps.Size(32, 32),
+            scaledSize: new window.google.maps.Size(32, 32),
+            anchor: new window.google.maps.Point(0, 32),
+          },
+        })
+
+        const infowindow = new window.google.maps.InfoWindow({
+          content: "Hello"+value?.title,
+        });
+
+        newMarker.addListener('click', (param) => {
+          console.log('click on marker', param, event);
+          infowindow.open({
+            anchor: newMarker,
             map,
-            icon: {
-              url: 'https://img.icons8.com/doodle/48/000000/google-maps-new.png',
-              size: new window.google.maps.Size(32, 32),
-              scaledSize: new window.google.maps.Size(32, 32),
-              anchor: new window.google.maps.Point(0, 32),
-            },
-          })
-        );
+            shouldFocus: false,
+          });
+        })
+        return setMarker(newMarker);
       });
       return () => {
         if (marker) {
@@ -48,10 +58,10 @@ const MapComponent = ({eventInfo}) => {
         }
       };
     }
-    
-  }, [marker, map]);
 
-  useEffect(() => {
+  }, [marker, map, eventInfo]);
+
+ /*  useEffect(() => {
     console.log(marker);
 
     if (!infoWindow && map) {
@@ -68,26 +78,10 @@ const MapComponent = ({eventInfo}) => {
           })
         );
       })
-
     }
-  }, [infoWindow, map]);
+  }, [infoWindow, map]); */
 
-  const clickHandler = () => {
-    const eventArr = eventInfo;
-
-    infoWindow.open({
-      anchor: marker,
-      map,
-      shouldFocus: false,
-    });
-    // eventArr.map((event) => {
-    //   const [key, value] = event;
-
-    // })
-  };
-
-
-  return <div className='event-map-container' ref={ref} onClick={clickHandler}></div>;
+  return <div className='event-map-container' ref={ref}></div>;
 
 };
 

@@ -13,35 +13,36 @@ const GoogleMapLoader = ({data, setData, map, setMap}) => {
   useEffect(() => {
     if (ref.current && !map) {
       setMap(new window.google.maps.Map(ref.current, {}));
-      
     }
     if (map) {
       map.setOptions({zoom: 6, center: center});
       // map.addListener('click', (param) => { console.log('lat:', param.latLng.lat(), 'long:', param.latLng.lng())});
       map.addListener('click', (param) => {
-        marker.setMap(null);
+        // marker.setMap(null);
         setData((prev) => ({ ...prev, geoLng: param.latLng.lng(), geoLat: param.latLng.lat() }));
         setCenter({lat: param.latLng.lat(), lng: param.latLng.lng()})
       });
 
     }
   }, [ref, map]);
-  
+
 
   useEffect(() => {
-    // if (!marker && map) { 
+    // if (!marker && map) {
+    if (data?.geoLat && data?.geoLng) {
       setMarker(
         new window.google.maps.Marker({
-          position:  {lat: Number(data?.geoLat) || 47.4979, lng: Number(data?.geoLng) || 19.0402},
+          position:  {lat: Number(data?.geoLat), lng: Number(data?.geoLng)},
           map,
           icon: {
             url: 'https://img.icons8.com/doodle/48/000000/google-maps-new.png',
             size: new window.google.maps.Size(32, 32),
             scaledSize: new window.google.maps.Size(32, 32),
-            anchor: new window.google.maps.Point(0, 32),
+            anchor: new window.google.maps.Point(16, 32),
           },
         })
       );
+    }
     // }
 
     return () => {
@@ -49,15 +50,15 @@ const GoogleMapLoader = ({data, setData, map, setMap}) => {
         marker.setMap(null);
       }
     }
-  }, [center, map]);
+  }, [center, map, data]);
 
   // const clickHandler = (e) => {
-    
+
   //   marker.setMap(null)
   //   setCenter({lat: Number(data?.latitude), lng: Number(data?.longitude)})
   // }
   console.log(center)
-  
+
   // const changeHandler = (e) => {
   //   setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   // };

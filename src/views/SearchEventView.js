@@ -29,7 +29,7 @@ const SearchEventView = () => {
     type: '', // type
     category: '' // category
   });
-  
+
   const searchFunction = useCallback((eventDb) => {
     return eventDb.filter((event) => {
         const value = event[1];
@@ -40,12 +40,12 @@ const SearchEventView = () => {
         const filterDateResult = value?.eventStarts && value?.eventStarts.toString().toLowerCase().indexOf(filterParams?.date.toLowerCase()) > -1;
         const filterTypeResult = value?.type && value?.type.toString().toLowerCase().indexOf(filterParams?.type.toLowerCase()) > -1;
         const filterCategoryResult = value?.category && value?.category.toString().toLowerCase().indexOf(filterParams?.category.toLowerCase()) > -1 ;
-        
-        return filterTitleResult && filterLocationResult && filterPriceResult && filterDateResult&& filterTypeResult && filterCategoryResult;   
+
+        return filterTitleResult && filterLocationResult && filterPriceResult && filterDateResult&& filterTypeResult && filterCategoryResult;
     });
   }, [searchQuery, filterParams])
 
-  useEffect(() => { 
+  useEffect(() => {
       setEventsCard(searchFunction(eventDb.db).sort((a, b) => {
         return new Date(b[1].createdDate).getTime() - new Date(a[1].createdDate).getTime();
       }));
@@ -53,10 +53,16 @@ const SearchEventView = () => {
 
   return (
     <div className='search-event-container'>
-      <img className='search-event-background' src={search_event_background} alt='search-event-background' /> 
+      <img className='search-event-background' src={search_event_background} alt='search-event-background' />
 
       <FilterBar setSearchQuery={setSearchQuery} filterParams={filterParams} setFilterParams={setFilterParams} setToDefault={setToDefault}/>
-
+      <div className='display-maps-container'>
+          <div className='display-maps'>
+          <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
+            <MapComponent eventInfo={eventsCard} />
+          </Wrapper>
+          </div>
+        </div>
       <div className='search-event-inner-container'>
         <DisplayItems filteredDbItems={eventsCard} perPage={8} toDefault={toDefault} setToDefault={setToDefault}/>
         {/* <div className='display-maps-container'>
@@ -66,7 +72,7 @@ const SearchEventView = () => {
           </Wrapper>
           </div>
         </div> */}
-        
+
 
 
       </div>
