@@ -13,23 +13,20 @@
   position: absolute;
   top: -1rem;
   right: 0;
-  /* opacity: .2; */
 }
 
 .search-event-inner-container {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
+  gap: 2rem;
 }
 
 .display-maps-container {
-  width: 40%;
-}
-
-.display-maps {
-  width: 100%;
-  height: 500px;
-  background-color: blanchedalmond;
+  width: 80%;
+  max-width: 1000px;
+  height: 30rem;
 }
 
 

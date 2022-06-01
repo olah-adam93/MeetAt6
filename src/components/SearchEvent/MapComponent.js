@@ -1,6 +1,7 @@
-import './Style/MapComponent.css';
-
 import { useState, useEffect, useRef } from 'react';
+
+/* Style */
+import './Style/MapComponent.css';
 
 const MapComponent = ({eventInfo}) => {
   const [map, setMap] = useState();
@@ -9,14 +10,20 @@ const MapComponent = ({eventInfo}) => {
 
   useEffect(() => {
     if (ref.current && !map) {
-      setMap(new window.google.maps.Map(ref.current, {}));
+      setMap(new window.google.maps.Map(ref.current, {
+        mapId: 'f351ed5064543873',
+      }));
     }
 
     if (map) {
       map.setOptions({
-        zoom: 6,
+        zoom: 6.5,
         // center: { lat: eventInfo[1]?.geoLat, lng: eventInfo[1]?.geoLng },
-        center: { lat: 47, lng: 19},
+        center: { lat: 47.162494, lng: 19.503304},
+        // disableDefaultUI: true,
+        mapTypeControl: false,
+        streetViewControl: false,
+        gestureHandling: "greedy",
       });
     }
   }, [ref, map]);
@@ -27,15 +34,18 @@ const MapComponent = ({eventInfo}) => {
 
       eventArr.map((event) => {
         const [key, value] = event;
+
         const newMarker = new window.google.maps.Marker({
           position: { lat: Number(value?.geoLat), lng: Number(value?.geoLng) },
           map,
-          icon: {
-            url: 'https://img.icons8.com/doodle/48/000000/google-maps-new.png',
-            size: new window.google.maps.Size(32, 32),
-            scaledSize: new window.google.maps.Size(32, 32),
-            anchor: new window.google.maps.Point(0, 32),
-          },
+          optimized: true,
+          animation: window.google.maps.Animation.DROP,
+          // icon: {
+          //   url: 'https://img.icons8.com/doodle/48/000000/google-maps-new.png',
+          //   size: new window.google.maps.Size(32, 32),
+          //   scaledSize: new window.google.maps.Size(32, 32),
+          //   anchor: new window.google.maps.Point(32, 32),
+          // },
         })
 
         const infowindow = new window.google.maps.InfoWindow({
@@ -52,6 +62,8 @@ const MapComponent = ({eventInfo}) => {
         })
         return setMarker(newMarker);
       });
+
+
       return () => {
         if (marker) {
           marker.setMap(null);
@@ -81,8 +93,7 @@ const MapComponent = ({eventInfo}) => {
     }
   }, [infoWindow, map]); */
 
-  return <div className='event-map-container' ref={ref}></div>;
-
+  return <div className='display-maps' ref={ref}></div>;
 };
 
 export default MapComponent;
