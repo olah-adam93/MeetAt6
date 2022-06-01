@@ -7,6 +7,7 @@ import ScrollToTop from './others/ScrollToTop';
 
 import Settings from './components/Profile/Settings';
 import LogOut from './components/Profile/LogOut';
+import NotFound from './others/NotFound';
 
 /* Views */
 import ChosenEvents from './views/ChosenEvents';
@@ -88,6 +89,7 @@ function App() {
         <EventDbContext.Provider value={{db, setDb}}>
           <Routes>
             <Route element={<MainPageLayout />}>
+              <Route path="*" element={<NotFound />} />
               <Route path='/' element={<HomePageView />} />
               <Route path='/home' element={<HomePageView />} />
               <Route path='/about' element={<AboutView />} />
