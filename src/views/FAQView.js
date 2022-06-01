@@ -22,7 +22,7 @@ const AboutView = () => {
         </div>
       </div>
       <div className="FAQ-image-container">
-         <img className="FAQ-image" src={faq}></img>
+         <img className="FAQ-image" src={faq} alt='FAQ'></img>
       </div>
     </div>
   );

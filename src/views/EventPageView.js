@@ -32,6 +32,7 @@ const EventPageView = () => {
 
     // console.log('eventdb: ', eventDb.db);
   }, [eventDb.db, eventId]);
+  
   useEffect(() => {
     if (searchParams.get('success') && eventInfo?.[0] && user?.uid) {
       updateData('eventAttendees', eventInfo[0], { [user.uid]: user.displayName }).then(

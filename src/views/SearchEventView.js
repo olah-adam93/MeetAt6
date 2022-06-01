@@ -56,13 +56,13 @@ const SearchEventView = () => {
       <img className='search-event-background' src={search_event_background} alt='search-event-background' />
 
       <FilterBar setSearchQuery={setSearchQuery} filterParams={filterParams} setFilterParams={setFilterParams} setToDefault={setToDefault}/>
-      <div className='display-maps-container'>
+      {/* <div className='display-maps-container'>
           <div className='display-maps'>
           <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
             <MapComponent eventInfo={eventsCard} />
           </Wrapper>
           </div>
-        </div>
+        </div> */}
       <div className='search-event-inner-container'>
         <DisplayItems filteredDbItems={eventsCard} perPage={8} toDefault={toDefault} setToDefault={setToDefault}/>
         {/* <div className='display-maps-container'>

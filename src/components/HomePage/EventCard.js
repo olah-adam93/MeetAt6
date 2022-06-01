@@ -1,10 +1,14 @@
 import {Link} from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 /* Style */
 import './Styles/EventCard.css';
 
 /* Image */
 import eventImagePlaceholder from '../../others/logo/logo7.3.png';
+
+/* CRUD */
+import { readData } from '../../services/crud';
 
 const EventCard = ({
   eventSearchStyle,
@@ -16,6 +20,14 @@ const EventCard = ({
   unsubscribeModalHandler,
   deleteModalHandler,
 }) => {
+  const [attendees, setAttendees] = useState([]);
+  
+  useEffect(() => {
+      readData('eventAttendees', eventId).then((snapshot) => {
+          setAttendees(Object.entries(snapshot.val() || {}));
+      });
+  }, [eventId]);
+
   return (
     <div className={eventSearchStyle ? 'event-card-container-search' : 'event-card-container'}>
       <Link
@@ -93,7 +105,7 @@ const EventCard = ({
                 eventSearchStyle ? 'event-data-attendees-search' : 'event-data-attendees'
               }
             >
-              {!eventCard?.attendant ? 0 : eventCard?.attendant} attendees
+              {attendees.length === 0 ? 0 : attendees.length} attendees
             </p>
           </div>
         </div>

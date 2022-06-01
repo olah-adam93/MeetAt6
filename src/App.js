@@ -45,7 +45,6 @@ import {liveValue} from './services/crud';
 function App() {
   const [db, setDb] = useState([]);
   const [userLog, setUserLog] = useState({});
-  const [userLogged, setUserLogged] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -63,17 +62,6 @@ function App() {
   useEffect(() => {
     console.log(userLog);
   }, [userLog]);
-
-  // function AuthProtected() {
-  //   if (Object.values(userLog)?.length !== 0) {
-  //     // bekell leptetni vagz bekerni a belepest
-  //     console.log('nincs bejelentkezve');
-  //     return <SignInView />
-  //   } else {
-  //     // return <div>AuthProtected: { props.children }</div>
-  //     return <UserMainPageLayout userLog={userLog}/>;
-  //   }
-  // }
 
   useEffect(() => {
     const liveChange = liveValue('events', (snapshot) => {
