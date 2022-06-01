@@ -1,6 +1,6 @@
 .sign-in-container {
-  width: 350px;
-  height: 500px;
+  width: 35rem;
+  height: 50rem;
   padding: 2rem 1.5rem 2.5rem 1.5rem;
   background: #fff;
   border-radius: 1rem;
@@ -27,7 +27,7 @@
 form .mail-container,
 form .password-container {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 
 form .mail-container .mail-label,
@@ -65,7 +65,7 @@ form .password-container.shake input {
 
 form .mail-container .mail-field,
 form .password-container .password-field {
-  height: 35px;
+  height: 3.5rem;
   width: 100%;
   position: relative;
 }
@@ -73,7 +73,7 @@ form .password-container .password-field {
 form .mail-container input,
 form .password-container input {
   height: 4rem;
-  width: 100%;
+  width: 32rem;
   font-size: var(--p-font-size);
   border: 1px solid;
   border-color: var(--form-input-border-color);
@@ -84,22 +84,14 @@ form .password-container input {
 }
 
 form .mail-container input:focus,
-form .mail-container.valid input {
+form .mail-container.valid input,
+form .mail-container.shake input {
   border-color: var(--form-hover-input-border-color);
 }
 
 form .password-container input:focus,
-form .password-container.valid input {
-  border-color: var(--form-hover-input-border-color);
-}
-
-form .mail-container.shake input,
-form .mail-container.error input {
-  border-color: var(--form-hover-input-border-color);
-}
-
-form .password-container.shake input,
-form .password-container.error input {
+form .password-container.valid input,
+form .password-container.shake input {
   border-color: var(--form-hover-input-border-color);
 }
 
@@ -131,6 +123,7 @@ form .password-container.error input {
 form .mail-container .error-msg,
 form .password-container .error-msg {
   margin-top: 1rem;
+  height: 1.5rem;
   color: var(--button-hover-background-color);
   text-align: left;
 }
