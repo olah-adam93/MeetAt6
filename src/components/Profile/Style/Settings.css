@@ -59,6 +59,7 @@
 
 .settings-introduction .label-form {
   font-size: var(--form-label-font-size);
+  margin-top: 6rem;
 }
 
 .settings-location input,
@@ -139,6 +140,7 @@
 .settings-introduction .textarea-introduction {
   margin-left: 4.6rem;
   width: 24.5rem;
+  height: 15rem;
   border-radius: var(--form-input-border-radius);
   border-color: var(--form-input-border-color);
   border: 1px solid;
@@ -244,6 +246,13 @@
   padding: 0.3rem 0.8rem;
   font-size: var(--p-font-size);
   font-weight: 500;
+}
+
+.edit-msg {
+  margin: auto auto auto 45%;
+  height: 1.5rem;
+  font-size: var(--p-font-size-small);
+  color: var(--fourthly-text-color);
 }
 
 /* Save button */
