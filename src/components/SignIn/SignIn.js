@@ -24,7 +24,6 @@ const SignIn = ({ submitForm }) => {
   });
 
   const [error, setError] = useState({});
-  const [correctData, setCorrectData] = useState(false);
 
   const navigateTo = useNavigate();
 
@@ -35,7 +34,6 @@ const SignIn = ({ submitForm }) => {
     });
     //console.log(data);
     setError({});
-    setCorrectData(false);
   };
 
   const handleFormSubmit = (e) => {
@@ -54,17 +52,13 @@ const SignIn = ({ submitForm }) => {
         switch (e.message) {
           case 'Firebase: Error (auth/user-not-found).':
             setError({
-              authError: 'Hibas valami'
-            })
+              authError: 'Invalid email or password!',
+            });
             break;
-
           default:
-            break;
         }
-        console.log(e.message);
+        //console.log(e.message);
       });
-
-    setCorrectData(true);
   };
 
   // Validation
@@ -99,10 +93,6 @@ const SignIn = ({ submitForm }) => {
         <div className='sign-in-header'>
           <h3> Sign In </h3>
         </div>
-  {/*       {Object.keys(error).length === 0 && correctData ? (
-          <h4 className='log-success-msg'>Signed in successfully!</h4>
-        ) : null} */}
-        {error?.authError}
         <div className={`mail-container${error.e_mail ? ' shake' : ''}`}>
           <label className='mail-label'>Email</label>
           <div className='mail-field'>
@@ -119,7 +109,11 @@ const SignIn = ({ submitForm }) => {
               <FontAwesomeIcon className='icon-error' icon={faCircleExclamation} />
             ) : null}
           </div>
-          <p className='error-msg'>{error.e_mail}</p>
+          {error.e_mail ? (
+            <p className='error-msg'>{error.e_mail}</p>
+          ) : (
+            <p className='error-msg'>{error?.authError}</p>
+          )}
         </div>
         <div className={`password-container${error.passw ? ' shake' : ''}`}>
           <label className='password-label'>Password</label>
@@ -137,7 +131,11 @@ const SignIn = ({ submitForm }) => {
               <FontAwesomeIcon className='icon-error' icon={faCircleExclamation} />
             ) : null}
           </div>
-          <p className='error-msg'>{error.passw}</p>
+          {error.passw ? (
+            <p className='error-msg'>{error.passw}</p>
+          ) : (
+            <p className='error-msg'>{error?.authError}</p>
+          )}
         </div>
         <button className='submit'>Sign in</button>
       </form>
