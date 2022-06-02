@@ -84,7 +84,7 @@
   border-top: 1px solid var(--fourthly-text-color);
 }
 .profile .divide{
-  height: 2rem;
+  height: 1rem;
 }
 .profile-statistics{
   display: flex;
