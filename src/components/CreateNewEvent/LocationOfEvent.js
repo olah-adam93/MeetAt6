@@ -1,29 +1,28 @@
-import { useState, useEffect, useRef } from 'react';
-import { Wrapper, Status } from '@googlemaps/react-wrapper';
+import {useState, useEffect, useRef} from 'react';
+import {Wrapper, Status} from '@googlemaps/react-wrapper';
 import GoogleMapLoader from './Map/GoogleMapLoader';
 import MapWrapped from './Map/MapWrapped';
 
-const LocationOfEvent = ({ setLocationType, locationType, setData, data }) => {
+const LocationOfEvent = ({setData, data, visible, setVisible}) => {
   const [map, setMap] = useState();
-  /* const clickHandler = (e) => {
-    e.preventDefault();
-    if (e.target.name === 'venue') {
-      setLocationType('venue');
-    }
-    if (e.target.name === 'online') {
-      setLocationType('online');
-    } else if (e.target.name === 'to-be-added') {
-      setLocationType('to be added');
-    }
-    console.log(locationType);
-  }; */
-  const changeHandler = (e) => {
-    if(e.target.value === "online"){
-      setData((prev) => ({ ...prev, location: '', geoLat: '', geoLng: '', [e.target.name]: e.target.value }));
+  /* const [visible, setVisible] = useState(false) */
 
+  const changeHandler = (e) => {
+    if (e.target.value === 'online') {
+      setData((prev) => ({
+        ...prev,
+        location: '',
+        geoLat: '',
+        geoLng: '',
+        [e.target.name]: e.target.value,
+      }));
+      setVisible(false);
+    } else {
+      setData((prev) => ({...prev, [e.target.name]: e.target.value}));
+      setVisible(true);
     }
-    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
   return (
     <div className='location-container'>
       <h2>Location</h2>
@@ -50,11 +49,10 @@ const LocationOfEvent = ({ setLocationType, locationType, setData, data }) => {
             defaultChecked={data?.locationType === 'online'}
           />
         </label>
-        
       </div>
-      
+
       <div>
-        <div>
+        <div className={visible ? 'visible' : 'hidden'}>
           <p>Please write the address here</p>
           <label htmlFor='location'> Address</label>
           <input
@@ -66,14 +64,13 @@ const LocationOfEvent = ({ setLocationType, locationType, setData, data }) => {
           />
 
           <p>Point on the Map</p>
-          
+
           <br />
-          <div className='map-box'>
+          <div className={`map-box `}>
             <MapWrapped data={data} setData={setData} map={map} setMap={setMap} />
           </div>
         </div>
       </div>
-      
     </div>
   );
 };

@@ -8,7 +8,7 @@ const AddImageForEvent = ({setData, data}) => {
     console.log(e.target.files);
     setData((prev) => ({ ...prev, [e.target.name]: e.target.files[0] }));
   };
-  const onUploadImage = (e) => {
+ /*  const onUploadImage = (e) => {
     const fileRef = ref(storage, `eventImages/${data?.image.name}`)
     uploadBytes(fileRef, data?.image)
     .then((uploadResult) =>{console.log("first");
@@ -19,7 +19,7 @@ const AddImageForEvent = ({setData, data}) => {
       .catch((e) => console.log(e));
     })
     .catch((e) => console.log(e));
-  }
+  } */
 
 
   return (
@@ -28,10 +28,10 @@ const AddImageForEvent = ({setData, data}) => {
       <div>
         <img src={data?.imageUrl}/>
         <input type='file' name='image' onChange={onFileChange} placeholder="img"/>
-        <button type='button' name='upload' onClick={onUploadImage}>
+       {/*  <button type='button' name='upload' onClick={onUploadImage}>
           Upload
         </button>
-        
+         */}
       </div>
     </div>
   );

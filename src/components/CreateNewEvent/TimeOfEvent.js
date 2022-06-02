@@ -1,6 +1,6 @@
-const TimeOfEvent = ({ setData, data }) => {
+const TimeOfEvent = ({setData, data}) => {
   const changeHandler = (e) => {
-    setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setData((prev) => ({...prev, [e.target.name]: e.target.value}));
   };
   return (
     <div className='time-of-event'>
@@ -26,7 +26,7 @@ const TimeOfEvent = ({ setData, data }) => {
           defaultChecked={data?.eventFrequency === 'recurring'}
         />
       </div> */}
-      <div class="event-time-box">
+      <div className='event-time-box'>
         <div>
           <label htmlFor='event-starts'>Event Starts*</label>
           <input
