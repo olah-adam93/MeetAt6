@@ -12,7 +12,7 @@ const EventImage = ({eventInfo}) => {
     <>
     {eventInfo &&
       <div className='event-image-container'>
-        <img className="event-image" src={eventInfo?.imageUrl ? eventInfo?.imageUrl : eventImagePlaceholder} alt={eventInfo?.title} />
+        <img src={eventInfo?.imageUrl ? eventInfo?.imageUrl : eventImagePlaceholder} alt={eventInfo?.title} />
       </div>
     }
     </>

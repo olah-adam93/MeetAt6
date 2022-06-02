@@ -27,7 +27,7 @@ const MapComponent = ({eventInfo}) => {
         // disableDefaultUI: true,
         mapTypeControl: false,
         streetViewControl: false,
-        gestureHandling: "greedy",
+        // gestureHandling: "greedy",
       });
     }
   }, [ref, map]);

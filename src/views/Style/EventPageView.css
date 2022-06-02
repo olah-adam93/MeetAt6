@@ -1,39 +1,142 @@
-.event-page {
-  
-}
-
-.event-image-container {
-  grid-area: image;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-color: grey;
-}
-
-
-
-
-.event-details-container {
-  grid-area: details;
-  border: 0.1rem solid lightgrey;
-  border-radius: 0.5rem;
-  box-shadow: 0.5rem 1rem lightgray;
-  padding: 1rem;
-  font-size: 16px;
-}
-
-.event-info-container {
-  grid-area: info;
+.event-page-container {
   display: flex;
   flex-direction: column;
-  border: 0.1rem solid lightgrey;
-  border-radius: 0.5rem;
-  box-shadow: 0.5rem 1rem lightgray;
-  padding: 1rem;
-  font-size: 16px;
-  width: 38rem;
+  height: fit-content;
+  width: 100%;
+  padding: 2rem;
+  margin-bottom: 8em;
+  background-color: var(--secondary-background-color);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--primary-box-shadow);
+  gap: 2rem;
 }
+
+.event-page-title {
+  font-size: var(--h1-font-size);
+}
+
+.event-page-inner-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.event-page-first-wrapper {
+  width: 65%;
+}
+
+.event-page-second-wrapper {
+  width: 35%;
+}
+
+/* Image */
+.event-image-container {
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--primary-box-shadow);
+  height: 35rem;
+  margin-bottom: 2rem;
+}
+
+.event-image-container img {
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Details */
+.event-details-container {
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--primary-box-shadow);
+  background-color: var(--primary-background-color);
+  font-size: var(--p-font-size);
+  padding: 2rem;
+  line-height: 1.5;
+}
+
+.event-details-tags {
+  margin-top: 1rem;
+  margin-right: 2rem;
+  font-size: 1.4rem;
+  display: inline-block;
+  padding: var(--form-input-padding);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--primary-box-shadow);
+  background-color: var(--primary-background-color);
+}
+
+/* Info */
+.event-info-container {
+  position: relative;
+  padding: 2rem;
+  height: 35rem;
+  line-height: 1.5;
+  font-size: var(--p-font-size);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--primary-box-shadow);
+  background-color: var(--primary-background-color);
+}
+
+.event-info-icons {
+  display: inline-block;
+  margin-right: 2rem;
+  font-size: 1.8rem;
+}
+
+.event-info-date {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--fourthly-text-color);
+}
+
+.event-info-time {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--fourthly-text-color);
+  margin-left: 3.8rem;
+}
+
+.event-info-location {
+  margin: 2rem 0;
+}
+
+.event-info-organizer {
+  margin: 2rem 0;
+}
+
+.event-info-attendees {
+  margin: 2rem 0;
+  font-weight: bold;
+}
+
+.event-info-price {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--fourthly-text-color);
+}
+
+.event-info-button {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  margin-top: 1.5rem;
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-background-color);
+  font-size: 1.6rem;
+  border: none;
+  color: var(--button-text-color);
+  transition: all .2s ease-out;
+  margin-left: 3rem;
+}
+
+.event-info-button:hover {
+  background-color: var(--button-hover-background-color);
+  cursor: pointer;
+}
+
 
 .event-map-container {
   grid-area: map;
@@ -45,12 +148,6 @@
   font-size: 16px;
   height: 25rem;
   width: 30rem;
-}
-
-.eventinfo-details {
-  font-size: 18px;
-  padding-bottom: 2rem;
-  padding-top: 0.5rem;
 }
 
 .eventinfo-join-button {

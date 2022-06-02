@@ -61,22 +61,26 @@ const EventPageView = () => {
     <div className='event-page-container'>
       {eventInfo && (
         <>
-          <div>
-            <EventImage eventInfo={eventInfo[1]} />
+          <h1 className='event-page-title'>{eventInfo[1]?.title.length > 45 ? eventInfo[1]?.title.slice(0, 45) + '...' : eventInfo[1]?.title}</h1>
 
-            <EventInfo
-              eventInfo={eventInfo}
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-              paymentSucces={paymentSucces}
-            />
+          <div className='event-page-inner-container'>
+            <div className='event-page-first-wrapper'>
+              <EventImage eventInfo={eventInfo[1]} />
+              <EventDetails eventInfo={eventInfo[1]} />
+            </div>
+
+            <div className='event-page-second-wrapper'>
+              <EventInfo
+                eventInfo={eventInfo}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                paymentSucces={paymentSucces}
+              />
+            </div>
           </div>
-          
-          <EventDetails eventInfo={eventInfo[1]} />
-
-          <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
+          {/* <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
             <Map eventInfo={eventInfo[1]} />
-          </Wrapper>
+          </Wrapper> */}
 
           {isOpen && (
             <JoinModal

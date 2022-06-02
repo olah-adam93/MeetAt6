@@ -59,7 +59,7 @@ const JoinModal = ({ clickHandler, setIsOpen, eventKey, eventValue }) => {
               Event attendees: {attendees.length}
             </div>
             <br />
-            <form className='joinmodal-form'>
+            {/* <form className='joinmodal-form'>
               <label className='joinmodal-form-label' htmlFor='joinmodal-email-friend'>
                 Send this event for your friend
               </label>
@@ -72,7 +72,7 @@ const JoinModal = ({ clickHandler, setIsOpen, eventKey, eventValue }) => {
               <button type='button' className='joinmodal-form-button'>
                 Send
               </button>
-            </form>
+            </form> */}
             <div className='joinmodal-bottom-buttons'>
               <button
                 className='joinmodal-close-button'
