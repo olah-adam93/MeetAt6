@@ -13,7 +13,7 @@
   padding: 2rem;
   background-color: var(--secondary-background-color);
   border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
-  box-shadow: /* #870000a5 0px 5px, */ #af4448bd 0px 2px, #bc4b4ebd 0px 4px;
+  box-shadow: /* #870000a5 0px 5px, */0 2px 8px 0 rgb(0 0 0 / 15%), #af4448bd 0px 2px, #bc4b4ebd 0px 4px;
 }
 .profile .profile-head div {
   margin: 1rem;
@@ -95,7 +95,7 @@
 }
 .profile-statistics h2{
   font-size: var(--h2-font-size);
-  
+  color: var(--fourthly-text-color);
 }
 .profile-statistics h3{
   margin: 2rem;
