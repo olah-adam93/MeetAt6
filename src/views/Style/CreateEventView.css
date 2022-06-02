@@ -157,6 +157,12 @@
   box-shadow: var(--primary-box-shadow);
   border-radius: var(--card-border-radius);
 }
+.hidden{
+  visibility: hidden;
+}
+.visible{
+  visibility: visible;
+}
 /*hover, focus*/
 .create-new-event-container .new-event-form button:hover {
   background-color: var(--button-hover-background-color);

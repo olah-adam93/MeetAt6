@@ -34,7 +34,8 @@ const EventInfo = ({ eventInfo, isOpen, setIsOpen, paymentSucces }) => {
         <p>Event organizer contact: {eventValue?.organizerEmail}</p>
         <button onClick={clickOrganizer}>X</button>
       </div>}
-      {user?.uid === eventValue?.uid ? (<p>You are the organizer of this event!</p>
+      {user?.uid === eventValue?.uid ? (
+        <p>You are the organizer of this event!</p>
       ) : (
       <button onClick={clickHandler} className='eventinfo-join-button'>
         Join

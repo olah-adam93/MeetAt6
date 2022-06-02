@@ -31,6 +31,7 @@ const CreateEventView = () => {
   });
   const [locationtype, setLocationType] = useState('');
   const [nextbtn, setNextBtn] = useState(0);
+  const [visible, setVisible] = useState(false)
   useEffect(() => {
     console.log(data);
   }, [data]);
@@ -94,10 +95,7 @@ const CreateEventView = () => {
   } */
   const submitHandler = (e) => {
     e.preventDefault();
-    /* const eventCreated = new Date()
-    const currentTime = eventCreated.toLocaleDateString("en-US")
-    setData((prev)=> ({...prev, currentTime})) */
-    /* createTime() */
+    
     if (
       !data.title ||
       !data.locationType ||
@@ -115,7 +113,17 @@ const CreateEventView = () => {
     } else {
       const currentDate = new Date(Date.now()).toUTCString().slice(-24, -4);
       console.log(currentDate);
-      createNewData('events', { ...data, createdDate: currentDate });
+      const fileRef = ref(storage, `eventImages/${data?.image.name}`)
+      uploadBytes(fileRef, data?.image)
+      .then((uploadResult) =>{console.log("first");
+        getDownloadURL(uploadResult?.ref)
+        .then((value) => {
+          //setData((prev) => ({ ...prev, imageUrl: value }));
+          createNewData('events', { ...data, createdDate: currentDate, imageUrl: value })
+        })
+      })
+      //createNewData('events', { ...data, createdDate: currentDate })
+      
       /* createNewData('events', data) */
       setData({});
       console.log('done');
@@ -137,10 +145,10 @@ const CreateEventView = () => {
               <TimeOfEvent setData={setData} data={data} />
 
               <LocationOfEvent
-                locationType={locationtype}
-                setLocationType={setLocationType}
                 setData={setData}
                 data={data}
+                visible ={visible}
+                setVisible={setVisible}
               />
               {/*search location , click-et kijavítani, Vissza Gomb*/}
             </div>

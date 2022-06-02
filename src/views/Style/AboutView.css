@@ -4,18 +4,19 @@
     justify-content: center;
     align-content: space-between;
     padding-top: 2rem;
+
 }
 
 .about-text-container {
     display: flex;
     flex-direction: column;
-    background-color: grey;
+    background-color: var(--secondary-text-color);
     width: 50rem;
     height: 40rem;
-    text-align: center;
-    border-radius: 0.5rem;
+    border-radius: var(--card-border-radius);
     position: absolute;
-    top: 25%
+    top: 25%;
+    padding-top: 2rem;
 }
 
 .about-image-left-container {
@@ -57,12 +58,12 @@
 
 .about-title {
     align-self: center;
-    font-size: 4rem;
+    font-size: var(--h1-font-size);
     padding-bottom: 1rem;
 }
 
 .about-body {
     align-self: center;
-    font-size: 1.5rem;
+    font-size: var(--p-font-size);
     margin: 3rem
 }
