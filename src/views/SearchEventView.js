@@ -14,6 +14,7 @@ import {EventDbContext} from '../components/EventDbContext/EventDbContext';
 /* Google Maps */
 import {Wrapper} from '@googlemaps/react-wrapper';
 
+/* Decoration */
 import search_event_background from '../others/decoration/search_event.svg';
 
 const SearchEventView = () => {

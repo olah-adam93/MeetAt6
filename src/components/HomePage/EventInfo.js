@@ -20,7 +20,7 @@ const EventInfo = ({ eventInfo, isOpen, setIsOpen, paymentSucces }) => {
   }
   const user = auth.currentUser;
   return (
-    <div className='eventinfo-container'>
+    <div className='event-info-container'>
       {paymentSucces && <h2>Successfull payment!</h2>}
       <div className='eventinfo-details'>Event name: {eventValue?.title}</div>
       <div className='eventinfo-details'>Event place: {eventValue?.location}</div>

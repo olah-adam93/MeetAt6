@@ -1,15 +1,5 @@
 .event-page {
-  display: grid;
-  grid-template-rows: 2em 45em 5em 10em 10em 10em 2em;
-  grid-template-columns: 1fr 5fr 1fr 2fr 1fr;
-  grid-template-areas:
-    '. . . . .'
-    '. image . info .'
-    '. . . . .'
-    '. details . map .'
-    '. details . map .'
-    '. details . map .'
-    '. . . . .';
+  
 }
 
 .event-image-container {
@@ -21,7 +11,10 @@
   background-color: grey;
 }
 
-.event-details {
+
+
+
+.event-details-container {
   grid-area: details;
   border: 0.1rem solid lightgrey;
   border-radius: 0.5rem;
@@ -30,7 +23,7 @@
   font-size: 16px;
 }
 
-.eventinfo-container {
+.event-info-container {
   grid-area: info;
   display: flex;
   flex-direction: column;

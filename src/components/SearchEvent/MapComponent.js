@@ -1,7 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
+import {Link} from 'react-router-dom';
 
 /* Style */
 import './Style/MapComponent.css';
+
+/* Image */
+import eventImagePlaceholder from '../../others/logo/logo7.3.png';
 
 const MapComponent = ({eventInfo}) => {
   const [map, setMap] = useState();
@@ -29,10 +33,10 @@ const MapComponent = ({eventInfo}) => {
   }, [ref, map]);
 
   useEffect(() => {
+    
     if (!marker && map && eventInfo?.length > 0) {
-      const eventArr = eventInfo;
 
-      eventArr.map((event) => {
+      eventInfo.map((event) => {
         const [key, value] = event;
 
         const newMarker = new window.google.maps.Marker({
@@ -42,27 +46,33 @@ const MapComponent = ({eventInfo}) => {
           animation: window.google.maps.Animation.DROP,
           // icon: {
           //   url: 'https://img.icons8.com/doodle/48/000000/google-maps-new.png',
-          //   size: new window.google.maps.Size(32, 32),
-          //   scaledSize: new window.google.maps.Size(32, 32),
-          //   anchor: new window.google.maps.Point(32, 32),
+          //   // size: new window.google.maps.Size(32, 32),
+          //   // scaledSize: new window.google.maps.Size(32, 32),
+          //   // anchor: new window.google.maps.Point(0, 32),
           // },
         })
 
         const infowindow = new window.google.maps.InfoWindow({
-          content: "Hello"+value?.title,
+          content: `<div class='google-maps-infowindow-container'>
+            <div class='google-maps-infowindow-img'><img src='${value?.imageUrl ? value?.imageUrl : eventImagePlaceholder}' alt=''></div>
+            <div class='google-maps-infowindow-content-'>
+              <div class='google-maps-infowindow-title'>${value?.title.length > 45 ? value?.title.slice(0, 45) + '...' : value?.title}</div>
+              <div class='google-maps-infowindow-date'>${new Date(value?.eventStarts).toDateString() + ' - ' + value?.startTime}</div>
+            </div>
+          </div>`,
         });
 
         newMarker.addListener('click', (param) => {
-          console.log('click on marker', param, event);
+          // console.log('click on marker', param, event);
           infowindow.open({
             anchor: newMarker,
             map,
             shouldFocus: false,
           });
         })
+
         return setMarker(newMarker);
       });
-
 
       return () => {
         if (marker) {
@@ -70,30 +80,14 @@ const MapComponent = ({eventInfo}) => {
         }
       };
     }
-
+    console.log('MARKER RENDER');
   }, [marker, map, eventInfo]);
 
- /*  useEffect(() => {
-    console.log(marker);
-
-    if (!infoWindow && map) {
-      const eventArr = eventInfo;
-
-      eventArr.map((event) => {
-        const [key, value] = event;
-        return setInfoWindow(
-          new window.google.maps.InfoWindow({
-            content: `<div className='event-map-popup-content'>
-            ${value?.title}</br>
-            ${value?.eventStarts}: ${value?.startTime} - ${value?.eventEnds}: ${value?.endTime}
-            </div>`,
-          })
-        );
-      })
-    }
-  }, [infoWindow, map]); */
-
-  return <div className='display-maps' ref={ref}></div>;
+  return (
+    <>
+    <div className='goole-maps-search-container' ref={ref}></div>
+    </>
+  )
 };
 
 export default MapComponent;
