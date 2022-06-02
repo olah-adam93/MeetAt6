@@ -1,37 +1,47 @@
+import { useEffect, useContext, useState } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
+
+/* Googe Maps */
 import { Wrapper } from '@googlemaps/react-wrapper';
+
+/* Components */
 import EventDetails from '../components/HomePage/EventDetails';
 import EventImage from '../components/HomePage/EventImage';
 import EventInfo from '../components/HomePage/EventInfo';
-import Map from '../others/GoogleMaps/components/Map';
 import JoinModal from '../components/HomePage/JoinModal';
+import Map from '../others/GoogleMaps/components/Map';
+
+/* Style */
 import './Style/EventPageView.css';
 
-import { useParams, useSearchParams } from 'react-router-dom';
-
+/* Database Context */
 import { EventDbContext } from '../components/EventDbContext/EventDbContext';
-import { useEffect, useContext, useState } from 'react';
+
+/* CRUD */
 import { updateData } from '../services/crud';
+
+/* Firebase */
 import { auth } from '../config/firebase';
+
+
 const EventPageView = () => {
-  const [eventInfo, setEventInfo] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
   const user = auth.currentUser;
   const eventDb = useContext(EventDbContext);
   const { eventId } = useParams();
   const [searchParams] = useSearchParams();
+  const [eventInfo, setEventInfo] = useState([]);
   const [paymentSucces, setPaymentSuccess] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
+  
   useEffect(() => {
     const filteredArray = eventDb.db.filter((event, index) => {
       const key = event[0];
-      const value = event[1];
 
       return key === eventId;
     });
     setEventInfo(...filteredArray);
-
-    // console.log('eventdb: ', eventDb.db);
   }, [eventDb.db, eventId]);
+
   useEffect(() => {
     if (searchParams.get('success') && eventInfo?.[0] && user?.uid) {
       updateData('eventAttendees', eventInfo[0], { [user.uid]: user.displayName }).then(
@@ -42,10 +52,12 @@ const EventPageView = () => {
       );
     }
   }, [searchParams, eventInfo, user]);
+
   const clickHandler = () => {
     setIsOpen(!isOpen);
     console.log(isOpen);
   };
+
   return (
     <div className='event-page'>
       {eventInfo && (
@@ -58,9 +70,11 @@ const EventPageView = () => {
             paymentSucces={paymentSucces}
           />
           <EventDetails eventInfo={eventInfo[1]} />
+
           <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
             <Map eventInfo={eventInfo[1]} />
           </Wrapper>
+          
           {isOpen && (
             <JoinModal
               clickHandler={clickHandler}

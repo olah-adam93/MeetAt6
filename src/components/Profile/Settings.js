@@ -10,15 +10,21 @@ const Settings = ({ setData, data }) => {
   const userData = useContext(AuthContext);
   const [emailChanged, setEmailChanged] = useState(false);
   const [nameChanged, setNameChanged] = useState(false);
+  const [birthChanged, setBirthChanged] = useState(false);
+  const [gendChanged, setGendChanged] = useState(false);
+  const [locChanged, setLocChanged] = useState(false);
+  const [orgChanged, setOrgChanged] = useState(false);
+  const [telChanged, setTelChanged] = useState(false);
+  const [userIntChanged, setUserIntChanged] = useState(false);
   const [nameChangeMessage, setNameChangeMessage] = useState(null);
   const [emailChangeMessage, setEmailChangeMessage] = useState(null);
   const [inputValue, setInputValue] = useState({
-    /* birthday: '',
+    birthday: '',
     gender: '',
     location: '',
     organization: '',
     telephone: '',
-    userIntroduction: '', */
+    userIntroduction: '',
   });
   const [authInputValue, setAuthInputValue] = useState({
     name: '',
@@ -48,9 +54,7 @@ const Settings = ({ setData, data }) => {
           .then(() => {
             setNameChanged(true);
             /* setChangeMessage('Nothing changed! Please enter a valid e-mail!'); */
-            setNameChangeMessage(
-              `Username has been successfully changed to ${authInputValue.name}!`
-            );
+            setNameChangeMessage(`Username changed to ${authInputValue.name}!`);
             setTimeout(() => {
               setNameChanged(false);
             }, 10000);
@@ -78,9 +82,7 @@ const Settings = ({ setData, data }) => {
           .then(() => {
             setEmailChanged(true);
             /* setChangeMessage('Nothing changed! Please enter a valid e-mail!'); */
-            setEmailChangeMessage(
-              `Email address has been successfully changed to ${authInputValue.email}!`
-            );
+            setEmailChangeMessage(`Email address changed to ${authInputValue.email}!`);
             setTimeout(() => {
               setEmailChanged(false);
             }, 10000);
@@ -124,12 +126,47 @@ const Settings = ({ setData, data }) => {
       location: inputValue?.location || userDetailsObj.location,
       organization: inputValue?.organization || userDetailsObj.organization,
     });
+
+    if (inputValue?.birthday) {
+      setBirthChanged(true);
+      setTimeout(() => {
+        setBirthChanged(false);
+      }, 10000);
+    }
+    if (inputValue?.telephone) {
+      setTelChanged(true);
+      setTimeout(() => {
+        setTelChanged(false);
+      }, 10000);
+    }
+    if (inputValue?.gender) {
+      setGendChanged(true);
+      setTimeout(() => {
+        setGendChanged(false);
+      }, 10000);
+    }
+    if (inputValue?.location) {
+      setLocChanged(true);
+      setTimeout(() => {
+        setLocChanged(false);
+      }, 10000);
+    }
+    if (inputValue?.userIntroduction) {
+      setUserIntChanged(true);
+      setTimeout(() => {
+        setUserIntChanged(false);
+      }, 10000);
+    }
+    if (inputValue?.organization) {
+      setOrgChanged(true);
+      setTimeout(() => {
+        setOrgChanged(false);
+      }, 10000);
+    }
   };
 
   return (
     <div className='settings-form-container'>
-      {emailChanged && <h2>{emailChangeMessage}</h2>}
-      {nameChanged && <h2>{nameChangeMessage}</h2>}
       <h1>Account Settings</h1>
       <form action='' className='settings-form' onSubmit={authSubmitHandler}>
         <h2 className='section-header user-information'>User Information</h2>
@@ -147,6 +184,7 @@ const Settings = ({ setData, data }) => {
             onChange={authChangeHandler}
           />
         </div>
+        <div className='edit-msg'>{nameChanged && <p>{nameChangeMessage}</p>}</div>
         {/*Email*/}
         <div className='settings-email'>
           <label htmlFor='email' className='label-form label-email'>
@@ -161,6 +199,7 @@ const Settings = ({ setData, data }) => {
             onChange={authChangeHandler}
           />
         </div>
+        <div className='edit-msg'>{emailChanged && <p>{emailChangeMessage}</p>}</div>
         <button type='submit' className='save-button'>
           Save
         </button>
@@ -186,6 +225,7 @@ const Settings = ({ setData, data }) => {
             id='location'
           />
         </div>
+        <div className='edit-msg'>{locChanged && 'Location changed!'}</div>
         {/*Birthday*/}
         <div className='settings-date'>
           <label htmlFor='date' className='label-form label-date'>
@@ -200,6 +240,7 @@ const Settings = ({ setData, data }) => {
             //placeholder={userDetailsObj?.birthday}
           />
         </div>
+        <div className='edit-msg'>{birthChanged && 'Date of birth changed!'}</div>
         {/*Telephone*/}
         <div className='settings-telephoneNumber'>
           <label htmlFor='telephone' className='label-form label-telephone'>
@@ -215,6 +256,7 @@ const Settings = ({ setData, data }) => {
             pattern='[0-9]{2}[0-9]{2}[0-9]{3}[0-9]{4}'
           />
         </div>
+        <div className='edit-msg'>{telChanged && 'Telephone number changed!'}</div>
         {/*Gender*/}
         <div className='settings-gender'>
           <label htmlFor='gender' className='label-form label-gender'>
@@ -233,6 +275,7 @@ const Settings = ({ setData, data }) => {
             <option value='other'>None of these choices</option>
           </select>
         </div>
+        <div className='edit-msg'>{gendChanged && 'Gender changed!'}</div>
         {/*Introduction*/}
         <div className='settings-introduction'>
           <label htmlFor='userIntroduction' className='label-form label-introduction'>
@@ -246,6 +289,7 @@ const Settings = ({ setData, data }) => {
             onChange={changeHandler}
           ></textarea>
         </div>
+        <div className='edit-msg'>{userIntChanged && 'Introduction changed!'}</div>
         <div className='settings-classification'>
           <div className='classification-personal'>
             <input
@@ -275,6 +319,7 @@ const Settings = ({ setData, data }) => {
             </label>
           </div>
         </div>
+        <div className='edit-msg'>{orgChanged && 'Organization changed!'}</div>
         <button type='submit' className='save-button'>
           Save
         </button>

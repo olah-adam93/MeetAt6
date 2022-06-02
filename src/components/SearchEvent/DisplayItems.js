@@ -163,7 +163,7 @@ const DisplayItems = ({
         </div>
       )}
 
-      <div className='pagination-container'>
+      {/* <div className='pagination-container'>
         {filteredDbItems.length > 0 ? (
           <>
             <button
@@ -213,7 +213,7 @@ const DisplayItems = ({
             </button>
           </>
         )}
-      </div>
+      </div> */}
 
       {itemsToRender.length !== 0 ? (
         <div className='display-container'>

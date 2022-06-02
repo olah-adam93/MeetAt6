@@ -7,9 +7,10 @@ import ScrollToTop from './others/ScrollToTop';
 
 import Settings from './components/Profile/Settings';
 import LogOut from './components/Profile/LogOut';
+import NotFound from './others/NotFound';
 
 /* Views */
-import ChosenEvents from './views/ChosenEvents';
+import ChosenEventsView from './views/ChosenEventsView';
 import AboutView from './views/AboutView';
 import ProfileView from './views/ProfileView';
 import HomePageView from './views/HomePageView';
@@ -44,7 +45,6 @@ import {liveValue} from './services/crud';
 function App() {
   const [db, setDb] = useState([]);
   const [userLog, setUserLog] = useState({});
-  const [userLogged, setUserLogged] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -63,17 +63,6 @@ function App() {
     console.log(userLog);
   }, [userLog]);
 
-  // function AuthProtected() {
-  //   if (Object.values(userLog)?.length !== 0) {
-  //     // bekell leptetni vagz bekerni a belepest
-  //     console.log('nincs bejelentkezve');
-  //     return <SignInView />
-  //   } else {
-  //     // return <div>AuthProtected: { props.children }</div>
-  //     return <UserMainPageLayout userLog={userLog}/>;
-  //   }
-  // }
-
   useEffect(() => {
     const liveChange = liveValue('events', (snapshot) => {
       setDb(Object.entries(snapshot.val()) || []);
@@ -88,6 +77,7 @@ function App() {
         <EventDbContext.Provider value={{db, setDb}}>
           <Routes>
             <Route element={<MainPageLayout />}>
+              <Route path="*" element={<NotFound />} />
               <Route path='/' element={<HomePageView />} />
               <Route path='/home' element={<HomePageView />} />
               <Route path='/about' element={<AboutView />} />
@@ -102,7 +92,7 @@ function App() {
 
             <Route element={<UserMainPageLayout userLog={userLog} />}>
               <Route path='/profile' element={<ProfileView />} />
-              <Route path='/profile/chosenevents' element={<ChosenEvents />} />
+              <Route path='/profile/chosenevents' element={<ChosenEventsView />} />
               <Route path='/profile/addevent' element={<CreateEventView />} />
               <Route path='/profile/myevents' element={<MyEventsView />} />
               <Route path='/profile/searchevent' element={<SearchEventView />} />

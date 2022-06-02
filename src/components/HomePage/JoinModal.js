@@ -2,7 +2,7 @@
 
 import './Styles/JoinModal.css';
 
-import { createUserData, updateData } from '../../services/crud';
+import { updateData } from '../../services/crud';
 import { auth } from '../../config/firebase';
 import { readData } from '../../services/crud';
 import { useState, useEffect } from 'react';
