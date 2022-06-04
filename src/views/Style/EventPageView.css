@@ -36,13 +36,31 @@
   border-radius: var(--card-border-radius);
   box-shadow: var(--primary-box-shadow);
   height: 35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.event-image-container img {
+.event-image-database {
   width: 100%;
   border-radius: var(--card-border-radius);
   height: 100%;
   object-fit: cover;
+}
+
+/* .event-image-default {
+  width: 50%;
+  border-radius: var(--card-border-radius);
+  object-fit: cover;
+}  */
+
+.event-image-default {
+  font-size: 6rem;
+  font-family: 'Kanit', sans-serif;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(175,68,72,1) 23%, rgba(158,39,41,1) 54%, rgba(94,0,0,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Details */
@@ -53,7 +71,7 @@
   font-size: var(--p-font-size);
   padding: 2rem;
   line-height: 1.5;
-  width: 64%;
+  width: 62%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -91,7 +109,7 @@
   border-radius: var(--card-border-radius);
   box-shadow: var(--primary-box-shadow);
   background-color: var(--primary-background-color);
-  width: 36%;
+  width: 38%;
 }
 
 .event-info-icons {

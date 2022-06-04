@@ -60,10 +60,19 @@
   object-fit: cover;
 }
 
-.event-picture-default-img {
+/* .event-picture-default-img {
   border-radius: var(--card-border-radius);
   width: 80%;
   object-fit: cover;
+} */
+
+.event-picture-default-logo {
+  font-size: 3.5rem;
+  font-family: 'Kanit', sans-serif;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(175,68,72,1) 23%, rgba(158,39,41,1) 54%, rgba(94,0,0,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .event-data {
@@ -163,6 +172,16 @@
   width: 80%;
   object-fit: cover;
 }
+
+.event-picture-default-logo-search {
+  font-size: 3.5rem;
+  font-family: 'Kanit', sans-serif;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(175,68,72,1) 23%, rgba(158,39,41,1) 54%, rgba(94,0,0,1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Image ------------------------ */
 
 /* Data ------------------------ */

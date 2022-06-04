@@ -60,15 +60,16 @@ const EventCard = ({
                   alt={eventCard?.title}
                 />
               ) : (
-                <img
-                  className={
-                    eventSearchStyle
-                      ? 'event-picture-default-img-search'
-                      : 'event-picture-default-img'
-                  }
-                  src={eventImagePlaceholder}
-                  alt='default event'
-                />
+                <p className={eventSearchStyle ? 'event-picture-default-logo-search' : 'event-picture-default-logo'}>MeetAtSix</p>
+                // <img
+                //   className={
+                //     eventSearchStyle
+                //       ? 'event-picture-default-img-search'
+                //       : 'event-picture-default-img'
+                //   }
+                //   src={eventImagePlaceholder}
+                //   alt='default event'
+                // />
               )}
             </div>
           </div>

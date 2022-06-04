@@ -22,12 +22,12 @@ const Footer = () => {
       </div>
 
       <div className='footer-logo'>
-        <p>© 2022 &nbsp;</p>
-        <img
+        <p>© 2022 MeetAtSix</p>
+        {/* <img
           className={`footer-img`}
           src={require('./meetatsix200.49.feher.png')}
           alt='logo'
-        />
+        /> */}
       </div>
 
     </div>

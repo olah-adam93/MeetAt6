@@ -42,7 +42,7 @@ const EventInfo = ({eventInfo, isOpen, setIsOpen, paymentSucces}) => {
     updateData('eventAttendees', eventKey, {
       [user.uid]: user.displayName,
     }).then(() => {
-      setIsOpen(false);
+      // setIsOpen(false);
     });
     navigateTo("/join-success")
   };

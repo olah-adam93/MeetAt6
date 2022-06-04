@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
-
 .header-container {
   width: 100%;
   height: 8rem;
@@ -31,10 +29,10 @@
   align-items: center;
 }
 
-.header-logo-img {
+/* .header-logo-img {
   width: 15rem;
   transition: width 0.3s ease-out;
-}
+} */
 
 .header-logo-navlink {
   text-decoration: none;
