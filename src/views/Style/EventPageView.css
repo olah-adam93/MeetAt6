@@ -155,9 +155,11 @@
   cursor: pointer;
 }
 
-.eventinfo-join-button {
-  width: 6rem;
-  position: relative;
-  left: 15rem;
-  top: 15rem;
+.event-info-alert {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--fourthly-text-color);
 }

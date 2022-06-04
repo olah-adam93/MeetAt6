@@ -79,6 +79,7 @@ const StripePayment = ({ eventKey, eventValue }) => {
       cancelUrl: `${window.location.origin}/paid-success?success=${false}&key=${eventKey}`,
     });
   }, [product]);
+
   const redirectToCheckout = async () => {
     // when the function is being called by checkoutbutton
     setIsLoading(true);
@@ -100,8 +101,8 @@ const StripePayment = ({ eventKey, eventValue }) => {
   if (stripeError) alert(stripeError);
 
   return (
-    <button onClick={redirectToCheckout} disabled={isLoading}>
-      Pay now
+    <button className='event-info-button' onClick={redirectToCheckout} disabled={isLoading}>
+      {isLoading ? 'Loading...' : 'Pay now'}
     </button>
   );
 };

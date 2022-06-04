@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 /* Components */
 import JoinModal from './JoinModal';
 import StripePayment from './StripePayment';
+
 /* Firebase */
 // import { getAuth, getUser } from 'firebase/auth';
 import {auth} from '../../config/firebase';
@@ -101,27 +102,23 @@ const EventInfo = ({eventInfo, isOpen, setIsOpen, paymentSucces}) => {
         Attendees: {attendees.length === 0 ? 0 : attendees.length}
       </div>
 
-      <div className='event-info-price'>
+      {user?.uid !== eventValue?.uid && <div className='event-info-price'>
         {eventValue?.paymentType === 'free' ? (
           <>{eventValue?.paymentType}</>
         ) : (
           <>{eventValue?.ticketPrice} huf</>
         )}
-      </div>
+      </div>}
 
       {user ? (
         user?.uid === eventValue?.uid ? (
-          <p>You are the organizer of this event!</p>
+          <div className='event-info-alert'>You are the organizer of this event!</div>
         ) : attendees.includes(user.uid) ? (
-          <span>Already joined!</span>
+          <div className='event-info-alert'>Already joined!</div>
         ) : attendees.length === Number(eventValue?.attendant) ? (
-          <span>This event is full!</span>
+          <div className='event-info-alert'>This event is full!</div>
         ) : eventValue?.paymentType === 'ticket' ? (
           <StripePayment eventKey={eventKey} eventValue={eventValue}/>
-          /* <button onClick={clickHandler} className='event-info-button'>
-            {' '}
-            Pay to join{' '}
-          </button> */
         ) : (
           <button onClick={clickHandler} className='event-info-button'>
             {' '}
@@ -129,7 +126,7 @@ const EventInfo = ({eventInfo, isOpen, setIsOpen, paymentSucces}) => {
           </button>
         )
       ) : (
-        <button onClick={() => navigateTo('/signin')}>Sign in to subscribe</button>
+        <button className='event-info-button' onClick={() => navigateTo('/signin')}>Sign in to subscribe</button>
       )}
 
       {/* {isOpen && (

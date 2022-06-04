@@ -5,6 +5,8 @@
 }
 
 .my-events-title {
+  text-align: center;
+  margin-bottom: 2rem;
   font-size: var(--h1-font-size);
 }
 

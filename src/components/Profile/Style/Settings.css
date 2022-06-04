@@ -8,7 +8,7 @@
 
 .settings-form-container h1 {
   font-size: var(--h1-font-size);
-  letter-spacing: 0.3rem;
+  /* letter-spacing: 0.3rem; */
 }
 
 .section-header {
