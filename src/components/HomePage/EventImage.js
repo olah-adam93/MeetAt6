@@ -7,7 +7,6 @@ import './Styles/EventImage.css'
 import eventImagePlaceholder from '../../others/logo/logo7.3.png';
 
 const EventImage = ({eventInfo}) => {
-  console.log(eventInfo);
   return (
     <>
     {eventInfo &&

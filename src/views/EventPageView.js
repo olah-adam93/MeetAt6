@@ -9,7 +9,6 @@ import EventDetails from '../components/HomePage/EventDetails';
 import EventImage from '../components/HomePage/EventImage';
 import EventInfo from '../components/HomePage/EventInfo';
 import JoinModal from '../components/HomePage/JoinModal';
-// import Map from '../others/GoogleMaps/components/Map';
 import EventInfoMap from '../components/HomePage/EventInfoMap';
 
 /* Style */
@@ -67,10 +66,10 @@ const EventPageView = () => {
           <div className='event-page-inner-container'>
             <div className='event-page-first-wrapper'>
               <EventImage eventInfo={eventInfo[1]} />
-              <EventDetails eventInfo={eventInfo[1]} />
             </div>
 
             <div className='event-page-second-wrapper'>
+              <EventDetails eventInfo={eventInfo[1]} />
               <EventInfo
                 eventInfo={eventInfo}
                 isOpen={isOpen}

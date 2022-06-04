@@ -71,7 +71,7 @@ const SettingsImage = () => {
         )}
         {user?.photoURL && (
           <button type='button' name='deletAvatar' onClick={deleteAvatar}>
-            Edit
+            Delete
           </button>
         )}
         <div>

@@ -105,11 +105,11 @@ const ProfileView = () => {
           <div className='profile-statistics'>
             <div>
               <h2>Statistics</h2>
-              <h3>Events Number Totally: <span>{eventsLength}</span></h3>
+              <h3>Events number totally:  <span>{eventsLength}</span></h3>
               
-              <h3>Events Number you Created: <span>{filtered.length}</span></h3>
+              <h3>Events number you created:  <span>{filtered.length}</span></h3>
               
-              <h3>Events Number you Joined: <span>{eventsCard.length}</span></h3>
+              <h3>Events number you joined:  <span>{eventsCard.length}</span></h3>
             </div>
           
             <img src={statistic_data} alt='statics'/>

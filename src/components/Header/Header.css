@@ -36,22 +36,6 @@
   transition: width 0.3s ease-out;
 }
 
-/* Gradient text color */
-.header-logo-navlink {
-  font-family: 'Kanit', sans-serif;
-  font-size: 3.5rem;
-  text-decoration: none;
-  font-weight: bold;
-  background: linear-gradient(90deg, rgba(175,68,72,1) 15%, rgba(158,39,41,1) 51%, rgba(94,0,0,1) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: all .3s ease-out;
-}
-
-.header-logo-navlink-small {
-  font-size: 3rem;
-}
-
 .img-small {
   width: 12rem;
 }

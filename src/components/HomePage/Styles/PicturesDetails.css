@@ -6,15 +6,12 @@
     box-shadow: var(--primary-box-shadow);
     padding: 10px;
     border-radius: 10px;
-    
 }
 
 .picture {
     width: 70px;
     height: 70px;
-
 }
-
 
 .pictures-details {
     flex-direction: row;
