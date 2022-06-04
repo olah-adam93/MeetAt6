@@ -12,10 +12,17 @@ const GoogleMapLoader = ({data, setData, map, setMap}) => {
   const [lng, setLng] = useState();
   useEffect(() => {
     if (ref.current && !map) {
-      setMap(new window.google.maps.Map(ref.current, {}));
+      setMap(new window.google.maps.Map(ref.current, {
+        mapId: 'f351ed5064543873'
+      }));
     }
     if (map) {
-      map.setOptions({zoom: 6, center: center});
+      map.setOptions({
+        zoom: 6, 
+        center: center,
+        mapTypeControl: false,
+        streetViewControl: false,
+      });
       // map.addListener('click', (param) => { console.log('lat:', param.latLng.lat(), 'long:', param.latLng.lng())});
       map.addListener('click', (param) => {
         // marker.setMap(null);
@@ -70,6 +77,7 @@ const GoogleMapLoader = ({data, setData, map, setMap}) => {
       <label htmlFor='longitude'>Longitude</label>
       <input type="number"  name="longitude" id="longitude" onChange={changeHandler}/>
       <button type="button" onClick={clickHandler}>Set Marker</button> */}
+      {/* <SearchMap /> */}
       <div ref={ref} style={{height: '50vh', width: '95%', margin: 'auto'}}></div>
     </>
   );

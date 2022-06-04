@@ -3,13 +3,13 @@ import {useNavigate} from 'react-router-dom';
 
 /* Components */
 import JoinModal from './JoinModal';
-
+import StripePayment from './StripePayment';
 /* Firebase */
 // import { getAuth, getUser } from 'firebase/auth';
 import {auth} from '../../config/firebase';
 
 /* CRUD */
-import {readData} from '../../services/crud';
+import {readData, updateData} from '../../services/crud';
 
 /* Fontawesome */
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -36,8 +36,14 @@ const EventInfo = ({eventInfo, isOpen, setIsOpen, paymentSucces}) => {
   }, [eventKey]);
 
   const clickHandler = () => {
-    setIsOpen(!isOpen);
-    console.log(isOpen);
+    /* setIsOpen(!isOpen);
+    console.log(isOpen); */
+    updateData('eventAttendees', eventKey, {
+      [user.uid]: user.displayName,
+    }).then(() => {
+      setIsOpen(false);
+    });
+    navigateTo("/join-success")
   };
 
   const clickOrganizer = (e) => {
@@ -111,10 +117,11 @@ const EventInfo = ({eventInfo, isOpen, setIsOpen, paymentSucces}) => {
         ) : attendees.length === Number(eventValue?.attendant) ? (
           <span>This event is full!</span>
         ) : eventValue?.paymentType === 'ticket' ? (
-          <button onClick={clickHandler} className='event-info-button'>
+          <StripePayment eventKey={eventKey} eventValue={eventValue}/>
+          /* <button onClick={clickHandler} className='event-info-button'>
             {' '}
             Pay to join{' '}
-          </button>
+          </button> */
         ) : (
           <button onClick={clickHandler} className='event-info-button'>
             {' '}
@@ -132,6 +139,16 @@ const EventInfo = ({eventInfo, isOpen, setIsOpen, paymentSucces}) => {
           eventKey={eventKey}
           eventValue={eventValue}
         />
+        eventValue?.paymentType === 'ticket' ? (
+                    <StripePayment eventKey={eventKey} eventValue={eventValue} />
+                  ) : (
+                    <button
+                      className='joinmodal-join-button'
+                      type='button'
+                      onClick={joinHandler}
+                    >
+                      Join
+                    </button>
       )} */}
     </div>
   );

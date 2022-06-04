@@ -41,7 +41,7 @@ const EventPageView = () => {
     setEventInfo(...filteredArray);
   }, [eventDb.db, eventId]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (searchParams.get('success') && eventInfo?.[0] && user?.uid) {
       updateData('eventAttendees', eventInfo[0], {[user.uid]: user.displayName}).then(
         () => {
@@ -50,12 +50,12 @@ const EventPageView = () => {
         }
       );
     }
-  }, [searchParams, eventInfo, user]);
+  }, [searchParams, eventInfo, user]); */
 
-  const clickHandler = () => {
+ /*  const clickHandler = () => {
     setIsOpen(!isOpen);
     console.log(isOpen);
-  };
+  }; */
 
   return (
     <div className='event-page-container'>
@@ -83,14 +83,14 @@ const EventPageView = () => {
             <EventInfoMap eventInfo={eventInfo[1]} />
           </Wrapper>}
 
-          {isOpen && (
+         {/*  {isOpen && (
             <JoinModal
               clickHandler={clickHandler}
               setIsOpen={setIsOpen}
               eventKey={eventInfo[0]}
               eventValue={eventInfo[1]}
             />
-          )}
+          )} */}
         </>
       )}
     </div>

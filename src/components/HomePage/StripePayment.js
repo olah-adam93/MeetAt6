@@ -61,16 +61,24 @@ const StripePayment = ({ eventKey, eventValue }) => {
 
   console.log(product);
 
+ /*  useEffect(() => {
+    setCheckoutOptions({
+      lineItems: [product],
+      mode: 'payment',
+      // successUrl: `${window.location.origin}/eventpage?success=true`, 
+      successUrl: `${window.location.origin}/eventpage/${eventKey}?success=true`,
+      cancelUrl: `${window.location.origin}/eventpage/${eventKey}?success=false`,
+    });
+  }, [product]); */
+
   useEffect(() => {
     setCheckoutOptions({
       lineItems: [product],
       mode: 'payment',
-      /*  successUrl: `${window.location.origin}/eventpage?success=true`, */
-      successUrl: `${window.location.origin}/eventpage/${eventKey}?success=true`,
-      cancelUrl: `${window.location.origin}/eventpage/${eventKey}?success=false`,
+      successUrl: `${window.location.origin}/paid-success?success=true&key=${eventKey}`,
+      cancelUrl: `${window.location.origin}/paid-success?success=false&key=${eventKey}`,
     });
   }, [product]);
-
   const redirectToCheckout = async () => {
     // when the function is being called by checkoutbutton
     setIsLoading(true);

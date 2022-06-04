@@ -26,6 +26,7 @@ import EventPageView from './views/EventPageView';
 import ThankYouView from './views/ThankYouView';
 import JoinSuccess from './components/HomePage/JoinSuccess';
 import CreateSuccess from './components/CreateNewEvent/CreateSuccess';
+import PaySuccess from './components/HomePage/PaySuccess';
 
 /* Layouts */
 import MainPageLayout from './layouts/MainPageLayout';
@@ -101,6 +102,8 @@ function App() {
               <Route path='/signout' element={<LogOut />} />
               <Route path='/join-success' element={<JoinSuccess />} />
               <Route path='/create-success' element={<CreateSuccess />} />
+              <Route path='/paid-success' element={<PaySuccess />} />
+              
             </Route>
           </Routes>
         </EventDbContext.Provider>
