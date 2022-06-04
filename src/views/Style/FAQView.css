@@ -18,7 +18,8 @@
 }
 
 .FAQ-question {
-    margin-bottom: 1rem
+    margin-bottom: 1rem;
+    font-weight: 900;
 }
 
 .FAQ-answer {

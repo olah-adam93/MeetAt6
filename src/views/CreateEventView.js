@@ -145,7 +145,7 @@ const CreateEventView = () => {
     <div className='create-new-event-container'>
       <h1>Create New Event</h1>
       {missingData && (
-        <h1 className='missing-data'>Missing data! Please fill every required field!</h1>
+        <h1 className='missing-data'>Missing data! Please fill out every required field!</h1>
       )}
       <div className='new-event-form'>
         <form action='' onSubmit={submitHandler}>
