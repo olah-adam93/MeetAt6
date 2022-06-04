@@ -1,6 +1,7 @@
 .infoBox-icon {
   width: 200px;
   height: 200px;
+  
 }
 .infoBox-container {
   display: flex;
@@ -14,8 +15,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+  text-decoration: none;
+  color: var(--tertiary-background-color);
 
+}
+.infoBox-card:hover{
+  color: var(--button-hover-background-color)
+}
 .infoBox-card p {
   margin-top: 1rem;
   font-size: 1.6rem;
