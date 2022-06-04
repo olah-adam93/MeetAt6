@@ -5,6 +5,7 @@
   align-items: center;
   margin-top: 2rem;
   /* height: 100%; */
+  min-height: 100vh;
 }
 .create-new-event-container .new-event-form {
   margin-top: 2rem;
@@ -158,15 +159,17 @@
   border-radius: var(--card-border-radius);
 }
 .hidden{
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
 }
 .visible{
-  visibility: visible;
+  /* visibility: visible; */
+  display: block;
 }
 /*hover, focus*/
 .create-new-event-container .new-event-form button:hover {
   background-color: var(--button-hover-background-color);
-  transform: scale(1.2);
+  /* transform: scale(1.2); */
   box-shadow: var(--hover-box-shadow);
 }
 
@@ -209,3 +212,6 @@
   margin: 1rem;
   min-height: 28rem;
 }
+/* .btn-container{
+  position: ;
+} */
