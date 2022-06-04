@@ -59,20 +59,6 @@ const JoinModal = ({ clickHandler, setIsOpen, eventKey, eventValue }) => {
               Event attendees: {attendees.length}
             </div>
             <br />
-            {/* <form className='joinmodal-form'>
-              <label className='joinmodal-form-label' htmlFor='joinmodal-email-friend'>
-                Send this event for your friend
-              </label>
-              <input
-                className='joinmodal-form-input'
-                type='email'
-                id='joinmodal-email-friend'
-                name='joinmodal-email-friend'
-              ></input>
-              <button type='button' className='joinmodal-form-button'>
-                Send
-              </button>
-            </form> */}
             <div className='joinmodal-bottom-buttons'>
               <button
                 className='joinmodal-close-button'

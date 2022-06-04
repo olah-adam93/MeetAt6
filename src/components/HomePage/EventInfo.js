@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 /* Components */
 import JoinModal from './JoinModal';
@@ -8,7 +9,7 @@ import JoinModal from './JoinModal';
 import {auth} from '../../config/firebase';
 
 /* CRUD */
-import { readData } from '../../services/crud';
+import {readData} from '../../services/crud';
 
 /* Fontawesome */
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -20,11 +21,18 @@ const EventInfo = ({eventInfo, isOpen, setIsOpen, paymentSucces}) => {
   const [eventKey, eventValue] = eventInfo;
   const user = auth.currentUser;
   const [attendees, setAttendees] = useState([]);
-  
+  const navigateTo = useNavigate();
+
+  // useEffect(() => {
+  //   readData('eventAttendees', eventKey).then((snapshot) => {
+  //     setAttendees(Object.entries(snapshot.val() || {}));
+  //   });
+  // }, [eventKey]);
+
   useEffect(() => {
-      readData('eventAttendees', eventKey).then((snapshot) => {
-          setAttendees(Object.entries(snapshot.val() || {}));
-      });
+    readData('eventAttendees', eventKey).then((snapshot) => {
+      setAttendees(Object.keys(snapshot.val() || {}));
+    });
   }, [eventKey]);
 
   const clickHandler = () => {
@@ -84,7 +92,7 @@ const EventInfo = ({eventInfo, isOpen, setIsOpen, paymentSucces}) => {
 
       <div className='event-info-attendees'>
         {/* Attendees: {attendees.length === 0 ? 0 : attendees.length} / {eventValue?.attendant} */}
-        Attendees: {attendees.length === 0 ? 0 : attendees.length}   
+        Attendees: {attendees.length === 0 ? 0 : attendees.length}
       </div>
 
       <div className='event-info-price'>
@@ -95,13 +103,42 @@ const EventInfo = ({eventInfo, isOpen, setIsOpen, paymentSucces}) => {
         )}
       </div>
 
-      {user?.uid === eventValue?.uid ? (
-        <p>You are the organizer of this event!</p>
+      {user ? (
+        user?.uid === eventValue?.uid ? (
+          <p>You are the organizer of this event!</p>
+        ) : attendees.includes(user.uid) ? (
+          <span>Already joined!</span>
+        ) : attendees.length === Number(eventValue?.attendant) ? (
+          <span>This event is full!</span>
+        ) : (
+          <button onClick={clickHandler} className='event-info-button'> Register </button>
+        )
       ) : (
-        <button onClick={clickHandler} className='event-info-button'>
-          Register
-        </button>
+        <button onClick={() => navigateTo('/signin')}>Sign in to subscribe</button>
       )}
+
+      {/* {
+              user ? (
+                attendees.includes(user.uid) ? (
+                  <span>Already joined!</span>
+                ) : attendees.length !== Number(eventValue?.attendant) ? (
+                  eventValue?.paymentType === 'ticket' ? (
+                    <StripePayment eventKey={eventKey} eventValue={eventValue} />
+                  ) : (
+                    <button
+                      className='joinmodal-join-button'
+                      type='button'
+                      onClick={joinHandler}
+                    >
+                      Join
+                    </button>
+                  )
+                ) : (
+                  <span>This event is full!</span>
+                )
+              ) : (
+                <button onClick={() => navigateTo('/signin')}>Sign in to subscribe</button>
+              )} */}
 
       {/* {isOpen && (
         <JoinModal
