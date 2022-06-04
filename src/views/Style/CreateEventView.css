@@ -17,7 +17,7 @@
 
 .create-new-event-container .new-event-form .basic-info-box,
 .time-of-event,
-.location-container {
+.location-container, .new-event-info-container, .new-event-payment-container {
   margin-bottom: 6rem;
   padding: 0 1rem;
   width: 50vw;
@@ -29,20 +29,24 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 3rem;
   margin: 0 2rem 0 3rem;
   justify-content: space-evenly;
   
 }
-/* .event-time-box >div{
-  text-align: center;
-} */
+.event-time-box div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 75%;
+
+}
+
 .location-container .location-type {
   margin-bottom: 3rem;
 }
 .create-new-event-container .new-event-form .time-of-event label {
   display: inline-block;
-  
 }
 /* .create-new-event-container .new-event-form .time-of-event input{
   
@@ -53,6 +57,7 @@
   box-shadow: var(--primary-box-shadow);
   border-radius: var(--card-border-radius);
 }
+
 /*Text*/
 
 .create-new-event-container h1 {
@@ -61,6 +66,7 @@
 }
 .create-new-event-container .new-event-form h2 {
   font-size: var(--h2-font-size);
+  margin-left: 1rem;
   margin-bottom: 1.5rem;
   text-decoration: underline var(--tertiary-background-color) 2px;
   letter-spacing: 0.2rem;
@@ -68,6 +74,8 @@
 .create-new-event-container .new-event-form h3 {
   font-size: var(--h3-font-size);
   margin-bottom: 1rem;
+  margin-left: 1rem;
+
 }
 .create-new-event-container .new-event-form label {
   font-size: var(--form-label-font-size);
@@ -75,7 +83,7 @@
   margin: 1rem 1rem 0 2rem;
 }
 .create-new-event-container .new-event-form p {
-  margin: 1rem;
+  margin: 1.5rem;
   font-size: var(--p-font-size);
 }
 .required {
@@ -135,7 +143,7 @@
   margin: 2rem 1rem;
 }
 .create-new-event-container .new-event-form .new-event-details textarea {
-  width: 50rem;
+  width: 85rem;
   min-height: 15rem;
   margin: 1rem 2rem 1rem 2rem;
   padding: 2px;
@@ -174,27 +182,44 @@
 }
 
 /*details*/
+.new-event-info-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 65rem;
+}
 .create-new-event-container
   .new-event-form
   .new-event-details
   .add-image-event-container
   div {
-  width: 50rem;
+  width: 85rem;
   min-height: 20rem;
   text-align: center;
   box-shadow: var(--primary-box-shadow);
   border-radius: var(--card-border-radius);
   margin: 1rem 2rem 4rem 2rem;
+  padding: 5rem;
   background-color: var(--secondary-background-color);
 }
-.add-image-event-container img {
+/* .add-image-event-container img {
   width: 30rem;
   height: auto;
-}
+} */
+
 /*payment*/
+.ticket-details-flex{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 .create-new-event-container .new-event-form .new-event-payment-container {
-  min-height: 41rem;
+  min-height: 65rem;
   min-width: 38rem;
+  /* display: flex;
+  align-items: center;
+  flex-direction: column; */
 }
 .create-new-event-container
   .new-event-form
@@ -203,7 +228,14 @@
   margin-left: 3rem;
   margin-bottom: 4rem;
 }
+.ticket-details{
+  background-color: var(--secondary-background-color);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--primary-box-shadow);
+  padding: 3rem 1rem;
+  width: fit-content;
 
+}
 .ticket-pricing-information,
 .ticket-validation {
   margin-bottom: 4rem;
