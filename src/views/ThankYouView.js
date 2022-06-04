@@ -1,6 +1,12 @@
 import React from 'react';
+
+/* Components */
 import InfoBox from '../others/InfoBox';
+
+/* Style */
 import '../others/InfoBox.css';
+
+/* Fontawesome */
 import {
   faMagnifyingGlass,
   faCirclePlus,
