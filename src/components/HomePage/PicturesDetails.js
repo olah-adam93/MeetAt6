@@ -2,14 +2,14 @@ import React from 'react'
 import './Styles/PicturesDetails.css'
 import calendar from  '../../others/images/calendar.jpg'
 import profile from  '../../others/images/profile.png'
-import information from  '../../others/images/information.jpg'
+import search from  '../../others/images/search.jpg'
 
 function PicturesDetails() {
   return (
     <div className="pictures-details">
-    <div className="flex"> <img className='picture' src={calendar} alt="calendar"/>  <div> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </div>  </div>
-    <div className="flex"> <img className='picture' src={profile} alt="profile"/> <div> he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </div></div>
-    <div className="flex"> <img className='picture' src={information} alt="information"/> <div> Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. </div>
+    <div className="flex"> <img className='picture' src={calendar} alt="calendar"/>  <div className='text'> <h3 className='title'>Join an adventure!</h3> <p>Create or join an event! Find new entertainment! </p> </div>  </div>
+    <div className="flex"> <img className='picture' src={profile} alt="profile"/> <div className='text'> <h3 className='title'> Create profile!</h3> <p>Find new friends! </p> </div> </div> 
+    <div className="flex"> <img className='picture' src={search} alt="search"/> <div className='text'> <h3 className='title'> Find an event!</h3> <p> Find any activity! You can choose from many options! </p> </div>
    </div>
   </div>
   )
