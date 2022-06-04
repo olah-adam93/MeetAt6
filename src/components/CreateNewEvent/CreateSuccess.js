@@ -6,8 +6,10 @@ function CreateSuccess() {
   const navigateTo = useNavigate();
   return (
     <div className='create-success-container'>
-      <h2>You have successfully created an event! </h2>
-      <p onClick={()=> navigateTo('/profile/myevents')}>Back to My Events!</p>
+      <div>
+        <h2>You have successfully created an event! </h2>
+        <button onClick={()=> navigateTo('/profile/myevents')}>Back to My Events!</button>
+      </div>
       <img src={upload_event} alt="upload event"/>
     </div>
   );
