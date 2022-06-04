@@ -28,40 +28,40 @@ const TimeOfEvent = ({setData, data}) => {
       </div> */}
       <div className='event-time-box'>
         <div>
-          <label htmlFor='event-starts'>Event Starts*</label>
+          <label htmlFor='event-starts'>Event Starts*
           <input
             type='date'
             id='event-starts'
             name='eventStarts'
             onChange={changeHandler}
             value={data?.eventStarts}
-          />
-          <label htmlFor='start-time'>Start Time*</label>
+          /></label>
+          <label htmlFor='start-time'>Start Time*
           <input
             type='time'
             id='start-time'
             name='startTime'
             onChange={changeHandler}
             value={data?.startTime}
-          />
+          /></label>
         </div>
         <div>
-          <label htmlFor='event-ends'>Event Ends*</label>
+          <label htmlFor='event-ends'>Event Ends*
           <input
             type='date'
             id='event-ends'
             name='eventEnds'
             onChange={changeHandler}
             value={data?.eventEnds}
-          />
-          <label htmlFor='end-time'>End time*</label>
+          /></label>
+          <label htmlFor='end-time'>End time*
           <input
             type='time'
             id='end-time'
             name='endTime'
             onChange={changeHandler}
             value={data?.endTime}
-          />
+          /></label>
         </div>
       </div>
       {/*event start, end */}

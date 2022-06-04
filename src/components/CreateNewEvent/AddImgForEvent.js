@@ -25,9 +25,9 @@ const AddImageForEvent = ({setData, data}) => {
   return (
     <div className='add-image-event-container'>
       <h2>Add Image</h2>
-      <div>
-        <img src={data?.imageUrl}/>
-        <input type='file' name='image' onChange={onFileChange} placeholder="img"/>
+      <div className='pic-box'>
+        <input type='file' name='image' onChange={onFileChange} />
+        {data?.image && <p>You already added: {data?.image.name}</p>}
        {/*  <button type='button' name='upload' onClick={onUploadImage}>
           Upload
         </button>

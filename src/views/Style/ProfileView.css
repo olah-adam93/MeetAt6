@@ -40,7 +40,7 @@
   font-style: italic;
 }
 .profile .profile-head .avatar:hover {
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
   box-shadow: var(--hover-box-shadow);
 }
 
@@ -86,6 +86,7 @@
 .profile .divide{
   height: 1rem;
 }
+/*Statisztika*/
 .profile-statistics{
   display: flex;
   flex-direction: row;
@@ -99,16 +100,26 @@
 }
 .profile-statistics h3{
   margin: 2rem;
+  font-weight: 500;
 }
 .profile-statistics span{
   color: var(--fourthly-text-color);
-  /* font-size: var(--h2-font-size); */
   font-style: italic;
+  /* transition: linear, transform 2s;
+  transform: rotate(360deg); */
+ /*  animation-name: rotate;
+  animation-duration: 2s;
+  animation-iteration-count: infinite; */
 }
 .profile-statistics img{
   width: 50rem;
-  /* float: right; */
   vertical-align: middle;
   margin: 2rem;
   
 }
+/* @keyframes rotate{
+
+  to{
+    transform: rotateX(360deg)
+  }
+} */
