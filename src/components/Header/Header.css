@@ -36,6 +36,13 @@
   transition: width 0.3s ease-out;
 }
 
+.header-logo-navlink {
+  text-decoration: none;
+  font-size: 3.5rem;
+  font-family: 'Kanit', sans-serif;
+  font-weight: bold;
+}
+
 .img-small {
   width: 12rem;
 }
