@@ -110,35 +110,20 @@ const EventInfo = ({eventInfo, isOpen, setIsOpen, paymentSucces}) => {
           <span>Already joined!</span>
         ) : attendees.length === Number(eventValue?.attendant) ? (
           <span>This event is full!</span>
+        ) : eventValue?.paymentType === 'ticket' ? (
+          <button onClick={clickHandler} className='event-info-button'>
+            {' '}
+            Pay to join{' '}
+          </button>
         ) : (
-          <button onClick={clickHandler} className='event-info-button'> Register </button>
+          <button onClick={clickHandler} className='event-info-button'>
+            {' '}
+            Register{' '}
+          </button>
         )
       ) : (
         <button onClick={() => navigateTo('/signin')}>Sign in to subscribe</button>
       )}
-
-      {/* {
-              user ? (
-                attendees.includes(user.uid) ? (
-                  <span>Already joined!</span>
-                ) : attendees.length !== Number(eventValue?.attendant) ? (
-                  eventValue?.paymentType === 'ticket' ? (
-                    <StripePayment eventKey={eventKey} eventValue={eventValue} />
-                  ) : (
-                    <button
-                      className='joinmodal-join-button'
-                      type='button'
-                      onClick={joinHandler}
-                    >
-                      Join
-                    </button>
-                  )
-                ) : (
-                  <span>This event is full!</span>
-                )
-              ) : (
-                <button onClick={() => navigateTo('/signin')}>Sign in to subscribe</button>
-              )} */}
 
       {/* {isOpen && (
         <JoinModal

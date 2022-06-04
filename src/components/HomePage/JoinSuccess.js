@@ -8,7 +8,7 @@ function JoinSuccess() {
     <div className='join-success-container'>  
       <div>
         <h2>You have successfully applied for the event! </h2>
-        <p onClick={()=> navigateTo('/profile/searchevent')}>Back to Searching Events!</p>
+        <button onClick={()=> navigateTo('/profile/searchevent')}>Back to Searching Events!</button>
       </div>
       <img src={success} alt="join success" />
       
