@@ -4,7 +4,7 @@
     height: 200px;
     background-color: var(--secondary-background-color);
     box-shadow: var(--primary-box-shadow);
-    padding: 10px;
+    padding: 2rem;
     border-radius: 10px;
 }
 
