@@ -11,6 +11,7 @@
 .picture {
     width: 70px;
     height: 70px;
+    margin-bottom: 10px;
 }
 
 .pictures-details {
@@ -24,5 +25,15 @@
     font-size: 1.2rem;
     margin-top: 50px;
     
+}
+
+.text {
+    color: var(--tertiary-background-color);
+    font-size: 1.6rem;
+}
+
+.text .title {
+font-size: 2rem;
+margin: 0.5rem 0;
 }
 
