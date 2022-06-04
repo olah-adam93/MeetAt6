@@ -1,5 +1,5 @@
 import './Style/ChosenEventView.css';
-
+import joined_event from '../others/decoration/joined_event.svg'
 import { useState, useContext, useEffect } from 'react';
 import UserNavBar from '../components/Profile/UserNavbar';
 import DisplayItems from '../components/SearchEvent/DisplayItems';
@@ -54,11 +54,11 @@ const ChosenEventsView = () => {
   return (
     <>
       <h1>Events joined by Me</h1>
-      <div className='my-events-container'>
-        <div className='my-events-sidebar'>
-          <div>decoration placeholder</div>
+      <div className='chosen-events-container'>
+        <div className='chosen-events-sidebar'>
+          <img src={joined_event} alt="joined event picture" className='joined-event-pic'/>
         </div>
-        <div className='my-events-content'>
+        <div className='chosen-events-content'>
           {eventsCard.length === 0 ? (
             <div>No Events to display</div>
           ) : (

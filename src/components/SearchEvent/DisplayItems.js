@@ -8,6 +8,7 @@ import {
   faAngleLeft,
   faAnglesRight,
   faAnglesLeft,
+  faCalendarMinus
 } from '@fortawesome/free-solid-svg-icons';
 
 /* Components */

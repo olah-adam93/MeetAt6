@@ -74,7 +74,7 @@ const ContactView = () => {
           </div>
           <div className='contact-admin-paragraph'>
             <div className='contact-div-box'>
-              <div>
+              <div className='contact-div-box-1'>
                 <img src={maleAvatar} className="avatar-icon"/>
                 <p>
                   Derzsi Szabolcs <br /> Email: admin3@admin.hu

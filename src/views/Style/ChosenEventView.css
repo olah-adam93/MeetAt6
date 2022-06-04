@@ -1,12 +1,19 @@
-.my-events-container {
+.chosen-events-container {
   width: 100%;
   display: flex;
+  gap: 5rem;
 }
 
-.my-events-sidebar {
-  flex-grow: 1;
+.chosen-events-sidebar {
+  width: 30%;
 }
 
-.my-events-content {
-  flex-grow: 2;
+.chosen-events-content {
+  width: 70%;
+}
+.joined-event-pic{
+  margin-top: 10rem;
+  width: 100%;
+  /* height: ; */
+  
 }

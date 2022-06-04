@@ -32,9 +32,11 @@
   border-radius: var(--card-border-radius);
   box-shadow: var(--primary-box-shadow);
   margin: 2rem 4rem;
+  padding: 2rem 0;
   max-width: 85%;
   height: 60rem;
 }
+
 .contact-admin-paragraph .contact-div-box{
   border-right: 1px solid #af4448;
 }
@@ -44,6 +46,7 @@
   align-items: center;
   justify-content: space-evenly;
 }
+
 .avatar-icon{
   width: 6rem;
   padding-top:2rem;
@@ -149,6 +152,7 @@
   
 }
 /*Modal*/
+.contact-container
 .display-modal-container {
   position:fixed;
   width:100%;
@@ -162,7 +166,7 @@
   align-items: center;
   justify-content: center;
 }
-
+.contact-container
 .display-modal-content {
   /* position: absolute;
   top: 50%;
@@ -182,18 +186,27 @@
   gap: 2rem;
   font-size: 1.6rem;
 }
-
+.contact-container
 .display-modal-content button {
+  border: none;
   font-size: 1.6rem;
-  padding: .5rem;
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
 }
-
+.contact-container
+.display-modal-content button:hover{
+  background-color: var(--button-hover-background-color);
+}
+.contact-container
 .display-modal-content button:nth-child(1) {
   margin-right: 2rem;
 }
 /* .close-btn{
   
 } */
+.contact-container
 .display-modal-content h3{
   font-size: var(--h3-font-size);
 }
