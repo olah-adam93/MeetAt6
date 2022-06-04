@@ -106,7 +106,7 @@ const CreateEventView = () => {
       !data.eventStarts || //itt vizsgálja hogy a múltban jönne létre?
       !data.eventEnds ||
       !data.startTime ||
-      Number(new Date(data.eventStarts)) < Number(new Date(data.eventEnds)) ||
+      /* Number(new Date(data.eventStarts)) < Number(new Date(data.eventEnds)) || */
       !data.paymentType ||
       data.paymentType === "ticket" && !data.ticketPrice||
       !data.endTime
