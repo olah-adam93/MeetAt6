@@ -15,15 +15,15 @@ const HomePageView = () => {
       {/* <div className='separator'></div> */}
       <EventSlider
         containerName={'Newest events'}
-        searchKey={'paymentType'}
-        searchValue={'free'}
+        /* searchKey={'paymentType'}
+        searchValue={'free'} */
       />
       {/* <div className='separator'></div> */}
       <div className='separator'></div>
       <EventSlider
-        containerName={'Premium events'}
+        containerName={'Free events'}
         searchKey={'paymentType'}
-        searchValue={'ticket'}
+        searchValue={'free'}
       />
       <div className='separator'></div>
       <div className='separator'></div>

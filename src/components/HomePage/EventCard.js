@@ -1,9 +1,9 @@
 import {Link} from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
 /* Style */
 import './Styles/EventCard.css';
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faCalendarXmark, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 /* Image */
 import eventImagePlaceholder from '../../others/logo/logo7.3.png';
 
@@ -115,14 +115,14 @@ const EventCard = ({
         {isUnsubscribeButton && (
           <>
             <button type='button' onClick={unsubscribeModalHandler(eventObj)}>
-              Unsubscribe
+            <FontAwesomeIcon icon={faCalendarXmark} />
             </button>
           </>
         )}
         {isDeleteButton && (
           <>
             <button type='button' onClick={deleteModalHandler(eventObj)}>
-              Delete
+            <FontAwesomeIcon icon={faTrashCan} />
             </button>
           </>
         )}
