@@ -75,8 +75,8 @@ const StripePayment = ({ eventKey, eventValue }) => {
     setCheckoutOptions({
       lineItems: [product],
       mode: 'payment',
-      successUrl: `${window.location.origin}/paid-success?success=true&key=${eventKey}`,
-      cancelUrl: `${window.location.origin}/paid-success?success=false&key=${eventKey}`,
+      successUrl: `${window.location.origin}/paid-success?success=${true}&key=${eventKey}`,
+      cancelUrl: `${window.location.origin}/paid-success?success=${false}&key=${eventKey}`,
     });
   }, [product]);
   const redirectToCheckout = async () => {
