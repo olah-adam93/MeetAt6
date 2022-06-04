@@ -7,14 +7,6 @@
   position: relative;
 }
 
-.search-event-background {
-  transform: scaleX(-1);
-  width: 25rem;
-  position: absolute;
-  top: -1rem;
-  right: 0;
-}
-
 .search-event-inner-container {
   width: 100%;
   display: flex;
@@ -24,7 +16,7 @@
 }
 
 .display-maps-container {
-  width: 80%;
+  width: 90%;
   max-width: 1000px;
   height: 30rem;
 }

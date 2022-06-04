@@ -1,11 +1,20 @@
 .filter-container {
   width: 100%;
   z-index: 10;
+  /* position: relative; */
   /* background-image: url(../../../others/decoration/search_event.svg);
   background-repeat: no-repeat;
   background-size: 20rem;
   background-position: right; */
 }
+
+/* .filter-bar-background {
+  transform: scaleX(-1);
+  width: 15rem;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+} */
 
 /* Search bar */
 .search-bar-container {

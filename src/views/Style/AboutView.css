@@ -69,3 +69,7 @@
   font-size: var(--p-font-size);
   margin: 3rem;
 }
+
+.about-body p {
+  margin-bottom: 1rem;
+}

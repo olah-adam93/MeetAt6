@@ -7,6 +7,9 @@ import './Style/FilterBar.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 
+/* Decoration */
+import search_event_background from '../../others/decoration/search-3.svg';
+
 const FilterBar = ({setSearchQuery, filterParams, setFilterParams, setToDefault}) => {
   const [searchValue, setSearchValue] = useState('');
 
@@ -47,6 +50,13 @@ const FilterBar = ({setSearchQuery, filterParams, setFilterParams, setToDefault}
 
   return (
     <div className='filter-container'>
+      {/* Background Image */}
+      {/* <img
+        className='filter-bar-background'
+        src={search_event_background}
+        alt='search-event-background'
+      /> */}
+
       <div className='search-bar-container'>
         <form className='search-bar-form' onSubmit={onSubmitHandler}>
           <input

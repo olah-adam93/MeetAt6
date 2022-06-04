@@ -16,4 +16,4 @@ function JoinSuccess() {
   )
 }
 
-export default JoinSuccess
+export default JoinSuccess;

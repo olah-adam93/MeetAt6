@@ -193,8 +193,8 @@
 
 .event-data-attendees-search {
   text-align: right;
-  margin-left: 30rem;
-  transform: translateY(-1rem);
+  /* margin-left: 28rem; */
+  transform: translateY(3rem);
   color: var(--tertiary-text-color);
 }
 /* Data ------------------------ */

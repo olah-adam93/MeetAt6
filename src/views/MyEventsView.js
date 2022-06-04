@@ -34,14 +34,16 @@ const MyEventsView = () => {
 
   return (
     <>
-      <h1>Events Created by Me</h1>
+      <h1 className='my-events-title'>Events Created by Me</h1>
       <div className='my-events-container'>
         <div className='my-events-sidebar'>
           <img src={my_events} alt="my events" className='my-event-pic'/>
         </div>
         <div className='my-events-content'>
           {eventsCard.length === 0 ? (
-            <div>No Events to display</div>
+            <div className='my-events-message-container'>
+              <h3 className='my-events-message'>No Events to display!</h3>
+            </div>
           ) : (
             <DisplayItems
               filteredDbItems={eventsCard}

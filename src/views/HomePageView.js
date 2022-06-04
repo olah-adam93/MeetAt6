@@ -6,7 +6,6 @@ import EventSlider from '../components/HomePage/EventSlider';
 import './Style/HomePageView.css';
 import PicturesDetails from '../components/HomePage/PicturesDetails';
 
-
 const HomePageView = () => {
   return (
     <div>
@@ -24,6 +23,12 @@ const HomePageView = () => {
         containerName={'Free events'}
         searchKey={'paymentType'}
         searchValue={'free'}
+      />
+      <div className='separator'></div>
+      <EventSlider
+        containerName={'Paid events'}
+        searchKey={'paymentType'}
+        searchValue={'ticket'}
       />
       <div className='separator'></div>
       <div className='separator'></div>

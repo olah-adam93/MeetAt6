@@ -4,6 +4,11 @@
   gap: 5rem;
 }
 
+.chosen-events-title {
+  font-size: var(--h1-font-size);
+
+}
+
 .chosen-events-sidebar {
   width: 30%;
 }
@@ -11,9 +16,21 @@
 .chosen-events-content {
   width: 70%;
 }
+
 .joined-event-pic{
   margin-top: 10rem;
   width: 100%;
-  /* height: ; */
-  
+  /* height: ; */ 
+}
+
+.chosen-events-message-container {
+  width: 100%;
+  text-align: center;
+}
+
+.chosen-events-message {
+  font-size: var(--h3-font-size);
+  padding-top: 1rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--form-input-border-secondary-color);
 }

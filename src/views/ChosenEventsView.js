@@ -1,19 +1,17 @@
 import './Style/ChosenEventView.css';
-import joined_event from '../others/decoration/joined_event.svg'
-import { useState, useContext, useEffect } from 'react';
+import joined_event from '../others/decoration/joined_event.svg';
+import {useState, useContext, useEffect} from 'react';
 import UserNavBar from '../components/Profile/UserNavbar';
 import DisplayItems from '../components/SearchEvent/DisplayItems';
 
 /* Database Context */
-import { EventDbContext } from '../components/EventDbContext/EventDbContext';
+import {EventDbContext} from '../components/EventDbContext/EventDbContext';
 
 /* AuthContext */
-import { auth } from '../config/firebase';
+import {auth} from '../config/firebase';
 
 /* CRUD */
-import { liveValue } from '../services/crud';
-
-
+import {liveValue} from '../services/crud';
 
 const ChosenEventsView = () => {
   const eventDb = useContext(EventDbContext);
@@ -53,14 +51,20 @@ const ChosenEventsView = () => {
 
   return (
     <>
-      <h1>Events joined by Me</h1>
+      <h1 className='chosen-events-title'>Events joined by Me</h1>
       <div className='chosen-events-container'>
         <div className='chosen-events-sidebar'>
-          <img src={joined_event} alt="joined event picture" className='joined-event-pic'/>
+          <img
+            src={joined_event}
+            alt='joined event'
+            className='joined-event-pic'
+          />
         </div>
         <div className='chosen-events-content'>
           {eventsCard.length === 0 ? (
-            <div>No Events to display</div>
+            <div className='chosen-events-message-container'>
+              <h3 className='chosen-events-message'>No Events to display!</h3>
+            </div>
           ) : (
             <DisplayItems
               isUnsubscribeButton={true}

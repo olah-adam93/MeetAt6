@@ -14,8 +14,7 @@ import {EventDbContext} from '../components/EventDbContext/EventDbContext';
 /* Google Maps */
 import {Wrapper} from '@googlemaps/react-wrapper';
 
-/* Decoration */
-import search_event_background from '../others/decoration/search_event.svg';
+
 
 const SearchEventView = () => {
   const eventDb = useContext(EventDbContext);
@@ -96,12 +95,6 @@ const SearchEventView = () => {
 
   return (
     <div className='search-event-container'>
-      {/* Background Image */}
-      <img
-        className='search-event-background'
-        src={search_event_background}
-        alt='search-event-background'
-      />
 
       <FilterBar
         setSearchQuery={setSearchQuery}
