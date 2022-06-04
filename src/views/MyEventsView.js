@@ -1,5 +1,5 @@
 import './Style/MyEventsView.css';
-
+import my_events from '../others/decoration/my_events.svg'
 import { useState, useContext, useEffect } from 'react';
 import DisplayItems from '../components/SearchEvent/DisplayItems';
 
@@ -37,7 +37,7 @@ const MyEventsView = () => {
       <h1>Events Created by Me</h1>
       <div className='my-events-container'>
         <div className='my-events-sidebar'>
-          <div>decoration placeholder</div>
+          <img src={my_events} alt="my events" className='my-event-pic'/>
         </div>
         <div className='my-events-content'>
           {eventsCard.length === 0 ? (
