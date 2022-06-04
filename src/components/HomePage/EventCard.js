@@ -1,11 +1,13 @@
 import {Link} from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 /* Style */
 import './Styles/EventCard.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCalendarXmark, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 /* Image */
 import eventImagePlaceholder from '../../others/logo/logo7.3.png';
+
+import { AuthContext } from '../Authentication/AuthContext';
 
 /* CRUD */
 import { readData } from '../../services/crud';
@@ -21,10 +23,11 @@ const EventCard = ({
   deleteModalHandler,
 }) => {
   const [attendees, setAttendees] = useState([]);
+  const authContext = useContext(AuthContext);
   
   useEffect(() => {
       readData('eventAttendees', eventId).then((snapshot) => {
-          setAttendees(Object.entries(snapshot.val() || {}));
+          setAttendees(Object.keys(snapshot.val() || {}));
       });
   }, [eventId]);
 
@@ -100,6 +103,8 @@ const EventCard = ({
             </p>
 
             <p>Organizer: {eventCard?.organizer}</p>
+
+            {attendees.includes(authContext.userLog.user.uid) && window.location.href.indexOf("profile") === -1 && window.location.href.indexOf("home") === -1 && <p className='event-data-joined-message-search'>Already registered!</p>}
 
             <p
               className={

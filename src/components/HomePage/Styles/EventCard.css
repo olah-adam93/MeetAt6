@@ -189,6 +189,7 @@
   line-height: 1.5;
   padding-left: 2rem;
   flex-grow: 2;
+  position: relative;
 }
 
 .event-data-date-search {
@@ -215,6 +216,15 @@
   /* margin-left: 28rem; */
   transform: translateY(3rem);
   color: var(--tertiary-text-color);
+}
+
+.event-data-joined-message-search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--fourthly-text-color);
 }
 /* Data ------------------------ */
 

@@ -1,6 +1,7 @@
 import { loadStripe } from '@stripe/stripe-js';
 import { useState, useEffect } from 'react';
 
+
 let stripePromise;
 
 // call before redirect the user to checkout
@@ -58,8 +59,6 @@ const StripePayment = ({ eventKey, eventValue }) => {
       }
     });
   }, []);
-
-  console.log(product);
 
  /*  useEffect(() => {
     setCheckoutOptions({
