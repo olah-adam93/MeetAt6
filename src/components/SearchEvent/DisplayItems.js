@@ -8,7 +8,7 @@ import {
   faAngleLeft,
   faAnglesRight,
   faAnglesLeft,
-  faCalendarMinus
+  faCalendarMinus,
 } from '@fortawesome/free-solid-svg-icons';
 
 /* Components */
@@ -237,11 +237,30 @@ const DisplayItems = ({
           })}
         </div>
       ) : (
-        <div className='display-container-message'>No exact matches found.</div>
+        <div className='display-container-message'>
+          <h3 className='display-container-message-text'>No exact matches found.</h3>
+        </div>
       )}
 
       <div className='pagination-container'>
-        {filteredDbItems.length > 0 ? (
+        {filteredDbItems.length < 8 ? (
+          null
+          // <>
+          //   <button type='button' onClick={toFirstPageHandler} disabled>
+          //     <FontAwesomeIcon icon={faAnglesLeft} />
+          //   </button>
+          //   <button type='button' onClick={previousButtonHandler} disabled>
+          //     <FontAwesomeIcon icon={faAngleLeft} />
+          //   </button>
+          //   <span>{` Page ${currentPage} of ${1} `}</span>
+          //   <button type='button' onClick={nextButtonHandler} disabled>
+          //     <FontAwesomeIcon icon={faAngleRight} />
+          //   </button>
+          //   <button type='button' onClick={toLastPageHandler} disabled>
+          //     <FontAwesomeIcon icon={faAnglesRight} />
+          //   </button>
+          // </>
+        ) : (
           <>
             <button
               type='button'
@@ -270,22 +289,6 @@ const DisplayItems = ({
               onClick={toLastPageHandler}
               disabled={currentPage < pageNumber - 1 ? '' : 'disabled'}
             >
-              <FontAwesomeIcon icon={faAnglesRight} />
-            </button>
-          </>
-        ) : (
-          <>
-            <button type='button' onClick={toFirstPageHandler} disabled>
-              <FontAwesomeIcon icon={faAnglesLeft} />
-            </button>
-            <button type='button' onClick={previousButtonHandler} disabled>
-              <FontAwesomeIcon icon={faAngleLeft} />
-            </button>
-            <span>{` Page ${currentPage} of ${1} `}</span>
-            <button type='button' onClick={nextButtonHandler} disabled>
-              <FontAwesomeIcon icon={faAngleRight} />
-            </button>
-            <button type='button' onClick={toLastPageHandler} disabled>
               <FontAwesomeIcon icon={faAnglesRight} />
             </button>
           </>

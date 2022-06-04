@@ -85,11 +85,11 @@ const SignIn = ({ submitForm }) => {
   return (
     <div className='sign-in-container'>
       <form onSubmit={handleFormSubmit}>
-        <img
+        {/* <img
           className='header-logo-img'
           src={require('../../others/logo/meetatsix100.406.szines2.png')}
           alt='logo'
-        />
+        /> */}
         <div className='sign-in-header'>
           <h3> Sign In </h3>
         </div>

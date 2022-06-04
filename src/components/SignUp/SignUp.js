@@ -128,11 +128,11 @@ const SignUp = ({ submitForm }) => {
   return (
     <div className='sign-up-container'>
       <form onSubmit={handleFormSubmit}>
-        <img
+        {/* <img
           className='header-logo-img'
           src={require('../../others/logo/meetatsix100.406.szines2.png')}
           alt='logo'
-        />
+        /> */}
         <div className='sign-up-header'>
           <h3> Sign Up </h3>
         </div>

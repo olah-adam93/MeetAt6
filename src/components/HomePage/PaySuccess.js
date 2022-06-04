@@ -31,7 +31,7 @@ function PaySuccess() {
           <div>
             <h2>You have successfully paid for the event! </h2>
             <button onClick={() => navigateTo('/profile/searchevent')}>
-              Back to Searching Events!
+              Back to Searching Events
             </button>
           </div>
           <img src={success} alt='join success' />
@@ -39,9 +39,9 @@ function PaySuccess() {
       ) : (
         <>
           <div>
-            <h2>Failed payment! </h2>
+            <h2>Oh no, your payment failed!</h2>
             <button onClick={() => navigateTo(`/eventpage/${searchParams.get('key')}`)}>
-              Back to Event! Try Again!
+              Back to Event Page
             </button>
           </div>
           <img src={cancel} alt='join failed' />
