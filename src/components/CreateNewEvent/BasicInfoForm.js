@@ -71,7 +71,7 @@ const BasicInfoForm = ({ setData, data }) => {
           );
         })}
       </select>
-      <label htmlFor='addendantLimit'>Attendant limit</label>
+      {/* <label htmlFor='addendantLimit'>Attendant limit</label>
       <input
         type='checkbox'
         name='addendantLimit'
@@ -80,8 +80,8 @@ const BasicInfoForm = ({ setData, data }) => {
         value={checked}
         onClick={changeCheckedHandler}
         defaultValue={data?.addendantLimit}
-      />
-      {checked && (
+      /> */}
+      {/* {checked && ( */}
         <div>
           <label htmlFor='attendant-number-limit'>Attendant limit number</label>
           <input
@@ -93,7 +93,7 @@ const BasicInfoForm = ({ setData, data }) => {
             min= "0"
           />
         </div>
-      )}
+      {/* )} */}
     </div>
   );
 };
