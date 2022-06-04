@@ -27,7 +27,7 @@ const AddImageForEvent = ({setData, data}) => {
       <h2>Add Image</h2>
       <div>
         <img src={data?.imageUrl}/>
-        <input type='file' name='image' onChange={onFileChange} placeholder="img"/>
+        <input type='file' name='image' onChange={onFileChange} />
        {/*  <button type='button' name='upload' onClick={onUploadImage}>
           Upload
         </button>

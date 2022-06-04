@@ -165,23 +165,27 @@ const CreateEventView = () => {
           )}
 
           <div className='btn-container'>
-            {nextbtn > 0 && (
+            {nextbtn > 0 && (<>
               <button type='button' onClick={backFormPageHandler} className='back-btn'>
                 Back
               </button>
+              
+              </>
             )}
-            {nextbtn < 2 && (
+            {nextbtn < 2 && (<>
               <button type='button' onClick={nextFormPageHandler} className='next-btn'>
                 Next
               </button>
+              </>
             )}
-            {nextbtn === 2 && (
+            {nextbtn === 2 && (<>
               <button type='submit' className='save-btn'>
                 Save event
               </button>
+              </>
             )}
-
             <h3 className='required'>*: required</h3>
+            
           </div>
         </form>
       </div>
