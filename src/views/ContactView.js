@@ -60,7 +60,7 @@ const ContactView = () => {
           <div className='display-modal-content'>
             <h3>You have successfully sent the message!</h3>
             <div>
-              <button onClick={closeModal} className="close-btn">X</button>
+              <button onClick={closeModal} className="close-btn">Close</button>
             </div>
           </div>
         </div>

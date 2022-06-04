@@ -185,6 +185,8 @@
   align-items: center;
   gap: 2rem;
   font-size: 1.6rem;
+  padding: 1rem;
+  text-align: center;
 }
 .contact-container
 .display-modal-content button {
