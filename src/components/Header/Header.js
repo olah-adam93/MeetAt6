@@ -24,12 +24,13 @@ const Header = () => {
     <div className={`header-container ${small ? 'header-small' : ''}`}>
       <div className='header-inner-container'>
         <div className='header-logo'>
-          <NavLink to='/'>
-            <img
+          <NavLink className={`header-logo-navlink ${small ? 'header-logo-navlink-small' : ''}`} to='/'>
+            <p>MeetAtSix</p>
+            {/* <img
               className={`header-logo-img ${small ? 'img-small' : ''}`}
               src={require('../../others/logo/meetatsix100.406.szines2.png')}
               alt='logo'
-            />
+            /> */}
           </NavLink>
         </div>
 

@@ -9,7 +9,8 @@ import EventDetails from '../components/HomePage/EventDetails';
 import EventImage from '../components/HomePage/EventImage';
 import EventInfo from '../components/HomePage/EventInfo';
 import JoinModal from '../components/HomePage/JoinModal';
-import Map from '../others/GoogleMaps/components/Map';
+// import Map from '../others/GoogleMaps/components/Map';
+import EventInfoMap from '../components/HomePage/EventInfoMap';
 
 /* Style */
 import './Style/EventPageView.css';
@@ -78,9 +79,10 @@ const EventPageView = () => {
               />
             </div>
           </div>
-          {/* <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
-            <Map eventInfo={eventInfo[1]} />
-          </Wrapper> */}
+
+          {eventInfo[1]?.locationType === 'venue' && <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
+            <EventInfoMap eventInfo={eventInfo[1]} />
+          </Wrapper>}
 
           {isOpen && (
             <JoinModal

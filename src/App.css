@@ -4,6 +4,8 @@
   --tertiary-background-color: #af4448;
   --fourthly-background-color: #fbf7ed;
 
+  --primary-background-image: linear-gradient(to bottom, #f3f4f5, #f2f2f3, #f1f1f2, #efeff0, #eeeeee, #ebebeb, #e7e7e7, #e4e4e4, #dedede, #d8d8d8, #d3d2d2, #cdcccc);
+
   --primary-navbar-text-color: #870000;
   --secondary-navbar-text-color: #ffffff;
   --navbar-hover-color: #af4448;
@@ -52,7 +54,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--primary-background-color);
+  background-image: var(--primary-background-image);
+  /* background-color: var(--primary-background-color); */
 }
 
 .layout-inner-container {
