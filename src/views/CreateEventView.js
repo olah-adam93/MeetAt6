@@ -46,7 +46,11 @@ const CreateEventView = () => {
         !data.startTime ||
         !data.endTime ||
         !data.type ||
-        !data.category
+        !data.category||
+        data.attendant < 0 ||
+        Number(new Date(data.eventStarts)) > Number(new Date(data.eventEnds)) 
+        //Number(new Date(data.eventStarts)) === Number(new Date(data.eventEnds)) && data.startTime data.endTime
+        
         //attendant ne lehessen - eredmény
       ) {
         setMissingData(true);
@@ -102,7 +106,9 @@ const CreateEventView = () => {
       !data.eventStarts || //itt vizsgálja hogy a múltban jönne létre?
       !data.eventEnds ||
       !data.startTime ||
+      Number(new Date(data.eventStarts)) < Number(new Date(data.eventEnds)) ||
       !data.paymentType ||
+      data.paymentType === "ticket" && !data.ticketPrice||
       !data.endTime
       //attendant ne lehessen - eredmény
     ) {
@@ -113,15 +119,20 @@ const CreateEventView = () => {
     } else {
       const currentDate = new Date(Date.now()).toUTCString().slice(-24, -4);
       console.log(currentDate);
-      const fileRef = ref(storage, `eventImages/${data?.image.name}`)
-      uploadBytes(fileRef, data?.image)
-      .then((uploadResult) =>{console.log("first");
-        getDownloadURL(uploadResult?.ref)
-        .then((value) => {
-          //setData((prev) => ({ ...prev, imageUrl: value }));
-          createNewData('events', { ...data, createdDate: currentDate, imageUrl: value })
+      if(data?.image){
+
+        const fileRef = ref(storage, `eventImages/${data?.image.name}`)
+        uploadBytes(fileRef, data?.image)
+        .then((uploadResult) =>{console.log("first");
+          getDownloadURL(uploadResult?.ref)
+          .then((value) => {
+            //setData((prev) => ({ ...prev, imageUrl: value }));
+            createNewData('events', { ...data, createdDate: currentDate, imageUrl: value })
+          })
         })
-      })
+      } else{
+        createNewData('events', { ...data, createdDate: currentDate })
+      }
       //createNewData('events', { ...data, createdDate: currentDate })
       
       /* createNewData('events', data) */
@@ -132,10 +143,10 @@ const CreateEventView = () => {
   };
   return (
     <div className='create-new-event-container'>
+      <h1>Create New Event</h1>
       {missingData && (
         <h1 className='missing-data'>Missing data! Please fill every required field!</h1>
       )}
-      <h1>Create New Event</h1>
       <div className='new-event-form'>
         <form action='' onSubmit={submitHandler}>
           {nextbtn === 0 && (

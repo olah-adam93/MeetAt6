@@ -38,7 +38,7 @@ const NewEventPayment = ({ setData, data }) => {
             {/*ha requiring akkor azt is be lehet állítani mennyi a bérlet!!! */}
             <div className="payment-details">
               <div className="ticket-pricing-information">
-                <label htmlFor='ticket-price'>Ticket Price</label>
+                <label htmlFor='ticket-price'>Ticket Price*</label>
                 {/* <input
                   type='number'
                   id='ticket-price'

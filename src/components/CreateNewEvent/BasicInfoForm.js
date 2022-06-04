@@ -48,7 +48,7 @@ const BasicInfoForm = ({ setData, data }) => {
       />
       <label htmlFor='event-category'>Event category*</label>
       <select name='type' onChange={changeHandler} value={data?.type}>
-        <option value='null'>Type</option>
+        <option value="">Choose a type</option>
         {type?.map((eventType, index) => {
           const key = eventType[0];
           const value = eventType[1];
@@ -60,7 +60,7 @@ const BasicInfoForm = ({ setData, data }) => {
         })}
       </select>
       <select name='category' onChange={changeHandler} value={data?.category}>
-        <option value='null'>Category</option>
+        <option value="" >Choose a category</option>
         {category?.map((eventCategory, index) => {
           const key = eventCategory[0];
           const value = eventCategory[1];
