@@ -16,7 +16,6 @@
   height: 100%;
 }
 
-
 .event-slider-container .swiper-slide {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -36,6 +35,14 @@
   background-color: var(--button-background-color) !important;
 }
 
+.swiper-pagination {
+  margin: -1rem !important;
+}
+
+.swiper-pagination-bullet {
+  width: 1rem !important;
+  height: 1rem !important;
+}
 /* .slider-container  .swiper-button-prev,
 .slider-container  .swiper-button-next {
   border: none;
