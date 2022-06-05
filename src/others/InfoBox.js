@@ -1,16 +1,17 @@
-import React from 'react';
-import './InfoBox.css';
-import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {NavLink} from 'react-router-dom';
 
-const InfoBox = ({ icon, nav, text }) => {
+/* Style */
+import './InfoBox.css';
+
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+
+const InfoBox = ({icon, nav, text}) => {
   return (
-    <div >
-      <NavLink className='infoBox-card' to={nav}>
-        <FontAwesomeIcon icon={icon} className='infoBox-icon' />
-        <p>{text}</p>
-      </NavLink>
-    </div>
+    <NavLink className='info-box-card' to={nav}>
+      <img className='info-box-img' src={icon} alt='thank-you-search' />
+      {/* <FontAwesomeIcon icon={icon} className='infoBox-icon' /> */}
+      <button className='info-box-text'>{text}</button>
+    </NavLink>
   );
 };
 export default InfoBox;
