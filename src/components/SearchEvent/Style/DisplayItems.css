@@ -54,6 +54,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: fadeIn .5s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .display-modal-content {
@@ -62,7 +68,6 @@
   left: 50%;
   transform: translate(-50%, -50%); */
   z-index: 1000;
-  border: 1px solid black;
   border-radius: 1rem;
   background-color: white;
   width: 400px;
@@ -83,12 +88,14 @@
   border-radius: var(--button-border-radius);
   background-color: var(--button-background-color);
   color: var(--button-text-color);
+  cursor: pointer;
   transition: all .3s ease-out;
 }
 
 .display-modal-content button:hover{
   background-color: var(--button-hover-background-color);
 }
+
 .display-modal-content button:nth-child(1) {
   margin-right: 2rem;
 }
@@ -108,7 +115,6 @@
 .pagination-container button {
   font-size: 1.6rem;
   cursor: pointer;
-  /* width: 4rem; */
   padding: var(--button-padding);
   border-radius: var(--button-border-radius);
   background-color: var(--secondary-background-color);

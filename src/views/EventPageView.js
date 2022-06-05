@@ -41,6 +41,8 @@ const EventPageView = () => {
     setEventInfo(...filteredArray);
   }, [eventDb.db, eventId]);
 
+  // useEffect(() => { console.log(eventInfo)}, [eventInfo]);
+
   /* useEffect(() => {
     if (searchParams.get('success') && eventInfo?.[0] && user?.uid) {
       updateData('eventAttendees', eventInfo[0], {[user.uid]: user.displayName}).then(
@@ -52,38 +54,46 @@ const EventPageView = () => {
     }
   }, [searchParams, eventInfo, user]); */
 
- /*  const clickHandler = () => {
+  /*  const clickHandler = () => {
     setIsOpen(!isOpen);
     console.log(isOpen);
   }; */
 
   return (
-    <div className='event-page-container'>
-      {eventInfo && (
-        <>
-          <h1 className='event-page-title'>{eventInfo[1]?.title.length > 45 ? eventInfo[1]?.title.slice(0, 45) + '...' : eventInfo[1]?.title}</h1>
+    <>
+      {
+        <div className='event-page-container'>
+          {eventInfo && (
+            <>
+              <h1 className='event-page-title'>
+                {eventInfo[1]?.title.length > 45
+                  ? eventInfo[1]?.title.slice(0, 45) + '...'
+                  : eventInfo[1]?.title}
+              </h1>
 
-          <div className='event-page-inner-container'>
-            <div className='event-page-first-wrapper'>
-              <EventImage eventInfo={eventInfo[1]} />
-            </div>
+              <div className='event-page-inner-container'>
+                <div className='event-page-first-wrapper'>
+                  <EventImage eventInfo={eventInfo[1]} />
+                </div>
 
-            <div className='event-page-second-wrapper'>
-              <EventDetails eventInfo={eventInfo[1]} />
-              <EventInfo
-                eventInfo={eventInfo}
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-                paymentSucces={paymentSucces}
-              />
-            </div>
-          </div>
+                <div className='event-page-second-wrapper'>
+                  <EventDetails eventInfo={eventInfo[1]} />
+                  <EventInfo
+                    eventInfo={eventInfo}
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    paymentSucces={paymentSucces}
+                  />
+                </div>
+              </div>
 
-          {eventInfo[1]?.locationType === 'venue' && <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
-            <EventInfoMap eventInfo={eventInfo[1]} />
-          </Wrapper>}
+              {eventInfo[1]?.locationType === 'venue' && (
+                <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
+                  <EventInfoMap eventInfo={eventInfo[1]} />
+                </Wrapper>
+              )}
 
-         {/*  {isOpen && (
+              {/*  {isOpen && (
             <JoinModal
               clickHandler={clickHandler}
               setIsOpen={setIsOpen}
@@ -91,9 +101,11 @@ const EventPageView = () => {
               eventValue={eventInfo[1]}
             />
           )} */}
-        </>
-      )}
-    </div>
+            </>
+          )}
+        </div>
+      }
+    </>
   );
 };
 export default EventPageView;
