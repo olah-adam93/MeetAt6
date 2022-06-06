@@ -26,17 +26,17 @@ const EventCard = ({
   const [attendees, setAttendees] = useState([]);
   const authContext = useContext(AuthContext);
   
-  // useEffect(() => {
-  //     readData('eventAttendees', eventId).then((snapshot) => {
-  //         setAttendees(Object.keys(snapshot.val() || {}));
-  //     });
-  // }, [eventId]);
-
   useEffect(() => {
-      liveValue(`eventAttendees/${eventId}`, (snapshot) => {
-        setAttendees(Object.keys(snapshot.val() || {}));
+      readData('eventAttendees', eventId).then((snapshot) => {
+          setAttendees(Object.keys(snapshot.val() || {}));
       });
   }, [eventId]);
+
+  // useEffect(() => {
+  //     liveValue(`eventAttendees/${eventId}`, (snapshot) => {
+  //       setAttendees(Object.keys(snapshot.val() || {}));
+  //     });
+  // }, [eventId]);
 
   return (
     <div className={eventSearchStyle ? 'event-card-container-search' : 'event-card-container'}>
