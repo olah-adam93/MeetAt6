@@ -1,7 +1,6 @@
 import './Style/ChosenEventView.css';
 import joined_event from '../others/decoration/joined_event.svg';
 import {useState, useContext, useEffect} from 'react';
-import UserNavBar from '../components/Profile/UserNavbar';
 import DisplayItems from '../components/SearchEvent/DisplayItems';
 
 /* Database Context */
@@ -17,6 +16,7 @@ const ChosenEventsView = () => {
   const eventDb = useContext(EventDbContext);
   const [eventJoined, setEventJoined] = useState([]);
   const [eventsCard, setEventsCard] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
 
   // const userData = useContext(AuthContext);
   // vagy
@@ -49,16 +49,18 @@ const ChosenEventsView = () => {
     console.log('filtered arr: ', filteredArray);
   }, [eventDb, user, eventJoined]);
 
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2000);
+  // }, []);
+
   return (
     <>
       <h1 className='chosen-events-title'>Events joined by Me</h1>
       <div className='chosen-events-container'>
         <div className='chosen-events-sidebar'>
-          <img
-            src={joined_event}
-            alt='joined event'
-            className='joined-event-pic'
-          />
+          <img src={joined_event} alt='joined event' className='joined-event-pic' />
         </div>
         <div className='chosen-events-content'>
           {eventsCard.length === 0 ? (
