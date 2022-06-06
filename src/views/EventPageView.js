@@ -16,6 +16,7 @@ import './Style/EventPageView.css';
 
 /* Database Context */
 import {EventDbContext} from '../components/EventDbContext/EventDbContext';
+import NotFound from '../others/NotFound';
 
 /* CRUD */
 import {updateData} from '../services/crud';
@@ -61,7 +62,9 @@ const EventPageView = () => {
 
   return (
     <>
-      {
+      {eventInfo === undefined ? (
+        <NotFound />
+      ) : (
         <div className='event-page-container'>
           {eventInfo && (
             <>
@@ -104,7 +107,7 @@ const EventPageView = () => {
             </>
           )}
         </div>
-      }
+      )}
     </>
   );
 };
