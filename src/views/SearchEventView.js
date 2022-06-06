@@ -14,8 +14,6 @@ import {EventDbContext} from '../components/EventDbContext/EventDbContext';
 /* Google Maps */
 import {Wrapper} from '@googlemaps/react-wrapper';
 
-
-
 const SearchEventView = () => {
   const eventDb = useContext(EventDbContext);
   const [eventsCard, setEventsCard] = useState([]);
@@ -37,9 +35,16 @@ const SearchEventView = () => {
 
         const filterTitleResult =
           value?.title &&
+          value?.location &&
+          value?.type &&
+          value?.category &&
           (value?.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
             -1 ||
             value?.location.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
+              -1 ||
+            value?.type.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
+              -1 ||
+            value?.category.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
               -1);
         const filterLocationResult =
           value?.locationType &&
@@ -95,7 +100,6 @@ const SearchEventView = () => {
 
   return (
     <div className='search-event-container'>
-
       <FilterBar
         setSearchQuery={setSearchQuery}
         filterParams={filterParams}
@@ -104,11 +108,10 @@ const SearchEventView = () => {
       />
 
       <div className='search-event-inner-container'>
-
         <div className='display-maps-container'>
-            <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
-              <MapComponent eventInfo={eventsCard} />
-            </Wrapper>
+          <Wrapper apiKey={'AIzaSyD9MpMtp9BcSlZgMy26wtaaamLbfOQhu8s'}>
+            <MapComponent eventInfo={eventsCard} />
+          </Wrapper>
         </div>
 
         <DisplayItems
