@@ -11,6 +11,7 @@ import { AuthContext } from '../Authentication/AuthContext';
 
 /* CRUD */
 import { readData } from '../../services/crud';
+import {liveValue} from '../../services/crud';
 
 const EventCard = ({
   eventSearchStyle,
@@ -25,9 +26,15 @@ const EventCard = ({
   const [attendees, setAttendees] = useState([]);
   const authContext = useContext(AuthContext);
   
+  // useEffect(() => {
+  //     readData('eventAttendees', eventId).then((snapshot) => {
+  //         setAttendees(Object.keys(snapshot.val() || {}));
+  //     });
+  // }, [eventId]);
+
   useEffect(() => {
-      readData('eventAttendees', eventId).then((snapshot) => {
-          setAttendees(Object.keys(snapshot.val() || {}));
+      liveValue(`eventAttendees/${eventId}`, (snapshot) => {
+        setAttendees(Object.keys(snapshot.val() || {}));
       });
   }, [eventId]);
 
@@ -104,7 +111,7 @@ const EventCard = ({
 
             <p>Organizer: {eventCard?.organizer}</p>
 
-            {attendees.includes(authContext.userLog.user.uid) && window.location.href.indexOf("profile") === -1 && window.location.href.indexOf("home") === -1 && <p className='event-data-joined-message-search'>Already registered!</p>}
+            {/* {attendees.includes(authContext.userLog.user.uid) && window.location.href.indexOf("profile") === -1 && window.location.href.indexOf("home") === -1 && <p className='event-data-joined-message-search'>Already joined!</p>} */}
 
             <p
               className={

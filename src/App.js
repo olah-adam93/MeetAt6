@@ -61,10 +61,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log(userLog);
-  }, [userLog]);
-
-  useEffect(() => {
     const liveChange = liveValue('events', (snapshot) => {
       setDb(Object.entries(snapshot.val()) || []);
     });
@@ -72,43 +68,46 @@ function App() {
   }, [setDb]);
 
   return (
-    <div className='App'>
-      <ScrollToTop />
-      <AuthContext.Provider value={{userLog, setUserLog}}>
-        <EventDbContext.Provider value={{db, setDb}}>
-          <Routes>
-            <Route element={<MainPageLayout />}>
-              <Route path="*" element={<NotFound />} />
-              <Route path='/' element={<HomePageView />} />
-              <Route path='/home' element={<HomePageView />} />
-              <Route path='/about' element={<AboutView />} />
-              <Route path='/privacy' element={<PrivacyView />} />
-              <Route path='/events' element={<SearchEventView />} />
-              <Route path='/signin' element={<SignInView />} />
-              <Route path='/signup' element={<SignUpView />} />
-              <Route path='/contact' element={<ContactView />} />
-              <Route path='/FAQ' element={<FAQView />} />
-              <Route path='/eventpage/:eventId' element={<EventPageView />} />
-            </Route>
+    <>
+      {userLog &&
+        <div className='App'>
+          <ScrollToTop />
+          <AuthContext.Provider value={{userLog, setUserLog}}>
+            <EventDbContext.Provider value={{db, setDb}}>
+              <Routes>
+                <Route element={<MainPageLayout />}>
+                  <Route path='*' element={<NotFound />} />
+                  <Route path='/' element={<HomePageView />} />
+                  <Route path='/home' element={<HomePageView />} />
+                  <Route path='/about' element={<AboutView />} />
+                  <Route path='/privacy' element={<PrivacyView />} />
+                  <Route path='/events' element={<SearchEventView />} />
+                  <Route path='/signin' element={<SignInView />} />
+                  <Route path='/signup' element={<SignUpView />} />
+                  <Route path='/contact' element={<ContactView />} />
+                  <Route path='/FAQ' element={<FAQView />} />
+                  <Route path='/eventpage/:eventId' element={<EventPageView />} />
+                </Route>
 
-            <Route element={<UserMainPageLayout userLog={userLog} />}>
-              <Route path='/profile' element={<ProfileView />} />
-              <Route path='/profile/chosenevents' element={<ChosenEventsView />} />
-              <Route path='/profile/addevent' element={<CreateEventView />} />
-              <Route path='/profile/myevents' element={<MyEventsView />} />
-              <Route path='/profile/searchevent' element={<SearchEventView />} />
-              <Route path='/profile/settings' element={<Settings />} />
-              <Route path='/thankyou' element={<ThankYouView />} />
-              <Route path='/signout' element={<LogOut />} />
-              <Route path='/join-success' element={<JoinSuccess />} />
-              <Route path='/create-success' element={<CreateSuccess />} />
-              <Route path='/paid-success' element={<PaySuccess />} />
-              
-            </Route>
-          </Routes>
-        </EventDbContext.Provider>
-      </AuthContext.Provider>
-    </div>
+                <Route element={<UserMainPageLayout userLog={userLog} />}>
+                  <Route path='/profile' element={<ProfileView />} />
+                  <Route path='/profile/chosenevents' element={<ChosenEventsView />} />
+                  <Route path='/profile/addevent' element={<CreateEventView />} />
+                  <Route path='/profile/myevents' element={<MyEventsView />} />
+                  <Route path='/profile/searchevent' element={<SearchEventView />} />
+                  <Route path='/profile/settings' element={<Settings />} />
+                  <Route path='/thankyou' element={<ThankYouView />} />
+                  <Route path='/signout' element={<LogOut />} />
+                  <Route path='/join-success' element={<JoinSuccess />} />
+                  <Route path='/create-success' element={<CreateSuccess />} />
+                  <Route path='/paid-success' element={<PaySuccess />} />
+                </Route>
+              </Routes>
+            </EventDbContext.Provider>
+          </AuthContext.Provider>
+        </div>
+      }
+    </>
   );
 }
 
