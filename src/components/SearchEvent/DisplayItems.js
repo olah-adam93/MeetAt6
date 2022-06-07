@@ -193,7 +193,7 @@ const DisplayItems = ({
       )}
 
       <div className='pagination-container'>
-        {filteredDbItems.length < 8 ? (
+        {filteredDbItems.length < itemsPerPage ? (
           null
           // <>
           //   <button type='button' onClick={toFirstPageHandler} disabled>
