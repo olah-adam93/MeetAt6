@@ -47,7 +47,7 @@ const MyEventsView = () => {
           ) : (
             <DisplayItems
               filteredDbItems={eventsCard}
-              perPage={3}
+              perPage={4}
               setToDefault={() => {}}
               isDeleteButton={true}
             />
