@@ -35,22 +35,18 @@ const SearchEventView = () => {
         const value = event[1];
 
         const filterTitleResult =
-          (value?.title && value?.location) ||
-          (value?.location === '' &&
-            value?.type &&
-            value?.category &&
-            (value?.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
+          value?.title &&
+          (value?.location || value?.location === '') &&
+          value?.type &&
+          value?.category &&
+          (value?.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
+            -1 ||
+            value?.location.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
               -1 ||
-              value?.location
-                .toString()
-                .toLowerCase()
-                .indexOf(searchQuery.toLowerCase()) > -1 ||
-              value?.type.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
-                -1 ||
-              value?.category
-                .toString()
-                .toLowerCase()
-                .indexOf(searchQuery.toLowerCase()) > -1));
+            value?.type.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
+              -1 ||
+            value?.category.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
+              -1);
 
         const filterLocationResult =
           value?.locationType &&
