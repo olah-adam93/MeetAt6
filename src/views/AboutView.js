@@ -34,7 +34,6 @@ const AboutView = () => {
           </p>
         </div>
       </div>
-      ;
       <div className='about-image-right-container'>
         <img className='about-image-right-one' src={about3}></img>
         <img className='about-image-right-two' src={about4}></img>
