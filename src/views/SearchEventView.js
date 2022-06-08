@@ -13,6 +13,7 @@ import {EventDbContext} from '../components/EventDbContext/EventDbContext';
 
 /* Google Maps */
 import {Wrapper} from '@googlemaps/react-wrapper';
+import EventCard from '../components/HomePage/EventCard';
 
 const SearchEventView = () => {
   const eventDb = useContext(EventDbContext);
@@ -34,40 +35,49 @@ const SearchEventView = () => {
         const value = event[1];
 
         const filterTitleResult =
-          value?.title &&
-          value?.location &&
-          value?.type &&
-          value?.category &&
-          (value?.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
-            -1 ||
-            value?.location.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
+          (value?.title && value?.location) ||
+          (value?.location === '' &&
+            value?.type &&
+            value?.category &&
+            (value?.title.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
               -1 ||
-            value?.type.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
-              -1 ||
-            value?.category.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
-              -1);
+              value?.location
+                .toString()
+                .toLowerCase()
+                .indexOf(searchQuery.toLowerCase()) > -1 ||
+              value?.type.toString().toLowerCase().indexOf(searchQuery.toLowerCase()) >
+                -1 ||
+              value?.category
+                .toString()
+                .toLowerCase()
+                .indexOf(searchQuery.toLowerCase()) > -1));
+
         const filterLocationResult =
           value?.locationType &&
           value?.locationType
             .toString()
             .toLowerCase()
             .indexOf(filterParams?.location.toLowerCase()) > -1;
+
         const filterPriceResult =
           value?.paymentType &&
           value?.paymentType
             .toString()
             .toLowerCase()
             .indexOf(filterParams?.price.toLowerCase()) > -1;
+
         const filterDateResult =
           value?.eventStarts &&
           value?.eventStarts
             .toString()
             .toLowerCase()
             .indexOf(filterParams?.date.toLowerCase()) > -1;
+
         const filterTypeResult =
           value?.type &&
           value?.type.toString().toLowerCase().indexOf(filterParams?.type.toLowerCase()) >
             -1;
+
         const filterCategoryResult =
           value?.category &&
           value?.category
@@ -89,13 +99,23 @@ const SearchEventView = () => {
   );
 
   useEffect(() => {
-    setEventsCard(
-      searchFunction(eventDb.db).sort((a, b) => {
-        return (
-          new Date(b[1].createdDate).getTime() - new Date(a[1].createdDate).getTime()
-        );
-      })
-    );
+    console.log(eventDb.db);
+    console.log(eventsCard);
+  }, [eventsCard, eventDb]);
+
+  useEffect(() => {
+    // setEventsCard(
+    //   searchFunction(eventDb.db).sort((a, b) => {
+    //     return (
+    //       new Date(b[1].createdDate).getTime() - new Date(a[1].createdDate).getTime()
+    //     );
+    //   })
+    // );
+
+    const result = searchFunction(eventDb.db).sort((a, b) => {
+      return new Date(b[1].createdDate).getTime() - new Date(a[1].createdDate).getTime();
+    });
+    setEventsCard(result);
   }, [eventDb, searchFunction]);
 
   return (
